@@ -1,0 +1,3308 @@
+{
+  "schema": 2,
+  "note": "Game art rights remain with their respective owners. No license inferred.",
+  "atlasMetadataSource": "https://deadgod.yeeterie.org/assets/data-d8ce3ab0.js",
+  "atlasMetadataSha256": "7fb96ebe12ba4c853cfefbd58ed536ccfb6450a0c75fcdff18b24c75d7062d29",
+  "icons": [
+    {
+      "nodeId": "feature:womb",
+      "source": "https://isaac.ardor.guru/gfx/achievements/4.png",
+      "sourceSha256": "e4d98639d0c32254532b0670990f7f2c3a0d0aa877f27757b264cf7d7d2b935c",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 4,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-womb.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "0d9eb51677595a66923119cd484393b026c2e3efee3138beebe0d51cae17705b"
+    },
+    {
+      "nodeId": "feature:it-lives",
+      "source": "https://isaac.ardor.guru/gfx/achievements/34.png",
+      "sourceSha256": "4756e187ea2e28b64d2b9bbd0ca41241d02563926533ccb6faad98a8ef07b25c",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 34,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-it-lives.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "8c7071e39f55ed260087f124a48305b0e7bbe087f619e40615fe6642f56f6cc4"
+    },
+    {
+      "nodeId": "feature:cathedral",
+      "status": "designed",
+      "path": "assets/icons/feature-cathedral.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3d2e17d536269a4d8a2d3d29899b57e249a7857de121bfc7cd2fafe7494edc7a",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:sheol",
+      "status": "designed",
+      "path": "assets/icons/feature-sheol.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "90e313337255aed5d6a8cb2a28f39ec7ed423cee84f204ffe4c2ced62603b501",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:chest",
+      "status": "designed",
+      "path": "assets/icons/feature-chest.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "74ab6bdb21fd1781aa6d0a5206552e4595fc7fc41f60b26fde776cb1a66d5689",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:dark-room",
+      "status": "designed",
+      "path": "assets/icons/feature-dark-room.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "bd7b75510f9fbd6e1dfff4ed5753bbdb72036349b4c2b62d9c581cd49fa1b5ad",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:blue-womb",
+      "source": "https://isaac.ardor.guru/gfx/achievements/234.png",
+      "sourceSha256": "2e8cb90f79d8c4ad7c28a60dcdb8341d0f9b3c384bc2d8ef39804cef4077f057",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 234,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-blue-womb.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a2418c3b0a6a3b9caec5c1e906fa4a5081cd4ce34e4b99f5d810d2de2514bebc"
+    },
+    {
+      "nodeId": "feature:void",
+      "status": "designed",
+      "path": "assets/icons/feature-void.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "03d3ad2daa508036f6783afc1c171686087a6722294449d75fce20a10ee91b57",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:downpour",
+      "source": "https://isaac.ardor.guru/gfx/achievements/407.png",
+      "sourceSha256": "b260d3e398ab332f96fcb7eb2808a287e3d3e5e76da60c6a251161f711d43c38",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 407,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-downpour.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "d1a321ff2ce3a21893bbe608c26c4a967956139d734383c5f08ba0a1e1c0e5c7"
+    },
+    {
+      "nodeId": "feature:corpse",
+      "status": "designed",
+      "path": "assets/icons/feature-corpse.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "df9232cec633a27015878bf9641326f4945f104f508e6dcaaa9f85eb7840c320",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:strange-door",
+      "source": "https://isaac.ardor.guru/gfx/achievements/635.png",
+      "sourceSha256": "441742c248226fe4a7fef431aa3af55c4e92da1095d2f405728a7d9649791a74",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 635,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-strange-door.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3e9c3502f862f2958a8b2a1e5e78a7fb18c5026027d2ddcf14362030849effd0"
+    },
+    {
+      "nodeId": "feature:home",
+      "status": "designed",
+      "path": "assets/icons/feature-home.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "7f9057898ea2ad44d2280bf890b3cd15ea9dad672ce729b739b2d93e56e88a0e",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:mega-satan",
+      "status": "designed",
+      "path": "assets/icons/feature-mega-satan.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a303776de988a808d46242de6800f8dfb6a27e2beb2661eb7ec77451c61b401d",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:greed",
+      "status": "designed",
+      "path": "assets/icons/feature-greed.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "b9911f660dd1f0a359e3655c0af0f0608d7b22b6860e9cfe1584e54632855027",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:greedier",
+      "source": "https://isaac.ardor.guru/gfx/achievements/341.png",
+      "sourceSha256": "11a351b3a0c72aa9bfdd523f2fe71798e050648b809c73ce3a9e8e834eafa08a",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 341,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-greedier.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "680f87c433468c088e5f908ae2962c2c9223dd2458f520ae65882ddc42d685a0"
+    },
+    {
+      "nodeId": "character:isaac",
+      "source": "https://isaac.ardor.guru/gfx/characters/Isaac.png",
+      "sourceSha256": "93610d9a6642f885b7f1480bd1d96ea20b37fa1e906e8f34f9742c56b47258a7",
+      "status": "downloaded",
+      "path": "assets/icons/character-isaac.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "0f85c4f3b1a1dfafeaee472e621cbfd2c481d5205f8af1184c9bae04776c78fd"
+    },
+    {
+      "nodeId": "character:magdalene",
+      "source": "https://isaac.ardor.guru/gfx/characters/Magdalene.png",
+      "sourceSha256": "2942caa7e183e851bd7d202f2c004d824f118e3aa650f6ba1eb91aecf2c293d1",
+      "status": "downloaded",
+      "path": "assets/icons/character-magdalene.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "3bd7bd9deea7088dead6b07a5c148be342e224b0f7c9fd141377424516a2a5da"
+    },
+    {
+      "nodeId": "character:cain",
+      "source": "https://isaac.ardor.guru/gfx/characters/Cain.png",
+      "sourceSha256": "86d861f25804f600396cf95b2fa5a0afe900f80e049215e9488c33c2cc53478a",
+      "status": "downloaded",
+      "path": "assets/icons/character-cain.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "d18b20b6a83269b858cdf9f01f1098438eaf74a92f4a41f7d93bfb6fe9f7f302"
+    },
+    {
+      "nodeId": "character:judas",
+      "source": "https://isaac.ardor.guru/gfx/characters/Judas.png",
+      "sourceSha256": "126f4d4fe4c38bee3dab10ee794fa0ef6248259075e17c15e92a7ae457bd9467",
+      "status": "downloaded",
+      "path": "assets/icons/character-judas.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "e052281d8acfd4a8c6f0ab86d905a0e18e78d4f1bedb6824b763eb8a1c6b5d3f"
+    },
+    {
+      "nodeId": "character:blue-baby",
+      "source": "https://isaac.ardor.guru/gfx/characters/Blue_Baby.png",
+      "sourceSha256": "7a755079d4e407c50da140d6e7311d19c3d8ad26b7e07e1b776c2a89e0073f92",
+      "status": "downloaded",
+      "path": "assets/icons/character-blue-baby.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "cfe328b5f53e44db7f4362784e28b087310ee638d859a1a16fbb7c1ab4ea86a7"
+    },
+    {
+      "nodeId": "character:eve",
+      "source": "https://isaac.ardor.guru/gfx/characters/Eve.png",
+      "sourceSha256": "793feeb9689779b8f38cb3b1385fdc77011b95c1ff49cb1a91726a66e09755f3",
+      "status": "downloaded",
+      "path": "assets/icons/character-eve.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "d1a5fb32c9726ea7d9b649ba55bc9b89c8cf12abd8db5ab809c78d1f5b8a27ae"
+    },
+    {
+      "nodeId": "character:samson",
+      "source": "https://isaac.ardor.guru/gfx/characters/Samson.png",
+      "sourceSha256": "83bd52eb3f38cff0a27e8c350dfff5ef41dc2d727a2d014cafa370b322240dc6",
+      "status": "downloaded",
+      "path": "assets/icons/character-samson.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "44b98a015d68ba269890478675cfaaf9ff9297acb3ce25aa792a7e98ad66f8cb"
+    },
+    {
+      "nodeId": "character:azazel",
+      "source": "https://isaac.ardor.guru/gfx/characters/Azazel.png",
+      "sourceSha256": "a1d03cbbc52cd84f52f8a163ecca96d7daf195c847b7a36e881d5c204650c10b",
+      "status": "downloaded",
+      "path": "assets/icons/character-azazel.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "d0606b2cf36ca40746e7597164c89e573a7a417ae82093ff059d9bca32654e1c"
+    },
+    {
+      "nodeId": "character:lazarus",
+      "source": "https://isaac.ardor.guru/gfx/characters/Lazarus.png",
+      "sourceSha256": "dabb66157900783e6c04aa0a4f2da4c876894663e4f3b67e20aed7b540d8a532",
+      "status": "downloaded",
+      "path": "assets/icons/character-lazarus.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "483269bfaf4fc2e6f485f55b0b1181dab67bce1dd2e23bf67aa088df5ed05a2a"
+    },
+    {
+      "nodeId": "character:eden",
+      "source": "https://isaac.ardor.guru/gfx/characters/Eden.png",
+      "sourceSha256": "fea1b464a3afe9953370e6898bf941a7a5c98ba8b900f0b5bb0dcc37a8fc1246",
+      "status": "downloaded",
+      "path": "assets/icons/character-eden.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "5f4b281a11f9b8c77ec58adab66f784c1172fde345f4c62ace8cc4bdd67a1d52"
+    },
+    {
+      "nodeId": "character:the-lost",
+      "source": "https://isaac.ardor.guru/gfx/characters/The_Lost.png",
+      "sourceSha256": "7955deb836370d45de6d0796fd0ea0acdf096b4f08e8eb3546ab13d5a65faacc",
+      "status": "downloaded",
+      "path": "assets/icons/character-the-lost.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "24a0151eaf724f3f8c4dfc58260a53e31df336fb17bf66cb61c13c737d1fa915"
+    },
+    {
+      "nodeId": "character:lilith",
+      "source": "https://isaac.ardor.guru/gfx/characters/Lilith.png",
+      "sourceSha256": "14a5eeae018def6e2d23d9e11fe90aeeb4ff85f6bfcfcd677086348c81b38175",
+      "status": "downloaded",
+      "path": "assets/icons/character-lilith.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "9c318cffcc7552d55b9f75475a434fcb324c51428fde067d4f058bc5e4d1b475"
+    },
+    {
+      "nodeId": "character:keeper",
+      "source": "https://isaac.ardor.guru/gfx/characters/Keeper.png",
+      "sourceSha256": "cfd41165e49f4eeff834b12d63ba423126aeadf387df77cfbe558f100f12e1ee",
+      "status": "downloaded",
+      "path": "assets/icons/character-keeper.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "9934e83e9e5df3c1dfd3c26beadf85f54fc320f336835d626be66c206329a032"
+    },
+    {
+      "nodeId": "character:apollyon",
+      "source": "https://isaac.ardor.guru/gfx/characters/Apollyon.png",
+      "sourceSha256": "1d6ae12771ca45d68b2ef2e82519185ca9b891f2ed6df5755b1e9e3132e84a7e",
+      "status": "downloaded",
+      "path": "assets/icons/character-apollyon.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "f443248a88beafb0807ed4eab154f61b807d30db30b592f627cf16c11a3c0adc"
+    },
+    {
+      "nodeId": "character:the-forgotten",
+      "source": "https://isaac.ardor.guru/gfx/characters/The_Forgotten.png",
+      "sourceSha256": "b9493d81846adca6268a23b16c6100f8248e56afd56c864b3572a04a58e70b72",
+      "status": "downloaded",
+      "path": "assets/icons/character-the-forgotten.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "28b2a1e25fef86ec4e0cc5146a3bf43864fe0fa4d95a10ec216291771470a2fb"
+    },
+    {
+      "nodeId": "character:bethany",
+      "source": "https://isaac.ardor.guru/gfx/characters/Bethany.png",
+      "sourceSha256": "7946c87bf9067d5d62d7f81c62d9397254a09af7d60c2d9ed89a01365ed8f040",
+      "status": "downloaded",
+      "path": "assets/icons/character-bethany.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "07773d899a88ea756b1816a1580c491fa934acd61f34f9cf0d7a9565cb7bc9db"
+    },
+    {
+      "nodeId": "character:jacob-esau",
+      "source": "https://isaac.ardor.guru/gfx/characters/Jacob_and_Esau.png",
+      "sourceSha256": "ecf9f545d61d2a9dffadf3db3168224d8e8b415d0282acb3af9aacda0c8c665c",
+      "status": "downloaded",
+      "path": "assets/icons/character-jacob-esau.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "a446bf4f26a682d13991e4df1cb87b97c43834e3388300b1ff61c2212df4d5da"
+    },
+    {
+      "nodeId": "character:tainted-isaac",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Isaac.png",
+      "sourceSha256": "bd7721c787b99c6c8925b5e2b479b243502061a653c942f051928046ec97e9fd",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-isaac.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "f18ff565e29a402bedadd72b2137db3dd159cdbf949033b90ed3970c2f054785"
+    },
+    {
+      "nodeId": "character:tainted-magdalene",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Magdalene.png",
+      "sourceSha256": "6b885da9205f4360e0fab0ad28d54b95a469adf328ed08d57ffdcc80ea3d5231",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-magdalene.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "e46c2393439c0d2b2c60615ab79534623b8bedfdea9ba2869a945c1a2d158f1d"
+    },
+    {
+      "nodeId": "character:tainted-cain",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Cain.png",
+      "sourceSha256": "5a3aff7ed107f3b70461737c153aed97564daf4eb214c34a766f022ea80adf5d",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-cain.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "cdfdf72c2063ac96a2e57ed545e45252d448ec3d8368d0c05e88c4ab2bc58cd5"
+    },
+    {
+      "nodeId": "character:tainted-judas",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Judas.png",
+      "sourceSha256": "028a72cb2a475d96c7168d96a5c3a12b82d4fe18639cc6db012069b4074bfadd",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-judas.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "70bff6672855da6259b48e86ed553d218d45e81ac838b87bf3570f61ba9b3304"
+    },
+    {
+      "nodeId": "character:tainted-blue-baby",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Blue_Baby.png",
+      "sourceSha256": "84071697073142a3d877f71c85a590a65c3778d38a6337351b557d0ecc5d277d",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-blue-baby.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "e2c0be3a2e74b5762b8ac4798e4fb9f50849410ede752643b18d1d6212c07975"
+    },
+    {
+      "nodeId": "character:tainted-eve",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Eve.png",
+      "sourceSha256": "d6432601ff32b8a64fa88a8e024dbf324af2ddec149ab1c4568edd6810f21566",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-eve.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "fed8f0d31037ecaf4152dc71637db9fabb99bd9dfab8ffb44b8e19923ee5d015"
+    },
+    {
+      "nodeId": "character:tainted-samson",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Samson.png",
+      "sourceSha256": "66d4407ef1a46de8a048c60bf286642abb8996f68d8d18aa696da99ea787d731",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-samson.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "6d3843b812d9acdb19dcc6367da9a058edda35a39df104a010cf4197411a3d3a"
+    },
+    {
+      "nodeId": "character:tainted-azazel",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Azazel.png",
+      "sourceSha256": "f6aa721efea8c2529ae6b92155652f1425d7144795a10164c043426866d666ae",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-azazel.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "4883a9559b322b45000278deb9b4df6a2224192c258949d79feae22a156608b6"
+    },
+    {
+      "nodeId": "character:tainted-lazarus",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Lazarus.png",
+      "sourceSha256": "43c7b392547efcb2d5f032bb4ce0df864bd4681c54940b0c74156070bdf9d422",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-lazarus.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "0af9b700dbc5f13a976a53bd8e93aa579b7872060c2497dcf0be264ed16e2cc1"
+    },
+    {
+      "nodeId": "character:tainted-eden",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Eden.png",
+      "sourceSha256": "2d518696d606d6693dc41eba382962fa0a1e41f158260d9ffbb0896405c3d871",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-eden.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "4f5f245341ff351036ad53b82c9d385a93d2de220176f2b71513470b5866639c"
+    },
+    {
+      "nodeId": "character:tainted-lost",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Lost.png",
+      "sourceSha256": "453dddcc7ac885abe1da85cd488a6fca2b03c3c6a36f268c409312d1fea163e5",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-lost.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "ec855fc3616818cb711474d5acc04b4226b82d508ed2311809a8b8760c276279"
+    },
+    {
+      "nodeId": "character:tainted-lilith",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Lilith.png",
+      "sourceSha256": "77cc0f7337aa609ad0305fbf3b6c06daa9cb543ca093695ce1fede62ca0a1652",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-lilith.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "63050a37fd323446506c46adeb594252dc67156c971d0320f4c1e8ddb898e0e5"
+    },
+    {
+      "nodeId": "character:tainted-keeper",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Keeper.png",
+      "sourceSha256": "ef0898b4199a3a22e711efd7e955cfc69606d851c461198372fb2ce0831b80e3",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-keeper.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "d1f33f628eae2b183e0e242b99310213cc4e9cd727aa9557c29211fa342f3715"
+    },
+    {
+      "nodeId": "character:tainted-apollyon",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Apollyon.png",
+      "sourceSha256": "e139c19587f398593921861e5eaf55b5e6674e8f56e8cc2ae6e307b3ca1ec2db",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-apollyon.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "964ce294ae24387550da9dee4e76818abeb9c8f4763055a612ba0eb978ea81f6"
+    },
+    {
+      "nodeId": "character:tainted-forgotten",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Forgotten.png",
+      "sourceSha256": "1c2e131fe544272de36fcc15c6f715b5bea3e2199aee80756b82a2d309464700",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-forgotten.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "3bc22998a8bb4c14284b960854fbc1547aa8f7f194835afbdabdf43abfdfaa52"
+    },
+    {
+      "nodeId": "character:tainted-bethany",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Bethany.png",
+      "sourceSha256": "428233f3d42f27bbaf77df4978bc79a3311172c015bab824e80f98ab0dcac4cc",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-bethany.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "33017cbb238069330993a4085f1ade92add596182c319baa326c3c3541869b69"
+    },
+    {
+      "nodeId": "character:tainted-jacob",
+      "source": "https://isaac.ardor.guru/gfx/characters/Tainted_Jacob.png",
+      "sourceSha256": "6afbc107af03e035f9243c5c26b686c377eb1ee49d1bc0a57b057eade944b145",
+      "status": "downloaded",
+      "path": "assets/icons/character-tainted-jacob.png",
+      "dimensions": [
+        100,
+        110
+      ],
+      "sha256": "bbde2ca30278834ef2a0e2810c07c252f53845da24acdc101673e6cf65c7c41d"
+    },
+    {
+      "nodeId": "consumable:33",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_33",
+      "atlasRect": [
+        128,
+        224,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-33.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "063af29534d72518d5f7b5b729dd4688668000d3f26b3b82105b17c8783ed4c1"
+    },
+    {
+      "nodeId": "consumable:34",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_34",
+      "atlasRect": [
+        0,
+        224,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-34.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "15f15b9c6a44a8864083c4d55b6640873aa7a769bde5d473eb20eeca7a41c5e0"
+    },
+    {
+      "nodeId": "consumable:37",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_37",
+      "atlasRect": [
+        32,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-37.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "87f00696404cd40ebd24a57c7297097040d2bc2ba3d9a962158e4d39077efdbc"
+    },
+    {
+      "nodeId": "consumable:40",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_40",
+      "atlasRect": [
+        256,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-40.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a116d84b0f727c449f8a1d035577a4262a14a8d2d9db356d3db691a754c2c3b7"
+    },
+    {
+      "nodeId": "collectible:263",
+      "source": "https://isaac.ardor.guru/gfx/items/263.png",
+      "sourceSha256": "7f08f3c69525493d3a390ee2c5f3b24b637240cd783ecbe75e9c50cdffb92e5f",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-263.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "462b66f282ec4ed697671a4b8376b66f9656c419ce07fe4984823bdb35cca3cb"
+    },
+    {
+      "nodeId": "consumable:36",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_36",
+      "atlasRect": [
+        128,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-36.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "092841863d41b69436743366654111847fffaadbe413b808ece072cc145ac6a0"
+    },
+    {
+      "nodeId": "consumable:39",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_39",
+      "atlasRect": [
+        160,
+        224,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-39.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "99eb740c7ae048d1fc72ab9952120b88599f8a2bee6732d5fba75e2607a64215"
+    },
+    {
+      "nodeId": "collectible:389",
+      "source": "https://isaac.ardor.guru/gfx/items/389.png",
+      "sourceSha256": "114eee0f9612e5fdacff4a83e0afa7d8e555d051e12c0318818abc597b4a935b",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-389.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "e1678e0c6e62a57560bcd717249b10169a001ef26cd8e5874fc2e1682ae1b833"
+    },
+    {
+      "nodeId": "consumable:35",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_35",
+      "atlasRect": [
+        192,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-35.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "1ed8bb0ef35a9aea0fc33efed6e018f9f9176f94d3386ec49fcd0ac3f9afd666"
+    },
+    {
+      "nodeId": "collectible:514",
+      "source": "https://isaac.ardor.guru/gfx/items/514.png",
+      "sourceSha256": "daf773479403f592fcbef2828725db5801ce2c3d0a97ef7309820cda61ae5a14",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-514.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "5bdcf2606fb98f813a330263c530aedbda35c1ac0c86e45c717cf547cbb822fd"
+    },
+    {
+      "nodeId": "trinket:92",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_092",
+      "atlasRect": [
+        352,
+        128,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-92.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "8337ed772eae2cb01e7cb1cba8b3ca950b969d1f9454002d1961ea18d847f796"
+    },
+    {
+      "nodeId": "consumable:45",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_45",
+      "atlasRect": [
+        0,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-45.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "e89223267ad00985f804f5811efff5e6020979f2fcbecfbd16b7b14ca68bcb7c"
+    },
+    {
+      "nodeId": "trinket:50",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_050",
+      "atlasRect": [
+        288,
+        64,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-50.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "ef5650f0f43f7d96c1deb3e038665af1609ee839e325c3ada5b24f449df6f15f"
+    },
+    {
+      "nodeId": "collectible:244",
+      "source": "https://isaac.ardor.guru/gfx/items/244.png",
+      "sourceSha256": "752762a8b7f8857ea2b8c04e2099969324429cb2cb644f4148ecd0f58053e9af",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-244.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "07edee5409f6fbda392a1c8d42c3412c2fa21bd07bc6f0960f09b1880d1e1139"
+    },
+    {
+      "nodeId": "consumable:27",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_27",
+      "atlasRect": [
+        128,
+        128,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-27.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "f8b1d5634b2611fa63ad7f7972f9c2af67bbb3c0844c38b02f3ae1c04c667f22"
+    },
+    {
+      "nodeId": "consumable:42",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_42",
+      "atlasRect": [
+        224,
+        64,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-42.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "0bcec96a4a3ff0f8061dae57e68aa03a7139450fba5ef550625d84e9a9aa18ef"
+    },
+    {
+      "nodeId": "trinket:52",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_052",
+      "atlasRect": [
+        352,
+        64,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-52.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "67eaa89cd7a13e987262c65e0c5ffec02517faa4fe3e97c40f92d7446e77913c"
+    },
+    {
+      "nodeId": "collectible:114",
+      "source": "https://isaac.ardor.guru/gfx/items/114.png",
+      "sourceSha256": "217d6c1cc7ddefdb74cea8d3096196275d6c96866f831b2bc21f1effe61dfbc6",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-114.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7dab9582779657b6fa070afdbdd0836af25696bc6aa0bab90187d0c91a033681"
+    },
+    {
+      "nodeId": "collectible:292",
+      "source": "https://isaac.ardor.guru/gfx/items/292.png",
+      "sourceSha256": "6b907eaff2923c4f25515c9af383361b633e81ac3fda34420376e5ba1b2eafeb",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-292.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "ebcdf7eb380dbcccc1b68dadfebc6b06089640b2b758cb7cd36c237cc32c723e"
+    },
+    {
+      "nodeId": "collectible:119",
+      "source": "https://isaac.ardor.guru/gfx/items/119.png",
+      "sourceSha256": "0f7f299f75438637fa05a1326dc4bb32412b65b27594750d1c5f10e616404b18",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-119.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "ce8832fba4d7ec3300154f761c98f67b5db4ddf621690474e6acce5fe1ac50ab"
+    },
+    {
+      "nodeId": "collectible:286",
+      "source": "https://isaac.ardor.guru/gfx/items/286.png",
+      "sourceSha256": "95f16cce2aefc007ca524f5a8a723e36218c187a526d4712438274c224d50c5a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-286.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7b1d03de628f9852b139320cdc20b042409086311c326d84120f91756ffbaf56"
+    },
+    {
+      "nodeId": "collectible:127",
+      "source": "https://isaac.ardor.guru/gfx/items/127.png",
+      "sourceSha256": "95c1889aa8a86aa8c42aa4b0217b76c810ac45b2d6f156929742da395714ea71",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-127.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "325906de0afb74d5953a0300cc5e5f9220ce5bcce7ac83d3841c453d6f918298"
+    },
+    {
+      "nodeId": "collectible:360",
+      "source": "https://isaac.ardor.guru/gfx/items/360.png",
+      "sourceSha256": "bbca49c251393a1f3ff2184009822204419b230139a159a4a22052a331ef1f09",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-360.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "0fb864fc69d3370b337aa1ab5ac62a11d877e58ef9a27519efefd591f7ef37d8"
+    },
+    {
+      "nodeId": "collectible:408",
+      "source": "https://isaac.ardor.guru/gfx/items/408.png",
+      "sourceSha256": "750019683859bf9623b2ac319a3f7774af81670de4958ac4599852d7613c7502",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-408.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "5d21492b1966792849f6d2106751ef7257b0ab0cd5d0036e8fa57f14a23d7063"
+    },
+    {
+      "nodeId": "collectible:510",
+      "source": "https://isaac.ardor.guru/gfx/items/510.png",
+      "sourceSha256": "29bb52355c9d79fe026352b4a06dd56be406a84063dca82bfe39dfb3cb347b63",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-510.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "1ebc8db91f46267bc989627e583af1a7e474784dde56547783ba367d443dc6a8"
+    },
+    {
+      "nodeId": "collectible:489",
+      "source": "https://isaac.ardor.guru/gfx/items/489.png",
+      "sourceSha256": "c3c0bb97a9107bd6bffee6ad5b39acfe601ed39e631042490ce320c68038d90a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-489.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "76f4aad33271227cb0274ecbba59741d3d463e8fa27749710f5589333911929f"
+    },
+    {
+      "nodeId": "collectible:490",
+      "source": "https://isaac.ardor.guru/gfx/items/490.png",
+      "sourceSha256": "7d72daa810a0223b6c54b3a324cf0e193d2696b21a5183f164f258708a74af0b",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-490.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "ebc75c761240985a494757c7534fc9032cbcf8e7401e2364154482e47591c4c0"
+    },
+    {
+      "nodeId": "consumable:43",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_43",
+      "atlasRect": [
+        96,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-43.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "296808ba3e2196add1f6445eba1c8ce9211ea6aaab3fbeae48686aa62c051423"
+    },
+    {
+      "nodeId": "collectible:499",
+      "source": "https://isaac.ardor.guru/gfx/items/499.png",
+      "sourceSha256": "9cd6b5959236cb87e9ba48e227e0e1712fde1f31c1bc5eaf2aae0fabb091b556",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-499.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "0a77387877680158b468119c5732ec32d6223b6b9d00cc8cc419da8bb61c7655"
+    },
+    {
+      "nodeId": "trinket:138",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_138",
+      "atlasRect": [
+        544,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-138.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "8fae078b058030ce9db019e596292872ccc4eca753371e934cb1333493f08bd3"
+    },
+    {
+      "nodeId": "collectible:579",
+      "source": "https://isaac.ardor.guru/gfx/items/579.png",
+      "sourceSha256": "34d94c6e8e0a6d2b0f9427bc82177232084caa423d89d5b80ecba1134ce7b87b",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-579.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "cc193e7ae0ba09f4db1f019074e561e957badb905be5933fa1d5d06d50117dc6"
+    },
+    {
+      "nodeId": "collectible:105",
+      "source": "https://isaac.ardor.guru/gfx/items/105.png",
+      "sourceSha256": "7e6332a5879a4709747c71b85aa9f782e5674d9e9b450c3e68ee943119c31b5f",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-105.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "72f2867e2467d7ba6d2dd868a7578c78ba97a4bbea501de3b860749a1c6022c4"
+    },
+    {
+      "nodeId": "collectible:157",
+      "source": "https://isaac.ardor.guru/gfx/items/157.png",
+      "sourceSha256": "d6cbb10edfbc3ebc743d8d6d522f6ca7f27464ae735bdaab94bf9debc54361aa",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-157.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "877f32ddb3ab4c6284ffe09972d507e030e04ad976905c5a6151fd6799f1251d"
+    },
+    {
+      "nodeId": "collectible:327",
+      "source": "https://isaac.ardor.guru/gfx/items/327.png",
+      "sourceSha256": "41baf04883b1c58d6daf2a8abcf42ed4eb82decabff75a7d5f76de5b60b8adfc",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-327.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "0087af7bbbe3a43cef9502e5fab091f6a7493af4c3ba788349f6eebd1f5bcdf6"
+    },
+    {
+      "nodeId": "collectible:179",
+      "source": "https://isaac.ardor.guru/gfx/items/179.png",
+      "sourceSha256": "59803b5e5ff286bd065fea439e8d6812b764150db37bcd2598151d68fb2e2ebf",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-179.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "994b96f46ee6d758f473544b58f110cf82e9db87404f912d155347c7c95f9093"
+    },
+    {
+      "nodeId": "collectible:131",
+      "source": "https://isaac.ardor.guru/gfx/items/131.png",
+      "sourceSha256": "f57f79e730858e92043a25eb816f29547e84d9ce6e9ae5b45d6dda38b59fc40e",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-131.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "c18bafe0cca0db2dfeaeaa9e8c1ef3cb9f82cb6875659475fed342d3ba688303"
+    },
+    {
+      "nodeId": "collectible:328",
+      "source": "https://isaac.ardor.guru/gfx/items/328.png",
+      "sourceSha256": "337db4a0f2cce20599783454659d6533dda3757f0f12715cb4482cffbb64158a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-328.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "77bf17105437ff2410dfd5ea6976f6460311762081961d9ba7f03bb60ed1e959"
+    },
+    {
+      "nodeId": "trinket:35",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_035",
+      "atlasRect": [
+        448,
+        32,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-35.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "89cc2957a4f2bd498913b344de46e39a4f71fc8d4b78b0d6b93fb6d0aaa88a76"
+    },
+    {
+      "nodeId": "collectible:584",
+      "source": "https://isaac.ardor.guru/gfx/items/584.png",
+      "sourceSha256": "41815151245e85baf5e5c4af98a6252ced0d24e7f74acdf3dfed4264713db4c3",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-584.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "43418116e12d1aee2fe32b75e26817cd6e903eaa22b8816faa8f54251dc912d5"
+    },
+    {
+      "nodeId": "collectible:586",
+      "source": "https://isaac.ardor.guru/gfx/items/586.png",
+      "sourceSha256": "cab35817be1e88bfe7c2819b61c6d1ea6be0e6bb51d0d1b80d72f71ca071ed4f",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-586.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "094f559eef5c9865b04a7331d3c5670a0b26ea1a72e0ccbe09e0ac09cffda16d"
+    },
+    {
+      "nodeId": "collectible:619",
+      "source": "https://isaac.ardor.guru/gfx/items/619.png",
+      "sourceSha256": "fda0ede399ff65b5d3e04aff125ca86222e7a53a41755742c2d8a2814be92fda",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-619.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "2959ca941e80e1f2839e4546d6ee62c0dda5669102a787ae55a496316559c415"
+    },
+    {
+      "nodeId": "collectible:678",
+      "source": "https://isaac.ardor.guru/gfx/items/678.png",
+      "sourceSha256": "f5ad097188d8958b81c5c30a3ba9f63fb798df755f2bba45a4c9b90a89111182",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-678.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "e4b35558fee0db95bad9379b75e2fdb686cd83ffab8dd10c05a76eccbb598f35"
+    },
+    {
+      "nodeId": "collectible:698",
+      "source": "https://isaac.ardor.guru/gfx/items/698.png",
+      "sourceSha256": "51f54be3297e5299502091ebe327f50d57f7ad95cda7f9e7e87c08b7e7ec7d0e",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-698.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "6b79e38b2c28340343b3bca5a4dbc15b4fb8c78f19ca7b08936dd5041e7e6c20"
+    },
+    {
+      "nodeId": "collectible:670",
+      "source": "https://isaac.ardor.guru/gfx/items/670.png",
+      "sourceSha256": "b7f746a32ed1f7128bbe45d979816e47a6c23404f6f14dd7025726979f284ac8",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-670.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "74b14d51f31aa745c7e2b9017416d47df6c1242460db526109d3b189a231fbd3"
+    },
+    {
+      "nodeId": "collectible:689",
+      "source": "https://isaac.ardor.guru/gfx/items/689.png",
+      "sourceSha256": "987b92b67a58de9119866f69c05ade6a2378bf153d14313900528e64e00cbc57",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-689.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "5ec1bb6f93feaac226000b407f8bf121434e1061a819df1115989c109c3aab72"
+    },
+    {
+      "nodeId": "collectible:723",
+      "source": "https://isaac.ardor.guru/gfx/items/723.png",
+      "sourceSha256": "6327dafedae3a8a5191e41b7c9e19c67be89b184c2cd8ef83d416ba2eb00dc45",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-723.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "95b798ea17b80bc2fe2bf474e07f33caff52579135dadb1666bb815551ce9a9a"
+    },
+    {
+      "nodeId": "collectible:711",
+      "source": "https://isaac.ardor.guru/gfx/items/711.png",
+      "sourceSha256": "1d143db6c721d72adb32f85f8ac3e680df47dbd446df5c657a4885d2bfa3b147",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-711.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7a2d6929f08b07bccc9cae6fea378d193a3c5d5377076d8e9402d8883ca99ca7"
+    },
+    {
+      "nodeId": "collectible:166",
+      "source": "https://isaac.ardor.guru/gfx/items/166.png",
+      "sourceSha256": "04c869d339a209e51be811297a5a11c6bb147feaaaceff05408b123614d24bc5",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-166.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "f8d38f792c7cb8a879a86b8f9fe596e7dbfcd209e27a5276854a3c2f3ab6fc78"
+    },
+    {
+      "nodeId": "trinket:23",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_023",
+      "atlasRect": [
+        64,
+        32,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-23.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "dbd6a492299474e732f37a34bb9c0d591034884607799542ddfaad59f782eb2e"
+    },
+    {
+      "nodeId": "collectible:577",
+      "source": "https://isaac.ardor.guru/gfx/items/577.png",
+      "sourceSha256": "324c810b2f909b8c4783be145bae977db5cf081f072c8dff400bf426702bd0bf",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-577.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "5d04f0099b95736077f8d296e86d2270e3db0bf80e484e72f43b466014e5adb4"
+    },
+    {
+      "nodeId": "collectible:335",
+      "source": "https://isaac.ardor.guru/gfx/items/335.png",
+      "sourceSha256": "fdfe7744cb134e5f7b780f7c40554a83b71459ea40a2eb52319437d8c7e34fb3",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-335.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a9c76cd51082b311ee9e89d31a20b0fbe1acb18524ec92bc88a4b44d8285da96"
+    },
+    {
+      "nodeId": "trinket:131",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_131",
+      "atlasRect": [
+        320,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-131.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "8be8ce9830eb5df1df4cc75c3e0ff6acd327854e1160601cb5a65d8e22cd1858"
+    },
+    {
+      "nodeId": "collectible:651",
+      "source": "https://isaac.ardor.guru/gfx/items/651.png",
+      "sourceSha256": "04ab4d459a0f018732b79fd60914efde4ca5456b1f752c9d39a3c85d6713aa03",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-651.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "0eaffebfcd9a16d48cbb1bf0ee8c701b867300905228f3b882b031175c51e9f0"
+    },
+    {
+      "nodeId": "collectible:643",
+      "source": "https://isaac.ardor.guru/gfx/items/643.png",
+      "sourceSha256": "594c10c26c7f23bdc603b652b8d297705f74ad003c2ac94097ffc7070e4d773b",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-643.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "f36c03e3266a2170318c39df4b295dd34fdb02c9c876f3a5e9767db92ffd410a"
+    },
+    {
+      "nodeId": "collectible:716",
+      "source": "https://isaac.ardor.guru/gfx/items/716.png",
+      "sourceSha256": "cefe2b563a97e6ba81a2877da8857b0237c65650b39184e2dbb81f02c4607cc3",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-716.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "96690d9534d075ceb779d5adbdeed0b88d8a1cd7da07c336f607bf4b69e35b61"
+    },
+    {
+      "nodeId": "collectible:232",
+      "source": "https://isaac.ardor.guru/gfx/items/232.png",
+      "sourceSha256": "883e6234243e664c929e02cd797753f64c6bd4f7f0e73da94e315d3e4af09240",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-232.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "0823267a6329330a700ce686f41d48d3907cd1abfeac3d37f3e1f68cdf1604f6"
+    },
+    {
+      "nodeId": "collectible:477",
+      "source": "https://isaac.ardor.guru/gfx/items/477.png",
+      "sourceSha256": "212190cc3a3046f2274225774b8f80f3c2ab14178b863c828757388a894c4f9c",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-477.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "e748bfe9397a8678658df44a8032df00baa0177855c291e4ddcd2d6434c22f61"
+    },
+    {
+      "nodeId": "collectible:700",
+      "source": "https://isaac.ardor.guru/gfx/items/700.png",
+      "sourceSha256": "d61279521bd9f57deb564fd49d1e8ba96f93b67993b084f152d6337a313bc0dc",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-700.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "26daccce35514874eef69d0ad9bf0f9227641505695d24bbc395eb8dc6d95c26"
+    },
+    {
+      "nodeId": "collectible:706",
+      "source": "https://isaac.ardor.guru/gfx/items/706.png",
+      "sourceSha256": "1aa1a7d8e5351c4c0fd965ca7af74f11692095f3fe970477d5625399b55ca77c",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-706.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "6cca2cd380fbc53319bbffa16c43b64884b7bf553a140fcb77697f131dcd7367"
+    },
+    {
+      "nodeId": "collectible:562",
+      "source": "https://isaac.ardor.guru/gfx/items/562.png",
+      "sourceSha256": "8dc0971cbc56436371a473d6604c190d85fd34ef38bfbe0bf9322e740786b35e",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-562.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "c0cafed3595f3f07adfda70bcbf96009ac5d36afd8b5250adc4480b3a1186e7b"
+    },
+    {
+      "nodeId": "collectible:688",
+      "source": "https://isaac.ardor.guru/gfx/items/688.png",
+      "sourceSha256": "e502293c6b8bfc4111734ddeb7c179ad386d671a25aae664466f553c09eb1f8a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-688.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "cefcf6fd05fa8fdb3b3592fc06a51d0ab52c66005bc2d8382803269c0affe981"
+    },
+    {
+      "nodeId": "collectible:691",
+      "source": "https://isaac.ardor.guru/gfx/items/691.png",
+      "sourceSha256": "dbb27edcdecc1e0ac71d587a1c0b20c98f1da516cbb94a8bc25ec2e471f09289",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-691.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "6f27b7f615f8d4ed88636cf0394d46e0c67267280637e7ad5957120a2542e7a9"
+    },
+    {
+      "nodeId": "collectible:622",
+      "source": "https://isaac.ardor.guru/gfx/items/622.png",
+      "sourceSha256": "fe4645bb8f3eaee9a2be2654fc462b34102f60be72f39e1e5838793823527793",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-622.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "e3575da47197e6c396772f17a5860966fa32535ad6c58d8348cb1e90414a99f4"
+    },
+    {
+      "nodeId": "consumable:90",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_90",
+      "atlasRect": [
+        160,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-90.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "3cfa20d60feb9b1ebf3b9294dbdefa29e7247856c415bdd0ccf0e1807c2899c2"
+    },
+    {
+      "nodeId": "consumable:80",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_80",
+      "atlasRect": [
+        160,
+        160,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-80.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "d9b5536740b923e0c08860124bc56d34b1ca72e1210adb7c0b41cfaad3a45200"
+    },
+    {
+      "nodeId": "consumable:76",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_76",
+      "atlasRect": [
+        224,
+        128,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-76.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "5555273bfba82ea1d07090c06a89b8c59b2a0d935aa8185beb4eb47ab06dfac5"
+    },
+    {
+      "nodeId": "consumable:75",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_75",
+      "atlasRect": [
+        32,
+        96,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-75.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "2b1502ca11c09144acca9b06a86dc40aa15d6b14024e2bbb7430cc60a451127a"
+    },
+    {
+      "nodeId": "consumable:74",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_74",
+      "atlasRect": [
+        224,
+        96,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-74.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "754df1dc0c2818ab1e91961970f466b7f4fc72853c80730431b8506c75fc3d00"
+    },
+    {
+      "nodeId": "collectible:331",
+      "source": "https://isaac.ardor.guru/gfx/items/331.png",
+      "sourceSha256": "645101a90b458cf129e803043f5179c472efb85c4ab7bde4408f53be5082a740",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-331.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "98fc338106463fcff3c20b70f179cbc450a5d22556e2c9d53fd5fcdf3e1feecb"
+    },
+    {
+      "nodeId": "trinket:180",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_180",
+      "atlasRect": [
+        608,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-180.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "630a9bcfaddfe756c6d59d6a0dee0c9bac938cc2905ebe52673abcf754fa0ac0"
+    },
+    {
+      "nodeId": "trinket:176",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_176",
+      "atlasRect": [
+        480,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-176.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "90363af04900b1f4a64f7fbe36944d2fb6e4a558f412dff4798cacea4096418f"
+    },
+    {
+      "nodeId": "consumable:92",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_92",
+      "atlasRect": [
+        128,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-92.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "5eadfb5d73f721820ef2f9c8bb0c06fc6310561732686e218beb0e8d1ee865f3"
+    },
+    {
+      "nodeId": "consumable:81",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_81",
+      "atlasRect": [
+        64,
+        224,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-81.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "8e26cb204b9ef0511322c5c5670528726fe7275c31d4f1accdab84fef0b23ddc"
+    },
+    {
+      "nodeId": "collectible:695",
+      "source": "https://isaac.ardor.guru/gfx/items/695.png",
+      "sourceSha256": "5319bfe15e9956cb6f34ee7a04887949e133c7d4fb889a1568158d4ecf6fdd20",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-695.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "b86e6a85edfafa28710338fee567c3960799dfbafb3aababef8f5f26d9f44fbf"
+    },
+    {
+      "nodeId": "collectible:665",
+      "source": "https://isaac.ardor.guru/gfx/items/665.png",
+      "sourceSha256": "f974bbd82c3cb74258bd8a2cc065615a65250b7188871692aa28c87e8a4ff9d9",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-665.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "4bc7d1446d44fba23f8b40b32bbda012315133e37076bbd5a8ee73abc888f60b"
+    },
+    {
+      "nodeId": "consumable:60",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_60",
+      "atlasRect": [
+        160,
+        0,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-60.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "4ae309657e0b0ac9b55792cd535c79a004190d4b987194eb231774bb79520070"
+    },
+    {
+      "nodeId": "consumable:83",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_83",
+      "atlasRect": [
+        32,
+        224,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-83.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "6198667b9d00ceeccbd90e0517096190a3fcb8580723214575efb7e461437ce6"
+    },
+    {
+      "nodeId": "consumable:47",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_47",
+      "atlasRect": [
+        128,
+        160,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-47.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "aa328081f40ca45975456b78dbbc5eae207e3c6a7ea6b6cc834e4c603925563a"
+    },
+    {
+      "nodeId": "trinket:170",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_170",
+      "atlasRect": [
+        288,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-170.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "63e86cef12c83f1f57d8878f16277ae942da2ad75554e1497231801c51834720"
+    },
+    {
+      "nodeId": "collectible:479",
+      "source": "https://isaac.ardor.guru/gfx/items/479.png",
+      "sourceSha256": "7e01e2069cc047a2eab51043ed95290424814032955b2ad81471aa7044653258",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-479.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "85566e2bd1caef1c212d0a3be787eb4464e5823bef503a59155998c15f5852c0"
+    },
+    {
+      "nodeId": "collectible:538",
+      "source": "https://isaac.ardor.guru/gfx/items/538.png",
+      "sourceSha256": "72f1e50f1253a568ff1e9498b6b00541715d080f44182a085d70c05bff515214",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-538.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "090e591cc545aafa460f6ce89404c1f971e53400b40fb6fb289944599a1a55c0"
+    },
+    {
+      "nodeId": "consumable:77",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_77",
+      "atlasRect": [
+        160,
+        128,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-77.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "95eda810ea3883f8ef824ceef701465d19cf5e83a05da46b112ccb2c42a553f3"
+    },
+    {
+      "nodeId": "consumable:93",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_93",
+      "atlasRect": [
+        256,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-93.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "27842519034169836e1833bc44955e49206ef53d0d9d0a987224325f9524f7f1"
+    },
+    {
+      "nodeId": "collectible:416",
+      "source": "https://isaac.ardor.guru/gfx/items/416.png",
+      "sourceSha256": "48ad9ebaf00d535cab11e39894f1b073e13373def0fbcce27c3f57e5b484ec78",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-416.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "93d43b81c2ad8b33a4e0877bbcd6282c5afda2792bf51248053c1587ffe549a9"
+    },
+    {
+      "nodeId": "collectible:686",
+      "source": "https://isaac.ardor.guru/gfx/items/686.png",
+      "sourceSha256": "80b7572e0c288cf3b0c8b0ca3a720d845fdd3b8aadcaa7594305a630902fac11",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-686.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "8ba1e05ab1e193c173860d73e4d65a1242e3f55273de908ad3f7f6c4e276fa39"
+    },
+    {
+      "nodeId": "consumable:79",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_79",
+      "atlasRect": [
+        160,
+        288,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-79.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "99138a461a059d8d5c4b73501380634ceeec00feb85ce31f48faa1aeab169b7e"
+    },
+    {
+      "nodeId": "consumable:61",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_61",
+      "atlasRect": [
+        64,
+        128,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-61.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "3053fad0050b642b376054f048f7a418d0e0644b1f3ea5e79f2154924b55221c"
+    },
+    {
+      "nodeId": "collectible:168",
+      "source": "https://isaac.ardor.guru/gfx/items/168.png",
+      "sourceSha256": "ff2bfe45a88e52be2660014c5fef58e5877f07c48a279806c41ee0a513329a59",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-168.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "236b7662d13ef2a54f8fca05744444643a7900ee4444b4ec32198d5150964fff"
+    },
+    {
+      "nodeId": "collectible:189",
+      "source": "https://isaac.ardor.guru/gfx/items/189.png",
+      "sourceSha256": "430da8ebaf88384aafe27bfb74e8cd905e7eea1a31fe2074c73bdb0dd34e1de7",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-189.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "018eb3fdb92b14b4266021b16363761fee4c2df33e1469d177c7630a370fb2ec"
+    },
+    {
+      "nodeId": "collectible:453",
+      "source": "https://isaac.ardor.guru/gfx/items/453.png",
+      "sourceSha256": "7aa5691fa9a6433e5649d34df3e451bb87601cf55a5d629549df53095c44d6e0",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-453.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "241c8f86ee103eb9d975ffa43dcdf3e08b696041057c0afd644015815f269950"
+    },
+    {
+      "nodeId": "collectible:258",
+      "source": "https://isaac.ardor.guru/gfx/items/258.png",
+      "sourceSha256": "e6c1f08d1031e6b9c1cb5b6e6b35c037b9c7c9766b888d55fa3148be94ed0edc",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-258.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7e7ee526369be7a9217e4ccc13ed53350b2d8786f76c524d33b00a8d173d5223"
+    },
+    {
+      "nodeId": "trinket:157",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_157",
+      "atlasRect": [
+        512,
+        224,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-157.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "fa84ea2dd70cc87519b601bb125efce891953707f5d2ac4afa9b202e633209e1"
+    },
+    {
+      "nodeId": "collectible:325",
+      "source": "https://isaac.ardor.guru/gfx/items/325.png",
+      "sourceSha256": "ed8c2177e2eb69842c34ccf4a2398b16c6a67d0cda4d5396f3d10ab6174f07c4",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-325.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "3e04005c83d8eace63534d9d5cf31c07c27ed57cffeb3a3af552273987877181"
+    },
+    {
+      "nodeId": "collectible:721",
+      "source": "https://isaac.ardor.guru/gfx/items/721.png",
+      "sourceSha256": "a0b4547c2e7752be0bb21d4c1d84cd6c57f3b3400c8dae8e9a08b3f2a42fbcbb",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-721.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "172f61efcb2dd2d698b9afcb249a39327c1b8e3a0bd83db83fcaf2c4124fcb5b"
+    },
+    {
+      "nodeId": "collectible:725",
+      "source": "https://isaac.ardor.guru/gfx/items/725.png",
+      "sourceSha256": "a832f70c4e46de14682e8fb8118e71dbf7f4e875a5bafec3db5bcb4f883fce9b",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-725.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7c5ead8e41861f83c0b4dc53e65ba49d85c1d8f774895a65ed5dcf3b952c44a7"
+    },
+    {
+      "nodeId": "consumable:46",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_46",
+      "atlasRect": [
+        64,
+        160,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-46.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "29bedc17018ddde9ca952f916c25286d23015f4de03ec345defd37e215b6a5d0"
+    },
+    {
+      "nodeId": "consumable:44",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_44",
+      "atlasRect": [
+        288,
+        160,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-44.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a64a74a740d2f572ca79143a8c4824e5a9efa3b672d5191702c6a317c8889d8f"
+    },
+    {
+      "nodeId": "collectible:188",
+      "source": "https://isaac.ardor.guru/gfx/items/188.png",
+      "sourceSha256": "1f0f3c871116ed93093da75605c9bc998c2d3887e496a9a8bd26dfd57d141e0a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-188.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "194801b0fe12471aadd4c3e920fb93d8477f7023a920695579d9d7a1392b538d"
+    },
+    {
+      "nodeId": "collectible:468",
+      "source": "https://isaac.ardor.guru/gfx/items/468.png",
+      "sourceSha256": "5c5f19ad2d6cd4c53e6d33785278a14fdb8408519ef561845bd30cee06c4b805",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-468.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "955e6e32f6ccfe7d79376186a573e4247db669b467041403e27f655429ff83bb"
+    },
+    {
+      "nodeId": "trinket:54",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_054",
+      "atlasRect": [
+        416,
+        64,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-54.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "04193ee9405d710f8364ccfc8653425fcc80b2c81d5d5c73b65220b07899c0b3"
+    },
+    {
+      "nodeId": "consumable:58",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_58",
+      "atlasRect": [
+        256,
+        96,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-58.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a9766505e69f7c73cd4652a88e12a91ce3a64131fcea1e95308d302c3f7247a6"
+    },
+    {
+      "nodeId": "consumable:66",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_66",
+      "atlasRect": [
+        96,
+        128,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-66.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a20106bbf5048542b0c15770853ba0758ba8e9b6de3611b1acce71b64f0f561e"
+    },
+    {
+      "nodeId": "consumable:84",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_84",
+      "atlasRect": [
+        256,
+        224,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-84.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "bfdce67bebc76cf86862e15e66217da0a5fd4a16b5517eddf56ef99dfec8ca8d"
+    },
+    {
+      "nodeId": "consumable:38",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_38",
+      "atlasRect": [
+        224,
+        192,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-38.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "d917b7b5e89fa3d70fb9bed91180b99ddd5396174b395406cdaa84871baab28a"
+    },
+    {
+      "nodeId": "collectible:320",
+      "source": "https://isaac.ardor.guru/gfx/items/320.png",
+      "sourceSha256": "cbea50a75a03bbcc2dd7736f58d2637fed16a7e015296bcab8bfd5410fb2c71e",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-320.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "85469cd6c58164fb95dc9a1f860c1b91d38b17a5631b50f7cbd595c34f6ab8a4"
+    },
+    {
+      "nodeId": "collectible:470",
+      "source": "https://isaac.ardor.guru/gfx/items/470.png",
+      "sourceSha256": "ba17b798d777c27c140f91f9ddb16a4059029ace2c34bf8438914054069151fb",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-470.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "8e4426bd1d8e0cfea2892dabcb2c75279fb7b253266bfa0401f8c7785e4654cb"
+    },
+    {
+      "nodeId": "trinket:179",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_179",
+      "atlasRect": [
+        576,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-179.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a6cca8c9ff87de7281032f73904bca69650ffa6adc51bde61c0104e159460e65"
+    },
+    {
+      "nodeId": "collectible:283",
+      "source": "https://isaac.ardor.guru/gfx/items/283.png",
+      "sourceSha256": "6b1c80dc163bfb77f86021b6be0a1e36af34e0ba2431152d1b47c8d9d43e935a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-283.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "230f31ce338ea849005a36c3a7b29b559e3fed1f12212b18c27499266e14ddee"
+    },
+    {
+      "nodeId": "collectible:642",
+      "source": "https://isaac.ardor.guru/gfx/items/642.png",
+      "sourceSha256": "dc12658e86e2d0d2606b0532e50138da9c40c2ffe14bb64d5ce62f78938eb8a8",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-642.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "ecca583dc358ef4405f0a288b8ccc606fdaddb1dec3b132f20cd6e98992b1491"
+    },
+    {
+      "nodeId": "collectible:727",
+      "source": "https://isaac.ardor.guru/gfx/items/727.png",
+      "sourceSha256": "6ee2298ece53c626e0956669662d2b96e7088c1fa6f894afe41de7da7880b5bf",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-727.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "b01e5d996b15eb02a54b37287c38c5f76006c701bb6d53e0ed7c9e8eda80bb64"
+    },
+    {
+      "nodeId": "consumable:56",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_56",
+      "atlasRect": [
+        256,
+        32,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-56.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "5e7440682c59cfaf7c7f4cc412883c7c3c84d7cd3a940addf9440d59a780c10b"
+    },
+    {
+      "nodeId": "trinket:169",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_169",
+      "atlasRect": [
+        256,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-169.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "fa24ff1740806a04263ee6cce22c51f8342220edc3dfbbd36a8397b840fb6e7b"
+    },
+    {
+      "nodeId": "consumable:91",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_91",
+      "atlasRect": [
+        224,
+        256,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-91.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "3881cd2f7aefc3c88ef19812490deab3082149439b825d9c623f81857aa46c08"
+    },
+    {
+      "nodeId": "collectible:440",
+      "source": "https://isaac.ardor.guru/gfx/items/440.png",
+      "sourceSha256": "bf51ea28e287c98aac2fafa0fe9651cdd15bbe935dd3d92d091eb20639f198e4",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-440.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "20eaafbac7444f61b5beb1395b017216dff79b6bb36c263d174a28679ec04a64"
+    },
+    {
+      "nodeId": "collectible:475",
+      "source": "https://isaac.ardor.guru/gfx/items/475.png",
+      "sourceSha256": "98500fc55910a03f1fe32b64f69fd4386259df137106c24a88b4df5e054916d4",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-475.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "842e851c5e68a822d5ccc76bc625f829b92ede28655cfff22aacd120b0ab19de"
+    },
+    {
+      "nodeId": "trinket:28",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_028",
+      "atlasRect": [
+        224,
+        32,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-28.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7fc2ec9a60986f4cf4437a2e817a7370cfe180347c93616334e7de85e715fd27"
+    },
+    {
+      "nodeId": "collectible:645",
+      "source": "https://isaac.ardor.guru/gfx/items/645.png",
+      "sourceSha256": "0c5d29db8ee6e5365e6c48a5c870d376aa3aae81a86de77d1b42408743c8100a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-645.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7e5d4fab8354fde0b5741063254c9abe8d28a040e87805ed5176aeb572166ee6"
+    },
+    {
+      "nodeId": "collectible:206",
+      "source": "https://isaac.ardor.guru/gfx/items/206.png",
+      "sourceSha256": "92c1498389d8381747641526eb81493158601f30ef0ffb3df686f62a8b5907b9",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-206.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7e10b12ea01b996c99ffa511ac321fa3caaa2a01e5553ef19db58589f508bd57"
+    },
+    {
+      "nodeId": "trinket:61",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_061",
+      "atlasRect": [
+        0,
+        96,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-61.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "46f49d52d24f301920f60c7d8a8393b7ee77decfe4289d3ee3e9e0a036974016"
+    },
+    {
+      "nodeId": "challenge:2",
+      "status": "designed",
+      "path": "assets/icons/challenge-2.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3c91562aa0921afc1b4a7dd037387970db6de370607d587a0ecac8f2b9884869",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:3",
+      "status": "designed",
+      "path": "assets/icons/challenge-3.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "0fd63496ae06989764b7567705c6eca2f525a5391ac1eb79a3321f8361e3471c",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:4",
+      "status": "designed",
+      "path": "assets/icons/challenge-4.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "5e9df2b5c0c61b8762c81b1f0509a6ba68170b2f29ef4b08abf53fcafde61ad7",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:5",
+      "status": "designed",
+      "path": "assets/icons/challenge-5.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "908b7ad00ccdadcadab443d7b2d800c8d163b0df1cda3e6e69ae763a47805278",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:6",
+      "status": "designed",
+      "path": "assets/icons/challenge-6.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "57b3027fad104f9194be27fa77b9ba30e6ed32e699f7e1b67b54fe7209add40e",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:7",
+      "status": "designed",
+      "path": "assets/icons/challenge-7.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "d31ffde3ecc59d52225c84f704dc1f8a438ee22b2cdb7339fcced8e50db37ae7",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:8",
+      "status": "designed",
+      "path": "assets/icons/challenge-8.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "7decefb6931cacfc35f52ed4e569481b51b85c058db47a3870f59e10bd4c1699",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:9",
+      "status": "designed",
+      "path": "assets/icons/challenge-9.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6391b7192ecaf73df7ab7394a9112c33ff3c19c4a425a824be7ba8529870b53f",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:10",
+      "status": "designed",
+      "path": "assets/icons/challenge-10.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "63370d2f650c57fa93e7c456c2000c6a3e5b1cfdd33cac17b70e32e8028cd9d6",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:11",
+      "status": "designed",
+      "path": "assets/icons/challenge-11.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "1b928db0c4ce619a5d76e3e8173d2395329eb6fa68d62bf66573830081fe6b83",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:12",
+      "status": "designed",
+      "path": "assets/icons/challenge-12.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "4a5a215ca0567849bb7dd569611b495e45e309ae2d6994d8a8a8fb67788c8cad",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:13",
+      "status": "designed",
+      "path": "assets/icons/challenge-13.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "f5f7c7415172fe4c76ba99c87ef2a2cce3b0527797aa5c849df2c0d84bf9b370",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:14",
+      "status": "designed",
+      "path": "assets/icons/challenge-14.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a6f094fd334421ed0093ff221a5c99ed2d9d3c5ca6ee898fe0b464e1389a92b8",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:18",
+      "status": "designed",
+      "path": "assets/icons/challenge-18.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e23ea8559ad4f11dda45cb633bf8e318cce8dd08aef257a19720585a5e0e92b7",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:19",
+      "status": "designed",
+      "path": "assets/icons/challenge-19.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "4fe7f0f2e4dad8a57be6ed787253e31037bdd23abd61466ce0801c2e684f22fe",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:20",
+      "status": "designed",
+      "path": "assets/icons/challenge-20.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "100d0cc12911f956ac58960e3a231de238256d0e73cc205da83c2b1041f7bdc1",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:21",
+      "status": "designed",
+      "path": "assets/icons/challenge-21.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "b78831bf831b5d225ef2d7841baac5c7f51dda995e2b197fe4d1e0422f51843d",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:22",
+      "status": "designed",
+      "path": "assets/icons/challenge-22.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "4b5a5e9260a69aaaaf3ba44f47edee83f9a668bb5cda93684b1253534312e133",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:23",
+      "status": "designed",
+      "path": "assets/icons/challenge-23.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3d77b037c50b302a5f879cc7e9efce4a58f5504872281a32ec033aa6cde696ed",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:25",
+      "status": "designed",
+      "path": "assets/icons/challenge-25.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e3c16df315bf6fd8a98eda76671d4ae89960dc6f1f0316e99a0088692058b72c",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:29",
+      "status": "designed",
+      "path": "assets/icons/challenge-29.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "bd23abb893dc12c9bb2d1e95a19eed365f8f1d47b2ddab24d2effe93d61ea25b",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:30",
+      "status": "designed",
+      "path": "assets/icons/challenge-30.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "37ded0a07656977242b06920bd290d48d5a718dc892b8bb9ac5a04a4bae8cc22",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:33",
+      "status": "designed",
+      "path": "assets/icons/challenge-33.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "f576f67f6c971f97a0a5b4e4c1fedee38c08a403d5901e0614022c5a9bd147d7",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:34",
+      "status": "designed",
+      "path": "assets/icons/challenge-34.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "cde3d9314e0e440717b5a201733d78eef739112b69c244bf5eca3d7b2e9b4446",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:39",
+      "status": "designed",
+      "path": "assets/icons/challenge-39.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "ae77b39678e4722eebc94b6383b0d617bba3fa209df5d443234255a73a2e1147",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "collectible:172",
+      "source": "https://isaac.ardor.guru/gfx/items/172.png",
+      "sourceSha256": "b75b21172119ef9cd5a6186478efe6600aed29d70f98f4fc50d1b352729e703e",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-172.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "92ab32d3587c2904dfdaec443da3a7933ec982d873220419310192a1f4630998"
+    },
+    {
+      "nodeId": "feature:gold-heart",
+      "source": "https://isaac.ardor.guru/gfx/achievements/224.png",
+      "sourceSha256": "3143b2b25d2dbe7af545d0a93e18525d5e9ad2b54680a6bcd61d83d308e37867",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 224,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-gold-heart.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "37952e4d3916501a9edcfdf791ab1cff47fbd7ac35d4b756a1c6559606214404"
+    },
+    {
+      "nodeId": "feature:vurp",
+      "source": "https://isaac.ardor.guru/gfx/achievements/330.png",
+      "sourceSha256": "73ed8344287ca7822c5915fba98478cd25eb6159a749db2bf2d5bde05d8203a7",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 330,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-vurp.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "5859e0d47dff525f65d580a725647b42522fe83b336cda754e0173d8c7a1148f"
+    },
+    {
+      "nodeId": "feature:planetarium",
+      "source": "https://isaac.ardor.guru/gfx/achievements/406.png",
+      "sourceSha256": "1ff9066500e5f3c092c76b2f9e5f978e49b73536f02f921cb4fb56167b5bcae9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 406,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-planetarium.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "23cc55093850fe08c8a8c21dd61e75c4d1293de9b0d6d94e1c1f6c89b2134688"
+    },
+    {
+      "nodeId": "feature:gold-bomb",
+      "source": "https://isaac.ardor.guru/gfx/achievements/226.png",
+      "sourceSha256": "f5eaf1b48056a94819cb0a5755870e02401b07195ad4792fcc99d6c2df4597a9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 226,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-gold-bomb.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "70c83e8d8a7fce13d9b23a8c0d20af717d7c2504bf9d86b66d380f4fa21db046"
+    },
+    {
+      "nodeId": "feature:charged-key",
+      "source": "https://isaac.ardor.guru/gfx/achievements/333.png",
+      "sourceSha256": "47030ec569ac7c1335fc4d1726183a86666860996ddc8df4c0a8312cb839d285",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 333,
+      "semanticNote": "Verified Charged Key unlock-notification artwork 333; an internal game Secret ID, not a verified Steam API achievement ID. Artwork is decorative and does not prove player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-charged-key.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "2443a20c11beeb61baf3bda22c3a88245a6cd4fedafde44c23a9a48c6f05a20a"
+    },
+    {
+      "nodeId": "feature:store-upgrade-1",
+      "source": "https://isaac.ardor.guru/gfx/achievements/151.png",
+      "sourceSha256": "ab7c406e658fa5a2611435bc7ba401ed055b2caad91417c678a07bb45d5944d2",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 151,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-store-upgrade-1.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "10b8603e27a319cd5dc6e039017c849dd9ca53894835e036dc2bc1d98fbfd399"
+    },
+    {
+      "nodeId": "feature:lucky-penny",
+      "source": "https://isaac.ardor.guru/gfx/achievements/242.png",
+      "sourceSha256": "d1354d7b4be7fcbf9378e196a45a8327cc1509b0efa61267522eb20bc08b9238",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 242,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-lucky-penny.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "609571682b6e6738eee8a2486ee8b94fe2527e2badf4574886b479e167d4a794"
+    },
+    {
+      "nodeId": "feature:gulp",
+      "source": "https://isaac.ardor.guru/gfx/achievements/321.png",
+      "sourceSha256": "64b550d4f68e5559b4790a273b558ecd3aaa48393ea597ab188be0251ec14518",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 321,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-gulp.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "fe8f141811bddddb08d94feab999ad9a3dbfc1318bb4fe1b83c8e169a68bf21e"
+    },
+    {
+      "nodeId": "feature:lost-holy-mantle",
+      "source": "https://isaac.ardor.guru/gfx/achievements/250.png",
+      "sourceSha256": "046c67ca5e68ba54bdbaba87eed3d74a17311d6ebe997b0aef8679351db7a506",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 250,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-lost-holy-mantle.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "1f2cb417702a38547f4a06a681667ca948143e2534582ce80d5877cbdcffbeca"
+    },
+    {
+      "nodeId": "feature:keeper-wooden-nickel",
+      "source": "https://isaac.ardor.guru/gfx/achievements/236.png",
+      "sourceSha256": "b528734cddcc1db0d8f19d83fd83e69b5408bde44bb7c4ff39f79b205d3b7271",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 236,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-keeper-wooden-nickel.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "c10bddd7818945b92e3afe2d317916b68a90099a9643e5531f58cff683eb02a3"
+    },
+    {
+      "nodeId": "feature:keeper-penny",
+      "source": "https://isaac.ardor.guru/gfx/achievements/191.png",
+      "sourceSha256": "511c5382f25fe83bcecf85213d0f9dcca4a85b64cde4640c0534b2e32e7c308b",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 191,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-keeper-penny.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "9312872f07e7f2196fb3992e98f72b000766210af3fdc7ebc848ae89fbd90f00"
+    },
+    {
+      "nodeId": "feature:gold-penny",
+      "source": "https://isaac.ardor.guru/gfx/achievements/613.png",
+      "sourceSha256": "3e1d1c7afdf0fab1a870bd04be3cc36a19e82135e1a31214c5c015efaca39e5b",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 613,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-gold-penny.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3568dfd0e8c85ad2523ee4f1071d36712d280f2b2e9637a8df03d0490dd03abf"
+    },
+    {
+      "nodeId": "feature:bone-heart",
+      "source": "https://isaac.ardor.guru/gfx/achievements/391.png",
+      "sourceSha256": "faef6daa27b2114ee4ba46ba56a852c7fc5b7c4d3342aa8ca752fb3a80053e1d",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 391,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-bone-heart.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "d9a6895070145744c7780a98e021c2d7d4d6cedf8d149213289162947799357c"
+    },
+    {
+      "nodeId": "feature:fools-gold",
+      "source": "https://isaac.ardor.guru/gfx/achievements/612.png",
+      "sourceSha256": "a641edc00220b7805cf97100c87e53f7b6052bb26ea57a708287ead5d51f744e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 612,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-fools-gold.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e1d49007061050cab2b1c076cd7791de513b48acec46f6844c125c963ec88725"
+    },
+    {
+      "nodeId": "feature:black-sack",
+      "source": "https://isaac.ardor.guru/gfx/achievements/604.png",
+      "sourceSha256": "3cb2a7aef3535f1b055ad6e9aa729e52201fe5e468baafc6999a7b9cbfbbbf66",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 604,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-black-sack.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "594720fc231f09dd166cc00988381300f945d0a14efbdffaae063269ff860a05"
+    },
+    {
+      "nodeId": "feature:horse-pill",
+      "source": "https://isaac.ardor.guru/gfx/achievements/606.png",
+      "sourceSha256": "3ce9f292c09404daa78f6557603a5b8ba977a6a96b1be9f8354334f1dfbedb60",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 606,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-horse-pill.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "cc288bef8757c3c9387bd6d365fa4132f60e3b447de7444f4c5c325e44f5dfdd"
+    },
+    {
+      "nodeId": "feature:gold-pill",
+      "source": "https://isaac.ardor.guru/gfx/achievements/603.png",
+      "sourceSha256": "3a4e9c03fb696641077b3fb8df135fad8c5edde9584205860ea0480267e350b2",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 603,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-gold-pill.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "1a947094e79e6224d297e619d9d70f3fd81c8169165d5c8dcda24b026e8723d5"
+    },
+    {
+      "nodeId": "feature:crane-game",
+      "source": "https://isaac.ardor.guru/gfx/achievements/607.png",
+      "sourceSha256": "cafc87c701b9ef143811dc16443cab5b14e3119c939c188e3091e3864a05d2a0",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 607,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-crane-game.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "5fb488116d1794abe5d27b15b053d93ac4b010867434b7a39d6486564ae81554"
+    },
+    {
+      "nodeId": "feature:mega-chest",
+      "source": "https://isaac.ardor.guru/gfx/achievements/601.png",
+      "sourceSha256": "8fc2231d5f88872a936d4610a24bf5724e64be0e2cfe252ce0772a926f6cd9dc",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 601,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-mega-chest.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "9db33fa6e597a76d9213b75dae3ebba56f7da0172f2edc7ec52897bc1120394a"
+    },
+    {
+      "nodeId": "feature:gold-trinkets",
+      "source": "https://isaac.ardor.guru/gfx/achievements/617.png",
+      "sourceSha256": "b1981229350d55f1704ac433ecdbfb213e590b7f734da3577beca8fce07d0c11",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 617,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-gold-trinkets.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6ddd565ed0b21dd8c908fdcb2bfe5e62d222fc64d9b310e183aaee683282ac7b"
+    },
+    {
+      "nodeId": "feature:charming-poop",
+      "source": "https://isaac.ardor.guru/gfx/achievements/605.png",
+      "sourceSha256": "027c68385d2e3dc180f92aac2c5b2fc9d5e4cdb3ae41ef5373c31820e2df6bb7",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 605,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-charming-poop.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "0d5c6f684bcde3ebd2932eb80f95ac8631f8c3ff0018c64aa72431fbb8334ae9"
+    },
+    {
+      "nodeId": "feature:rerun",
+      "source": "https://isaac.ardor.guru/gfx/achievements/337.png",
+      "sourceSha256": "b4e1a3f2c314bea2874de68a63aafae8bd795fd897f13f68ae894994b8cc46a1",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 337,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-rerun.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "5de1e25f149aafce8c0dfdcb4700ce3abaa62fdfb578a09ec43a86750f15c69e"
+    },
+    {
+      "nodeId": "feature:samson-childs-heart",
+      "source": "https://isaac.ardor.guru/gfx/achievements/334.png",
+      "sourceSha256": "a00bf445201310dcd261815874cd7072a5677a7334d14ac9192c2362b1397bef",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 334,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-samson-childs-heart.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "087d2eee8b7c87051b8b6082dedeb46013e03944612ed760632c24088c797383"
+    },
+    {
+      "nodeId": "feature:corrupted-data",
+      "source": "https://isaac.ardor.guru/gfx/achievements/593.png",
+      "sourceSha256": "141acc531bc7af08647ad72588d4369718e22710db1c388e3097c42054f1522e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 593,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-corrupted-data.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "b9551793d06000a63d3c50baa8288635e1ca0f07d31c277d6b06237e9769fcfd"
+    },
+    {
+      "nodeId": "feature:relax",
+      "source": "https://isaac.ardor.guru/gfx/achievements/228.png",
+      "sourceSha256": "93c5d31b98e48e3a26d932c21aaba6e32b1f932cbfb91731491771130ad6f81b",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 228,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-relax.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a711582fa31c9f59f4c6175ce788beba122f3d2dc701f8369c81a439e7c8fd32"
+    },
+    {
+      "nodeId": "feature:question-pill",
+      "source": "https://isaac.ardor.guru/gfx/achievements/228.png",
+      "sourceSha256": "93c5d31b98e48e3a26d932c21aaba6e32b1f932cbfb91731491771130ad6f81b",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 228,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-question-pill.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a711582fa31c9f59f4c6175ce788beba122f3d2dc701f8369c81a439e7c8fd32"
+    },
+    {
+      "nodeId": "feature:sticky-nickel",
+      "source": "https://isaac.ardor.guru/gfx/achievements/240.png",
+      "sourceSha256": "e6d319beac227b7de9b178e8deecb3b805e24eff3aa2e2968553d95030275940",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 240,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-sticky-nickel.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "9c0d6ba6ea116305305557254bb445bf8b45044c981857660764e840106a3a33"
+    },
+    {
+      "nodeId": "feature:rotten-beggar",
+      "source": "https://isaac.ardor.guru/gfx/achievements/614.png",
+      "sourceSha256": "3b1e94a7f8622eae55d49f76464d3e38d6aa6281c4df0d2e1381dcbbee508c74",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 614,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-rotten-beggar.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "2ad176465b180954d0df801a152e6d08bcad49cc2f5553589bef9314319b5804"
+    },
+    {
+      "nodeId": "feature:confessional",
+      "source": "https://isaac.ardor.guru/gfx/achievements/616.png",
+      "sourceSha256": "8b09b47060e030b4d3464047ff7276da79ca1de6bb3a1373cfea8e959d55ff6a",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 616,
+      "semanticNote": "Artwork of the game's unlock notification; decorative only, never evidence of player achievements.",
+      "status": "downloaded",
+      "path": "assets/icons/feature-confessional.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "9bf674fbafb99c5ded404d6b48259da87754eaa181cc3d1fe9c81feaf9122e05"
+    },
+    {
+      "nodeId": "collectible:412",
+      "source": "https://isaac.ardor.guru/gfx/items/412.png",
+      "sourceSha256": "2f6cdd4488c2f9636b82311200a20c4d0f4e3a7f06cbf06f22a00415e2af9840",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-412.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a654006830cbaecad0a18d99b7e62447d7d3f8619004112220a1eeef5f03249f"
+    },
+    {
+      "nodeId": "collectible:679",
+      "source": "https://isaac.ardor.guru/gfx/items/679.png",
+      "sourceSha256": "8debf83ca8e2a0fcca875834b696359e0a3b1e9d7679b5981081ab4b1f2c4d90",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-679.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "cf8f8ef13d8abee1f30ee70a6f15226961e1c4a75de138744fc585dc37763a0e"
+    },
+    {
+      "nodeId": "collectible:673",
+      "source": "https://isaac.ardor.guru/gfx/items/673.png",
+      "sourceSha256": "df525017a33fe756c2bf13e09319fbce2e2612a31d85190baf23af236a0744e3",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-673.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "11953b61b00d46cd76a00727b567fc77cc0833caa3aed7b1ca984c7e9e6c7ecb"
+    },
+    {
+      "nodeId": "collectible:323",
+      "source": "https://isaac.ardor.guru/gfx/items/323.png",
+      "sourceSha256": "e904bab51e5fd2f68208315495306e4eed6269ad92fa62216b57884f06021a59",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-323.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "dd9b3a785ff6dc108e9d0c71316bf9502fb5e33722df379dfd2786db5eeccbbd"
+    },
+    {
+      "nodeId": "collectible:284",
+      "source": "https://isaac.ardor.guru/gfx/items/284.png",
+      "sourceSha256": "8527cab9b891ec0f5845cb17fdda00c3d3f1c2375e7152609b17778a71464a7f",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-284.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "7595979285dae7a94cfc7cca0d6e991474fc851c2483066992bb115c4bd0f06f"
+    },
+    {
+      "nodeId": "collectible:625",
+      "source": "https://isaac.ardor.guru/gfx/items/625.png",
+      "sourceSha256": "6ff687baeabd14d3626c500d2a1e3e5cc1a9741e94a5059cc1b8a345a54c9b5a",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-625.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "86251453f54ca9b662cf871076e037a4bc166e81463923ad9bf81bb41f2f1afd"
+    },
+    {
+      "nodeId": "collectible:628",
+      "source": "https://isaac.ardor.guru/gfx/items/628.png",
+      "sourceSha256": "c6179978638b113d53c2a5ffeedb441794d0cb8265339d77516920a01e33903e",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-628.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "0922c9b6f4dc9ec498be598d7c57680fcdcae73b0df95954c48c8f1cb73539bb"
+    },
+    {
+      "nodeId": "collectible:313",
+      "source": "https://isaac.ardor.guru/gfx/items/313.png",
+      "sourceSha256": "ec3ed5999e9ca97b60cde6aba9204b8cc77eec5293662b7aed5131c58327c4c5",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-313.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "6266e7918b57037872fb5b78dc7d903855fd4a4dc2204261d83baa38fa8a54c4"
+    },
+    {
+      "nodeId": "consumable:73",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "atlasKey": "consumable_73",
+      "atlasRect": [
+        64,
+        64,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/consumable-73.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "fde0ea0b67249a551111ac690e736d12001a8898af62a11ef393ede6e16861f7"
+    },
+    {
+      "nodeId": "collectible:20",
+      "source": "https://isaac.ardor.guru/gfx/items/020.png",
+      "sourceSha256": "2ceddde4cf5d9d167c652ebbd2f4806e611dfb873a01dd5002313e70234dd589",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-20.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "b77d3c51c16c9e9d4b77cdde152341ff844b976df796bca926f552c9c6c645a6"
+    },
+    {
+      "nodeId": "feature:dead-god",
+      "status": "downloaded",
+      "path": "assets/icons/feature-dead-god.png",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "1ed7c8bd2f96215c61f18940ba541f208cab93726b9c69d1fdee2dff27a579c8",
+      "source": "https://isaac.ardor.guru/gfx/achievements/637.png",
+      "sourceSha256": "1ed7c8bd2f96215c61f18940ba541f208cab93726b9c69d1fdee2dff27a579c8",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 637,
+      "semanticNote": "Dead God unlock-notification artwork. Decorative only; image and internal Secret ID do not prove this slot earned Dead God or verify any Steam account."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <script>try { const saved=localStorage.getItem('atlas-theme'); document.documentElement.dataset.theme=saved==='light'||saved==='dark'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); } catch { document.documentElement.dataset.theme='light'; }</script>
+  <meta name="description" content="Ваш прогресс в The Binding of Isaac: тирлист приоритетных открытий, граф разблокировок и статистика из сохранения. Всё работает в вашем браузере.">
+  <title>Unlock Atlas — The Binding of Isaac</title>
+  <link rel="icon" href="assets/tear.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <header class="topbar">
+    <a class="brand" href="#/tiers" aria-label="Unlock Atlas, главная">
+      <img src="assets/tear.svg" width="34" height="42" alt="">
+      <span>UNLOCK <b>ATLAS</b><small>THE BINDING OF ISAAC</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация" hidden>
+      <a href="#/tiers" data-page="tiers">Тирлист</a>
+      <a href="#/stats" data-page="stats">Статистика</a>
+      <a href="#/graph" data-page="graph">Граф</a>
+    </nav>
+    <div class="header-actions"><button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему" title="Переключить тему">◐</button><button id="change-save" class="button small" hidden>Другой сейв</button></div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="onboarding" class="onboarding">
+      <div class="landing-heading">
+        <span class="eyebrow">THE BINDING OF ISAAC · REPENTANCE</span>
+        <h1>Что открыть <em>дальше?</em></h1>
+        <p>Ваш сейв превращается в понятный план открытий.</p>
+      </div>
+      <figure class="landing-demo" id="landing-demo" aria-label="Пример: загрузите сохранение, выберите Mom's Knife в тирлисте и узнайте условие — победить Satan за Isaac.">
+        <div class="demo-topline"><span><i></i> КАК ЭТО РАБОТАЕТ</span><button id="demo-pause" class="demo-pause" aria-label="Приостановить анимацию" aria-pressed="false" title="Приостановить анимацию">Ⅱ</button></div>
+        <div class="demo-scene" aria-hidden="true">
+          <svg class="demo-connections" viewBox="0 0 720 160" preserveAspectRatio="none"><path class="demo-wire" d="M140 80 H265"/><path class="demo-wire" d="M405 80 H525"/><path class="demo-wire demo-wire-first" d="M140 80 H265"/><path class="demo-wire demo-wire-second" d="M405 80 H525"/></svg>
+          <div class="demo-step demo-save">
+            <div class="demo-file"><svg viewBox="0 0 48 56"><path d="M9 3h21l10 10v38a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z"/><path d="M29 3v12h11M14 25h18M14 31h12"/></svg><span>.dat</span><b class="demo-file-check">✓</b></div>
+            <span class="demo-step-label">Ваше сохранение</span>
+          </div>
+          <div class="demo-step demo-tier">
+            <div class="demo-mini-tier"><div><b class="demo-rank-s">S</b><span class="demo-chosen"><img src="assets/icons/collectible-114.png" alt=""><i class="demo-click-ring"></i></span><span><img src="assets/icons/collectible-360.png" alt=""></span><span><img src="assets/icons/collectible-689.png" alt=""></span></div><div><b class="demo-rank-a">A</b><span><img src="assets/icons/collectible-286.png" alt=""></span><span><img src="assets/icons/collectible-562.png" alt=""></span></div><div><b class="demo-rank-b">B</b><span><img src="assets/icons/collectible-389.png" alt=""></span></div></div>
+            <svg class="demo-cursor" width="22" height="26" viewBox="0 0 22 26"><path d="m3 2 16 12-8 1-4 8Z"/></svg>
+            <span class="demo-step-label">Выберите анлок</span>
+          </div>
+          <div class="demo-step demo-route">
+            <div class="demo-route-card"><img src="assets/icons/character-isaac.png" alt=""><span>Isaac</span></div>
+            <div class="demo-route-edge"><i></i><span>Победить Satan</span><i></i></div>
+            <div class="demo-route-card demo-reward"><img src="assets/icons/collectible-114.png" alt=""><span>Mom’s Knife</span><b>✓</b></div>
+            <span class="demo-step-label">Узнайте путь к нему</span>
+          </div>
+        </div>
+        <figcaption>Сохранение <span>→</span> тирлист <span>→</span> граф открытия <small>Пример</small></figcaption>
+      </figure>
+      <div class="upload-panel">
+        <div class="panel-title"><div><h2>Теперь ваш сейв</h2><p>Repentance · любой из трёх слотов</p></div><span class="upload-local"><i></i> Только в браузере</span></div>
+        <label class="dropzone" id="dropzone" for="save-input" tabindex="0">
+          <svg class="drop-file-icon" viewBox="0 0 32 38" aria-hidden="true"><path d="M6 2h14l7 8v23a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3Z"/><path d="M19 2v9h8M10 20h10M10 26h7"/></svg>
+          <span class="drop-copy"><strong>Перетащите .dat сюда</strong><small>rep_persistentgamedata1.dat, 2.dat или 3.dat</small></span>
+          <span class="choose-file">Выбрать файл <span aria-hidden="true">↗</span></span>
+        </label>
+        <input id="save-input" type="file" accept=".dat" class="visually-hidden">
+        <p id="upload-status" class="upload-status" role="status" aria-live="polite">Поддерживается Repentance. Формат Repentance+ пока не поддерживается.</p>
+        <details class="save-help">
+          <summary>Где найти сохранение? <span>↗</span></summary>
+          <div class="os-tabs" role="group" aria-label="Операционная система">
+            <button data-os="windows" aria-pressed="true">Windows</button><button data-os="mac" aria-pressed="false">macOS</button><button data-os="linux" aria-pressed="false">Linux / Deck</button>
+          </div>
+          <div id="save-paths"></div>
+          <p class="help-note">Цифра в конце — номер слота. Нужен <b>persistentgamedata</b>, а не gamestate. Можно загрузить резервную копию.</p>
+        </details>
+        
+      </div>
+    </section>
+    <div id="workspace" hidden>
+      <div class="save-strip"><span class="save-indicator"></span><strong id="save-name"></strong><span id="save-meta"></span><button class="text-button" id="clear-save">Забыть сохранение</button></div>
+      <div id="view"></div>
+    </div>
+  </main>
+  <footer class="footer"><span>UNLOCK ATLAS <b>·</b> всё локально</span><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310" target="_blank" rel="noopener noreferrer">Каталог по руководству jnub ↗</a><span>Независимый фанатский проект</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

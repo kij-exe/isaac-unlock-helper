@@ -1,0 +1,6 @@
+{
+  "feature:charged-key": {
+    "achievementSpriteId": 333,
+    "semanticNote": "Verified Charged Key unlock-notification artwork 333; an internal game Secret ID, not a verified Steam API achievement ID. Artwork is decorative and does not prove player progress."
+  }
+}

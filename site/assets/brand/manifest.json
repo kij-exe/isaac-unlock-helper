@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "assets": [
+    {
+      "id": "dancing-isaac",
+      "path": "assets/brand/dancing-isaac.gif",
+      "format": "GIF",
+      "source": "https://i.kym-cdn.com/photos/images/original/002/088/770/f90.gif",
+      "sourcePage": "https://knowyourmeme.com/photos/2088770-the-binding-of-isaac",
+      "originalPost": "https://www.reddit.com/user/Waether_is_good/comments/msbmnz/isaac_danc/",
+      "title": "Isaac Shmoovin",
+      "credit": {
+        "originalAnimation": "u/Waether_is_good",
+        "transparentVersion": "professorploopy (as credited on Know Your Meme)"
+      },
+      "dimensions": [
+        190,
+        190
+      ],
+      "frames": 60,
+      "durationMs": 5870,
+      "loop": 0,
+      "transparent": true,
+      "bytes": 513956,
+      "sha256": "f901729f5848eb268ed094522f98cdf55317b77743b054b56031801ea400afc7",
+      "sourceSha256": "f901729f5848eb268ed094522f98cdf55317b77743b054b56031801ea400afc7",
+      "transformation": "None; original downloaded GIF preserved byte for byte.",
+      "license": "No open license verified; attribution does not imply permission or ownership."
+    }
+  ]
+}
