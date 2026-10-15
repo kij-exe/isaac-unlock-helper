@@ -55,6 +55,17 @@ test('a block click selects its details even when pointer capture retargets the 
   const f=fixture(t);f.canvas.fire('pointerdown',{target:f.a});f.canvas.fire('pointerup');
   assert.deepEqual(f.selected,['a']);assert.equal(f.canvas.fire('click').stopped,true);
 });
+test('a logic junction selects its own graph ID instead of its reward owner',t=>{
+  const f=fixture(t);f.a.dataset.owner='reward';
+  f.canvas.fire('pointerdown',{target:f.a});f.canvas.fire('pointerup');
+  assert.deepEqual(f.selected,['a']);
+});
+test('a background click clears branch highlighting while panning keeps the selection',t=>{
+  const f=fixture(t);
+  f.canvas.fire('pointerdown');f.canvas.fire('pointerup');assert.deepEqual(f.selected,[null]);
+  f.canvas.fire('pointerdown');f.canvas.fire('pointermove',{clientX:140});f.canvas.fire('pointerup');
+  assert.deepEqual(f.selected,[null]);
+});
 test('background dragging pans, cancellation does not select, and arrows move a focused block',t=>{
   const f=fixture(t);f.canvas.scrollTop=200;f.canvas.scrollLeft=100;
   f.canvas.fire('pointerdown');f.canvas.fire('pointermove',{clientX:70,clientY:50});f.canvas.fire('pointerup');

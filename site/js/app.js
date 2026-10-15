@@ -1,7 +1,7 @@
 import {createI18n, localizeCatalog, translate} from './i18n.js';
 import {catalogForSave} from './catalog-profile.js';
 import {RANKS, rankFor} from './tier-ranks.js';
-import {createGraphView, edgeGeometry} from './graph-view.js';
+import {createGraphView, edgeGeometry, graphNeighborhood} from './graph-view.js';
 import {parseSave, slotProgress} from './save-parser.js';
 import {STATUS, validateCatalog, createEvaluator, buildGraph, layoutGraph, conditionLabel} from './unlock-engine.js';
 
@@ -165,7 +165,19 @@ function renderCondition(condition,path='root') {
 }
 
 function renderGraphSidebar() {
-  const node=state.evaluator.nodes.get(state.selected);
+  const branch=graphNeighborhood(state.layout,state.selected);
+  document.querySelectorAll('.graph-node').forEach(element=>{
+    element.classList.toggle('selected',element.dataset.id===state.selected);
+    element.classList.toggle('connected',branch.nodes.has(element.dataset.id)&&element.dataset.id!==state.selected);
+    element.classList.toggle('branch-muted',branch.nodes.size>0&&!branch.nodes.has(element.dataset.id));
+  });
+  document.querySelectorAll('.graph-edge-group').forEach(element=>{
+    const connected=branch.edges.has(Number(element.dataset.edge));
+    element.classList.toggle('connected',connected);
+    element.classList.toggle('branch-muted',branch.nodes.size>0&&!connected);
+  });
+  const selectedNode=state.layout.nodes.find(node=>node.id===state.selected);
+  const node=state.evaluator.nodes.get(selectedNode?.ownerId||state.selected);
   if (!node) { $('#graph-sidebar').innerHTML=html('<span class="eyebrow">ДЕТАЛИ АНЛОКА</span><h2>Выберите вершину</h2><p class="small-note">Нажмите на предмет, персонажа или маршрут в графе. Здесь появятся условия и шаги для открытия.</p>'); return; }
   const availability=state.evaluator.availability(node.id).status, collected=state.evaluator.collected(node), earned=state.evaluator.earned(node.id);
   $('#graph-sidebar').innerHTML=html`<span class="detail-kind">${esc(kindNames[node.kind]||node.kind)}</span><div style="margin-top:14px">${icon(node,'detail-icon',false)}</div><h2>${esc(node.name)}</h2><p class="detail-description">${esc(node.unlock.description)}</p>
@@ -178,8 +190,6 @@ function renderGraphSidebar() {
     <details class="detail-help"><summary>О данных и источниках</summary><p class="small-note">Доступность по секретам не доказывает выполнение условия в этом слоте. ? — сохранение не хранит всё необходимое. Ручные подтверждения действуют только в этой вкладке и сбрасываются при смене сейва.</p>
     ${node.sourceNote?html`<p class="small-note">${esc(node.sourceNote)}</p>`:''}
     <div class="source-links">Источники: ${node.sources.map((url,index)=>html`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${index+1} ↗</a>`).join(' · ')}</div></details>`;
-  document.querySelectorAll('.graph-node').forEach(element=>element.classList.toggle('selected',element.dataset.owner===state.selected));
-  document.querySelectorAll('.graph-edge-group').forEach(element=>element.classList.toggle('connected',element.dataset.from===state.selected||element.dataset.to===state.selected));
 }
 
 function renderGraph({preserveSelection=false}={}) {
@@ -193,13 +203,14 @@ function renderGraph({preserveSelection=false}={}) {
   const layout=layoutGraph(graph);state.layout=layout;
   const map=new Map(layout.nodes.map(node=>[node.id,node]));
   const edges=layout.edges.map((edge,index)=>{
-    const geometry=edgeGeometry(map.get(edge.from),map.get(edge.to));
+    const geometry=edgeGeometry(map.get(edge.from),map.get(edge.to),edge.via);
     const label=edge.label.length>48?edge.label.slice(0,46)+'…':edge.label;
-    return html`<g class="graph-edge-group" data-edge="${index}" data-from="${esc(edge.from)}" data-to="${esc(edge.to)}"><path class="graph-edge-hit" d="${geometry.path}"/><path class="graph-edge" d="${geometry.path}" marker-end="url(#arrow)"><title>${esc(edge.label)}</title></path><text class="edge-label" x="${geometry.x}" y="${geometry.y}" text-anchor="middle">${esc(label)}</text></g>`;
+    return html`<g class="graph-edge-group" data-edge="${index}" data-from="${esc(edge.from)}" data-to="${esc(edge.to)}"><title>${esc(edge.label)}</title><path class="graph-edge-hit" d="${geometry.path}"/><path class="graph-edge" d="${geometry.path}" ${map.get(edge.to).kind==='gate'?'':'marker-end="url(#arrow)"'}/><text class="edge-label" x="${geometry.x}" y="${geometry.y}" text-anchor="middle">${esc(label)}</text></g>`;
   }).join('');
   const nodeSvg=layout.nodes.map(node=>{
     const title=node.name.length>27?node.name.slice(0,25)+'…':node.name,src=state.icons.get(node.id);
     const statusText=node.status===STATUS.YES?(state.graphMode==='availability'?'✓ Доступно':'✓ Подтверждено'):node.status===STATUS.UNKNOWN?'? Нужна проверка':state.graphMode==='availability'?'○ Закрыто':'○ Не подтверждено';
+    if(node.kind==='gate')return html`<g class="graph-node gate ${node.operator} ${node.status}" data-id="${esc(node.id)}" data-owner="${esc(node.ownerId)}" tabindex="0" role="button" aria-label="${esc(node.name)}" aria-description="Перетащите блок или используйте стрелки. Enter — детали." transform="translate(${node.x},${node.y})"><title>${esc(node.name)}\n${esc(map.get(node.ownerId)?.name)}\n${t(statusText)}</title><rect width="${node.width}" height="${node.height}" rx="14"/><text class="gate-label" x="${node.width/2}" y="18" text-anchor="middle">${node.operator==='all'?'И':'ИЛИ'}</text></g>`;
     return html`<g class="graph-node ${node.status} ${node.kind==='gate'?'gate':''} ${node.id===state.selected?'selected':''}" data-id="${esc(node.id)}" data-owner="${esc(node.ownerId||node.id)}" tabindex="0" role="button" aria-label="${esc(node.name)}" aria-description="Перетащите блок или используйте стрелки. Enter — детали." transform="translate(${node.x},${node.y})"><title>${esc(node.name)}</title><rect width="${node.width}" height="${node.height}" rx="12"/>${src?html`<image href="${esc(src)}" x="14" y="23" width="32" height="32"/>`:''}<text x="${src?58:16}" y="21" class="node-kind">${esc(kindNames[node.kind]||node.kind)}</text><text x="${src?58:16}" y="41">${esc(title)}</text><text x="${src?58:16}" y="61" class="node-state">${statusText}</text></g>`;
   }).join('');
   $('#view').innerHTML=html`<div class="page-heading graph-heading"><div><span class="eyebrow">КАРТА ЗАВИСИМОСТЕЙ</span><h1>${target?esc(target.name):'Граф анлоков'}<span class="title-dot">.</span></h1></div><a class="button small" href="${target?'#/graph':'#/tiers'}">${target?'Весь граф ↗':'← Тирлист'}</a></div>
@@ -207,6 +218,7 @@ function renderGraph({preserveSelection=false}={}) {
     <select id="graph-focus" aria-label="Выбрать путь анлока"><option value="">Все анлоки</option>${state.data.nodes.toSorted((a,b)=>a.name.localeCompare(b.name)).map(node=>html`<option value="${esc(node.id)}">${esc(node.name)}</option>`).join('')}</select>
     <label class="checkbox-label"><input type="checkbox" id="show-opened" ${state.showOpened?'checked':''}>${state.graphMode==='availability'?'Открытые':'Выполненные'}</label><span class="spacer"></span><button class="button small" id="reset-layout" title="Плавно вернуть блоки на свои места">Упорядочить</button><div class="zoom-controls"><button data-zoom="out" aria-label="Уменьшить граф">−</button><span id="zoom-label"></span><button data-zoom="in" aria-label="Увеличить граф">+</button></div><button class="button small" id="fit-graph">Вписать</button></div>
     <div class="graph-mode-note ${state.graphMode==='availability'?'reference':''}">${state.graphMode==='progress'?'● Прогресс этого слота. Секреты и достижения Steam не засчитываются.':'● Доступность по секретам. Не подтверждает заслуги в этом слоте.'}</div>
+    <div class="graph-legend"><span><b>И</b> — нужны все ветви</span><span><b>ИЛИ</b> — достаточно одной</span><span>Выберите блок, чтобы подсветить соседей</span></div>
     <div class="graph-layout"><div class="graph-panel"><div class="graph-canvas ${target?'':'overview'}" id="graph-canvas">${layout.nodes.length?html`<svg id="unlock-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${layout.width} ${layout.height}" width="${layout.width}" height="${layout.height}" role="group" aria-label="Вертикальный граф зависимостей"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" class="arrow-head"/></marker></defs>${edges}${nodeSvg}</svg>`:'<div class="graph-empty"><h2>Всё готово</h2><p>Покажите выполненные шаги или измените основу графа.</p></div>'}</div><div class="graph-bottom"><span>${graph.nodes.filter(n=>!['gate','condition'].includes(n.kind)).length} анлоков · ${graph.edges.length} связей</span><span>Колёсико — зум · блоки и фон можно двигать</span></div></div><aside class="graph-sidebar" id="graph-sidebar" aria-label="Условия выбранного анлока"></aside></div>`;
   $('#graph-mode').value=state.graphMode;$('#graph-focus').value=targetId||'';
   $('#graph-mode').addEventListener('change',event=>{state.graphMode=event.target.value;renderGraph();});
@@ -242,11 +254,11 @@ function download(kind) {
 
 $('#view').addEventListener('click',event=>{
   const graph=event.target.closest('[data-graph]');if(graph){location.hash=graphLink(graph.dataset.graph);return;}
-  const selected=event.target.closest('.graph-node,[data-select]');if(selected){state.selected=selected.dataset.owner||selected.dataset.select;renderGraphSidebar();return;}
+  const selected=event.target.closest('.graph-node,[data-select]');if(selected){state.selected=selected.dataset.id||selected.dataset.select;renderGraphSidebar();return;}
   const zoom=event.target.closest('[data-zoom]');if(zoom){graphView?.setZoom(graphView.zoom*(zoom.dataset.zoom==='in'?1.2:1/1.2));return;}
   const exported=event.target.closest('[data-export]');if(exported)download(exported.dataset.export);
 });
-$('#view').addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)&&event.target.matches('.graph-node')){event.preventDefault();state.selected=event.target.dataset.owner;renderGraphSidebar();}});
+$('#view').addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)&&event.target.matches('.graph-node')){event.preventDefault();state.selected=event.target.dataset.id;renderGraphSidebar();}});
 $('#view').addEventListener('change',event=>{
   if(!event.target.matches('[data-manual]'))return;
   const key=event.target.dataset.manual,sidebar=$('#graph-sidebar'),scroll=sidebar?.scrollTop||0;

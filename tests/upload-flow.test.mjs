@@ -123,3 +123,40 @@ test('switching graph language preserves manual facts, selected node and zoom',{
   navigate('#/graph?item=feature:dead-god');
   assert.doesNotMatch(elements.get('#graph-sidebar').innerHTML,/[А-Яа-яЁё]/);
 });
+
+test('click and keyboard selection highlight a junction and its immediate neighbors while showing its reward details',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
+  const {elements,upload,navigate}=await app(t);await upload('rep+persistentgamedata1.dat');
+  navigate('#/graph?item=feature:dead-god');
+  const markup=elements.get('#view').innerHTML;
+  const nodes=[...markup.matchAll(/<g class="graph-node ([^"]*)" data-id="([^"]+)" data-owner="([^"]+)"/g)].map(([,classes,id,owner])=>{
+    const element=new Element();element.dataset={id,owner};element.classes=new Set(classes.split(' '));
+    element.classList.toggle=(name,enabled)=>enabled?element.classes.add(name):element.classes.delete(name);
+    return element;
+  });
+  const edges=[...markup.matchAll(/<g class="graph-edge-group" data-edge="(\d+)" data-from="([^"]+)" data-to="([^"]+)"/g)].map(([,index,from,to])=>{
+    const element=new Element();element.dataset={edge:index,from,to};element.classes=new Set();
+    element.classList.toggle=(name,enabled)=>enabled?element.classes.add(name):element.classes.delete(name);
+    return element;
+  });
+  const queryAll=document.querySelectorAll;
+  document.querySelectorAll=selector=>selector==='.graph-node'?nodes:selector==='.graph-edge-group'?edges:queryAll(selector);
+  const junction=nodes.find(node=>node.classes.has('gate'));
+  assert.ok(junction);assert.notEqual(junction.dataset.id,junction.dataset.owner);
+  const check=selected=>{
+    const neighbors=new Set([selected.dataset.id]);
+    for(const edge of edges)if(edge.dataset.from===selected.dataset.id||edge.dataset.to===selected.dataset.id){neighbors.add(edge.dataset.from);neighbors.add(edge.dataset.to);}
+    for(const node of nodes){
+      assert.equal(node.classes.has('selected'),node===selected);
+      assert.equal(node.classes.has('connected'),node!==selected&&neighbors.has(node.dataset.id));
+      assert.equal(node.classes.has('branch-muted'),!neighbors.has(node.dataset.id));
+    }
+    for(const edge of edges)assert.equal(edge.classes.has('connected'),edge.dataset.from===selected.dataset.id||edge.dataset.to===selected.dataset.id);
+  };
+  elements.get('#view').events.get('click')({target:{closest:selector=>selector==='.graph-node,[data-select]'?junction:null}});
+  check(junction);assert.doesNotMatch(elements.get('#graph-sidebar').innerHTML,/Выберите вершину/);
+  const reward=nodes.find(node=>node.dataset.id===junction.dataset.owner);
+  elements.get('#view').events.get('click')({target:{closest:selector=>selector==='.graph-node,[data-select]'?reward:null}});
+  check(reward);
+  elements.get('#view').events.get('keydown')({key:'Enter',preventDefault(){},target:{matches:()=>true,dataset:junction.dataset}});
+  check(junction);
+});

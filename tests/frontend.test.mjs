@@ -145,7 +145,8 @@ test('vertical layout separates every node and keeps every dependency below its 
       const a=layout.nodes[i],b=layout.nodes[j];
       assert.ok(a.x+a.width<=b.x||b.x+b.width<=a.x||a.y+a.height<=b.y||b.y+b.height<=a.y,`${a.id} overlaps ${b.id}`);
     }
-    assert.ok(layout.width<=1104,'wide dependency layers wrap instead of growing horizontally');
+    assert.equal(layout.nodes.length,graph.nodes.length,'routing passages do not duplicate shared dependencies');
+    for(const node of layout.nodes)assert.ok(node.x>=0&&node.x+node.width<=layout.width&&node.y+node.height<=layout.height);
   }
 });
 test('wheel zoom preserves the point under the cursor and respects scale limits',()=>{

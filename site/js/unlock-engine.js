@@ -179,7 +179,7 @@ export function buildGraph(data, evaluator, {targetId = null, mode = 'progress',
     if (!remaining.length) return null;
     if (remaining.length === 1) return remaining[0].endpoint;
     const id = `gate:${owner.id}:${path}`;
-    graphNodes.set(id, {id, kind:'gate', name:condition.type === 'all' ? 'ВСЕ УСЛОВИЯ' : 'ЛЮБОЕ УСЛОВИЕ', ownerId:owner.id, status:conditionStatus(condition)});
+    graphNodes.set(id, {id, kind:'gate', operator:condition.type, name:condition.type === 'all' ? 'ВСЕ УСЛОВИЯ' : 'ЛЮБОЕ УСЛОВИЕ', ownerId:owner.id, status:conditionStatus(condition)});
     for (const branch of remaining) edge(branch.endpoint, id, conditionLabel(branch.child));
     return id;
   };
@@ -199,33 +199,141 @@ export function buildGraph(data, evaluator, {targetId = null, mode = 'progress',
 }
 
 export function layoutGraph(graph) {
-  const nodes = new Map(graph.nodes.map(node => [node.id, {...node, depth:0}]));
-  const indegree = new Map(graph.nodes.map(n => [n.id, 0])), outgoing = new Map(graph.nodes.map(n => [n.id, []]));
-  for (const edge of graph.edges) { indegree.set(edge.to, indegree.get(edge.to) + 1); outgoing.get(edge.from).push(edge.to); }
+  const nodes = new Map(graph.nodes.map(node => [node.id, {...node, depth:0,
+    width:node.kind==='gate'?88:220, height:node.kind==='gate'?28:78}]));
+  const incoming = new Map(graph.nodes.map(n => [n.id, []])), outgoing = new Map(graph.nodes.map(n => [n.id, []]));
+  for (const edge of graph.edges) { incoming.get(edge.to).push(edge.from); outgoing.get(edge.from).push(edge.to); }
+  const indegree = new Map([...incoming].map(([id, parents]) => [id, parents.length]));
   const queue = [...nodes.keys()].filter(id => !indegree.get(id));
-  for (let i = 0; i < queue.length; i++) for (const child of outgoing.get(queue[i])) {
-    nodes.get(child).depth = Math.max(nodes.get(child).depth, nodes.get(queue[i]).depth + 1);
-    indegree.set(child, indegree.get(child) - 1);
+  for (let i=0; i<queue.length; i++) for (const child of outgoing.get(queue[i])) {
+    nodes.get(child).depth=Math.max(nodes.get(child).depth,nodes.get(queue[i]).depth+1);
+    indegree.set(child,indegree.get(child)-1);
     if (!indegree.get(child)) queue.push(child);
   }
-  if (queue.length !== nodes.size) throw new Error('Цикл в графе разблокировок.');
-  const layers = new Map();
-  for (const node of nodes.values()) {
-    if (!layers.has(node.depth)) layers.set(node.depth, []);
-    layers.get(node.depth).push(node);
-  }
-  // Wrap wide layers; each entire layer finishes above the next dependency level.
-  const maxColumns = 4, cardWidth = 220, cardHeight = 78, gapX = 48, gapY = 68;
-  const columns = Math.min(maxColumns, Math.max(1, ...[...layers.values()].map(layer => layer.length)));
-  const width = Math.max(620, 80 + columns * (cardWidth + gapX) - gapX);
-  let top = 48;
-  for (const [, layer] of [...layers].sort(([a], [b]) => a - b)) {
-    for (let index = 0; index < layer.length; index++) {
-      const row = Math.floor(index / columns), rowCount = Math.min(columns, layer.length - row * columns);
-      Object.assign(layer[index], {x:(width - (rowCount * (cardWidth + gapX) - gapX)) / 2 + (index % columns) * (cardWidth + gapX),
-        y:top + row * (cardHeight + gapY), width:cardWidth, height:cardHeight});
+  if (queue.length!==nodes.size) throw new Error('Цикл в графе разблокировок.');
+
+  // Pack independent components in separate lanes. Within a component, place
+  // prerequisites near their rewards instead of forcing every leaf into row 0.
+  const components=[], seen=new Set();
+  for (const id of nodes.keys()) {
+    if (seen.has(id)) continue;
+    const component=[id]; seen.add(id);
+    for (let i=0; i<component.length; i++) for (const next of [...incoming.get(component[i]),...outgoing.get(component[i])]) {
+      if (!seen.has(next)) { seen.add(next); component.push(next); }
     }
-    top += Math.ceil(layer.length / columns) * (cardHeight + gapY) + 50;
+    components.push(component);
   }
-  return {nodes:[...nodes.values()], edges:graph.edges, width, height:Math.max(520, top + 32)};
+  let left=48, height=520;
+  const routes=new Map();
+  for (const component of components) {
+    const ids=new Set(component), order=queue.filter(id=>ids.has(id));
+    const occupied=new Map();
+    for (const id of order.toReversed()) {
+      const children=outgoing.get(id);
+      let depth=children.length?Math.min(...children.map(child=>nodes.get(child).depth))-1:0;
+      // Schedule a large fan over several levels before routing it. Unlike row
+      // wrapping, every long link reserves a passage through those levels.
+      while((occupied.get(depth)||0)>=8)depth--;
+      nodes.get(id).depth=depth;occupied.set(depth,(occupied.get(depth)||0)+1);
+    }
+    const minDepth=Math.min(...component.map(id=>nodes.get(id).depth));
+    const vertices=component.map(id=>{
+      const node=nodes.get(id); node.depth-=minDepth;
+      return {node,depth:node.depth,width:node.width,parents:[],children:[],cx:0};
+    });
+    const byId=new Map(vertices.map(vertex=>[vertex.node.id,vertex]));
+    // A long edge owns a narrow passage through each intervening layer. These
+    // virtual vertices take part in ordering but never become catalog nodes.
+    const passages=new Map();
+    const link=(from,to)=>{
+      if(!from.children.includes(to))from.children.push(to);
+      if(!to.parents.includes(from))to.parents.push(from);
+    };
+    for (const edge of graph.edges.filter(edge=>ids.has(edge.from))) {
+      const source=byId.get(edge.from), target=byId.get(edge.to), chain=[source];
+      let previous=source;
+      for (let depth=source.depth+1; depth<target.depth; depth++) {
+        const key=`${edge.to}:${depth}`;
+        if(!passages.has(key)) {
+          const vertex={depth,width:16,parents:[],children:[],cx:0};
+          passages.set(key,vertex);vertices.push(vertex);
+        }
+        const vertex=passages.get(key);chain.push(vertex);link(previous,vertex);previous=vertex;
+      }
+      link(previous,target);chain.push(target);routes.set(edge,chain);
+    }
+    const layers=Array.from({length:Math.max(...vertices.map(vertex=>vertex.depth))+1},()=>[]);
+    // Start with depth-first branch order, so sibling prerequisites stay together.
+    const visited=new Set();
+    function branch(vertex) {
+      if (visited.has(vertex)) return;
+      visited.add(vertex);vertex.parents.forEach(branch);layers[vertex.depth].push(vertex);
+    }
+    vertices.filter(vertex=>!vertex.children.length).forEach(branch);
+    const median=values=>{
+      const sorted=values.toSorted((a,b)=>a-b), middle=Math.floor(sorted.length/2);
+      return sorted.length%2?sorted[middle]:(sorted[middle-1]+sorted[middle])/2;
+    };
+    // Alternating median sweeps reduce crossings, including long-edge passages.
+    for (let pass=0; pass<8; pass++) {
+      const down=pass%2===0, ranks=down?layers:layers.toReversed();
+      const positions=new Map(layers.flatMap(layer=>layer.map((vertex,index)=>[vertex,index])));
+      for (const layer of ranks) {
+        const scores=new Map(layer.map(vertex=>{
+          const neighbors=down?vertex.parents:vertex.children;
+          return [vertex,neighbors.length?median(neighbors.map(other=>positions.get(other))):positions.get(vertex)];
+        }));
+        layer.sort((a,b)=>scores.get(a)-scores.get(b));
+        layer.forEach((vertex,index)=>positions.set(vertex,index));
+      }
+    }
+    const gap=(a,b)=>a.node&&b.node?56:24;
+    for (const layer of layers) {
+      let cursor=0;
+      layer.forEach((vertex,index)=>{if(index)cursor+=gap(layer[index-1],vertex);vertex.cx=cursor+vertex.width/2;cursor+=vertex.width;});
+    }
+    // Compact each layer toward its neighbors without changing branch order or
+    // allowing overlaps. Pool adjacent conflicting blocks to keep fans centered.
+    for (let pass=0; pass<12; pass++) {
+      const down=pass%2===0;
+      for (const layer of down?layers:layers.toReversed()) {
+        let offset=0;const blocks=[], offsets=[];
+        layer.forEach((vertex,index)=>{
+          if(index)offset+=(layer[index-1].width+vertex.width)/2+gap(layer[index-1],vertex);
+          offsets.push(offset);
+          const neighbors=down?vertex.parents:vertex.children;
+          const desired=neighbors.length?median(neighbors.map(other=>other.cx)):vertex.cx;
+          blocks.push({start:index,end:index,sum:desired-offset,count:1});
+          while(blocks.length>1) {
+            const b=blocks.at(-1),a=blocks.at(-2);
+            if(a.sum/a.count<=b.sum/b.count)break;
+            blocks.splice(-2,2,{start:a.start,end:b.end,sum:a.sum+b.sum,count:a.count+b.count});
+          }
+        });
+        for (const block of blocks) for(let index=block.start;index<=block.end;index++)layer[index].cx=block.sum/block.count+offsets[index];
+      }
+    }
+    const minX=Math.min(...vertices.map(vertex=>vertex.cx-vertex.width/2));
+    const maxX=Math.max(...vertices.map(vertex=>vertex.cx+vertex.width/2));
+    let top=48;
+    for (const layer of layers) {
+      const layerHeight=Math.max(...layer.map(vertex=>vertex.node?.height||0));
+      for (const vertex of layer) {
+        vertex.cx+=left-minX;vertex.y=top+layerHeight/2;vertex.top=top;vertex.bottom=top+layerHeight;
+        if(vertex.node)Object.assign(vertex.node,{x:vertex.cx-vertex.width/2,y:vertex.y-vertex.node.height/2});
+      }
+      top+=layerHeight+76;
+    }
+    height=Math.max(height,top-76+48);left+=maxX-minX+120;
+  }
+  const width=Math.max(620,left-120+48);
+  const edges=graph.edges.map(edge=>{
+    const chain=routes.get(edge),source=chain[0],target=chain.at(-1);
+    // Turn only in the gaps between layers, and run vertically through the
+    // reserved passages. Curving at a passage's center could clip nearby cards.
+    const via=[{x:source.cx,y:source.bottom+12},...chain.slice(1,-1).flatMap(vertex=>[
+      {x:vertex.cx,y:vertex.top-12},{x:vertex.cx,y:vertex.bottom+12}]),{x:target.cx,y:target.top-12}];
+    return {...edge,via};
+  });
+  return {nodes:[...nodes.values()],edges,width,height};
 }

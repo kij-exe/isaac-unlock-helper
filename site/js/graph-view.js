@@ -2,12 +2,34 @@ export const clampZoom = value => Math.max(.025, Math.min(2.5, value));
 export function zoomAnchor(scroll, cursor, before, after) {
   return (scroll + cursor) / before * after - cursor;
 }
-export function edgeGeometry(a, b) {
+export function edgeGeometry(a, b, via=[]) {
   const x1 = a.x + a.width / 2, y1 = a.y + a.height;
   const x2 = b.x + b.width / 2, y2 = b.y;
+  if (via.length) {
+    const points=[{x:x1,y:y1},...via,{x:x2,y:y2}];
+    let path=`M ${x1} ${y1}`;
+    for(let index=1;index<points.length;index++) {
+      const from=points[index-1],to=points[index],middle=(from.y+to.y)/2;
+      path+=` C ${from.x} ${middle}, ${to.x} ${middle}, ${to.x} ${to.y}`;
+    }
+    const middle=points[Math.floor(points.length/2)];
+    return {path,x:middle.x,y:middle.y-6};
+  }
   const bend = Math.max(32, Math.abs(y2 - y1) * .45);
   return {path:`M ${x1} ${y1} C ${x1} ${y1 + bend}, ${x2} ${y2 - bend}, ${x2} ${y2}`,
     x:(x1 + x2) / 2, y:(y1 + y2) / 2 - 6};
+}
+
+// Highlight only incident edges and their endpoints, including logic junctions.
+export function graphNeighborhood(graph, id) {
+  const nodes=new Set(),edges=new Set();
+  if (!graph.nodes.some(node=>node.id===id)) return {nodes,edges};
+  nodes.add(id);
+  graph.edges.forEach((edge,index)=>{
+    if(edge.from!==id&&edge.to!==id)return;
+    nodes.add(edge.from);nodes.add(edge.to);edges.add(index);
+  });
+  return {nodes,edges};
 }
 
 export function createGraphView({canvas, svg, layout, zoom=1, onZoom, onSelect, positions=new Map()}) {
@@ -20,7 +42,7 @@ export function createGraphView({canvas, svg, layout, zoom=1, onZoom, onSelect, 
   function paint() {
     for (const node of nodes.values()) elements.get(node.id)?.setAttribute('transform',`translate(${node.x},${node.y})`);
     for (const {element,edge} of edges) {
-      const geometry=edgeGeometry(nodes.get(edge.from),nodes.get(edge.to));
+      const geometry=edgeGeometry(nodes.get(edge.from),nodes.get(edge.to),edge.via);
       element.querySelectorAll('path').forEach(path=>path.setAttribute('d',geometry.path));
       const label=element.querySelector('text');label.setAttribute('x',geometry.x);label.setAttribute('y',geometry.y);
     }
@@ -70,7 +92,8 @@ export function createGraphView({canvas, svg, layout, zoom=1, onZoom, onSelect, 
     if(!drag)return;
     const cancelled=event.type==='pointercancel';
     suppressClick=!cancelled&&(drag.moved||!!drag.node);
-    if(drag.node&&!drag.moved&&!cancelled)onSelect?.(drag.element.dataset.owner||drag.node.id);
+    if(drag.node&&!drag.moved&&!cancelled)onSelect?.(drag.node.id);
+    if(!drag.node&&!drag.moved&&!cancelled)onSelect?.(null);
     if(drag.node)positions.set(drag.node.id,{x:drag.node.x,y:drag.node.y});
     drag.element?.classList.remove('dragging');canvas.classList.remove('dragging');drag=null;
     if(canvas.hasPointerCapture(event.pointerId))canvas.releasePointerCapture(event.pointerId);
@@ -86,9 +109,13 @@ export function createGraphView({canvas, svg, layout, zoom=1, onZoom, onSelect, 
   canvas.addEventListener('wheel',wheel,{passive:false});canvas.addEventListener('pointerdown',down);
   canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
   canvas.addEventListener('click',click,true);canvas.addEventListener('keydown',keydown);
-  // Initial view starts at the top of the prerequisite chain and fits its width.
-  scale=clampZoom(Math.min(1,(canvas.clientWidth-32)/layout.width));
+  // Keep cards readable in wide trees; the Fit button still shows the whole map.
+  scale=clampZoom(Math.max(.6,Math.min(1,(canvas.clientWidth-32)/layout.width)));
   svg.setAttribute('width',layout.width*scale);svg.setAttribute('height',layout.height*scale);onZoom?.(scale);
+  const firstY=Math.min(...layout.nodes.map(node=>node.y));
+  const firstRow=layout.nodes.filter(node=>node.y===firstY);
+  const center=firstRow.length?firstRow.reduce((sum,node)=>sum+node.x+node.width/2,0)/firstRow.length:layout.width/2;
+  canvas.scrollLeft=Math.max(0,center*scale-canvas.clientWidth/2);
   return {setZoom,fit,reset,get zoom(){return scale;},destroy(){
     cancelAnimationFrame(animation);
     canvas.removeEventListener('wheel',wheel);canvas.removeEventListener('pointerdown',down);
