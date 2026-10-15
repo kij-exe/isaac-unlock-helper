@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {parseSave,kageChecksum} from '../site/js/save-parser.js';
 
 // DOM doubles exercise the actual upload handlers and generated screens without a browser.
 class Element {
@@ -16,7 +17,7 @@ class Element {
 }
 async function app(t,{savedLanguage=null}={}){
   const ids=[...fs.readFileSync('site/index.html','utf8').matchAll(/id="([^"]+)"/g)].map(m=>'#'+m[1]);
-  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#tier-rows','#result-count', '#graph-mode','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label'].map(id=>[id,new Element()]));
+  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#show-default-open','#infer-save-evidence','#tier-rows','#result-count', '#graph-mode','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label'].map(id=>[id,new Element()]));
   const nav=['tiers','stats','graph'].map(page=>{const element=new Element();element.dataset.page=page;return element;});
   const os=['windows','mac','linux'].map(value=>{const element=new Element();element.dataset.os=value;return element;});
   const languages=['ru','en'].map(value=>{const element=new Element();element.dataset.language=value;return element;});
@@ -45,10 +46,55 @@ test('actual upload flow opens Repentance+ tierlist and keeps the previous save 
   assert.equal(elements.get('#save-edition').textContent,'Repentance+');
   assert.equal(elements.get('#onboarding').hidden,true);assert.equal(elements.get('#workspace').hidden,false);
   assert.equal(location.hash,'#/tiers');assert.match(elements.get('#tier-rows').innerHTML,/Dead God/);
+  const allItems=elements.get('#result-count').textContent;
+  elements.get('#show-default-open').events.get('change')({target:{checked:false}});
+  const withoutDefault=elements.get('#result-count').textContent;
+  assert.notEqual(withoutDefault,allItems);assert.match(elements.get('#tier-rows').innerHTML,/Dead God/);
+  elements.get('#show-default-open').events.get('change')({target:{checked:true}});
+  assert.equal(elements.get('#result-count').textContent,allItems);
   await upload('rep+gamestate2.dat',Buffer.concat([Buffer.from('ISAACNG_GSR0169'),Buffer.alloc(20)]));
   assert.equal(elements.get('#file-error').hidden,false);
   assert.match(elements.get('#file-error').textContent,/rep\+persistentgamedata2.dat/);
   assert.equal(elements.get('#save-name').textContent,'rep+persistentgamedata1.dat');
+});
+test('collected items override a false secret flag and satisfy their unlock when save evidence inference is enabled',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
+  const {elements,upload,navigate,switchLanguage}=await app(t);
+  const bytes=Buffer.from(fs.readFileSync('context/rep+persistentgamedata1.dat'));
+  const parsed=parseSave(bytes,{fileName:'rep+persistentgamedata1.dat'});
+  const secrets=parsed.layout.find(chunk=>chunk.name==='achievements');
+  bytes[secrets.dataOffset+386]=0; // Marbles, already present in this save's collection.
+  bytes.writeUInt32LE(kageChecksum(bytes.subarray(16,bytes.length-4)),bytes.length-4);
+  await upload('rep+persistentgamedata1.dat',bytes);
+  const card=()=>elements.get('#tier-rows').innerHTML.match(/<article class="item-card[^>]*data-node="collectible:538">([\s\S]*?)<\/article>/)?.[1]||'';
+  assert.match(card(),/availability-dot no/);
+  elements.get('#infer-save-evidence').events.get('change')({target:{checked:true}});
+  assert.match(card(),/availability-dot yes/);
+  assert.match(card(),/Подобран в сохранении, поэтому считается открытым/);
+  elements.get('#status-filter').events.get('change')({target:{value:'open'}});
+  assert.match(elements.get('#tier-rows').innerHTML,/data-node="collectible:538"/);
+  navigate('#/graph?item=collectible:538');
+  elements.get('#graph-mode').events.get('change')({target:{value:'availability'}});
+  assert.match(elements.get('#view').innerHTML,/id="infer-save-evidence"[^>]*checked/);
+  assert.match(elements.get('#view').innerHTML,/evidence-tooltip/);
+  assert.match(elements.get('#view').innerHTML,/● Доступность с учётом данных слота/);
+  assert.match(elements.get('#view').innerHTML,/✓ Доступно/);
+  elements.get('#graph-mode').events.get('change')({target:{value:'progress'}});
+  assert.match(elements.get('#view').innerHTML,/● Прогресс этого слота с учётом коллекции/);
+  assert.match(elements.get('#view').innerHTML,/✓ Открыт по коллекции/);
+  const sidebar=()=>elements.get('#graph-sidebar').innerHTML;
+  assert.match(sidebar(),/Анлок подтверждён по коллекции/);
+  assert.match(sidebar(),/Ручное подтверждение условия не требуется/);
+  assert.doesNotMatch(sidebar(),/data-manual=/);
+  switchLanguage('en');
+  assert.match(sidebar(),/No manual confirmation is needed/);
+  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
+  switchLanguage('ru');
+  elements.get('#infer-save-evidence').events.get('change')({target:{checked:false}});
+  assert.match(elements.get('#view').innerHTML,/\? Нужна проверка/);
+  assert.match(sidebar(),/data-manual=/);
+  elements.get('#graph-mode').events.get('change')({target:{value:'availability'}});
+  assert.match(elements.get('#view').innerHTML,/● Доступность по секретам/);
+  assert.match(elements.get('#view').innerHTML,/○ Закрыто/);
 });
 test('actual Rebirth upload renders its own 66 marks and 20 challenges with a compatibility explanation',{skip:!fs.existsSync('context/persistentgamedata1.dat')},async t=>{
   const {elements,upload}=await app(t);await upload('persistentgamedata1.dat');
@@ -79,10 +125,10 @@ test('language switch persists English and rerenders tiers/statistics without re
   assert.match(elements.get('#view').innerHTML,/value="Marbles"/);
   assert.equal(elements.get('#result-count').textContent,before);
   assert.equal(elements.get('#status-filter').value,'open');assert.equal(elements.get('#kind-filter').value,'collectible');
-  assert.doesNotMatch(elements.get('#view').innerHTML,/[А-Яа-яЁё]/);
+  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
   assert.doesNotMatch(elements.get('#tier-rows').innerHTML,/[А-Яа-яЁё]/);
   navigate('#/stats');assert.match(document.title,/Statistics/);
-  assert.doesNotMatch(elements.get('#view').innerHTML,/[А-Яа-яЁё]/);
+  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
   assert.match(elements.get('#view').innerHTML,/do not contribute/);
   switchLanguage('ru');assert.match(elements.get('#view').innerHTML,/Статистика/);
   assert.equal(storage.get('atlas-language'),'ru');assert.equal(location.hash,'#/stats');
@@ -97,7 +143,7 @@ test('saved English preference localizes file errors, theme and Rebirth statisti
   switchLanguage('ru');assert.match(elements.get('#upload-status').textContent,/общий прогресс/);
   switchLanguage('en');await upload('persistentgamedata1.dat');
   assert.match(elements.get('#view').innerHTML,/Rebirth save loaded/);
-  assert.doesNotMatch(elements.get('#view').innerHTML,/[А-Яа-яЁё]/);
+  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
   assert.equal(location.hash,'#/stats');assert.match(elements.get('#save-meta').textContent,/ KB /);
 });
 
@@ -114,7 +160,7 @@ test('switching graph language preserves manual facts, selected node and zoom',{
   assert.equal(elements.get('#zoom-label').textContent,zoom);assert.equal(canvas.scrollLeft,25);assert.equal(canvas.scrollTop,70);
   assert.match(elements.get('#graph-sidebar').innerHTML,new RegExp(`data-manual="${key}" checked`));
   assert.doesNotMatch(elements.get('#graph-sidebar').innerHTML,/[А-Яа-яЁё]/);
-  assert.doesNotMatch(elements.get('#view').innerHTML,/[А-Яа-яЁё]/);
+  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
   assert.match(elements.get('#graph-sidebar').innerHTML,/Use Gulp! five times/);
   elements.get('#view').events.get('click')({target:{closest:selector=>selector==='.graph-node,[data-select]'?{dataset:{select:'feature:gulp'}}:null}});
   switchLanguage('ru');assert.match(elements.get('#graph-sidebar').innerHTML,/<h2>Gulp!<\/h2>/);

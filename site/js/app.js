@@ -13,7 +13,7 @@ const kindNames = {collectible:'Предмет',trinket:'Брелок',card:'К�
   stage:'Маршрут',boss:'Босс',challenge:'Испытание',feature:'Механика',condition:'Условие',gate:'Логика'};
 const symbols = {collectible:'✦',trinket:'♧',card:'▤',rune:'◈',pill:'◒',character:'♙',stage:'⌂',boss:'♜',challenge:'⚑',feature:'◇'};
 const state = {data:null,baseData:null,catalog:null,icons:new Map(),save:null,progress:null,evaluator:null,fileName:'',
-  manual:{},page:'tiers',search:'',filter:'all',kind:'all',graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null};
+  manual:{},page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,inferSaveEvidence:false,graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null};
 let toastTimer, uploadGeneration = 0, graphView;
 const graphPositions = new Map();
 function toast(message) { const box=$('#toast'); i18n.text(box,message); box.hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>box.hidden=true,5500); }
@@ -25,7 +25,16 @@ const icon = (node, className='', lazy=true) => state.icons.has(node.id)
   ? html`<img class="${className}" src="${esc(state.icons.get(node.id))}" alt="" ${lazy?'loading="lazy"':''} decoding="async">`
   : html`<span class="generic-icon ${className}" aria-hidden="true">${symbols[node.kind]||'◇'}</span>`;
 
-function refreshEvaluator() { state.evaluator=createEvaluator(state.data,state.save,state.progress,state.manual); }
+function refreshEvaluator() {
+  const options={inferCollectedUnlocks:state.inferSaveEvidence};
+  state.evaluator=createEvaluator(state.data,state.save,state.progress,state.manual,options);
+  state.slotEvaluator=createEvaluator(state.data,state.save,state.progress,{},options);
+}
+function tierAvailability(node) {
+  return state.inferSaveEvidence
+    ? state.slotEvaluator.availability(node.id,{inferSlotEvidence:true})
+    : state.evaluator.availability(node.id);
+}
 function setPaths(os) {
   state.os=os;
   const paths={
@@ -69,7 +78,7 @@ async function loadFile(file) {
 
 function resetSave() {
   graphView?.destroy();graphView=null;graphPositions.clear();
-  uploadGeneration++; state.save=null; state.progress=null; state.evaluator=null; state.manual={}; state.fileName=''; state.selected=null;state.data=state.baseData;
+  uploadGeneration++; state.save=null; state.progress=null; state.evaluator=null;state.slotEvaluator=null; state.manual={}; state.fileName=''; state.selected=null;state.data=state.baseData;
   $('#workspace').hidden=true;$('#file-error').hidden=true; $('#view').replaceChildren(); $('#onboarding').hidden=false; $('.main-nav').hidden=true; $('#change-save').hidden=true;
   $('#save-input').value=''; $('#upload-status').classList.remove('error');
   i18n.text($('#upload-status'),'Сохранение забыто. Файл не сохраняется между перезагрузками страницы.');
@@ -81,13 +90,14 @@ function pageHeading(eyebrow, title, description, aside='') {
 }
 
 function itemCard(node) {
-  const availability=state.evaluator.availability(node.id), collected=state.evaluator.collected(node);
+  const availability=tierAvailability(node), collected=state.evaluator.collected(node);
   const status=availability.status, statusClass=status===STATUS.YES?'yes':status===STATUS.NO?'no':'muted';
   const collectionText=t(collected==null?'Подбор не хранится':collected?'Подобран в этом слоте':'Ещё не подобран');
+  const evidenceText=availability.source==='collection'?'Подобран в сохранении, поэтому считается открытым':availability.source==='slot_evidence'?'Открытие подтверждено данными этого слота':'';
   return html`<article class="item-card ${collected?'collected':''}" data-node="${esc(node.id)}">
     <a class="item-link" href="${graphLink(node.id)}" aria-label="Граф открытия ${esc(node.name)}" aria-describedby="tip-${esc(node.id)}">${icon(node)}<span class="availability-dot ${statusClass}" aria-hidden="true"></span>${collected?'<span class="collection-check" aria-hidden="true">✓</span>':''}</a>
     <a class="wiki-button" href="${esc(wikiLink(node))}" target="_blank" rel="noopener noreferrer" aria-label="Вики: ${esc(node.name)}" title="Открыть вики">↗</a>
-    <div class="item-tooltip" id="tip-${esc(node.id)}" role="tooltip"><strong>${esc(node.name)}</strong><span><i class="availability-dot ${statusClass}"></i>${availabilityLabel(status)} · ${collectionText}</span>${node.sourceNote?'<small>Есть примечание в деталях анлока</small>':''}</div>
+    <div class="item-tooltip" id="tip-${esc(node.id)}" role="tooltip"><strong>${esc(node.name)}</strong><span><i class="availability-dot ${statusClass}"></i>${availabilityLabel(status)} · ${collectionText}</span>${evidenceText?html`<small>${evidenceText}</small>`:''}${node.sourceNote?'<small>Есть примечание в деталях анлока</small>':''}</div>
   </article>`;
 }
 
@@ -95,7 +105,7 @@ function matches(node) {
   const original=state.baseData.nodes.find(entry=>entry.id===node.id);
   if (state.search && !`${node.name} ${node.unlock.description} ${original?.name||''} ${original?.unlock.description||''} ${translate(original?.unlock.description,'en')}`.toLowerCase().includes(state.search.toLowerCase())) return false;
   if (state.kind!=='all' && node.kind!==state.kind) return false;
-  const available=state.evaluator.availability(node.id).status, collected=state.evaluator.collected(node);
+  const available=tierAvailability(node).status, collected=state.evaluator.collected(node);
   if (state.filter==='closed' && available!==STATUS.NO) return false;
   if (state.filter==='open' && available!==STATUS.YES) return false;
   if (state.filter==='uncollected' && collected!==false) return false;
@@ -104,25 +114,30 @@ function matches(node) {
 }
 
 function renderTierRows() {
-  const nodes=state.data.nodes.filter(n=>n.tier&&matches(n));
+  const tierNodes=state.data.nodes.filter(n=>n.tier&&(state.showDefaultOpen||n.tier!=='default-open'));
+  const nodes=tierNodes.filter(matches);
   $('#tier-rows').innerHTML=RANKS.map(rank=>{
     const entries=nodes.filter(n=>rankFor(n)===rank.id).toSorted((a,b)=>(a.order??0)-(b.order??0));
     if(!entries.length)return '';
     return html`<section class="tier-row ${rank.id==='DEAD GOD'?'dead-god-tier':''}" aria-label="Тир ${rank.id}: ${rank.label}"><div class="tier-label" style="--tier-color:${rank.color}" title="${rank.label}"><strong>${rank.id}</strong><small>${entries.length}</small></div><div class="tier-items">${entries.map(itemCard).join('')}</div></section>`;
   }).join('')||html('<div class="empty-state">Ничего не найдено</div>');
-  $('#result-count').textContent=`${nodes.length} / ${state.data.nodes.filter(n=>n.tier).length}`;
+  $('#result-count').textContent=`${nodes.length} / ${tierNodes.length}`;
 }
 
 function renderTiers() {
-  $('#view').innerHTML=html`<div class="page-heading tier-heading"><div><span class="eyebrow">ПРИОРИТЕТ ОТКРЫТИЯ</span><h1>Тирлист<span class="title-dot">.</span></h1></div><div class="heading-tools"><span class="subtle">Предмет → граф открытия</span><details class="view-help"><summary aria-label="Как читать тирлист">?</summary><div class="help-popover"><h3>Как читать тирлист</h3><p><i class="availability-dot yes"></i> Открыт · <i class="availability-dot no"></i> Закрыт · ✓ Подобран в слоте.</p><p>Нажмите на предмет, чтобы открыть граф. Кнопка ↗ ведёт на вики. Название видно при наведении или фокусе.</p><p>Доступность определяется по секретам. Она не доказывает выполнение условия в этом слоте: секреты могли быть перенесены из Steam. В статистике и графе прогресса они не засчитываются.</p><p>S–F — наша группировка приоритетов открытия по <a href="${esc(state.data.source.url)}" target="_blank" rel="noopener noreferrer">руководству jnub ↗</a>, а не рейтинг силы предметов. Руны распределены отдельно. Dead God — добавленная цель полного прохождения Repentance. Приоритеты рассчитаны на Repentance+ и могут отличаться в Repentance.</p></div></details></div></div>
+  $('#view').innerHTML=html`<div class="page-heading tier-heading"><div><span class="eyebrow">ПРИОРИТЕТ ОТКРЫТИЯ</span><h1>Тирлист<span class="title-dot">.</span></h1></div><div class="heading-tools"><span class="subtle">Предмет → граф открытия</span><details class="view-help"><summary aria-label="Как читать тирлист">?</summary><div class="help-popover"><h3>Как читать тирлист</h3><p><i class="availability-dot yes"></i> Открыт · <i class="availability-dot no"></i> Закрыт · ✓ Подобран в слоте.</p><p>Нажмите на предмет, чтобы открыть граф. Кнопка ↗ ведёт на вики. Название видно при наведении или фокусе.</p><p>При включённой галочке подбор предмета и подтверждённые отметки, испытания или счётчики слота могут показать анлок открытым, даже если флаг секрета выключен.</p><p>Без этой галочки доступность определяется по секретам. Флаги секретов не доказывают выполнение условия в этом слоте: они могли быть перенесены из Steam. В статистике и графе прогресса они не засчитываются.</p><p>S–F — наша группировка приоритетов открытия по <a href="${esc(state.data.source.url)}" target="_blank" rel="noopener noreferrer">руководству jnub ↗</a>, а не рейтинг силы предметов. Руны распределены отдельно. Dead God — добавленная цель полного прохождения Repentance. Приоритеты рассчитаны на Repentance+ и могут отличаться в Repentance.</p></div></details></div></div>
     <div class="toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="item-search" type="search" placeholder="Найти предмет…" aria-label="Поиск по тирлисту" value="${esc(state.search)}"></label>
     <select id="status-filter" aria-label="Фильтр по состоянию"><option value="all">Все состояния</option><option value="closed">Закрыты</option><option value="open">Открыты</option><option value="uncollected">Не подобраны</option><option value="earned">Подтверждены в слоте</option></select>
-    <select id="kind-filter" aria-label="Тип анлока"><option value="all">Все типы</option>${['collectible','trinket','card','rune','pill','character','stage','boss','challenge','feature'].map(k=>html`<option value="${k}">${kindNames[k]}</option>`).join('')}</select><span id="result-count" class="result-count"></span></div>
+    <select id="kind-filter" aria-label="Тип анлока"><option value="all">Все типы</option>${['collectible','trinket','card','rune','pill','character','stage','boss','challenge','feature'].map(k=>html`<option value="${k}">${kindNames[k]}</option>`).join('')}</select>
+    <label class="checkbox-label tier-default-toggle"><input id="show-default-open" type="checkbox" ${state.showDefaultOpen?'checked':''}>Показывать предметы, открытые по умолчанию</label>
+    <label class="checkbox-label tier-evidence-toggle" title="Если предмет есть в коллекции или условие подтверждено отметками, испытаниями и счётчиками слота, считать анлок открытым."><input id="infer-save-evidence" type="checkbox" ${state.inferSaveEvidence?'checked':''}>Учитывать данные сейва при определении открытых</label><span id="result-count" class="result-count"></span></div>
     <div id="tier-rows" class="tierlist"></div><div class="tier-caption"><span><i class="availability-dot yes"></i> Открыт <span class="caption-gap">✓ Подобран</span></span><span>S — в первую очередь · F — можно отложить</span></div>`;
   $('#status-filter').value=state.filter; $('#kind-filter').value=state.kind;
   $('#item-search').addEventListener('input',event=>{state.search=event.target.value;renderTierRows();});
   $('#status-filter').addEventListener('change',event=>{state.filter=event.target.value;renderTierRows();});
   $('#kind-filter').addEventListener('change',event=>{state.kind=event.target.value;renderTierRows();});
+  $('#show-default-open').addEventListener('change',event=>{state.showDefaultOpen=event.target.checked;renderTierRows();});
+  $('#infer-save-evidence').addEventListener('change',event=>{state.inferSaveEvidence=event.target.checked;refreshEvaluator();renderTierRows();});
   renderTierRows();
 }
 
@@ -179,13 +194,17 @@ function renderGraphSidebar() {
   const selectedNode=state.layout.nodes.find(node=>node.id===state.selected);
   const node=state.evaluator.nodes.get(selectedNode?.ownerId||state.selected);
   if (!node) { $('#graph-sidebar').innerHTML=html('<span class="eyebrow">ДЕТАЛИ АНЛОКА</span><h2>Выберите вершину</h2><p class="small-note">Нажмите на предмет, персонажа или маршрут в графе. Здесь появятся условия и шаги для открытия.</p>'); return; }
-  const availability=state.evaluator.availability(node.id).status, collected=state.evaluator.collected(node), earned=state.evaluator.earned(node.id);
+  const availability=state.inferSaveEvidence
+    ?state.slotEvaluator.availability(node.id,{inferSlotEvidence:true}).status
+    :state.evaluator.availability(node.id).status;
+  const collected=state.evaluator.collected(node), earned=state.evaluator.earned(node.id);
+  const collectionProof=state.inferSaveEvidence&&collected===true;
   $('#graph-sidebar').innerHTML=html`<span class="detail-kind">${esc(kindNames[node.kind]||node.kind)}</span><div style="margin-top:14px">${icon(node,'detail-icon',false)}</div><h2>${esc(node.name)}</h2><p class="detail-description">${esc(node.unlock.description)}</p>
     <div class="detail-badges"><span class="${availability===STATUS.YES?'yes':availability===STATUS.NO?'no':''}">${availabilityLabel(availability)} · ${t('доступность')}</span>${collected==null?'':html`<span class="${collected?'yes':''}">${collected?'Подобран':'Не подобран'}</span>`}</div>
-    <p class="small-note"><b>${earnedLabel(earned)}</b></p>
+    <p class="small-note"><b>${collectionProof?t('Анлок подтверждён по коллекции'):earnedLabel(earned)}</b></p>
     <div class="detail-actions"><a class="button small primary" href="${esc(wikiLink(node))}" target="_blank" rel="noopener noreferrer">Открыть вики ↗</a><a class="button small" href="${graphLink(node.id)}">Только этот путь</a></div>
     ${node.id==='feature:dead-god'?html`<p class="small-note goal-policy">${esc(state.save.profile.label)}: ${state.save.profile.id==='repentance-plus'?640:636} условий открытия и 717 предметов коллекции. Открытые секреты показаны отдельно и не доказывают выполнение условий в этом слоте. Часть действий требует ручной проверки.</p>`:''}
-    <hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><span class="eyebrow">ЧТО НУЖНО СДЕЛАТЬ</span><ul class="condition-list">${renderCondition(node.unlock.requirements)}</ul>
+    <hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><span class="eyebrow">${collectionProof?'ПОЛУЧЕНИЕ ПОДТВЕРЖДЕНО ПО КОЛЛЕКЦИИ':'ЧТО НУЖНО СДЕЛАТЬ'}</span>${collectionProof?html`<p class="small-note">Предмет отмечен в коллекции этого слота, поэтому считаем анлок полученным. Ручное подтверждение условия не требуется. Сохранение не показывает, каким способом или в каком забеге получен предмет.</p>`:html`<ul class="condition-list">${renderCondition(node.unlock.requirements)}</ul>`}
     ${node.unlock.evidence&&state.evaluator.evaluate(node.unlock.evidence)===STATUS.YES?'<p class="small-note">✓ Прямое подтверждение результата уже есть в отметках, испытаниях или счётчиках слота. Прежние шаги отдельно доказывать не нужно.</p>':''}
     <details class="detail-help"><summary>О данных и источниках</summary><p class="small-note">Доступность по секретам не доказывает выполнение условия в этом слоте. ? — сохранение не хранит всё необходимое. Ручные подтверждения действуют только в этой вкладке и сбрасываются при смене сейва.</p>
     ${node.sourceNote?html`<p class="small-note">${esc(node.sourceNote)}</p>`:''}
@@ -198,7 +217,10 @@ function renderGraph({preserveSelection=false}={}) {
   const target=state.evaluator.nodes.get(targetId);
   if(targetId&&!target){$('#view').innerHTML=html('<div class="empty-state">Анлок не найден. <a href="#/graph">Полный граф</a></div>');return;}
   if(!preserveSelection)state.selected=targetId||state.selected;
-  const graph=buildGraph(state.data,state.evaluator,{targetId,mode:state.graphMode,showOpened:state.showOpened});
+  const graphEvaluator=state.graphMode==='availability'&&state.inferSaveEvidence
+    ?{...state.evaluator,availability:id=>state.slotEvaluator.availability(id,{inferSlotEvidence:true})}
+    :state.evaluator;
+  const graph=buildGraph(state.data,graphEvaluator,{targetId,mode:state.graphMode,showOpened:state.showOpened});
   graph.nodes.forEach(node=>{node.name=t(node.name);});graph.edges.forEach(edge=>{edge.label=t(edge.label);});
   const layout=layoutGraph(graph);state.layout=layout;
   const map=new Map(layout.nodes.map(node=>[node.id,node]));
@@ -209,21 +231,25 @@ function renderGraph({preserveSelection=false}={}) {
   }).join('');
   const nodeSvg=layout.nodes.map(node=>{
     const title=node.name.length>27?node.name.slice(0,25)+'…':node.name,src=state.icons.get(node.id);
-    const statusText=node.status===STATUS.YES?(state.graphMode==='availability'?'✓ Доступно':'✓ Подтверждено'):node.status===STATUS.UNKNOWN?'? Нужна проверка':state.graphMode==='availability'?'○ Закрыто':'○ Не подтверждено';
+    const collectedProof=node.kind!=='gate'&&state.graphMode==='progress'&&state.inferSaveEvidence&&state.evaluator.collected(state.evaluator.nodes.get(node.ownerId||node.id))===true;
+    const statusText=node.status===STATUS.YES?(state.graphMode==='availability'?'✓ Доступно':collectedProof?'✓ Открыт по коллекции':'✓ Подтверждено'):node.status===STATUS.UNKNOWN?'? Нужна проверка':state.graphMode==='availability'?'○ Закрыто':'○ Не подтверждено';
     if(node.kind==='gate')return html`<g class="graph-node gate ${node.operator} ${node.status}" data-id="${esc(node.id)}" data-owner="${esc(node.ownerId)}" tabindex="0" role="button" aria-label="${esc(node.name)}" aria-description="Перетащите блок или используйте стрелки. Enter — детали." transform="translate(${node.x},${node.y})"><title>${esc(node.name)}\n${esc(map.get(node.ownerId)?.name)}\n${t(statusText)}</title><rect width="${node.width}" height="${node.height}" rx="14"/><text class="gate-label" x="${node.width/2}" y="18" text-anchor="middle">${node.operator==='all'?'И':'ИЛИ'}</text></g>`;
     return html`<g class="graph-node ${node.status} ${node.kind==='gate'?'gate':''} ${node.id===state.selected?'selected':''}" data-id="${esc(node.id)}" data-owner="${esc(node.ownerId||node.id)}" tabindex="0" role="button" aria-label="${esc(node.name)}" aria-description="Перетащите блок или используйте стрелки. Enter — детали." transform="translate(${node.x},${node.y})"><title>${esc(node.name)}</title><rect width="${node.width}" height="${node.height}" rx="12"/>${src?html`<image href="${esc(src)}" x="14" y="23" width="32" height="32"/>`:''}<text x="${src?58:16}" y="21" class="node-kind">${esc(kindNames[node.kind]||node.kind)}</text><text x="${src?58:16}" y="41">${esc(title)}</text><text x="${src?58:16}" y="61" class="node-state">${statusText}</text></g>`;
   }).join('');
   $('#view').innerHTML=html`<div class="page-heading graph-heading"><div><span class="eyebrow">КАРТА ЗАВИСИМОСТЕЙ</span><h1>${target?esc(target.name):'Граф анлоков'}<span class="title-dot">.</span></h1></div><a class="button small" href="${target?'#/graph':'#/tiers'}">${target?'Весь граф ↗':'← Тирлист'}</a></div>
     <div class="graph-toolbar"><select id="graph-mode" aria-label="Основа графа"><option value="progress">Прогресс слота</option><option value="availability">Доступность контента</option></select>
     <select id="graph-focus" aria-label="Выбрать путь анлока"><option value="">Все анлоки</option>${state.data.nodes.toSorted((a,b)=>a.name.localeCompare(b.name)).map(node=>html`<option value="${esc(node.id)}">${esc(node.name)}</option>`).join('')}</select>
-    <label class="checkbox-label"><input type="checkbox" id="show-opened" ${state.showOpened?'checked':''}>${state.graphMode==='availability'?'Открытые':'Выполненные'}</label><span class="spacer"></span><button class="button small" id="reset-layout" title="Плавно вернуть блоки на свои места">Упорядочить</button><div class="zoom-controls"><button data-zoom="out" aria-label="Уменьшить граф">−</button><span id="zoom-label"></span><button data-zoom="in" aria-label="Увеличить граф">+</button></div><button class="button small" id="fit-graph">Вписать</button></div>
-    <div class="graph-mode-note ${state.graphMode==='availability'?'reference':''}">${state.graphMode==='progress'?'● Прогресс этого слота. Секреты и достижения Steam не засчитываются.':'● Доступность по секретам. Не подтверждает заслуги в этом слоте.'}</div>
+    <label class="checkbox-label"><input type="checkbox" id="show-opened" ${state.showOpened?'checked':''}>${state.graphMode==='availability'?'Открытые':'Выполненные'}</label>
+    <span class="graph-evidence-toggle"><label class="checkbox-label"><input type="checkbox" id="infer-save-evidence" aria-describedby="infer-save-evidence-help" ${state.inferSaveEvidence?'checked':''}>Учитывать данные сейва</label><span class="evidence-help" tabindex="0" aria-label="Подробнее об учёте данных сейва">ⓘ</span><span class="evidence-tooltip" id="infer-save-evidence-help" role="tooltip"><strong>Как работает этот переключатель</strong><span>В режиме «Доступность контента» коллекция и подтверждённые отметки, испытания или счётчики слота помогают определить, что уже открыто. В режиме «Прогресс слота» подобранный предмет считается доказательством, что сам анлок уже получен.</span><span>Коллекция подтверждает получение предмета, но не показывает, каким действием или в каком забеге он открыт. Если предмет есть в коллекции, ручное подтверждение его анлока не требуется. Флаги секретов и достижения Steam не используются; статистика не меняется.</span></span></span>
+    <span class="spacer"></span><button class="button small" id="reset-layout" title="Плавно вернуть блоки на свои места">Упорядочить</button><div class="zoom-controls"><button data-zoom="out" aria-label="Уменьшить граф">−</button><span id="zoom-label"></span><button data-zoom="in" aria-label="Увеличить граф">+</button></div><button class="button small" id="fit-graph">Вписать</button></div>
+    <div class="graph-mode-note ${state.graphMode==='availability'?'reference':''}">${state.graphMode==='progress'?state.inferSaveEvidence?'● Прогресс этого слота с учётом коллекции. Подобранный предмет подтверждает, что анлок получен, но не показывает способ или забег. Флаги секретов и достижения Steam не засчитываются.':'● Прогресс этого слота. Отметки, испытания и счётчики подтверждают записанные условия. Секреты и достижения Steam не засчитываются.':state.inferSaveEvidence?'● Доступность с учётом данных слота. Подбор и подтверждённые условия могут переопределить флаг секрета. Статистика прогресса не меняется.':'● Доступность по секретам. Не подтверждает заслуги в этом слоте.'}</div>
     <div class="graph-legend"><span><b>И</b> — нужны все ветви</span><span><b>ИЛИ</b> — достаточно одной</span><span>Выберите блок, чтобы подсветить соседей</span></div>
     <div class="graph-layout"><div class="graph-panel"><div class="graph-canvas ${target?'':'overview'}" id="graph-canvas">${layout.nodes.length?html`<svg id="unlock-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${layout.width} ${layout.height}" width="${layout.width}" height="${layout.height}" role="group" aria-label="Вертикальный граф зависимостей"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" class="arrow-head"/></marker></defs>${edges}${nodeSvg}</svg>`:'<div class="graph-empty"><h2>Всё готово</h2><p>Покажите выполненные шаги или измените основу графа.</p></div>'}</div><div class="graph-bottom"><span>${graph.nodes.filter(n=>!['gate','condition'].includes(n.kind)).length} анлоков · ${graph.edges.length} связей</span><span>Колёсико — зум · блоки и фон можно двигать</span></div></div><aside class="graph-sidebar" id="graph-sidebar" aria-label="Условия выбранного анлока"></aside></div>`;
   $('#graph-mode').value=state.graphMode;$('#graph-focus').value=targetId||'';
   $('#graph-mode').addEventListener('change',event=>{state.graphMode=event.target.value;renderGraph();});
   $('#graph-focus').addEventListener('change',event=>{location.hash=graphLink(event.target.value);});
   $('#show-opened').addEventListener('change',event=>{state.showOpened=event.target.checked;renderGraph();});
+  $('#infer-save-evidence').addEventListener('change',event=>{state.inferSaveEvidence=event.target.checked;refreshEvaluator();renderGraph();});
   $('#fit-graph').addEventListener('click',()=>graphView?.fit());
   $('#reset-layout').addEventListener('click',()=>graphView?.reset());
   renderGraphSidebar();

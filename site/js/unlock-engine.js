@@ -63,7 +63,7 @@ export function validateCatalog(data) {
   return [...new Set(errors)];
 }
 
-export function createEvaluator(data, save, progress, manual = {}) {
+export function createEvaluator(data, save, progress, manual = {}, {inferCollectedUnlocks = false} = {}) {
   const nodes = new Map(data.nodes.map(n => [n.id, n]));
   const memo = new Map(), active = new Set();
   const yesNo = value => value == null ? STATUS.UNKNOWN : value ? STATUS.YES : STATUS.NO;
@@ -102,26 +102,34 @@ export function createEvaluator(data, save, progress, manual = {}) {
   function earned(id) {
     if (memo.has(id)) return memo.get(id);
     if (active.has(id) || !nodes.has(id)) return STATUS.UNKNOWN;
+    if (inferCollectedUnlocks && collected(nodes.get(id)) === true) {
+      memo.set(id, STATUS.YES);
+      return STATUS.YES;
+    }
     active.add(id);
     const unlock = nodes.get(id).unlock;
     const state = unlock.evidence && evaluate(unlock.evidence) === STATUS.YES ? STATUS.YES : evaluate(unlock.requirements);
     active.delete(id); memo.set(id, state);
     return state;
   }
-  function availability(id) {
+  function collected(node) {
+    if (!node || !['active','passive'].includes(node.catalog?.kind)) return null;
+    const value = save.chunks.collection[node.catalog.itemId];
+    return value == null ? null : !!value;
+  }
+  function availability(id, {inferSlotEvidence = false} = {}) {
     const node = nodes.get(id);
     if (!node) return {status: STATUS.UNKNOWN, source: 'unknown'};
+    if (inferSlotEvidence) {
+      if (collected(node) === true) return {status: STATUS.YES, source: 'collection'};
+      if (node.secretId != null && earned(id) === STATUS.YES) return {status: STATUS.YES, source: 'slot_evidence'};
+    }
     if (node.secretId != null) return {status: yesNo(save.chunks.achievements[node.secretId] == null ? null : !!save.chunks.achievements[node.secretId]), source:'save_secret'};
     if (node.unlock.requirements.type === 'constant') return {status:yesNo(node.unlock.requirements.value), source:'default'};
     if (earned(id) === STATUS.YES) return {status:STATUS.YES, source:'slot_condition'};
     return {status:STATUS.UNKNOWN, source:'unknown'};
   }
-  return {evaluate, earned, availability, nodes,
-    collected(node) {
-      if (!['active','passive'].includes(node.catalog?.kind)) return null;
-      const value = save.chunks.collection[node.catalog.itemId];
-      return value == null ? null : !!value;
-    }};
+  return {evaluate, earned, availability, nodes, collected};
 }
 
 export function conditionLabel(condition) {

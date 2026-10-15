@@ -48,6 +48,26 @@ test('secret flags are not a supported evidence condition',()=>{
   assert.ok(validateCatalog(sample).some(e=>e.includes('Неизвестное условие')));
 });
 
+test('collected items infer the unlock result only when save evidence inference is enabled',()=>{
+  const sample={nodes:[
+    {id:'item',kind:'collectible',secretId:1,catalog:{kind:'passive',itemId:7},unlock:{description:'Manual action',requirements:manual('item')}},
+    {id:'challenge',kind:'challenge',secretId:2,unlock:{description:'Complete challenge',requirements:{type:'challenge',id:1}}},
+  ]};
+  const save=blankSave();save.chunks.collection[7]=1;save.chunks.challenges[1]=1;
+  const evaluator=createEvaluator(sample,save,blankProgress());
+  assert.equal(evaluator.availability('item').status,STATUS.NO);
+  assert.deepEqual(evaluator.availability('item',{inferSlotEvidence:true}),{status:STATUS.YES,source:'collection'});
+  assert.equal(evaluator.earned('item'),STATUS.UNKNOWN);
+  const inferred=createEvaluator(sample,save,blankProgress(),{}, {inferCollectedUnlocks:true});
+  assert.equal(inferred.earned('item'),STATUS.YES);
+  assert.equal(inferred.evaluate(manual('item')),STATUS.UNKNOWN);
+  const graph=buildGraph(sample,inferred,{targetId:'item'});
+  assert.equal(graph.nodes.find(node=>node.id==='item').status,STATUS.YES);
+  assert.deepEqual(graph.edges,[]);
+  assert.equal(evaluator.availability('challenge').status,STATUS.NO);
+  assert.deepEqual(evaluator.availability('challenge',{inferSlotEvidence:true}),{status:STATUS.YES,source:'slot_evidence'});
+});
+
 test('browser parser agrees with game checksums and recorded slot progress',{skip:!hasFixtures},()=>{
   const first=fixture(1),second=fixture(2),p=slotProgress(first,catalog),empty=slotProgress(second,catalog);
   assert.equal(first.checksum.computed,0xe5440238);assert.equal(second.checksum.computed,0x01558f80);
@@ -162,14 +182,14 @@ test('edges connect the bottom of a parent to the top of its child, including af
   const moved=edgeGeometry({...a,x:70,y:50},b);
   assert.match(moved.path,/^M 180 128 C /);assert.equal(moved.x,289);
 });
-test('all tiered entries receive one S–F rank while source categories stay intact',()=>{
+test('tiered entries receive a rank including default-open items while source categories stay intact',()=>{
   const ids=RANKS.map(rank=>rank.id),entries=data.nodes.filter(node=>node.tier);
-  assert.deepEqual(ids,['DEAD GOD','S','A','B','C','D','F']);
+  assert.deepEqual(ids,['DEAD GOD','S','A','B','C','D','F','OPEN']);
   for(const node of entries)assert.ok(ids.includes(rankFor(node)),node.id);
   assert.equal(rankFor({id:'new',tier:'new-category'}),'C');
   assert.equal(rankFor({id:'new',tier:'new-category',rank:'S'}),'S');
   assert.equal(rankFor({id:'support'}),null);
-  assert.equal(data.tiers.filter(tier=>tier.id!=='dead-god').length,10);
+  assert.equal(data.tiers.filter(tier=>tier.id!=='dead-god').length,11);
 });
 test('every provided local sprite is an actual PNG in the static site',()=>{
   const manifest=readJson('../site/assets/icons/manifest.json');
