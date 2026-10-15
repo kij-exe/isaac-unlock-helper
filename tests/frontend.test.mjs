@@ -163,12 +163,12 @@ test('edges connect the bottom of a parent to the top of its child, including af
 });
 test('all tiered entries receive one S–F rank while source categories stay intact',()=>{
   const ids=RANKS.map(rank=>rank.id),entries=data.nodes.filter(node=>node.tier);
-  assert.deepEqual(ids,['S','A','B','C','D','F']);
+  assert.deepEqual(ids,['DEAD GOD','S','A','B','C','D','F']);
   for(const node of entries)assert.ok(ids.includes(rankFor(node)),node.id);
   assert.equal(rankFor({id:'new',tier:'new-category'}),'C');
   assert.equal(rankFor({id:'new',tier:'new-category',rank:'S'}),'S');
   assert.equal(rankFor({id:'support'}),null);
-  assert.equal(data.tiers.length,10);
+  assert.equal(data.tiers.filter(tier=>tier.id!=='dead-god').length,10);
 });
 test('every provided local sprite is an actual PNG in the static site',()=>{
   const manifest=readJson('../site/assets/icons/manifest.json');
@@ -207,4 +207,57 @@ test('Charged Key availability reads its own secret, separate from Greed’s Gul
   const correct=createEvaluator(data,save,p);
   assert.equal(correct.availability('feature:charged-key').status,STATUS.YES);
   assert.notEqual(correct.earned('feature:charged-key'),STATUS.YES);
+});
+
+test('Dead God is the single goal in a tier above S, with every other Repentance condition exactly once',()=>{
+  assert.equal(RANKS[0].id,'DEAD GOD');
+  assert.deepEqual(data.nodes.filter(node=>node.tier==='dead-god').map(node=>node.id),['feature:dead-god']);
+  const conditions=data.nodes.find(node=>node.id==='feature:dead-god-conditions').unlock.requirements.conditions.flatMap(group=>group.conditions);
+  assert.equal(conditions.length,636);
+  assert.deepEqual(conditions.map(condition=>condition.goalSecretId),Array.from({length:636},(_,i)=>i+1));
+  assert.ok(conditions.some(condition=>condition.type==='manual'));
+  assert.ok(conditions.some(condition=>condition.type==='mark'));
+  assert.ok(conditions.some(condition=>condition.type==='node'));
+  const pong=conditions.find(condition=>condition.goalSecretId===335);assert.equal(pong.type,'node');assert.equal(pong.id,'challenge-complete:35');
+});
+test('Dead God collection requires all 717 visible items, including quest parts, and excludes hidden effects and nonexistent IDs',()=>{
+  const condition=data.nodes.find(node=>node.id==='feature:dead-god-collection').unlock.requirements;
+  const ids=condition.conditions.flatMap(group=>group.conditions.map(item=>item.id));
+  assert.equal(ids.length,717);assert.equal(new Set(ids).size,717);
+  for(const id of [474,550,551,552,626,627,628,633,668])assert.ok(ids.includes(id),`Required item ${id}`);
+  for(const id of [43,59,61,235,587,613,620,630,648,656,662,666,714,715,718])assert.ok(!ids.includes(id),`Excluded item ${id}`);
+  const save=parseSave(syntheticEmptyBytes()),progress=slotProgress(save,catalog);
+  save.chunks.achievements.fill(1);
+  assert.equal(createEvaluator(data,save,progress).earned('feature:dead-god-collection'),STATUS.NO);
+  for(const id of ids)save.chunks.collection[id]=1;
+  assert.equal(createEvaluator(data,save,progress).earned('feature:dead-god-collection'),STATUS.YES);
+  save.chunks.collection[474]=0;
+  assert.equal(createEvaluator(data,save,progress).earned('feature:dead-god-collection'),STATUS.NO);
+});
+test('Dead God requires gameplay facts and explicit unrecorded actions, even when its save secret is set',()=>{
+  const save=parseSave(syntheticEmptyBytes()),progress=slotProgress(save,catalog),manual={};
+  save.chunks.achievements.fill(1);
+  let evaluator=createEvaluator(data,save,progress);
+  assert.equal(evaluator.availability('feature:dead-god').status,STATUS.YES);
+  assert.equal(evaluator.earned('feature:dead-god'),STATUS.NO);
+  const walk=condition=>{if(condition.type==='manual')manual[condition.key]=true;for(const child of condition.conditions||[])walk(child);};
+  data.nodes.forEach(node=>walk(node.unlock.requirements));
+  progress.counters.fill(10000);
+  for(const character of progress.characters)for(const mark of Object.values(character.marks))mark.value=2;
+  save.chunks.challenges.fill(1);save.chunks.collection.fill(1);save.chunks.achievements.fill(0);
+  evaluator=createEvaluator(data,save,progress,manual);
+  assert.equal(evaluator.earned('feature:dead-god'),STATUS.YES);
+  assert.equal(evaluator.availability('feature:dead-god').status,STATUS.NO);
+  save.chunks.challenges[45]=0;
+  assert.equal(createEvaluator(data,save,progress,manual).earned('feature:dead-god'),STATUS.NO);
+  save.chunks.challenges[45]=1;
+  manual['dead-god:condition:69']=false;
+  assert.notEqual(createEvaluator(data,save,progress,manual).earned('feature:dead-god'),STATUS.YES);
+});
+test('collection conditions preserve unknown bytes and reject invalid item IDs',()=>{
+  const e=createEvaluator(synthetic(),blankSave(),blankProgress());
+  assert.equal(e.evaluate({type:'collected',id:1}),STATUS.NO);
+  assert.equal(e.evaluate({type:'collected',id:733}),STATUS.UNKNOWN);
+  const broken=synthetic();broken.nodes[0].unlock.requirements={type:'collected',id:733};
+  assert.ok(validateCatalog(broken).some(error=>error.includes('Некорректный предмет коллекции')));
 });

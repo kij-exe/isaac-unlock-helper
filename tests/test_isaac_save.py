@@ -124,7 +124,7 @@ class SaveTests(unittest.TestCase):
                 parse_bytes(self.first[:length])
 
     def test_unsupported_header_is_rejected(self):
-        damaged = b"ISAACNGSAVE06R  " + self.first[16:]
+        damaged = b"ISAACNGSAVE08R  " + self.first[16:]
         with self.assertRaisesRegex(SaveFormatError, "header"):
             parse_bytes(damaged)
 
@@ -233,6 +233,35 @@ class CatalogLiteralTests(unittest.TestCase):
     def test_js_data_literals(self):
         self.assertEqual(LiteralReader('{a:!0,b:!1,c:null,d:.1,s:\'a "quote"\'}', 0).value(),
                          {"a": True, "b": False, "c": None, "d": .1, "s": 'a "quote"'})
+
+class AdditionalFormatTests(unittest.TestCase):
+    def test_rebirth_nine_chunks_and_own_checksum(self):
+        path = ROOT / 'context/persistentgamedata1.dat'
+        if not path.exists():
+            self.skipTest('Private Rebirth fixture not available')
+        before = path.read_bytes()
+        parsed = parse_bytes(before)
+        self.assertEqual(parsed['header'], 'ISAACNGSAVE06R  ')
+        self.assertEqual(parsed['checksum']['computed'], 0xbd3b8630)
+        self.assertEqual(len(parsed['layout']), 9)
+        self.assertEqual(len(parsed['chunks']['event_counters']), 95)
+        damaged = bytearray(before)
+        damaged[227] ^= 1
+        with self.assertRaisesRegex(SaveFormatError, 'checksum'):
+            parse_bytes(damaged)
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_rep_plus_raw_layouts_and_checksums(self):
+        for name, checksum in [('rep+persistentgamedata1.dat', 0x04adfd70), ('rep+persistentgamedata2.dat', 0xf9cacd7e)]:
+            path = ROOT / 'context' / name
+            if not path.exists():
+                self.skipTest('Private Repentance+ fixtures not available')
+            before = path.read_bytes()
+            parsed = parse_bytes(before)
+            self.assertEqual(parsed['checksum']['computed'], checksum)
+            self.assertEqual(len(parsed['chunks']['achievements']), 642)
+            self.assertEqual(len(parsed['chunks']['event_counters']), 523)
+            self.assertEqual(path.read_bytes(), before)
 
 
 if __name__ == "__main__":

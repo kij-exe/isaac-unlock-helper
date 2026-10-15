@@ -80,9 +80,14 @@ def designed_svg(node: dict) -> str:
     if node["kind"] == "challenge":
         number = node["id"].split(":")[1]
         body = paper + f'<text x="32" y="46" text-anchor="middle" fill="#5c423b" font-family="sans-serif" font-weight="800" font-size="19">{number}</text>'
+        if node.get("challenge", {}).get("role") == "completion":
+            body += '<circle cx="49" cy="49" r="12" fill="#78957a" stroke="#f3e8d3" stroke-width="2"/><path d="m43 49 4 4 8-9" fill="none" stroke="#fff8e8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
     else:
         # Route symbols communicate their location, without impersonating item art.
         shapes = {
+            "dead-god-conditions": '<path d="M13 8h38v48H13z" fill="#e7d2a5"/><path d="m20 21 3 3 6-7m-9 18 3 3 6-7m-9 18 3 3 6-7M34 21h10M34 35h10M34 49h10" stroke="#8c7150" stroke-width="3" fill="none" stroke-linecap="round"/>',
+            "dead-god-collection": '<rect x="9" y="9" width="46" height="46" rx="6" fill="#d9c7a1"/><path d="M16 17h11v11H16zm21 0h11v11H37zM16 37h11v11H16zm21 0h11v11H37z" fill="#977b5c"/><path d="m17 20 3 3 5-5m13 23 3 3 5-5" stroke="#f9efd7" stroke-width="2.5" fill="none"/>',
+            "dead-god-challenges": '<path d="M14 9h36v46H14z" fill="#e8d9b5"/><path d="M22 15v27M23 16h19l-5 8 5 7H23" stroke="#9b7257" stroke-width="3" fill="#c79177"/><path d="m23 46 5 5 12-12" stroke="#78957a" stroke-width="4" fill="none"/>',
             "cathedral": '<path d="M12 54V26l20-17 20 17v28z" fill="#e5dff5"/><path d="M29 14h6v9h7v5h-7v10h-6V28h-7v-5h7z" fill="#9b87ba"/><path d="M27 54V42a5 5 0 0 1 10 0v12" fill="#9b87ba"/>',
             "sheol": '<path d="M10 53 16 24l11 9 5-25 8 24 9-9 6 30z" fill="#b15d65"/><path d="m24 52 8-20 9 20z" fill="#efb480"/>',
             "chest": '<path d="M10 29h44v24H10z" fill="#cfa76c"/><path d="M10 29v-6a22 15 0 0 1 44 0v6z" fill="#e8ca8f"/><path d="M10 30h44M20 16v37M44 16v37" stroke="#977052" stroke-width="3" fill="none"/><path d="M28 27h8v11h-8z" fill="#fff1bb"/>',
@@ -158,7 +163,9 @@ def main() -> None:
         old = existing.get(node_id)
         valid_old = existing_valid(old, args.output)
         if valid_old and not args.refresh:
-            return old
+            # Authored SVGs also follow current labels and illustration code.
+            if old["status"] != "designed" or sha256(designed_svg(node).encode("utf-8")).hexdigest() == old["sha256"]:
+                return old
         try:
             if kind == "collectible" and item_id is not None:
                 url = ARDOR + f"/gfx/items/{int(item_id):03}.png"

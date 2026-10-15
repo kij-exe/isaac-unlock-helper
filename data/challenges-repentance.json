@@ -1,0 +1,503 @@
+{
+  "gameVersion": "Repentance 1.7.9b.J835",
+  "source": {
+    "url": "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/challenges.xml",
+    "sha256": "4e20581dfd951a66bdf5779b6bbf58e8a012586a030237c1f48496240d5ccfb4"
+  },
+  "challenges": [
+    {
+      "id": 1,
+      "name": "Pitch Black",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 2,
+      "name": "High Brow",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 3,
+      "name": "Head Trauma",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 4,
+      "name": "Darkness Falls",
+      "requiredUnlockIds": [
+        42,
+        34,
+        53
+      ],
+      "endstage": 10,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 5,
+      "name": "The Tank",
+      "requiredUnlockIds": [
+        1
+      ],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 6,
+      "name": "Solar System",
+      "requiredUnlockIds": [
+        8
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 7,
+      "name": "Suicide King (Challenge)",
+      "requiredUnlockIds": [
+        80,
+        34
+      ],
+      "endstage": 10,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 8,
+      "name": "Cat Got Your Tongue",
+      "requiredUnlockIds": [
+        65
+      ],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 9,
+      "name": "Demo Man",
+      "requiredUnlockIds": [
+        11
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 10,
+      "name": "Cursed!",
+      "requiredUnlockIds": [
+        1
+      ],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 11,
+      "name": "Glass Cannon (Challenge)",
+      "requiredUnlockIds": [
+        15,
+        62,
+        34,
+        3
+      ],
+      "endstage": 10,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 12,
+      "name": "When Life Gives You Lemons",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 13,
+      "name": "Beans!",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 14,
+      "name": "It's in the Cards",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 15,
+      "name": "Slow Roll",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 16,
+      "name": "Computer Savvy",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 17,
+      "name": "Waka Waka",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 18,
+      "name": "The Host",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 19,
+      "name": "The Family Man",
+      "requiredUnlockIds": [
+        34,
+        58
+      ],
+      "endstage": 10,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 20,
+      "name": "Purist",
+      "requiredUnlockIds": [
+        4
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 21,
+      "name": "XXXXXXXXL",
+      "requiredUnlockIds": [
+        4
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 22,
+      "name": "SPEED!",
+      "requiredUnlockIds": [
+        4
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 23,
+      "name": "Blue Bomber",
+      "requiredUnlockIds": [
+        28,
+        34
+      ],
+      "endstage": 10,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 24,
+      "name": "PAY TO PLAY",
+      "requiredUnlockIds": [
+        28,
+        21
+      ],
+      "endstage": 10,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 25,
+      "name": "Have a Heart",
+      "requiredUnlockIds": [
+        4
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 26,
+      "name": "I RULE!",
+      "requiredUnlockIds": [
+        43,
+        78,
+        340
+      ],
+      "endstage": 12,
+      "altpath": false,
+      "megaSatan": true,
+      "secretpath": false
+    },
+    {
+      "id": 27,
+      "name": "BRAINS!",
+      "requiredUnlockIds": [
+        57
+      ],
+      "endstage": 11,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 28,
+      "name": "PRIDE DAY!",
+      "requiredUnlockIds": [
+        4
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 29,
+      "name": "Onan's Streak",
+      "requiredUnlockIds": [
+        34,
+        3
+      ],
+      "endstage": 10,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 30,
+      "name": "The Guardian",
+      "requiredUnlockIds": [
+        4
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 31,
+      "name": "Backasswards",
+      "requiredUnlockIds": [
+        78,
+        340
+      ],
+      "endstage": 12,
+      "altpath": false,
+      "megaSatan": true,
+      "secretpath": false
+    },
+    {
+      "id": 32,
+      "name": "Aprils Fool",
+      "requiredUnlockIds": [
+        4
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 33,
+      "name": "Pokey Mans",
+      "requiredUnlockIds": [
+        34
+      ],
+      "endstage": 10,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 34,
+      "name": "Ultra Hard",
+      "requiredUnlockIds": [
+        78,
+        340
+      ],
+      "endstage": 12,
+      "altpath": false,
+      "megaSatan": true,
+      "secretpath": false
+    },
+    {
+      "id": 35,
+      "name": "Pong",
+      "requiredUnlockIds": [
+        57
+      ],
+      "endstage": 11,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 36,
+      "name": "Scat Man",
+      "requiredUnlockIds": [],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 37,
+      "name": "Bloody Mary",
+      "requiredUnlockIds": [
+        34,
+        147,
+        404
+      ],
+      "endstage": 10,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 38,
+      "name": "Baptism by Fire",
+      "requiredUnlockIds": [
+        34,
+        71,
+        404,
+        418
+      ],
+      "endstage": 10,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 39,
+      "name": "Isaac's Awakening",
+      "requiredUnlockIds": [
+        405
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": true
+    },
+    {
+      "id": 40,
+      "name": "Seeing Double",
+      "requiredUnlockIds": [
+        405
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 41,
+      "name": "Pica Run",
+      "requiredUnlockIds": [
+        34,
+        386
+      ],
+      "endstage": 10,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 42,
+      "name": "Hot Potato",
+      "requiredUnlockIds": [
+        488
+      ],
+      "endstage": 10,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 43,
+      "name": "Cantripped!",
+      "requiredUnlockIds": [
+        476
+      ],
+      "endstage": 6,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": false
+    },
+    {
+      "id": 44,
+      "name": "Red Redemption",
+      "requiredUnlockIds": [
+        490,
+        415
+      ],
+      "endstage": 8,
+      "altpath": false,
+      "megaSatan": false,
+      "secretpath": true
+    },
+    {
+      "id": 45,
+      "name": "DELETE THIS",
+      "requiredUnlockIds": [
+        483
+      ],
+      "endstage": 11,
+      "altpath": true,
+      "megaSatan": false,
+      "secretpath": false
+    }
+  ]
+}

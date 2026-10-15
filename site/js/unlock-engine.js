@@ -1,5 +1,5 @@
 export const STATUS = {YES: 'satisfied', NO: 'missing', UNKNOWN: 'unknown'};
-const LEAVES = new Set(['constant','node','counter','mark','challenge','manual','character_played','boss_defeated']);
+const LEAVES = new Set(['constant','node','counter','mark','challenge','manual','character_played','boss_defeated','collected']);
 const safeUrl = value => { try { return new URL(value).protocol === 'https:'; } catch { return false; } };
 
 export function conditionReferences(condition) {
@@ -36,6 +36,7 @@ export function validateCatalog(data) {
     if (condition.type === 'node' && !ids.has(condition.id)) errors.push(`Нет зависимости ${condition.id}: ${owner}`);
     if (condition.type === 'counter' && (!Number.isInteger(condition.id) || condition.id < 0 || condition.id >= 496 || !Number.isFinite(condition.atLeast) || condition.atLeast < 1)) errors.push(`Некорректный счётчик: ${owner}`);
     if (condition.type === 'mark' && (!condition.character || !condition.target || ![1,2].includes(condition.minimum ?? 1))) errors.push(`Некорректная отметка: ${owner}`);
+    if (condition.type === 'collected' && (!Number.isInteger(condition.id) || condition.id < 1 || condition.id > 732)) errors.push(`Некорректный предмет коллекции: ${owner}`);
     if (condition.type === 'challenge' && (!Number.isInteger(condition.id) || condition.id < 1 || condition.id > 45)) errors.push(`Некорректное испытание: ${owner}`);
     if (condition.type === 'manual' && (!condition.key || !condition.label)) errors.push(`Неполное ручное условие: ${owner}`);
     if (condition.type === 'constant' && typeof condition.value !== 'boolean') errors.push(`Некорректная константа: ${owner}`);
@@ -84,6 +85,7 @@ export function createEvaluator(data, save, progress, manual = {}) {
       case 'node': return earned(condition.id);
       case 'counter': return yesNo(progress.counters[condition.id] == null ? null : progress.counters[condition.id] >= condition.atLeast);
       case 'mark': return yesNo(marks.get(condition.character)?.[condition.target] == null ? null : marks.get(condition.character)[condition.target].value >= (condition.minimum ?? 1));
+      case 'collected': return yesNo(save.chunks.collection[condition.id] == null ? null : !!save.chunks.collection[condition.id]);
       case 'challenge': return yesNo(save.chunks.challenges[condition.id] == null ? null : !!save.chunks.challenges[condition.id]);
       case 'manual': return yesNo(manual[condition.key]);
       case 'character_played': return yesNo(marks.has(condition.character) ? Object.values(marks.get(condition.character)).some(mark => mark.value > 0) : null);
@@ -131,6 +133,7 @@ export function conditionLabel(condition) {
     case 'node': return '';
     case 'mark': return `${condition.character}: ${condition.target}${condition.minimum === 2 ? ' на Hard / Greedier' : ''}`;
     case 'counter': return `Счётчик #${condition.id} ≥ ${condition.atLeast}`;
+    case 'collected': return `Подобрать предмет #${condition.id}`;
     case 'challenge': return `Пройти испытание #${condition.id}`;
     case 'character_played': return `Отметка персонажа ${condition.character}`;
     case 'boss_defeated': return `Победить ${condition.boss}`;

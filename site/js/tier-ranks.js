@@ -1,5 +1,6 @@
 // Presentation only: the guide's original categories remain in unlocks.json.
 export const RANKS = [
+  {id:'DEAD GOD',label:'Полное прохождение Repentance',color:'#c7b48a'},
   {id:'S',label:'Открыть в первую очередь',color:'#f39eaa'},
   {id:'A',label:'Высокий приоритет',color:'#eec18a'},
   {id:'B',label:'Полезное пополнение',color:'#e5d988'},
@@ -15,6 +16,7 @@ const editorialRanks = {'consumable:33':'S','consumable:37':'S','consumable:39':
   'collectible:283':'B','collectible:470':'C','collectible:475':'C','consumable:38':'C'};
 export function rankFor(node) {
   if (!node.tier) return null;
+  if (node.tier==='dead-god')return 'DEAD GOD';
   if (RANKS.some(rank=>rank.id===node.rank)) return node.rank;
   return editorialRanks[node.id] || categoryRanks[node.tier] || 'C';
 }

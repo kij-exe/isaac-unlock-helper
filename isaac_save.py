@@ -89,15 +89,34 @@ def kage_checksum(payload):
     return (~value) & 0xFFFFFFFF
 
 
+def rebirth_checksum(data, layout, gamestate_checksum, load_counter):
+    """Rebirth's rotating 32-bit sum, distinct from the later KAGE CRC."""
+    value = (load_counter + 2137939259) & 0xffffffff
+    def update(number):
+        nonlocal value
+        value = (number + ((value >> 1) | ((value & 1) << 31))) & 0xffffffff
+    for chunk in layout:
+        for number in (chunk["id"], chunk["size_written"], chunk["count"]):
+            update(number)
+        width = CHUNKS[chunk["id"]][1]
+        offset = chunk["data_offset"]
+        for index in range(chunk["count"]):
+            update(data[offset + index] if width == 1 else struct.unpack_from("<I", data, offset + index * 4)[0])
+    update(gamestate_checksum)
+    return value ^ 0x96696996
+
+
 def parse_bytes(data, *, allow_invalid_checksum=False):
     """Decode all eleven chunks, retaining every value and unknown entity key."""
     reader = Reader(data)
-    if reader.take(16) != HEADER:
-        raise SaveFormatError("Expected ISAACNGSAVE09R header; Rebirth/Afterbirth are unsupported")
+    header = reader.take(16)
+    legacy = header == b"ISAACNGSAVE06R  "
+    if header != HEADER and not legacy:
+        raise SaveFormatError("Expected ISAACNGSAVE09R or ISAACNGSAVE06R persistentgamedata header")
     gamestate_checksum = reader.uint()
     chunks = {}
     layout = []
-    for expected_id, (name, width) in CHUNKS.items():
+    for expected_id, (name, width) in list(CHUNKS.items())[:9 if legacy else 11]:
         offset = reader.position
         chunk_id, size_written, count = reader.uint(), reader.uint(), reader.uint()
         if chunk_id != expected_id:
@@ -145,11 +164,14 @@ def parse_bytes(data, *, allow_invalid_checksum=False):
     load_counter, stored_checksum = reader.uint(), reader.uint()
     if reader.position != len(data):
         raise SaveFormatError(f"Unexpected trailing bytes: {len(data) - reader.position}")
-    computed_checksum = kage_checksum(data[16:-4])
+    computed_checksum = rebirth_checksum(data, layout, gamestate_checksum, load_counter) if legacy else kage_checksum(data[16:-4])
     if stored_checksum != computed_checksum and not allow_invalid_checksum:
         raise SaveFormatError("KAGE checksum mismatch; use --allow-invalid-checksum for diagnostics")
+    if legacy:
+        chunks["special_seeds"] = []
+        chunks["bestiary"] = {name: {} for name in BESTIARY_SECTIONS.values()}
     return {
-        "header": HEADER.decode("ascii"), "size_bytes": len(data),
+        "header": header.decode("ascii"), "size_bytes": len(data),
         "sha256": hashlib.sha256(data).hexdigest(),
         "gamestate_checksum": gamestate_checksum, "load_counter_raw": load_counter,
         "checksum": {"stored": stored_checksum, "computed": computed_checksum,

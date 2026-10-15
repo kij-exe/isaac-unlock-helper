@@ -3290,6 +3290,1005 @@
       "sha256": "b77d3c51c16c9e9d4b77cdde152341ff844b976df796bca926f552c9c6c645a6"
     },
     {
+      "nodeId": "collectible:52",
+      "source": "https://isaac.ardor.guru/gfx/items/052.png",
+      "sourceSha256": "00813bf64d321d72765620ddbf5cadb3943221f3c2a6a5acff7077b9158a052e",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-52.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "b7872ab1af68d5d4d6e5694b4ca3823407358ecc86def4a6167e05d8cef2e5cc"
+    },
+    {
+      "nodeId": "collectible:87",
+      "source": "https://isaac.ardor.guru/gfx/items/087.png",
+      "sourceSha256": "ca4f3cdeff795284164f3048752aa3325e365a49041d6eeed3d8d59fcedae431",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-87.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "a5b8e7438ee30f2253d91459d6f16a5c23bca6d35da00eaccd0dc4e0167738b1"
+    },
+    {
+      "nodeId": "collectible:94",
+      "source": "https://isaac.ardor.guru/gfx/items/094.png",
+      "sourceSha256": "3d8c0d7b44cff7d6465dc2a97b4c9217ee60ccd4e76aee6554c9694fbeacefba",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-94.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "04f84cb8e93ccf3966e0da944bda38c086661b7e216f50ddf1db6fac42c2efe4"
+    },
+    {
+      "nodeId": "collectible:106",
+      "source": "https://isaac.ardor.guru/gfx/items/106.png",
+      "sourceSha256": "3db79a75ea3cec75dade9c386b2d234bb9160aed6282c8ae0a4051c60f720ea1",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-106.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "6c3b21cabc217bf551c7a939bfb8591759e4d9fa4ea00ee12ea4c6a99d23b321"
+    },
+    {
+      "nodeId": "collectible:175",
+      "source": "https://isaac.ardor.guru/gfx/items/175.png",
+      "sourceSha256": "8fdf49fe094c96346df148158e01b9219051b205d52f69614780ebdcacf77da1",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-175.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "f2af5fc6935129416d94f461505691c00548b18958b0b81099be95c4af604a83"
+    },
+    {
+      "nodeId": "collectible:187",
+      "source": "https://isaac.ardor.guru/gfx/items/187.png",
+      "sourceSha256": "4ef2995a0ab3c2694aea4e0898082ce3ed86318cbe1d81344c0548b80ef66c60",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-187.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "59f4edddba40acbeb85bc21f934b4e048955f92c2924c777de0ff95e97b220d4"
+    },
+    {
+      "nodeId": "trinket:55",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "atlasKey": "trinket_055",
+      "atlasRect": [
+        448,
+        64,
+        32,
+        32
+      ],
+      "status": "downloaded",
+      "path": "assets/icons/trinket-55.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "d7574f2a2b761868bd2c76d4a8d0dccdf6fde83b89e850ed736c5a10fff90a63"
+    },
+    {
+      "nodeId": "collectible:580",
+      "source": "https://isaac.ardor.guru/gfx/items/580.png",
+      "sourceSha256": "34cc6d0e6e3deacaad4f94c5a8be3734397b362c8e5f820117742a8e3d81d88c",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-580.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "eb1a05215d455c1a69adecc5a1c66f02a92ed46dcdcaf9d9e050671dc265a7a6"
+    },
+    {
+      "nodeId": "collectible:640",
+      "source": "https://isaac.ardor.guru/gfx/items/640.png",
+      "sourceSha256": "0fb27efe69e1e0f39c3965f28356a5120ac6c713a20fd09de93070e434caaf91",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-640.png",
+      "dimensions": [
+        32,
+        32
+      ],
+      "sha256": "adbfd1dff7aeb7ca6462f93b2dba7f8a228dc0d412bb1c57609e9948d765f2fb"
+    },
+    {
+      "nodeId": "challenge:1",
+      "status": "designed",
+      "path": "assets/icons/challenge-1.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "2bc7909de30d7ce6396fb15b90b2ce6ce1f1a935325c55fb4eecb0e47729f9e7",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:1",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-1.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "203f24b2ab91e0921b4884ff0c48aeb6a60489ac772d2f15066525aed82118c6",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:2",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-2.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "8b82be641872ca39ed201d45ea03d15c0d64b0103141f08a3d7566e5fa1e7b79",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:3",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-3.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "9f6d7f70afd859d4c8c5bf25f9d07bb04a461b7c595e2c1119651b130b17b868",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:4",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-4.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "ae3c8a41fb2aace641ae152717239d1802a090e6ba9c2696a76dfbe7cd834831",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:5",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-5.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "c9f0c946f8615a7fdb035aab8676aba0ab2b6fa3b1772163d9591da87f0860f0",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:6",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-6.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "127193858dc18fb68d299864f779c5a890a2b94aed2b28b0184be44c259290a3",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:7",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-7.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "fc10caea17b9422d48ec7e0974957cbbd13be0229750f83396c5f7014b323a66",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:8",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-8.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "e1d9f07054c6dc526ec82c5db80381713da0352d1bcff3259f4b540cb7ae3aa5",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:9",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-9.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "f73690677c06edf61bccf7cc13479f474ad399b8a0c1d431dc082efa6dd4bc89",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:10",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-10.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "c6474608bda5a794909a095acb3ec7b620e7e787a1eddf8521d4b42b4455b7e3",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:11",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-11.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "c8dd101b6e634401b76293d15c44dcc9ff4dddc91f41c8134298f617dac2a1d0",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:12",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-12.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "c885df58f332a0be8a06f0e30bbb6b704b64e81f0fbd212698c6ce230d563bce",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:13",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-13.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "f84801fcb6282e1bb0bc95923e3e6d48a90d658e4520bc18019511128034d844",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:14",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-14.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "04cfef26ec737de29eb0ac8cc84a0badd15afb39658b1cce5b82cec4d5dc6809",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:15",
+      "status": "designed",
+      "path": "assets/icons/challenge-15.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "f6451aedd5ace6e53182ec645ce3ff3433023ec5342e41c082462626b6732b34",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:15",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-15.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "40bb683ed69c5576f0d957297e0ad0be731a924fdd458c291e888eea60bab297",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:16",
+      "status": "designed",
+      "path": "assets/icons/challenge-16.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "c5f684a92b5c58c4d6ce4f7d6d3edfe02657e3e26d483f301a3adecc786720ef",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:16",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-16.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "142e4db3a8263ef6459dbdab4673201529f2ce24c5ade319dc9c4c91208d389b",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:17",
+      "status": "designed",
+      "path": "assets/icons/challenge-17.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "564cfaff2b59a3636e870b7810830995cb0d30f757d461b17aca2a620e0dc859",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:17",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-17.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "829a702ef8820465f71565878abd81307c8c37b86de3653acae495777bb6ae48",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:18",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-18.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "17991cacced101d7c897214623bbdd5dfeb5e35b5d383894ae58aee43777fca9",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:19",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-19.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "7e2b92186ebe52fb9b72b58bf1e46d2869c10da67f4344dfb25335ff889f5bcf",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:20",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-20.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "5a4c92a39dd9a33bbd77b52081bc1b8d7fdbcaf4fa1d846c393b1a3d0c64eb28",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:21",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-21.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "1d7e8b95b6e6ec55c88f7a7eaddceea20ab456bd52de4c814cbe88baa6617ea3",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:22",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-22.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "d9eebf27e6fa4f3a78fb6799e572df0966c8d173ec5e4c599b588904a3439bd6",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:23",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-23.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "ee7dd438a569a17a638800a386d072519f442d9672a5732facd05f199d8c51cb",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:24",
+      "status": "designed",
+      "path": "assets/icons/challenge-24.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "04fc84f0176194ad5c3f44f7b1e4a010ae5ff4c0d17fcb1f5195de247ad8837e",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:24",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-24.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "be80b925bcb51dc16677ebb9a4170cf1bbd4bcf77d68e50701337f605150a195",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:25",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-25.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "0c65ff1ca079ca5e1adad6792f57a65f804eb202a214d5183323834b25641e3c",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:26",
+      "status": "designed",
+      "path": "assets/icons/challenge-26.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "bce10df6592efedbd615bbdeb0a7bdf340a3c330ca04537c56a5cd42bfd8d03a",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:26",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-26.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "391ec10cd77fdd78c9ae52a9ae637e718db7c1effe071c65a9e05cbdd3927622",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:27",
+      "status": "designed",
+      "path": "assets/icons/challenge-27.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6c82a0db55be5ca067d36e54055e969810c946a13a006c8578ae15b39d7ca9b6",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:27",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-27.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "aeeb2fe8fb1c9d300366b3a1064d3c54d955abacae24a54448edb5508a594745",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:28",
+      "status": "designed",
+      "path": "assets/icons/challenge-28.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "d14ad91f874565ee2c3256d0e1343e2b65ce78e5640e85520ee5af097bc7a6c4",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:28",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-28.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "1b0fdcf714cce9e5a0675d6077019dcf4263f0735fca35cab8035ea38fef4e11",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:29",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-29.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a62ac272ac1187640e4e801706d995a8ed34811979dece2d80cdd47cc38e11a0",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:30",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-30.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "2ec5093fecf37105c5c113aaaf67d4592f3b1d7c0f15cb7e083583bd38a7c91b",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:31",
+      "status": "designed",
+      "path": "assets/icons/challenge-31.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "50879d7c502ef83210ae2576988e376b014f8a08b9407508b789b373233200bf",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:31",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-31.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3df82b3eddcb713bc628c23dff9672bd406fdae9ad05d259ec4f117573209733",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:32",
+      "status": "designed",
+      "path": "assets/icons/challenge-32.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3953de5b596f1dcf685a1dbaee7cefae8f39a4c08bce4210074ecaf9a80a2619",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:32",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-32.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "cb900db695080350f0523e0ba6131a7d368d5579c0975548a5ad3b0449121220",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:33",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-33.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a5b7ea440f2f7f93756b3671044e3159ae71869d889f25a06799e2a14db96046",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:34",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-34.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "03f990d8f529da545170b8669898792728e8b8d524e1f4b55687038568734d42",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:35",
+      "status": "designed",
+      "path": "assets/icons/challenge-35.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6ddfe52a71ff1ad4be94fc5fa58ad7c50da3da9bf2803c40c580575988dca145",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:35",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-35.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "8f89bbbb928d87e9d06de320c4835f06ee99468298a4cd815a9bf706c8008b1e",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:36",
+      "status": "designed",
+      "path": "assets/icons/challenge-36.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "dcb803a1cd9ef0e7366b8ba6353cdb46e05b0c8c8247071e71f1136998505cde",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:36",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-36.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "2780d3a177288fb4fe4a43af1c7637c41742189eaadf18c1b719274b0d4b77cd",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:37",
+      "status": "designed",
+      "path": "assets/icons/challenge-37.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "3a1dd56a7224139a83a2f52e3f2855d52b02d291bfee60436784079d4e6fabd4",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:37",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-37.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "97fca52a02d69eaa9a6893b761b6cb43b49181ba79353a7ad5ca260cad881a35",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:38",
+      "status": "designed",
+      "path": "assets/icons/challenge-38.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6ebd3981d917647a5cbf8286d0bc6638d334fc83ad23eb0150d06a3954975ed0",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:38",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-38.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "4ab3d63144dc426baa53ab7e3b77afba171d8370029c433d55de9995dace61a4",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:39",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-39.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "a8dbede96b34287d1840f274b68895be1eecf93cd533baad80aa75ffaf3fba11",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:40",
+      "status": "designed",
+      "path": "assets/icons/challenge-40.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "b58fa5b7622e352493a399979a9d5141fca46faa1fbef61a0edebebc13fe02db",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:40",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-40.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "5b7231cee795fe16820b719b53442b93558986909ce9f19d27d91e14eb7acc5c",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:41",
+      "status": "designed",
+      "path": "assets/icons/challenge-41.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "55af8fa44a656e9b2101916ed76604cbce7793817e84b786ec9e34db48b95b67",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:41",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-41.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "eb7fe403417377883847635a3ae57e5ec3277b2b6d462a7c9a44907b17ccbea4",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:42",
+      "status": "designed",
+      "path": "assets/icons/challenge-42.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6ec847215dbfcc8d8d001b8532f5cdd218933b8e247f5dc0a4dac135e0802b2d",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:42",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-42.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "9deead1e3f9ceda81d52707d214edbc5145aa25cf220c32e368660aa89868f8d",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:43",
+      "status": "designed",
+      "path": "assets/icons/challenge-43.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "0d4c9e1652428c032c0ced25ed917c65a002a972eba8fd8a4dff4cc983b16772",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:43",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-43.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "9f03eac4d092c9e1ef739a7c5ac7baef1cf04fde3b8443c026d88645048885bf",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:44",
+      "status": "designed",
+      "path": "assets/icons/challenge-44.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "43e127c1a23641cfc1c5823865b4555855e96811d7c442e31783fe118c5420d1",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:44",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-44.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "47dd996b09db1fa76f71a96e5e0ce8238ed790cddf594e424fdb4a1433888cf2",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge:45",
+      "status": "designed",
+      "path": "assets/icons/challenge-45.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "6a92eaa1d0162a85cf18d97dec2da94f9ccbe46720f37314b4b3b9f8dde03e1d",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "challenge-complete:45",
+      "status": "designed",
+      "path": "assets/icons/challenge-complete-45.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "f824a218022efbf8947c9493913c3fd9d50fb064d98ea0ae15e2d38ea8d4ce5e",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:dead-god-conditions",
+      "status": "designed",
+      "path": "assets/icons/feature-dead-god-conditions.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "007c106702415b41d778d25f06f53c263434a1077431b26a5c95f7021e4e0c26",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:dead-god-collection",
+      "status": "designed",
+      "path": "assets/icons/feature-dead-god-collection.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "f6dc0197b5aa79ebd4932fd9ba60597863b12550583d5b969f6a13ce34c3ea66",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
+      "nodeId": "feature:dead-god-challenges",
+      "status": "designed",
+      "path": "assets/icons/feature-dead-god-challenges.svg",
+      "dimensions": [
+        64,
+        64
+      ],
+      "sha256": "4a90894a06fcd0ba5b6d97055780a33d376aebee32d71185b84cbc62dd90f822",
+      "source": "tools/fetch_icons.py#designed_svg",
+      "imageKind": "original-vector-illustration",
+      "semanticNote": "Original schematic illustration, not a game sprite."
+    },
+    {
       "nodeId": "feature:dead-god",
       "status": "downloaded",
       "path": "assets/icons/feature-dead-god.png",
