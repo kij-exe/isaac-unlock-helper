@@ -2,5 +2,85 @@
   "feature:charged-key": {
     "achievementSpriteId": 333,
     "semanticNote": "Verified Charged Key unlock-notification artwork 333; an internal game Secret ID, not a verified Steam API achievement ID. Artwork is decorative and does not prove player progress."
+  },
+  "feature:cathedral": {
+    "spriteNodeId": "character:isaac",
+    "semanticNote": "The in-game Isaac character sprite represents the Cathedral boss route."
+  },
+  "feature:sheol": {
+    "spriteNodeId": "collectible:292",
+    "semanticNote": "The in-game Satanic Bible sprite represents the Sheol route."
+  },
+  "feature:chest": {
+    "spriteNodeId": "collectible:327",
+    "semanticNote": "The in-game Polaroid sprite represents the route to the Chest."
+  },
+  "feature:dark-room": {
+    "spriteNodeId": "collectible:328",
+    "semanticNote": "The in-game Negative sprite represents the route to the Dark Room."
+  },
+  "feature:void": {
+    "spriteNodeId": "feature:blue-womb",
+    "semanticNote": "The in-game Blue Womb unlock artwork represents the Hush route that opens access to The Void."
+  },
+  "feature:corpse": {
+    "spriteNodeId": "collectible:626",
+    "semanticNote": "The in-game Knife Piece 1 sprite represents the alternate route to the Corpse."
+  },
+  "feature:home": {
+    "spriteNodeId": "collectible:668",
+    "semanticNote": "The in-game Dad’s Note sprite represents the Ascent route to Home."
+  },
+  "feature:mega-satan": {
+    "spriteNodeId": "collectible:238",
+    "semanticNote": "The in-game Key Piece 1 sprite represents opening the Mega Satan door."
+  },
+  "feature:greed": {
+    "spriteNodeId": "collectible:501",
+    "semanticNote": "The in-game Greed’s Gullet sprite represents Greed Mode."
+  },
+  "feature:dead-god-conditions": {
+    "spriteNodeId": "feature:dead-god",
+    "semanticNote": "The in-game Dead God unlock artwork represents the full unlock checklist."
+  },
+  "feature:dead-god-collection": {
+    "spriteNodeId": "collectible:628",
+    "semanticNote": "The in-game Death Certificate sprite represents completing the collection."
+  },
+  "feature:dead-god-challenges": {
+    "spriteNodeId": "feature:dead-god",
+    "semanticNote": "The in-game Dead God unlock artwork represents the full challenge checklist."
+  },
+  "feature:afterbirth-pills": {
+    "spriteNodeId": "collectible:340",
+    "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
+  },
+  "feature:afterbirth-plus-pills": {
+    "spriteNodeId": "collectible:340",
+    "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
+  },
+  "feature:dice-rooms": {
+    "spriteNodeId": "consumable:49",
+    "semanticNote": "The in-game Dice Shard sprite represents Dice Rooms."
+  },
+  "feature:gold-key": {
+    "spriteNodeId": "trinket:159",
+    "semanticNote": "The in-game Gilded Key sprite represents the Gold Key."
+  },
+  "feature:golden-troll-bomb": {
+    "spriteNodeId": "feature:gold-bomb",
+    "semanticNote": "The in-game Gold Bomb unlock artwork represents Golden Troll Bombs."
+  },
+  "feature:rebirth-pills-a-l": {
+    "spriteNodeId": "collectible:340",
+    "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
+  },
+  "feature:rebirth-pills-p-z": {
+    "spriteNodeId": "collectible:340",
+    "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
+  },
+  "feature:repentance-pills": {
+    "spriteNodeId": "collectible:340",
+    "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
   }
 }

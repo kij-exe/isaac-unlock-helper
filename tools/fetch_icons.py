@@ -136,6 +136,9 @@ def main() -> None:
     previous = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
     existing = {row["nodeId"]: row for row in previous.get("icons", [])}
     overrides = json.loads((ROOT / "tools/icon-overrides.json").read_text())
+    reference_catalog = json.loads((ROOT / "data/catalog.json").read_text())
+    challenge_artwork = {str(challenge_id): challenge["achievement_id"]
+                         for challenge_id, challenge in reference_catalog["challenges"].items()}
     atlas_needed = any(node["id"].split(":", 1)[0] in ("trinket", "consumable") and
                        (args.refresh or not existing_valid(existing.get(node["id"]), args.output))
                        for node in nodes)
@@ -162,11 +165,34 @@ def main() -> None:
         result = {"nodeId": node_id}
         old = existing.get(node_id)
         valid_old = existing_valid(old, args.output)
+        override = overrides.get(node_id, {})
+        challenge_id = node.get("challenge", {}).get("id")
+        challenge_sprite_id = challenge_artwork.get(str(challenge_id)) if kind in ("challenge", "challenge-complete") else None
+        sprite_source_id = override.get("spriteNodeId")
         if valid_old and not args.refresh:
+            if sprite_source_id:
+                if old.get("sourceNodeId") == sprite_source_id:
+                    return old
+            elif challenge_sprite_id:
+                if old.get("imageKind") == "game-unlock-notification" and old.get("artworkId") == challenge_sprite_id:
+                    return old
+            elif override.get("achievementSpriteId"):
+                if old.get("imageKind") == "game-unlock-notification" and old.get("artworkId") == override["achievementSpriteId"]:
+                    return old
             # Authored SVGs also follow current labels and illustration code.
-            if old["status"] != "designed" or sha256(designed_svg(node).encode("utf-8")).hexdigest() == old["sha256"]:
+            elif old["status"] != "designed" or sha256(designed_svg(node).encode("utf-8")).hexdigest() == old["sha256"]:
                 return old
         try:
+            if sprite_source_id:
+                source = existing.get(sprite_source_id)
+                if not existing_valid(source, args.output):
+                    raise ValueError(f"Source game sprite is missing or invalid: {sprite_source_id}")
+                return {"nodeId": node_id, "status": "downloaded", "path": source["path"],
+                        "dimensions": source["dimensions"], "sha256": source["sha256"],
+                        "source": source["source"], "sourceSha256": source["sourceSha256"],
+                        "imageKind": source.get("imageKind", "game-sprite"),
+                        "sourceNodeId": sprite_source_id,
+                        "semanticNote": override.get("semanticNote", "Reused official game artwork from a related catalog entry.")}
             if kind == "collectible" and item_id is not None:
                 url = ARDOR + f"/gfx/items/{int(item_id):03}.png"
                 raw = fetch(url)
@@ -194,16 +220,15 @@ def main() -> None:
                 sprite = decode_image(raw)
                 filename = f"character-{node_id.split(':', 1)[1]}.png"
                 result.update(source=url, sourceSha256=sha256(raw).hexdigest())
-            elif node.get("secretId") is not None or overrides.get(node_id, {}).get("achievementSpriteId"):
-                override = overrides.get(node_id, {})
-                sprite_id = override.get("achievementSpriteId", node.get("secretId"))
+            elif challenge_sprite_id is not None or node.get("secretId") is not None or override.get("achievementSpriteId"):
+                sprite_id = challenge_sprite_id or override.get("achievementSpriteId", node.get("secretId"))
                 url = ARDOR + f"/gfx/achievements/{int(sprite_id)}.png"
                 raw = fetch(url)
                 sprite = decode_image(raw)
-                filename = f"feature-{node_id.split(':', 1)[1]}.png"
+                filename = f"{kind}-{node_id.split(':', 1)[1]}.png"
                 result.update(source=url, sourceSha256=sha256(raw).hexdigest(),
                               imageKind="game-unlock-notification", artworkId=sprite_id,
-                              semanticNote=override.get("semanticNote", "Artwork of the game's unlock notification; decorative only, never evidence of player achievements."))
+                              semanticNote=override.get("semanticNote", f"Artwork for the in-game unlock notification associated with challenge #{challenge_id}; decorative only, never evidence of player progress." if challenge_sprite_id is not None else "Artwork of the game's unlock notification; decorative only, never evidence of player achievements."))
             else:
                 filename = node_id.replace(":", "-") + ".svg"
                 raw = designed_svg(node).encode("utf-8")

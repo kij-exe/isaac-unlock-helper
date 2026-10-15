@@ -36,55 +36,63 @@
     },
     {
       "nodeId": "feature:cathedral",
-      "status": "designed",
-      "path": "assets/icons/feature-cathedral.svg",
+      "status": "downloaded",
+      "path": "assets/icons/character-isaac.png",
       "dimensions": [
-        64,
-        64
+        100,
+        110
       ],
-      "sha256": "3d2e17d536269a4d8a2d3d29899b57e249a7857de121bfc7cd2fafe7494edc7a",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "0f85c4f3b1a1dfafeaee472e621cbfd2c481d5205f8af1184c9bae04776c78fd",
+      "source": "https://isaac.ardor.guru/gfx/characters/Isaac.png",
+      "sourceSha256": "93610d9a6642f885b7f1480bd1d96ea20b37fa1e906e8f34f9742c56b47258a7",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "character:isaac",
+      "semanticNote": "The in-game Isaac character sprite represents the Cathedral boss route."
     },
     {
       "nodeId": "feature:sheol",
-      "status": "designed",
-      "path": "assets/icons/feature-sheol.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-292.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "90e313337255aed5d6a8cb2a28f39ec7ed423cee84f204ffe4c2ced62603b501",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "ebcdf7eb380dbcccc1b68dadfebc6b06089640b2b758cb7cd36c237cc32c723e",
+      "source": "https://isaac.ardor.guru/gfx/items/292.png",
+      "sourceSha256": "6b907eaff2923c4f25515c9af383361b633e81ac3fda34420376e5ba1b2eafeb",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:292",
+      "semanticNote": "The in-game Satanic Bible sprite represents the Sheol route."
     },
     {
       "nodeId": "feature:chest",
-      "status": "designed",
-      "path": "assets/icons/feature-chest.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-327.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "74ab6bdb21fd1781aa6d0a5206552e4595fc7fc41f60b26fde776cb1a66d5689",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "0087af7bbbe3a43cef9502e5fab091f6a7493af4c3ba788349f6eebd1f5bcdf6",
+      "source": "https://isaac.ardor.guru/gfx/items/327.png",
+      "sourceSha256": "41baf04883b1c58d6daf2a8abcf42ed4eb82decabff75a7d5f76de5b60b8adfc",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:327",
+      "semanticNote": "The in-game Polaroid sprite represents the route to the Chest."
     },
     {
       "nodeId": "feature:dark-room",
-      "status": "designed",
-      "path": "assets/icons/feature-dark-room.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-328.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "bd7b75510f9fbd6e1dfff4ed5753bbdb72036349b4c2b62d9c581cd49fa1b5ad",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "77bf17105437ff2410dfd5ea6976f6460311762081961d9ba7f03bb60ed1e959",
+      "source": "https://isaac.ardor.guru/gfx/items/328.png",
+      "sourceSha256": "337db4a0f2cce20599783454659d6533dda3757f0f12715cb4482cffbb64158a",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:328",
+      "semanticNote": "The in-game Negative sprite represents the route to the Dark Room."
     },
     {
       "nodeId": "feature:blue-womb",
@@ -103,16 +111,18 @@
     },
     {
       "nodeId": "feature:void",
-      "status": "designed",
-      "path": "assets/icons/feature-void.svg",
+      "status": "downloaded",
+      "path": "assets/icons/feature-blue-womb.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "03d3ad2daa508036f6783afc1c171686087a6722294449d75fce20a10ee91b57",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "a2418c3b0a6a3b9caec5c1e906fa4a5081cd4ce34e4b99f5d810d2de2514bebc",
+      "source": "https://isaac.ardor.guru/gfx/achievements/234.png",
+      "sourceSha256": "2e8cb90f79d8c4ad7c28a60dcdb8341d0f9b3c384bc2d8ef39804cef4077f057",
+      "imageKind": "game-unlock-notification",
+      "sourceNodeId": "feature:blue-womb",
+      "semanticNote": "The in-game Blue Womb unlock artwork represents the Hush route that opens access to The Void."
     },
     {
       "nodeId": "feature:downpour",
@@ -131,16 +141,18 @@
     },
     {
       "nodeId": "feature:corpse",
-      "status": "designed",
-      "path": "assets/icons/feature-corpse.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-626.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "df9232cec633a27015878bf9641326f4945f104f508e6dcaaa9f85eb7840c320",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "3681fd8b21bee7af37a06211d4b00bea52ccc3f761b234bc1a4919f4fa3da43d",
+      "source": "https://isaac.ardor.guru/gfx/items/626.png",
+      "sourceSha256": "f1d9fb58dfc220fff71eed86c184c4529fee12a3eecb02a496b720d6dc0732a4",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:626",
+      "semanticNote": "The in-game Knife Piece 1 sprite represents the alternate route to the Corpse."
     },
     {
       "nodeId": "feature:strange-door",
@@ -159,42 +171,48 @@
     },
     {
       "nodeId": "feature:home",
-      "status": "designed",
-      "path": "assets/icons/feature-home.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-668.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "7f9057898ea2ad44d2280bf890b3cd15ea9dad672ce729b739b2d93e56e88a0e",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "23b26887867b8b358890da6db632571aa1169422832b1ec285106a6bfd4102ef",
+      "source": "https://isaac.ardor.guru/gfx/items/668.png",
+      "sourceSha256": "4da882073a0eb22e6114a9470c22f415dfbc5601daa14df9ed3424407d014e86",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:668",
+      "semanticNote": "The in-game Dad’s Note sprite represents the Ascent route to Home."
     },
     {
       "nodeId": "feature:mega-satan",
-      "status": "designed",
-      "path": "assets/icons/feature-mega-satan.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-238.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "a303776de988a808d46242de6800f8dfb6a27e2beb2661eb7ec77451c61b401d",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "93072e34e9f56f9890c4a1ea4d8e122346022f80a209eeb888b709bdaa4021a6",
+      "source": "https://isaac.ardor.guru/gfx/items/238.png",
+      "sourceSha256": "40eea082da1bf3ce495a8df27edbdafd1a82c78b58da48ca7696e11583b6ca4f",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:238",
+      "semanticNote": "The in-game Key Piece 1 sprite represents opening the Mega Satan door."
     },
     {
       "nodeId": "feature:greed",
-      "status": "designed",
-      "path": "assets/icons/feature-greed.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-501.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "b9911f660dd1f0a359e3655c0af0f0608d7b22b6860e9cfe1584e54632855027",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "2f5ac476cb7a70e72024cb5c65f01da650eef635dba49e531f6285133e5afd69",
+      "source": "https://isaac.ardor.guru/gfx/items/501.png",
+      "sourceSha256": "72035339352dcae61d94c1645a5eb2549686776a55b932559bef10235f85bb34",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:501",
+      "semanticNote": "The in-game Greed’s Gullet sprite represents Greed Mode."
     },
     {
       "nodeId": "feature:greedier",
@@ -2392,328 +2410,378 @@
     },
     {
       "nodeId": "challenge:2",
-      "status": "designed",
-      "path": "assets/icons/challenge-2.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/90.png",
+      "sourceSha256": "622db5d4af0049018a1b18f0befecc448eb36e912da308737726b9fc85238b16",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 90,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #2; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-2.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "3c91562aa0921afc1b4a7dd037387970db6de370607d587a0ecac8f2b9884869",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "28b4c01e66af92c87c6898f0125622f1fd527e7aef297b6907071884b953f134"
     },
     {
       "nodeId": "challenge:3",
-      "status": "designed",
-      "path": "assets/icons/challenge-3.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/91.png",
+      "sourceSha256": "db889de489bd6549b3e72c4c42f4fa0ec5c770d3493c8cfadeedd4fd432664ca",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 91,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #3; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-3.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "0fd63496ae06989764b7567705c6eca2f525a5391ac1eb79a3321f8361e3471c",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "2f59bcfd5deb903c64f9bcfda2bd249b7ed37a6c6409839b4d48753327096e38"
     },
     {
       "nodeId": "challenge:4",
-      "status": "designed",
-      "path": "assets/icons/challenge-4.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/92.png",
+      "sourceSha256": "c844e6669c72528838eeb15f581b080223c24b5e134b4a3a8b0b34597252396e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 92,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #4; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-4.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "5e9df2b5c0c61b8762c81b1f0509a6ba68170b2f29ef4b08abf53fcafde61ad7",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "e1709f722ce5c02cc99f8423239a6ed714ef4a68356bb07ba2f3694fad349bdf"
     },
     {
       "nodeId": "challenge:5",
-      "status": "designed",
-      "path": "assets/icons/challenge-5.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/93.png",
+      "sourceSha256": "f7e5f82ed6ef390b3a7afc936389b63b9ba9f5e5044af368f202ef8d55bc4d58",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 93,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #5; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-5.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "908b7ad00ccdadcadab443d7b2d800c8d163b0df1cda3e6e69ae763a47805278",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "a56848d0e6d4dbaff8d442e71cd3a4ca21582dc503e19621007bf48c30256eb6"
     },
     {
       "nodeId": "challenge:6",
-      "status": "designed",
-      "path": "assets/icons/challenge-6.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/94.png",
+      "sourceSha256": "f44e5bbab288ce16868d697d87fd4a7218c6ad9cdfb7d177f9b4a2165ed343dc",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 94,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #6; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-6.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "57b3027fad104f9194be27fa77b9ba30e6ed32e699f7e1b67b54fe7209add40e",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "1000d79120a1ba8e04dd135ac3b24602ecf51b5d7a199a6dbe8d57bcd69a8f3e"
     },
     {
       "nodeId": "challenge:7",
-      "status": "designed",
-      "path": "assets/icons/challenge-7.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/120.png",
+      "sourceSha256": "2ea390213de4370be72997fbad217a448a5c21256ec363da0f83930988ef5145",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 120,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #7; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-7.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "d31ffde3ecc59d52225c84f704dc1f8a438ee22b2cdb7339fcced8e50db37ae7",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "39211c6f9408c65cb503658b89ecb545f75c84ccf7cde8105ca7ae0e39e76f44"
     },
     {
       "nodeId": "challenge:8",
-      "status": "designed",
-      "path": "assets/icons/challenge-8.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/96.png",
+      "sourceSha256": "d7ef38fa7e94eaa02f24d31e610d143673db8d63a3bc74565b8bb31144f2360e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 96,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #8; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-8.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "7decefb6931cacfc35f52ed4e569481b51b85c058db47a3870f59e10bd4c1699",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "c40fcb34c3a9d648d358e88b185b423117860bce6a269f96f5547bd978aba31d"
     },
     {
       "nodeId": "challenge:9",
-      "status": "designed",
-      "path": "assets/icons/challenge-9.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/97.png",
+      "sourceSha256": "a075518116448b975ef3169747df3a74fdf4e3becbe447a6153d313b37cca4a8",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 97,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #9; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-9.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "6391b7192ecaf73df7ab7394a9112c33ff3c19c4a425a824be7ba8529870b53f",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "71c87b683aac545748f1f27ac16a7d5cb5582f394a2fe3a03af60fdea3393656"
     },
     {
       "nodeId": "challenge:10",
-      "status": "designed",
-      "path": "assets/icons/challenge-10.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/98.png",
+      "sourceSha256": "e566f41d1a3b1c54f8b1ef560752cb33eff129288ed39fc6355abe8cc42ddaa3",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 98,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #10; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-10.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "63370d2f650c57fa93e7c456c2000c6a3e5b1cfdd33cac17b70e32e8028cd9d6",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "9879f811c75ca699c8099da925e399da0b2db3fe4fed9e930f7427ee97b447e2"
     },
     {
       "nodeId": "challenge:11",
-      "status": "designed",
-      "path": "assets/icons/challenge-11.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/99.png",
+      "sourceSha256": "6b42fec6299254b297554e595d8f225dcd149f1a13e48151d457d650e5f2b885",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 99,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #11; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-11.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "1b928db0c4ce619a5d76e3e8173d2395329eb6fa68d62bf66573830081fe6b83",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "5eb0727fb91b9a883ee4037f1997899580da63773be9583c6f72b97613eb5d51"
     },
     {
       "nodeId": "challenge:12",
-      "status": "designed",
-      "path": "assets/icons/challenge-12.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/100.png",
+      "sourceSha256": "7eac880df1e0234f85c7773f90ae2c79b0950289035c6ae960011313b245e3da",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 100,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #12; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-12.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "4a5a215ca0567849bb7dd569611b495e45e309ae2d6994d8a8a8fb67788c8cad",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "6c9d9212668f577b22fe9590e2b30012418868c1339ffbc31a2bc69a8af8bca8"
     },
     {
       "nodeId": "challenge:13",
-      "status": "designed",
-      "path": "assets/icons/challenge-13.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/60.png",
+      "sourceSha256": "6b5763f72944f9631f067ff9036fb4e116e6bae359db677cd576556eb342f02c",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 60,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #13; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-13.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "f5f7c7415172fe4c76ba99c87ef2a2cce3b0527797aa5c849df2c0d84bf9b370",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "bc65e910ad3b20b71c90f037f19827ed6fbeb8635c3d1f521279c4a590ea68ad"
     },
     {
       "nodeId": "challenge:14",
-      "status": "designed",
-      "path": "assets/icons/challenge-14.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/63.png",
+      "sourceSha256": "035ce9d6fbeb64700207834e35310f5e696c6ac02416aeb720e1c58655bd1fc1",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 63,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #14; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-14.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "a6f094fd334421ed0093ff221a5c99ed2d9d3c5ca6ee898fe0b464e1389a92b8",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "3dae8d2f6ef70078afac177c6d44d22175b3a07c40cd87db1890a7a11db45456"
     },
     {
       "nodeId": "challenge:18",
-      "status": "designed",
-      "path": "assets/icons/challenge-18.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/104.png",
+      "sourceSha256": "9b59e44d9d07e4cc819736a3dbba8577613f53e8a2a814065831b3bb6a580624",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 104,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #18; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-18.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "e23ea8559ad4f11dda45cb633bf8e318cce8dd08aef257a19720585a5e0e92b7",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "65ec0aef36b088c10ccc9c59c459f9c2b13cb6af77f375fc3ee1fc7041f764d7"
     },
     {
       "nodeId": "challenge:19",
-      "status": "designed",
-      "path": "assets/icons/challenge-19.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/62.png",
+      "sourceSha256": "97d05dde49f4810d56ec42eb84b97fee2ab5bd014717e323ef69550ec6e6e3c1",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 62,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #19; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-19.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "4fe7f0f2e4dad8a57be6ed787253e31037bdd23abd61466ce0801c2e684f22fe",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "7a031a33a84bd90aef76f69bc453223e60e86079dd61aa6605139b1e8b6021e6"
     },
     {
       "nodeId": "challenge:20",
-      "status": "designed",
-      "path": "assets/icons/challenge-20.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/95.png",
+      "sourceSha256": "3e52f1d61266775b348c72b1357091cec488be3d23786f4df370520ff4180440",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 95,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #20; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-20.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "100d0cc12911f956ac58960e3a231de238256d0e73cc205da83c2b1041f7bdc1",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "53b6cc2b7bdc5c74a305aa6322ef87f353698f7b7ebad882794aee67ca24f861"
     },
     {
       "nodeId": "challenge:21",
-      "status": "designed",
-      "path": "assets/icons/challenge-21.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/224.png",
+      "sourceSha256": "3143b2b25d2dbe7af545d0a93e18525d5e9ad2b54680a6bcd61d83d308e37867",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 224,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #21; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-21.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "b78831bf831b5d225ef2d7841baac5c7f51dda995e2b197fe4d1e0422f51843d",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "37952e4d3916501a9edcfdf791ab1cff47fbd7ac35d4b756a1c6559606214404"
     },
     {
       "nodeId": "challenge:22",
-      "status": "designed",
-      "path": "assets/icons/challenge-22.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/225.png",
+      "sourceSha256": "2dd5e6aca48b18e8a632f0f350458123fa2bad8b8aa4e582c91397cf444409b5",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 225,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #22; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-22.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "4b5a5e9260a69aaaaf3ba44f47edee83f9a668bb5cda93684b1253534312e133",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "d80fb2bc86bbc07ba569302bbd18e24028eda64733341368deb704f6108edeb7"
     },
     {
       "nodeId": "challenge:23",
-      "status": "designed",
-      "path": "assets/icons/challenge-23.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/226.png",
+      "sourceSha256": "f5eaf1b48056a94819cb0a5755870e02401b07195ad4792fcc99d6c2df4597a9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 226,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #23; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-23.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "3d77b037c50b302a5f879cc7e9efce4a58f5504872281a32ec033aa6cde696ed",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "70c83e8d8a7fce13d9b23a8c0d20af717d7c2504bf9d86b66d380f4fa21db046"
     },
     {
       "nodeId": "challenge:25",
-      "status": "designed",
-      "path": "assets/icons/challenge-25.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/228.png",
+      "sourceSha256": "93c5d31b98e48e3a26d932c21aaba6e32b1f932cbfb91731491771130ad6f81b",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 228,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #25; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-25.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "e3c16df315bf6fd8a98eda76671d4ae89960dc6f1f0316e99a0088692058b72c",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "a711582fa31c9f59f4c6175ce788beba122f3d2dc701f8369c81a439e7c8fd32"
     },
     {
       "nodeId": "challenge:29",
-      "status": "designed",
-      "path": "assets/icons/challenge-29.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/232.png",
+      "sourceSha256": "90dea0d355bc045fa232081b2798f33c0205460f549f94f2aa0ce9fe6ecb8544",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 232,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #29; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-29.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "bd23abb893dc12c9bb2d1e95a19eed365f8f1d47b2ddab24d2effe93d61ea25b",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f813a086f9acae903cfdc3bfdf035f1745c4d4f3f24dc7d132f7e4b5a1279ae3"
     },
     {
       "nodeId": "challenge:30",
-      "status": "designed",
-      "path": "assets/icons/challenge-30.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/233.png",
+      "sourceSha256": "98fe7cbcf94c1821d9b9de49dd3d711c3ec0b8acabbd048084ff4571832b31a9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 233,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #30; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-30.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "37ded0a07656977242b06920bd290d48d5a718dc892b8bb9ac5a04a4bae8cc22",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "90084b3462a396da18b810d9ac08a958ff153abf3528c62bfa95503a41c985ab"
     },
     {
       "nodeId": "challenge:33",
-      "status": "designed",
-      "path": "assets/icons/challenge-33.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/333.png",
+      "sourceSha256": "47030ec569ac7c1335fc4d1726183a86666860996ddc8df4c0a8312cb839d285",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 333,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #33; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-33.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "f576f67f6c971f97a0a5b4e4c1fedee38c08a403d5901e0614022c5a9bd147d7",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "2443a20c11beeb61baf3bda22c3a88245a6cd4fedafde44c23a9a48c6f05a20a"
     },
     {
       "nodeId": "challenge:34",
-      "status": "designed",
-      "path": "assets/icons/challenge-34.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/334.png",
+      "sourceSha256": "a00bf445201310dcd261815874cd7072a5677a7334d14ac9192c2362b1397bef",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 334,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #34; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-34.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "cde3d9314e0e440717b5a201733d78eef739112b69c244bf5eca3d7b2e9b4446",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "087d2eee8b7c87051b8b6082dedeb46013e03944612ed760632c24088c797383"
     },
     {
       "nodeId": "challenge:39",
-      "status": "designed",
-      "path": "assets/icons/challenge-39.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/520.png",
+      "sourceSha256": "97b78faee06ed108d1e27d665e66190eb9780654fc5e99ea0b542b6feacfe709",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 520,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #39; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-39.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "ae77b39678e4722eebc94b6383b0d617bba3fa209df5d443234255a73a2e1147",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "b4b69124ce885923862d62acb6d8a158daeb7a95a116f279bb62b109ef7e159d"
     },
     {
       "nodeId": "collectible:172",
@@ -3406,887 +3474,1023 @@
     },
     {
       "nodeId": "challenge:1",
-      "status": "designed",
-      "path": "assets/icons/challenge-1.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/89.png",
+      "sourceSha256": "9d0e9fdc4c6881d0243e49313e0038e991e37578ef488c06e000ec63217d6b03",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 89,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #1; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-1.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "2bc7909de30d7ce6396fb15b90b2ce6ce1f1a935325c55fb4eecb0e47729f9e7",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "232975508948b245a73b1087b61cfdb5a31c7bdc5e9f5a5f5db609e0afb1b3e8"
     },
     {
       "nodeId": "challenge-complete:1",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-1.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/89.png",
+      "sourceSha256": "9d0e9fdc4c6881d0243e49313e0038e991e37578ef488c06e000ec63217d6b03",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 89,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #1; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-1.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "203f24b2ab91e0921b4884ff0c48aeb6a60489ac772d2f15066525aed82118c6",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "232975508948b245a73b1087b61cfdb5a31c7bdc5e9f5a5f5db609e0afb1b3e8"
     },
     {
       "nodeId": "challenge-complete:2",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-2.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/90.png",
+      "sourceSha256": "622db5d4af0049018a1b18f0befecc448eb36e912da308737726b9fc85238b16",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 90,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #2; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-2.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "8b82be641872ca39ed201d45ea03d15c0d64b0103141f08a3d7566e5fa1e7b79",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "28b4c01e66af92c87c6898f0125622f1fd527e7aef297b6907071884b953f134"
     },
     {
       "nodeId": "challenge-complete:3",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-3.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/91.png",
+      "sourceSha256": "db889de489bd6549b3e72c4c42f4fa0ec5c770d3493c8cfadeedd4fd432664ca",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 91,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #3; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-3.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "9f6d7f70afd859d4c8c5bf25f9d07bb04a461b7c595e2c1119651b130b17b868",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "2f59bcfd5deb903c64f9bcfda2bd249b7ed37a6c6409839b4d48753327096e38"
     },
     {
       "nodeId": "challenge-complete:4",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-4.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/92.png",
+      "sourceSha256": "c844e6669c72528838eeb15f581b080223c24b5e134b4a3a8b0b34597252396e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 92,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #4; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-4.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "ae3c8a41fb2aace641ae152717239d1802a090e6ba9c2696a76dfbe7cd834831",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "e1709f722ce5c02cc99f8423239a6ed714ef4a68356bb07ba2f3694fad349bdf"
     },
     {
       "nodeId": "challenge-complete:5",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-5.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/93.png",
+      "sourceSha256": "f7e5f82ed6ef390b3a7afc936389b63b9ba9f5e5044af368f202ef8d55bc4d58",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 93,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #5; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-5.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "c9f0c946f8615a7fdb035aab8676aba0ab2b6fa3b1772163d9591da87f0860f0",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "a56848d0e6d4dbaff8d442e71cd3a4ca21582dc503e19621007bf48c30256eb6"
     },
     {
       "nodeId": "challenge-complete:6",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-6.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/94.png",
+      "sourceSha256": "f44e5bbab288ce16868d697d87fd4a7218c6ad9cdfb7d177f9b4a2165ed343dc",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 94,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #6; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-6.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "127193858dc18fb68d299864f779c5a890a2b94aed2b28b0184be44c259290a3",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "1000d79120a1ba8e04dd135ac3b24602ecf51b5d7a199a6dbe8d57bcd69a8f3e"
     },
     {
       "nodeId": "challenge-complete:7",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-7.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/120.png",
+      "sourceSha256": "2ea390213de4370be72997fbad217a448a5c21256ec363da0f83930988ef5145",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 120,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #7; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-7.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "fc10caea17b9422d48ec7e0974957cbbd13be0229750f83396c5f7014b323a66",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "39211c6f9408c65cb503658b89ecb545f75c84ccf7cde8105ca7ae0e39e76f44"
     },
     {
       "nodeId": "challenge-complete:8",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-8.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/96.png",
+      "sourceSha256": "d7ef38fa7e94eaa02f24d31e610d143673db8d63a3bc74565b8bb31144f2360e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 96,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #8; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-8.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "e1d9f07054c6dc526ec82c5db80381713da0352d1bcff3259f4b540cb7ae3aa5",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "c40fcb34c3a9d648d358e88b185b423117860bce6a269f96f5547bd978aba31d"
     },
     {
       "nodeId": "challenge-complete:9",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-9.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/97.png",
+      "sourceSha256": "a075518116448b975ef3169747df3a74fdf4e3becbe447a6153d313b37cca4a8",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 97,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #9; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-9.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "f73690677c06edf61bccf7cc13479f474ad399b8a0c1d431dc082efa6dd4bc89",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "71c87b683aac545748f1f27ac16a7d5cb5582f394a2fe3a03af60fdea3393656"
     },
     {
       "nodeId": "challenge-complete:10",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-10.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/98.png",
+      "sourceSha256": "e566f41d1a3b1c54f8b1ef560752cb33eff129288ed39fc6355abe8cc42ddaa3",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 98,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #10; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-10.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "c6474608bda5a794909a095acb3ec7b620e7e787a1eddf8521d4b42b4455b7e3",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "9879f811c75ca699c8099da925e399da0b2db3fe4fed9e930f7427ee97b447e2"
     },
     {
       "nodeId": "challenge-complete:11",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-11.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/99.png",
+      "sourceSha256": "6b42fec6299254b297554e595d8f225dcd149f1a13e48151d457d650e5f2b885",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 99,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #11; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-11.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "c8dd101b6e634401b76293d15c44dcc9ff4dddc91f41c8134298f617dac2a1d0",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "5eb0727fb91b9a883ee4037f1997899580da63773be9583c6f72b97613eb5d51"
     },
     {
       "nodeId": "challenge-complete:12",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-12.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/100.png",
+      "sourceSha256": "7eac880df1e0234f85c7773f90ae2c79b0950289035c6ae960011313b245e3da",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 100,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #12; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-12.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "c885df58f332a0be8a06f0e30bbb6b704b64e81f0fbd212698c6ce230d563bce",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "6c9d9212668f577b22fe9590e2b30012418868c1339ffbc31a2bc69a8af8bca8"
     },
     {
       "nodeId": "challenge-complete:13",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-13.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/60.png",
+      "sourceSha256": "6b5763f72944f9631f067ff9036fb4e116e6bae359db677cd576556eb342f02c",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 60,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #13; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-13.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "f84801fcb6282e1bb0bc95923e3e6d48a90d658e4520bc18019511128034d844",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "bc65e910ad3b20b71c90f037f19827ed6fbeb8635c3d1f521279c4a590ea68ad"
     },
     {
       "nodeId": "challenge-complete:14",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-14.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/63.png",
+      "sourceSha256": "035ce9d6fbeb64700207834e35310f5e696c6ac02416aeb720e1c58655bd1fc1",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 63,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #14; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-14.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "04cfef26ec737de29eb0ac8cc84a0badd15afb39658b1cce5b82cec4d5dc6809",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "3dae8d2f6ef70078afac177c6d44d22175b3a07c40cd87db1890a7a11db45456"
     },
     {
       "nodeId": "challenge:15",
-      "status": "designed",
-      "path": "assets/icons/challenge-15.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/101.png",
+      "sourceSha256": "96130a4dea69245bf1681879cfca57571d0ea759d4c06ea2550d4ff3300a3228",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 101,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #15; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-15.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "f6451aedd5ace6e53182ec645ce3ff3433023ec5342e41c082462626b6732b34",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "b6bc9b9c6e3fc13e11ae4b13c86ef7fa308fe0baf49e6f50297af2ae8591f614"
     },
     {
       "nodeId": "challenge-complete:15",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-15.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/101.png",
+      "sourceSha256": "96130a4dea69245bf1681879cfca57571d0ea759d4c06ea2550d4ff3300a3228",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 101,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #15; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-15.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "40bb683ed69c5576f0d957297e0ad0be731a924fdd458c291e888eea60bab297",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "b6bc9b9c6e3fc13e11ae4b13c86ef7fa308fe0baf49e6f50297af2ae8591f614"
     },
     {
       "nodeId": "challenge:16",
-      "status": "designed",
-      "path": "assets/icons/challenge-16.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/102.png",
+      "sourceSha256": "a8b4f2a0f9710a86621ea2f10360d39e412876ae9a3fde7a0a0e577137b72e91",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 102,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #16; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-16.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "c5f684a92b5c58c4d6ce4f7d6d3edfe02657e3e26d483f301a3adecc786720ef",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "6d843b623a74adbb2e615a658e3eec8646f0f848fbe35467cf029b739926ac68"
     },
     {
       "nodeId": "challenge-complete:16",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-16.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/102.png",
+      "sourceSha256": "a8b4f2a0f9710a86621ea2f10360d39e412876ae9a3fde7a0a0e577137b72e91",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 102,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #16; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-16.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "142e4db3a8263ef6459dbdab4673201529f2ce24c5ade319dc9c4c91208d389b",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "6d843b623a74adbb2e615a658e3eec8646f0f848fbe35467cf029b739926ac68"
     },
     {
       "nodeId": "challenge:17",
-      "status": "designed",
-      "path": "assets/icons/challenge-17.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/103.png",
+      "sourceSha256": "7ee2c6aeb846b52826926a4c2e485b7bddd8a827d83129028296443a45a0e1ed",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 103,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #17; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-17.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "564cfaff2b59a3636e870b7810830995cb0d30f757d461b17aca2a620e0dc859",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f8bbeb4ae7dc2fb11c047940e81929282f997fc26430be5bd5caeab06a2368ef"
     },
     {
       "nodeId": "challenge-complete:17",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-17.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/103.png",
+      "sourceSha256": "7ee2c6aeb846b52826926a4c2e485b7bddd8a827d83129028296443a45a0e1ed",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 103,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #17; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-17.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "829a702ef8820465f71565878abd81307c8c37b86de3653acae495777bb6ae48",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f8bbeb4ae7dc2fb11c047940e81929282f997fc26430be5bd5caeab06a2368ef"
     },
     {
       "nodeId": "challenge-complete:18",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-18.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/104.png",
+      "sourceSha256": "9b59e44d9d07e4cc819736a3dbba8577613f53e8a2a814065831b3bb6a580624",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 104,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #18; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-18.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "17991cacced101d7c897214623bbdd5dfeb5e35b5d383894ae58aee43777fca9",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "65ec0aef36b088c10ccc9c59c459f9c2b13cb6af77f375fc3ee1fc7041f764d7"
     },
     {
       "nodeId": "challenge-complete:19",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-19.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/62.png",
+      "sourceSha256": "97d05dde49f4810d56ec42eb84b97fee2ab5bd014717e323ef69550ec6e6e3c1",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 62,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #19; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-19.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "7e2b92186ebe52fb9b72b58bf1e46d2869c10da67f4344dfb25335ff889f5bcf",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "7a031a33a84bd90aef76f69bc453223e60e86079dd61aa6605139b1e8b6021e6"
     },
     {
       "nodeId": "challenge-complete:20",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-20.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/95.png",
+      "sourceSha256": "3e52f1d61266775b348c72b1357091cec488be3d23786f4df370520ff4180440",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 95,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #20; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-20.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "5a4c92a39dd9a33bbd77b52081bc1b8d7fdbcaf4fa1d846c393b1a3d0c64eb28",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "53b6cc2b7bdc5c74a305aa6322ef87f353698f7b7ebad882794aee67ca24f861"
     },
     {
       "nodeId": "challenge-complete:21",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-21.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/224.png",
+      "sourceSha256": "3143b2b25d2dbe7af545d0a93e18525d5e9ad2b54680a6bcd61d83d308e37867",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 224,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #21; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-21.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "1d7e8b95b6e6ec55c88f7a7eaddceea20ab456bd52de4c814cbe88baa6617ea3",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "37952e4d3916501a9edcfdf791ab1cff47fbd7ac35d4b756a1c6559606214404"
     },
     {
       "nodeId": "challenge-complete:22",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-22.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/225.png",
+      "sourceSha256": "2dd5e6aca48b18e8a632f0f350458123fa2bad8b8aa4e582c91397cf444409b5",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 225,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #22; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-22.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "d9eebf27e6fa4f3a78fb6799e572df0966c8d173ec5e4c599b588904a3439bd6",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "d80fb2bc86bbc07ba569302bbd18e24028eda64733341368deb704f6108edeb7"
     },
     {
       "nodeId": "challenge-complete:23",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-23.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/226.png",
+      "sourceSha256": "f5eaf1b48056a94819cb0a5755870e02401b07195ad4792fcc99d6c2df4597a9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 226,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #23; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-23.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "ee7dd438a569a17a638800a386d072519f442d9672a5732facd05f199d8c51cb",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "70c83e8d8a7fce13d9b23a8c0d20af717d7c2504bf9d86b66d380f4fa21db046"
     },
     {
       "nodeId": "challenge:24",
-      "status": "designed",
-      "path": "assets/icons/challenge-24.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/227.png",
+      "sourceSha256": "70db784508819a030592110e6917671642cae918ade9dc0337fded2923172717",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 227,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #24; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-24.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "04fc84f0176194ad5c3f44f7b1e4a010ae5ff4c0d17fcb1f5195de247ad8837e",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "dacd2e40cfa50cf5753242ba57eb1aea2f7d6322546a43cb8cc256bb300f091f"
     },
     {
       "nodeId": "challenge-complete:24",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-24.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/227.png",
+      "sourceSha256": "70db784508819a030592110e6917671642cae918ade9dc0337fded2923172717",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 227,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #24; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-24.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "be80b925bcb51dc16677ebb9a4170cf1bbd4bcf77d68e50701337f605150a195",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "dacd2e40cfa50cf5753242ba57eb1aea2f7d6322546a43cb8cc256bb300f091f"
     },
     {
       "nodeId": "challenge-complete:25",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-25.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/228.png",
+      "sourceSha256": "93c5d31b98e48e3a26d932c21aaba6e32b1f932cbfb91731491771130ad6f81b",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 228,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #25; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-25.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "0c65ff1ca079ca5e1adad6792f57a65f804eb202a214d5183323834b25641e3c",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "a711582fa31c9f59f4c6175ce788beba122f3d2dc701f8369c81a439e7c8fd32"
     },
     {
       "nodeId": "challenge:26",
-      "status": "designed",
-      "path": "assets/icons/challenge-26.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/229.png",
+      "sourceSha256": "fdc3c67cb8c9abbea9624907c34a83b82d7e3af907e17489f329c2a1ceba74e9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 229,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #26; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-26.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "bce10df6592efedbd615bbdeb0a7bdf340a3c330ca04537c56a5cd42bfd8d03a",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "c77d1b4d8066708f3d84d54d31eced19ec7f49e9f4b25f3964cca578c6f255c1"
     },
     {
       "nodeId": "challenge-complete:26",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-26.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/229.png",
+      "sourceSha256": "fdc3c67cb8c9abbea9624907c34a83b82d7e3af907e17489f329c2a1ceba74e9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 229,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #26; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-26.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "391ec10cd77fdd78c9ae52a9ae637e718db7c1effe071c65a9e05cbdd3927622",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "c77d1b4d8066708f3d84d54d31eced19ec7f49e9f4b25f3964cca578c6f255c1"
     },
     {
       "nodeId": "challenge:27",
-      "status": "designed",
-      "path": "assets/icons/challenge-27.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/230.png",
+      "sourceSha256": "7f27a605ca4e6c9a1bc351a56dad696db6606153f246bf20db890c4262178cc8",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 230,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #27; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-27.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "6c82a0db55be5ca067d36e54055e969810c946a13a006c8578ae15b39d7ca9b6",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f6b2533051a20eec3bd83969fcc5c0466c85c9d3ea86a81bbd79877fa5f9aa22"
     },
     {
       "nodeId": "challenge-complete:27",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-27.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/230.png",
+      "sourceSha256": "7f27a605ca4e6c9a1bc351a56dad696db6606153f246bf20db890c4262178cc8",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 230,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #27; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-27.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "aeeb2fe8fb1c9d300366b3a1064d3c54d955abacae24a54448edb5508a594745",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f6b2533051a20eec3bd83969fcc5c0466c85c9d3ea86a81bbd79877fa5f9aa22"
     },
     {
       "nodeId": "challenge:28",
-      "status": "designed",
-      "path": "assets/icons/challenge-28.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/231.png",
+      "sourceSha256": "7d24faba37d0fa687a762b5a81befa0edbc5b6574567c17aebb69f1610c73e42",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 231,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #28; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-28.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "d14ad91f874565ee2c3256d0e1343e2b65ce78e5640e85520ee5af097bc7a6c4",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "a806194438363bc63592376da834c6c7d1042a7fa6891a47df9ee262ae155c04"
     },
     {
       "nodeId": "challenge-complete:28",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-28.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/231.png",
+      "sourceSha256": "7d24faba37d0fa687a762b5a81befa0edbc5b6574567c17aebb69f1610c73e42",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 231,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #28; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-28.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "1b0fdcf714cce9e5a0675d6077019dcf4263f0735fca35cab8035ea38fef4e11",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "a806194438363bc63592376da834c6c7d1042a7fa6891a47df9ee262ae155c04"
     },
     {
       "nodeId": "challenge-complete:29",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-29.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/232.png",
+      "sourceSha256": "90dea0d355bc045fa232081b2798f33c0205460f549f94f2aa0ce9fe6ecb8544",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 232,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #29; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-29.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "a62ac272ac1187640e4e801706d995a8ed34811979dece2d80cdd47cc38e11a0",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f813a086f9acae903cfdc3bfdf035f1745c4d4f3f24dc7d132f7e4b5a1279ae3"
     },
     {
       "nodeId": "challenge-complete:30",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-30.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/233.png",
+      "sourceSha256": "98fe7cbcf94c1821d9b9de49dd3d711c3ec0b8acabbd048084ff4571832b31a9",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 233,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #30; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-30.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "2ec5093fecf37105c5c113aaaf67d4592f3b1d7c0f15cb7e083583bd38a7c91b",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "90084b3462a396da18b810d9ac08a958ff153abf3528c62bfa95503a41c985ab"
     },
     {
       "nodeId": "challenge:31",
-      "status": "designed",
-      "path": "assets/icons/challenge-31.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/331.png",
+      "sourceSha256": "bb770919ff76b17e6e8d3d67277d160a03b0de2323c4df766bdb90108054985e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 331,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #31; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-31.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "50879d7c502ef83210ae2576988e376b014f8a08b9407508b789b373233200bf",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "3fb6ec76ccbd6fc4bfcfaa509b83a8cb889638b039b4fc16b44cdd29acb22095"
     },
     {
       "nodeId": "challenge-complete:31",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-31.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/331.png",
+      "sourceSha256": "bb770919ff76b17e6e8d3d67277d160a03b0de2323c4df766bdb90108054985e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 331,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #31; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-31.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "3df82b3eddcb713bc628c23dff9672bd406fdae9ad05d259ec4f117573209733",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "3fb6ec76ccbd6fc4bfcfaa509b83a8cb889638b039b4fc16b44cdd29acb22095"
     },
     {
       "nodeId": "challenge:32",
-      "status": "designed",
-      "path": "assets/icons/challenge-32.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/332.png",
+      "sourceSha256": "c8cc8bfcaa8631b42f078a83f9a25634b77f57f5b9d65e5782524ca1de88e4c8",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 332,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #32; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-32.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "3953de5b596f1dcf685a1dbaee7cefae8f39a4c08bce4210074ecaf9a80a2619",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "384350abac6a756908cdf6883d0ae998df2db4a46dc5c43da2791c9ce8499e77"
     },
     {
       "nodeId": "challenge-complete:32",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-32.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/332.png",
+      "sourceSha256": "c8cc8bfcaa8631b42f078a83f9a25634b77f57f5b9d65e5782524ca1de88e4c8",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 332,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #32; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-32.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "cb900db695080350f0523e0ba6131a7d368d5579c0975548a5ad3b0449121220",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "384350abac6a756908cdf6883d0ae998df2db4a46dc5c43da2791c9ce8499e77"
     },
     {
       "nodeId": "challenge-complete:33",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-33.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/333.png",
+      "sourceSha256": "47030ec569ac7c1335fc4d1726183a86666860996ddc8df4c0a8312cb839d285",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 333,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #33; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-33.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "a5b7ea440f2f7f93756b3671044e3159ae71869d889f25a06799e2a14db96046",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "2443a20c11beeb61baf3bda22c3a88245a6cd4fedafde44c23a9a48c6f05a20a"
     },
     {
       "nodeId": "challenge-complete:34",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-34.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/334.png",
+      "sourceSha256": "a00bf445201310dcd261815874cd7072a5677a7334d14ac9192c2362b1397bef",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 334,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #34; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-34.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "03f990d8f529da545170b8669898792728e8b8d524e1f4b55687038568734d42",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "087d2eee8b7c87051b8b6082dedeb46013e03944612ed760632c24088c797383"
     },
     {
       "nodeId": "challenge:35",
-      "status": "designed",
-      "path": "assets/icons/challenge-35.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/335.png",
+      "sourceSha256": "47c54454075e5f48aeb58f51cd145679d28bf2ee7fa24a3cf9d79d9a9eb13de7",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 335,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #35; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-35.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "6ddfe52a71ff1ad4be94fc5fa58ad7c50da3da9bf2803c40c580575988dca145",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "5590a9df163941bf6015e7d9e7acbcf4b6d09dd35785e11461a8b96cfd887719"
     },
     {
       "nodeId": "challenge-complete:35",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-35.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/335.png",
+      "sourceSha256": "47c54454075e5f48aeb58f51cd145679d28bf2ee7fa24a3cf9d79d9a9eb13de7",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 335,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #35; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-35.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "8f89bbbb928d87e9d06de320c4835f06ee99468298a4cd815a9bf706c8008b1e",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "5590a9df163941bf6015e7d9e7acbcf4b6d09dd35785e11461a8b96cfd887719"
     },
     {
       "nodeId": "challenge:36",
-      "status": "designed",
-      "path": "assets/icons/challenge-36.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/517.png",
+      "sourceSha256": "27d5e1c70b5ecdd07e53701027aef8bbebe7dab96ec2174d77a78b795b929026",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 517,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #36; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-36.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "dcb803a1cd9ef0e7366b8ba6353cdb46e05b0c8c8247071e71f1136998505cde",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "eed95dd961a986d15bd9319eae91fc6ab2233d0c4248fbfb8f61a3fc3bad67c3"
     },
     {
       "nodeId": "challenge-complete:36",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-36.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/517.png",
+      "sourceSha256": "27d5e1c70b5ecdd07e53701027aef8bbebe7dab96ec2174d77a78b795b929026",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 517,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #36; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-36.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "2780d3a177288fb4fe4a43af1c7637c41742189eaadf18c1b719274b0d4b77cd",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "eed95dd961a986d15bd9319eae91fc6ab2233d0c4248fbfb8f61a3fc3bad67c3"
     },
     {
       "nodeId": "challenge:37",
-      "status": "designed",
-      "path": "assets/icons/challenge-37.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/518.png",
+      "sourceSha256": "e982779a0ebff7b23ec198ac0d42f5c415353f09dd8b9fae857d30b613e56e27",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 518,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #37; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-37.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "3a1dd56a7224139a83a2f52e3f2855d52b02d291bfee60436784079d4e6fabd4",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "e76f994c23e6aa6a5f5c143eb3eead88077c227af5b9e3929e0fe2642dd50f3c"
     },
     {
       "nodeId": "challenge-complete:37",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-37.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/518.png",
+      "sourceSha256": "e982779a0ebff7b23ec198ac0d42f5c415353f09dd8b9fae857d30b613e56e27",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 518,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #37; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-37.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "97fca52a02d69eaa9a6893b761b6cb43b49181ba79353a7ad5ca260cad881a35",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "e76f994c23e6aa6a5f5c143eb3eead88077c227af5b9e3929e0fe2642dd50f3c"
     },
     {
       "nodeId": "challenge:38",
-      "status": "designed",
-      "path": "assets/icons/challenge-38.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/519.png",
+      "sourceSha256": "bd97eac986f2141b062e2c50a395e71d9da5713fd8ba20313870e1a4f396465e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 519,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #38; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-38.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "6ebd3981d917647a5cbf8286d0bc6638d334fc83ad23eb0150d06a3954975ed0",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "8279ec77a97ebf3cedda22df276a5b04ecdd5ede9866f4e0576f6eecb0885758"
     },
     {
       "nodeId": "challenge-complete:38",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-38.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/519.png",
+      "sourceSha256": "bd97eac986f2141b062e2c50a395e71d9da5713fd8ba20313870e1a4f396465e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 519,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #38; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-38.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "4ab3d63144dc426baa53ab7e3b77afba171d8370029c433d55de9995dace61a4",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "8279ec77a97ebf3cedda22df276a5b04ecdd5ede9866f4e0576f6eecb0885758"
     },
     {
       "nodeId": "challenge-complete:39",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-39.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/520.png",
+      "sourceSha256": "97b78faee06ed108d1e27d665e66190eb9780654fc5e99ea0b542b6feacfe709",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 520,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #39; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-39.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "a8dbede96b34287d1840f274b68895be1eecf93cd533baad80aa75ffaf3fba11",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "b4b69124ce885923862d62acb6d8a158daeb7a95a116f279bb62b109ef7e159d"
     },
     {
       "nodeId": "challenge:40",
-      "status": "designed",
-      "path": "assets/icons/challenge-40.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/521.png",
+      "sourceSha256": "d7dd47cbead2606fda8bfd1ff33297c2cf0e5c33fdc658f9aec3d28c58c5ac80",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 521,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #40; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-40.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "b58fa5b7622e352493a399979a9d5141fca46faa1fbef61a0edebebc13fe02db",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "5f45d6f14a6d88c2fc681939ab869be50a965143b9dedce74be9cb65478e7197"
     },
     {
       "nodeId": "challenge-complete:40",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-40.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/521.png",
+      "sourceSha256": "d7dd47cbead2606fda8bfd1ff33297c2cf0e5c33fdc658f9aec3d28c58c5ac80",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 521,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #40; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-40.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "5b7231cee795fe16820b719b53442b93558986909ce9f19d27d91e14eb7acc5c",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "5f45d6f14a6d88c2fc681939ab869be50a965143b9dedce74be9cb65478e7197"
     },
     {
       "nodeId": "challenge:41",
-      "status": "designed",
-      "path": "assets/icons/challenge-41.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/522.png",
+      "sourceSha256": "952774124aa76253389b7cabaf438562a6ecd901eb14a583070f52c393c0c6b5",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 522,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #41; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-41.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "55af8fa44a656e9b2101916ed76604cbce7793817e84b786ec9e34db48b95b67",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "650c26270b7b982a09fd4bbae1ca47abcdd82cfe221c8279e5311cef6f7f24d2"
     },
     {
       "nodeId": "challenge-complete:41",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-41.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/522.png",
+      "sourceSha256": "952774124aa76253389b7cabaf438562a6ecd901eb14a583070f52c393c0c6b5",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 522,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #41; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-41.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "eb7fe403417377883847635a3ae57e5ec3277b2b6d462a7c9a44907b17ccbea4",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "650c26270b7b982a09fd4bbae1ca47abcdd82cfe221c8279e5311cef6f7f24d2"
     },
     {
       "nodeId": "challenge:42",
-      "status": "designed",
-      "path": "assets/icons/challenge-42.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/531.png",
+      "sourceSha256": "132618a0cda524a25292e900f6fc854be11e425c342a7ce678e0ea04489b259e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 531,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #42; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-42.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "6ec847215dbfcc8d8d001b8532f5cdd218933b8e247f5dc0a4dac135e0802b2d",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "e8cd1c12bdfdb62ca8d3f951dc4477b9b0a8a7add35d790fb0522f878f760634"
     },
     {
       "nodeId": "challenge-complete:42",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-42.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/531.png",
+      "sourceSha256": "132618a0cda524a25292e900f6fc854be11e425c342a7ce678e0ea04489b259e",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 531,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #42; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-42.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "9deead1e3f9ceda81d52707d214edbc5145aa25cf220c32e368660aa89868f8d",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "e8cd1c12bdfdb62ca8d3f951dc4477b9b0a8a7add35d790fb0522f878f760634"
     },
     {
       "nodeId": "challenge:43",
-      "status": "designed",
-      "path": "assets/icons/challenge-43.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/532.png",
+      "sourceSha256": "338f28e63a4af941f77dba853be50b49cbf4a0321098485fc062a03eec6aabb5",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 532,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #43; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-43.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "0d4c9e1652428c032c0ced25ed917c65a002a972eba8fd8a4dff4cc983b16772",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "faa1f2a26448db07e2463cacee9c0dcdfe70690989f7c2768cc92b0f5d8caec8"
     },
     {
       "nodeId": "challenge-complete:43",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-43.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/532.png",
+      "sourceSha256": "338f28e63a4af941f77dba853be50b49cbf4a0321098485fc062a03eec6aabb5",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 532,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #43; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-43.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "9f03eac4d092c9e1ef739a7c5ac7baef1cf04fde3b8443c026d88645048885bf",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "faa1f2a26448db07e2463cacee9c0dcdfe70690989f7c2768cc92b0f5d8caec8"
     },
     {
       "nodeId": "challenge:44",
-      "status": "designed",
-      "path": "assets/icons/challenge-44.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/533.png",
+      "sourceSha256": "8cbd224ed0a8f1a9985bd4279090753bdee9eb949cc13063e59d10f0c408c453",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 533,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #44; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-44.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "43e127c1a23641cfc1c5823865b4555855e96811d7c442e31783fe118c5420d1",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "cf7550acf0dbf620820912385cef9e8be96a1db43c871e2065158f8e4515a14e"
     },
     {
       "nodeId": "challenge-complete:44",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-44.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/533.png",
+      "sourceSha256": "8cbd224ed0a8f1a9985bd4279090753bdee9eb949cc13063e59d10f0c408c453",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 533,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #44; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-44.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "47dd996b09db1fa76f71a96e5e0ce8238ed790cddf594e424fdb4a1433888cf2",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "cf7550acf0dbf620820912385cef9e8be96a1db43c871e2065158f8e4515a14e"
     },
     {
       "nodeId": "challenge:45",
-      "status": "designed",
-      "path": "assets/icons/challenge-45.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/538.png",
+      "sourceSha256": "634ebd90d97b02b5c28c59d9df96c381ff1f335fff02dcfa225feacc4a3d817f",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 538,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #45; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-45.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "6a92eaa1d0162a85cf18d97dec2da94f9ccbe46720f37314b4b3b9f8dde03e1d",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "eee452267bd0e948a7dddc27547f3b4cbaf80d74bb8d3eea072e675f8ba61f3a"
     },
     {
       "nodeId": "challenge-complete:45",
-      "status": "designed",
-      "path": "assets/icons/challenge-complete-45.svg",
+      "source": "https://isaac.ardor.guru/gfx/achievements/538.png",
+      "sourceSha256": "634ebd90d97b02b5c28c59d9df96c381ff1f335fff02dcfa225feacc4a3d817f",
+      "imageKind": "game-unlock-notification",
+      "artworkId": 538,
+      "semanticNote": "Artwork for the in-game unlock notification associated with challenge #45; decorative only, never evidence of player progress.",
+      "status": "downloaded",
+      "path": "assets/icons/challenge-complete-45.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "f824a218022efbf8947c9493913c3fd9d50fb064d98ea0ae15e2d38ea8d4ce5e",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "eee452267bd0e948a7dddc27547f3b4cbaf80d74bb8d3eea072e675f8ba61f3a"
     },
     {
       "nodeId": "feature:dead-god-conditions",
-      "status": "designed",
-      "path": "assets/icons/feature-dead-god-conditions.svg",
+      "status": "downloaded",
+      "path": "assets/icons/feature-dead-god.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "007c106702415b41d778d25f06f53c263434a1077431b26a5c95f7021e4e0c26",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "1ed7c8bd2f96215c61f18940ba541f208cab93726b9c69d1fdee2dff27a579c8",
+      "source": "https://isaac.ardor.guru/gfx/achievements/637.png",
+      "sourceSha256": "1ed7c8bd2f96215c61f18940ba541f208cab93726b9c69d1fdee2dff27a579c8",
+      "imageKind": "game-unlock-notification",
+      "sourceNodeId": "feature:dead-god",
+      "semanticNote": "The in-game Dead God unlock artwork represents the full unlock checklist."
     },
     {
       "nodeId": "feature:dead-god-collection",
-      "status": "designed",
-      "path": "assets/icons/feature-dead-god-collection.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-628.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "f6dc0197b5aa79ebd4932fd9ba60597863b12550583d5b969f6a13ce34c3ea66",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "0922c9b6f4dc9ec498be598d7c57680fcdcae73b0df95954c48c8f1cb73539bb",
+      "source": "https://isaac.ardor.guru/gfx/items/628.png",
+      "sourceSha256": "c6179978638b113d53c2a5ffeedb441794d0cb8265339d77516920a01e33903e",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:628",
+      "semanticNote": "The in-game Death Certificate sprite represents completing the collection."
     },
     {
       "nodeId": "feature:dead-god-challenges",
-      "status": "designed",
-      "path": "assets/icons/feature-dead-god-challenges.svg",
+      "status": "downloaded",
+      "path": "assets/icons/feature-dead-god.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "4a90894a06fcd0ba5b6d97055780a33d376aebee32d71185b84cbc62dd90f822",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "1ed7c8bd2f96215c61f18940ba541f208cab93726b9c69d1fdee2dff27a579c8",
+      "source": "https://isaac.ardor.guru/gfx/achievements/637.png",
+      "sourceSha256": "1ed7c8bd2f96215c61f18940ba541f208cab93726b9c69d1fdee2dff27a579c8",
+      "imageKind": "game-unlock-notification",
+      "sourceNodeId": "feature:dead-god",
+      "semanticNote": "The in-game Dead God unlock artwork represents the full challenge checklist."
     },
     {
       "nodeId": "feature:dead-god",
@@ -16323,55 +16527,63 @@
     },
     {
       "nodeId": "feature:afterbirth-pills",
-      "status": "designed",
-      "path": "assets/icons/feature-afterbirth-pills.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-340.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "a9a50a41d4a6f3c99fe0d38ad0d4512ebb77a39f20a140f980eb88ac6f3c2174",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f60803c5878e23e7b74232d9f766da63899cf4503b98898bdbdeff09bc3a1fb2",
+      "source": "https://isaac.ardor.guru/gfx/items/340.png",
+      "sourceSha256": "fc98544f11a774ae090cc04ac7b8aa205e6a7340a78e849ed831af7bcd8e0fcd",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:340",
+      "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
     },
     {
       "nodeId": "feature:afterbirth-plus-pills",
-      "status": "designed",
-      "path": "assets/icons/feature-afterbirth-plus-pills.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-340.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "7f70cffeb3d64a2d881362bf7e5b4d1a08dfc3bf7208723a25232d4c8910f11d",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f60803c5878e23e7b74232d9f766da63899cf4503b98898bdbdeff09bc3a1fb2",
+      "source": "https://isaac.ardor.guru/gfx/items/340.png",
+      "sourceSha256": "fc98544f11a774ae090cc04ac7b8aa205e6a7340a78e849ed831af7bcd8e0fcd",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:340",
+      "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
     },
     {
       "nodeId": "feature:dice-rooms",
-      "status": "designed",
-      "path": "assets/icons/feature-dice-rooms.svg",
+      "status": "downloaded",
+      "path": "assets/icons/consumable-49.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "58907e48900e39e96f1e67c4b9cc8e03b7a8b840249f9977a27e7212f77af512",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "8d0fec9fdb75e22f60ccc828478f7f2509ce853c1618346210648b0c28a274b3",
+      "source": "https://deadgod.yeeterie.org/sprites/consumable_sheet.webp",
+      "sourceSha256": "68320103079b65a52bd761b859f7427b10fea400c1fe3363efa8b63609cae95f",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "consumable:49",
+      "semanticNote": "The in-game Dice Shard sprite represents Dice Rooms."
     },
     {
       "nodeId": "feature:gold-key",
-      "status": "designed",
-      "path": "assets/icons/feature-gold-key.svg",
+      "status": "downloaded",
+      "path": "assets/icons/trinket-159.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "dea5964cdb0a741420b0d0191e246192204ce486e0d16fa75842fa3eaa542ddf",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f9d9f2014a4ef8e196b6afa1164e8dc0f834ee1b60bc3382a613dcbc01c910b6",
+      "source": "https://deadgod.yeeterie.org/sprites/trinket_sheet.webp",
+      "sourceSha256": "8c51c96fe038db225b11147d68f6bb927a96ce31ff47afeda74d1e49f837da97",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "trinket:159",
+      "semanticNote": "The in-game Gilded Key sprite represents the Gold Key."
     },
     {
       "nodeId": "feature:golden-battery",
@@ -16390,55 +16602,63 @@
     },
     {
       "nodeId": "feature:golden-troll-bomb",
-      "status": "designed",
-      "path": "assets/icons/feature-golden-troll-bomb.svg",
+      "status": "downloaded",
+      "path": "assets/icons/feature-gold-bomb.png",
       "dimensions": [
         64,
         64
       ],
-      "sha256": "80aebd252c02cd8fcbfb3dc1007e7bd5bf6eac8032e486c0cf9e9bdedd93959b",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "70c83e8d8a7fce13d9b23a8c0d20af717d7c2504bf9d86b66d380f4fa21db046",
+      "source": "https://isaac.ardor.guru/gfx/achievements/226.png",
+      "sourceSha256": "f5eaf1b48056a94819cb0a5755870e02401b07195ad4792fcc99d6c2df4597a9",
+      "imageKind": "game-unlock-notification",
+      "sourceNodeId": "feature:gold-bomb",
+      "semanticNote": "The in-game Gold Bomb unlock artwork represents Golden Troll Bombs."
     },
     {
       "nodeId": "feature:rebirth-pills-a-l",
-      "status": "designed",
-      "path": "assets/icons/feature-rebirth-pills-a-l.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-340.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "cd7f8f9a205fa7486ee70ae8eb363c94735538ff9540d5b8f3d7c13726e64b8d",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f60803c5878e23e7b74232d9f766da63899cf4503b98898bdbdeff09bc3a1fb2",
+      "source": "https://isaac.ardor.guru/gfx/items/340.png",
+      "sourceSha256": "fc98544f11a774ae090cc04ac7b8aa205e6a7340a78e849ed831af7bcd8e0fcd",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:340",
+      "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
     },
     {
       "nodeId": "feature:rebirth-pills-p-z",
-      "status": "designed",
-      "path": "assets/icons/feature-rebirth-pills-p-z.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-340.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "72caffeab574fd76d696ab8ba490cc63022f6e518794aad032ee097ac9dfff02",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f60803c5878e23e7b74232d9f766da63899cf4503b98898bdbdeff09bc3a1fb2",
+      "source": "https://isaac.ardor.guru/gfx/items/340.png",
+      "sourceSha256": "fc98544f11a774ae090cc04ac7b8aa205e6a7340a78e849ed831af7bcd8e0fcd",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:340",
+      "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
     },
     {
       "nodeId": "feature:repentance-pills",
-      "status": "designed",
-      "path": "assets/icons/feature-repentance-pills.svg",
+      "status": "downloaded",
+      "path": "assets/icons/collectible-340.png",
       "dimensions": [
-        64,
-        64
+        32,
+        32
       ],
-      "sha256": "a8b83d56ea6fa4a908874aa447361e8ef316cecedb0f4161096516fb94a4acdc",
-      "source": "tools/fetch_icons.py#designed_svg",
-      "imageKind": "original-vector-illustration",
-      "semanticNote": "Original schematic illustration, not a game sprite."
+      "sha256": "f60803c5878e23e7b74232d9f766da63899cf4503b98898bdbdeff09bc3a1fb2",
+      "source": "https://isaac.ardor.guru/gfx/items/340.png",
+      "sourceSha256": "fc98544f11a774ae090cc04ac7b8aa205e6a7340a78e849ed831af7bcd8e0fcd",
+      "imageKind": "game-sprite",
+      "sourceNodeId": "collectible:340",
+      "semanticNote": "The in-game Caffeine Pill sprite represents the pill group."
     },
     {
       "nodeId": "feature:rotten-heart",

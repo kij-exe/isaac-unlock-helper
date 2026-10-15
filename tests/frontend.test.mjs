@@ -200,6 +200,25 @@ test('every provided local sprite is an actual PNG in the static site',()=>{
   }
 });
 
+test('challenge and group icons use Isaac artwork instead of handmade SVGs',()=>{
+  const manifest=readJson('../site/assets/icons/manifest.json');
+  const entries=new Map(manifest.icons.map(entry=>[entry.nodeId,entry]));
+  const challengeRewards=readJson('../data/catalog.json').challenges;
+  assert.equal(manifest.icons.filter(entry=>entry.status==='designed').length,0);
+  for(const node of data.nodes.filter(entry=>entry.challenge)){
+    const icon=entries.get(node.id),reward=challengeRewards[String(node.challenge.id)];
+    assert.equal(icon.status,'downloaded',node.id);
+    assert.equal(icon.imageKind,'game-unlock-notification',node.id);
+    assert.equal(icon.artworkId,reward.achievement_id,node.id);
+  }
+  for(const icon of manifest.icons.filter(entry=>entry.sourceNodeId)){
+    const source=entries.get(icon.sourceNodeId);
+    assert.ok(source,`Missing source sprite ${icon.sourceNodeId}`);
+    assert.equal(icon.path,source.path,icon.nodeId);
+    assert.equal(icon.sha256,source.sha256,icon.nodeId);
+  }
+});
+
 test('every unlock and prerequisite has a packaged local image with a matching digest',()=>{
   const manifest=readJson('../site/assets/icons/manifest.json');
   const entries=new Map(manifest.icons.map(entry=>[entry.nodeId,entry]));
