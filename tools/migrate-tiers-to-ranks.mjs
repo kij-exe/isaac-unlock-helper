@@ -26,8 +26,8 @@ for(const node of data.nodes){
 for(const nodes of byRank.values())nodes.sort((a,b)=>(a.order??0)-(b.order??0)).forEach((node,index)=>{node.order=index;});
 delete data.tiers;
 delete data.source.withdrawnAvoid;
-data.source.scope='Начальные ранги S–F выведены из категорий и порядка этого руководства Repentance+; дальше ранги хранятся и редактируются независимо от него. Сайт читает только Repentance ISAACNGSAVE09R (638 secret slots / 496 counters), а не Repentance+ с расширенными блоками. Условия, зависящие от версии, проверяйте на вики.';
-data.source.note='Начальные приоритеты — мнение автора руководства. Секреты показаны отдельно и не подтверждают игровой прогресс этого слота.';
+data.source.scope='Initial S–F ranks were derived from the categories and order of this Repentance+ guide; from then on ranks are stored and edited independently of it. The site reads only Repentance ISAACNGSAVE09R (638 secret slots / 496 counters), not Repentance+ with its extended chunks. Check version-dependent requirements on the wiki.';
+data.source.note='Initial priorities are the guide author’s opinion. Secrets are shown separately and do not confirm game progress in this slot.';
 
 fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');
 console.log(Object.fromEntries([...byRank].map(([id,nodes])=>[id,nodes.length])));

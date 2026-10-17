@@ -1,48 +1,48 @@
-# Запуск сайта
+# Running the website
 
-## Локально
+## Locally
 
-Из корня репозитория:
+From the repository root:
 
 ```sh
 npm run dev
 ```
 
-Откройте `http://127.0.0.1:4173/`. Установка npm-пакетов не нужна; достаточно Node.js 20+. Можно использовать любой статический HTTP-сервер с корнем `site/`, например `python3 -m http.server 4173 --directory site`.
+Open `http://127.0.0.1:4173/`. No npm packages need to be installed; Node.js 20+ is enough. You can use any static HTTP server with `site/` as its root, for example `python3 -m http.server 4173 --directory site`.
 
-Открытие `index.html` через `file://` не поддерживается: браузер блокирует загрузку JSON и ES modules. На GitHub Pages они работают по HTTP(S).
+Opening `index.html` via `file://` is not supported: the browser blocks loading JSON and ES modules. On GitHub Pages they work over HTTP(S).
 
-## GitHub Pages через Actions
+## GitHub Pages via Actions
 
-В проекте есть `.github/workflows/pages.yml`. Он проверяет каталог и тесты, копирует только `site/` в `dist/` и публикует этот статический каталог.
+The project includes `.github/workflows/pages.yml`. It checks the catalog and tests, copies only `site/` to `dist/` and publishes that static directory.
 
-1. Самостоятельно загрузите проект в ваш GitHub-репозиторий. Агент не выполнял commit/push: разрешены только `git status` и `git diff`.
-2. Откройте **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-3. Для ветки `main` или `master` публикация запускается после push. Для ручного запуска откройте **Actions → Deploy Unlock Atlas to GitHub Pages → Run workflow**.
-4. Дождитесь успешного задания Deploy. Адрес появится в environment `github-pages` и Settings → Pages.
+1. Push the project to your GitHub repository yourself. The agent did not run commit/push: only `git status` and `git diff` are allowed.
+2. Open **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+3. For the `main` or `master` branch, publishing starts after a push. To run it manually, open **Actions → Deploy Unlock Atlas to GitHub Pages → Run workflow**.
+4. Wait for the Deploy job to succeed. The URL will appear in the `github-pages` environment and in Settings → Pages.
 
-Для другой основной ветки измените `on.push.branches` в YAML. Если environment ограничивает ветки публикации, проверьте его настройки в GitHub. Workflow создан по [официальной инструкции GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+For a different default branch, change `on.push.branches` in the YAML. If the environment restricts deployment branches, check its settings in GitHub. The workflow follows the [official GitHub Pages instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
-Все пути относительные; сайт работает и по адресу `https://user.github.io/repository/`, и на собственном домене. Навигация использует hash, поэтому обновление страницы статистики или графа не требует серверных маршрутов. После обновления страницы сохранение нужно прикрепить снова: оно не хранится на сервере или между сессиями.
+All paths are relative; the website works both at `https://user.github.io/repository/` and on a custom domain. Navigation uses the hash, so reloading the statistics or graph page does not require server-side routes. After a page reload, the save must be attached again: it is not stored on a server or between sessions. The website is in English by default; the RU / EN switch in the header changes the interface language, and the choice is stored in the browser's `localStorage` under the key `atlas-language`. See [Localization](i18n.md).
 
-## Готовый статический пакет
+## Ready-made static package
 
 ```sh
 npm run build
 ```
 
-Содержимое `dist/` можно поместить в корень отдельной ветки или отдельного репозитория для публикации обычным режимом Pages «Deploy from a branch». Для этого варианта скопируйте **содержимое**, включая `.nojekyll`, а не каталог `dist` как вложенную папку. Либо распакуйте `artifacts/isaac-unlock-atlas.zip` в корень сайта.
+The contents of `dist/` can be placed at the root of a separate branch or a separate repository for publishing in the regular Pages "Deploy from a branch" mode. For this option, copy the **contents**, including `.nojekyll`, not the `dist` directory as a nested folder. Alternatively, unpack `artifacts/isaac-unlock-atlas.zip` into the website root.
 
-Ни Python, ни Node.js на хостинге не нужны. Эти инструменты используются только для локальной разработки, подготовки справочников и проверок.
+Neither Python nor Node.js is needed on the host. These tools are used only for local development, preparing reference data and running checks.
 
-## Что публикуется
+## What gets published
 
-В статический пакет входят только HTML/CSS/JS, общие JSON-справочники и локальные игровые спрайты. В него **не входят** `context/`, исходные `.dat`, персональные `reports/`, тесты и инструменты. Не добавляйте собственные сохранения в публичный GitHub-репозиторий: исключение из Pages-пакета не делает файлы самого репозитория приватными.
+The static package contains only HTML/CSS/JS, shared JSON reference data and local game sprites. It **does not include** `context/`, source `.dat` files, personal `reports/`, tests or tools. Do not add your own saves to a public GitHub repository: excluding them from the Pages package does not make the repository's own files private.
 
-Сайт читает выбранный `.dat` через File API. `fetch` загружает только общие JSON из собственного каталога сайта; сохранение никуда не отправляется. Ссылки на вики открываются по явному нажатию пользователя. Нет аналитики, cookies, удалённых шрифтов и CDN-зависимостей.
+The website reads the selected `.dat` via the File API. `fetch` loads only shared JSON from the website's own directory; the save is never sent anywhere. Wiki links open only when the user explicitly clicks them. There are no analytics, cookies, remote fonts or CDN dependencies.
 
-## Поддержка
+## Support
 
-Поддержаны Repentance (638/496) и Repentance+ (642/523); для Rebirth (179/95) доступна статистика своей версии. Проверяется правильный checksum каждой редакции. Нужен persistentgamedata; gamestate — текущий забег — не используется и получает объяснение с именем нужного соседнего файла. Afterbirth/Afterbirth+ и непроверенные варианты схем отклоняются явно. Подробнее: [форматы и выбор файла](save-formats.md). Руководство приоритетов обновлено для Repentance+, поэтому отдельные оценки эффектов могут отличаться от Repentance.
+Repentance (638/496) and Repentance+ (642/523) are supported; for Rebirth (179/95), statistics for that version are available. The correct checksum of each edition is verified. persistentgamedata is required; gamestate (the current run) is not used and produces an explanation naming the correct neighbouring file. Afterbirth/Afterbirth+ and unverified schema variants are explicitly rejected. More details: [formats and choosing the file](save-formats.md). The priority guide has been updated for Repentance+, so some effect assessments may differ from Repentance.
 
-Условия, которые не сохраняются полностью, остаются неизвестными и допускают ручное подтверждение только в текущей вкладке. Смена или забывание сохранения сбрасывает эти отметки. Ручные подтверждения не меняют файл и не маскируются под прочитанные значения статистики.
+Conditions that are not fully saved remain unknown and allow manual confirmation in the current tab only. Changing or forgetting the save resets these marks. Manual confirmations do not change the file and are not disguised as values read from the statistics.

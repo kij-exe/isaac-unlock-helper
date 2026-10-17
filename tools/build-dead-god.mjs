@@ -39,11 +39,11 @@ function mapAction(text){
   if(normalized==='Defeat Delirium for the 1st time')return {type:'boss_defeated',boss:'Delirium'};
   return null;
 }
-const ranges=[[1,178,'Rebirth · условия 1–178'],[179,276,'Afterbirth · условия 179–276'],[277,403,'Afterbirth+ · условия 277–403'],[404,636,'Repentance · условия 404–636']];
+const ranges=[[1,178,'Rebirth · requirements 1–178'],[179,276,'Afterbirth · requirements 179–276'],[277,403,'Afterbirth+ · requirements 277–403'],[404,636,'Repentance · requirements 404–636']];
 const conditions=ranges.map(([start,end,label])=>all(Array.from({length:end-start+1},(_,index)=>{
   const id=start+index,entry=reference.achievements[id],existing=bySecret.get(id);
   const action=existing?ref(existing.id):mapAction(entry.condition)||{type:'manual',key:`dead-god:condition:${id}`,
-    reason:'В сохранении нет достаточного независимого доказательства этого действия. Открытый секрет не доказывает его выполнение в этом слоте.'};
+    reason:'The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.'};
   return {...linkChallengeCompletions(action),goalSecretId:id,label:`#${id} · ${entry.name}: ${entry.condition}`};
 }),label));
 const sources=['https://bindingofisaacrebirth.wiki.gg/wiki/Achievements',collection.source,reference.sources.find(source=>source.url.includes('deadgod.yeeterie.org')).url];
@@ -51,13 +51,13 @@ const goalNode=(id,name,description,requirements,extra={})=>({id,kind:'feature',
 const collectorGroups=[];
 for(let offset=0;offset<collection.requiredItems.length;offset+=50){
   const items=collection.requiredItems.slice(offset,offset+50);
-  collectorGroups.push(all(items.map(item=>({type:'collected',id:item.id,itemName:item.name,label:`Подобрать ${item.name} (#${item.id})`})),`Предметы ${offset+1}–${offset+items.length}`));
+  collectorGroups.push(all(items.map(item=>({type:'collected',id:item.id,itemName:item.name,label:`Collect ${item.name} (#${item.id})`})),`Items ${offset+1}–${offset+items.length}`));
 }
 data.nodes.push(
-  goalNode('feature:dead-god-conditions','Все 636 условий открытия','Выполнить условия всех остальных секретов Repentance (1–636). Флаги секретов не служат доказательством: используются известные зависимости, отметки и счётчики, остальное требует ручного подтверждения.',all(conditions,'Все условия открытия'),{goal:{type:'secret_conditions',requiredCount:636}}),
-  goalNode('feature:dead-god-collection','Все 717 предметов коллекции','Подобрать все 717 видимых предметов коллекции Repentance, включая Death Certificate, Broken Glass Cannon и квестовые части. Hidden-предметы и отсутствующие ID не требуются.',all(collectorGroups,'Полная коллекция'),{goal:{type:'collection',requiredCount:717},sourceNote:'Список закреплён по items.xml Repentance 1.7.9b.J835; Recall, Hold, скрытые эффекты Book of Belial и Damocles исключены.'}),
-  goalNode('feature:dead-god-challenges','Все 45 испытаний','Пройти все 45 испытаний Repentance, включая Ultra Hard и DELETE THIS. Проверяется отдельный completed-флаг каждого испытания.',all(Array.from({length:45},(_,i)=>ref(`challenge-complete:${i+1}`)),'Все испытания'),{goal:{type:'challenges',requiredCount:45}}),
-  goalNode('feature:dead-god','Dead God','Выполнить все остальные 636 условий открытия и подобрать все 717 предметов коллекции Repentance. Это включает 408 отметок на Hard / Greedier, 45 испытаний, ежедневные забеги и прочие действия.',all([ref('collectible:628'),ref('feature:dead-god-challenges'),ref('feature:dead-god-conditions'),ref('feature:dead-god-collection')],'Всё для Dead God'),{rank:'DEAD GOD',order:0,secretId:637,goal:{type:'dead_god',gameVersion:collection.gameVersion}})
+  goalNode('feature:dead-god-conditions','All 636 unlock requirements','Meet the requirements of all other Repentance secrets (1–636). Secret flags do not count as evidence: known prerequisites, marks and counters are used; other actions require manual confirmation.',all(conditions,'All unlock requirements'),{goal:{type:'secret_conditions',requiredCount:636}}),
+  goalNode('feature:dead-god-collection','All 717 collection items','Collect all 717 visible Repentance collection items, including Death Certificate, Broken Glass Cannon and quest pieces. Hidden items and missing IDs are not required.',all(collectorGroups,'Full collection'),{goal:{type:'collection',requiredCount:717},sourceNote:'The list is pinned to Repentance 1.7.9b.J835 items.xml; Recall, Hold and the hidden Book of Belial and Damocles effects are excluded.'}),
+  goalNode('feature:dead-god-challenges','All 45 challenges','Complete all 45 Repentance challenges, including Ultra Hard and DELETE THIS. Each challenge’s completed flag is checked individually.',all(Array.from({length:45},(_,i)=>ref(`challenge-complete:${i+1}`)),'All challenges'),{goal:{type:'challenges',requiredCount:45}}),
+  goalNode('feature:dead-god','Dead God','Meet all 636 other unlock requirements and collect all 717 Repentance collection items. This includes 408 Hard / Greedier marks, 45 challenges, daily runs and other actions.',all([ref('collectible:628'),ref('feature:dead-god-challenges'),ref('feature:dead-god-conditions'),ref('feature:dead-god-collection')],'Everything for Dead God'),{rank:'DEAD GOD',order:0,secretId:637,goal:{type:'dead_god',gameVersion:collection.gameVersion}})
 );
 fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');
 let manual=0,automatic=0,reused=0;

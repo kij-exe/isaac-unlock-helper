@@ -1,17 +1,18 @@
-# Анализ сохранений Isaac
+# Isaac save analysis
 
-- Основной анализ, сравнение слотов и дальнейшие выводы о заслугах строятся только на `progress`: отметках прохождения, собственных счётчиках слота, completed-флагах испытаний, коллекции и бестиарии.
-- Не использовать достижения Steam, блок 1 (`achievements`) или производные от них разблокировки для зачёта боссов, испытаний, предметов, игры персонажем либо выполнения условий в конкретном слоте. Не фильтровать отметки по доступности персонажей из достижений.
-- Секреты и производные разблокировки показывать отдельно, в `achievement_reference` / `*.achievements.*`, с пометкой, что они исключены из основного анализа.
-- Открытый секрет не доказывает выполнение его условия в этом слоте: он мог быть синхронизирован из Steam, импортирован или изменён. Источник флага по одному `.dat` неизвестен.
-- Флаги секретов в `.dat` не называть проверенным состоянием Steam-аккаунта. Без отдельного чтения аккаунта его состояние неизвестно; Save Secret ID не объявлять Steam API ID без проверенного соответствия.
-- Проверять независимость анализа на пустом слоте с установленными флагами всех секретов: его игровой прогресс должен оставаться пустым.
-- Исходные сохранения читать без изменения. Глобальное ограничение пользователя на Git продолжает действовать: разрешены только `git status` и `git diff`.
+- The main analysis, slot comparisons and any further conclusions about accomplishments must be based only on `progress`: completion marks, the slot's own counters, challenge completed flags, the collection and the bestiary.
+- Do not use Steam achievements, chunk 1 (`achievements`) or unlocks derived from them to credit bosses, challenges, items, playing as a character, or fulfilment of conditions in a specific slot. Do not filter completion marks by character availability derived from achievements.
+- Show secrets and derived unlocks separately, in `achievement_reference` / `*.achievements.*`, with a note that they are excluded from the main analysis.
+- An unlocked secret does not prove that its condition was fulfilled in this slot: it may have been synced from Steam, imported or modified. The source of the flag cannot be determined from a single `.dat`.
+- Do not call secret flags in a `.dat` a verified Steam account state. Without a separate read of the account, its state is unknown; do not declare a Save Secret ID to be a Steam API ID without a verified mapping.
+- Verify the independence of the analysis on an empty slot with the flags of all secrets set: its gameplay progress must remain empty.
+- Read source saves without modifying them. The user's global Git restriction remains in force: only `git status` and `git diff` are allowed.
 
-## Фронтенд Skill Issue Tracker
+## Skill Issue Tracker frontend
 
-- Публичный сайт — только `site/`. Не добавлять в него сохранения, `context/` или персональные `reports/`. `npm run build` публикует только этот каталог.
-- Для добавления анлоков применять `.agents/skills/isaac-unlocks/SKILL.md`; формат и семантика описаны в `docs/unlock-schema.md`.
-- Основной граф по умолчанию использует только прогресс слота. Пользователь явно запросил также отображение доступности контента: отдельный режим графа «По доступности контента» может применять секреты для скрытия уже доступных зависимостей, но не для статистики заслуг или выполнения условий в слоте. Переключатель и его основание должны оставаться видимыми.
-- Сохранять ID общих зависимостей, трёхзначную логику неизвестных условий, AND/OR и независимое прямое доказательство результата. Не добавлять секреты как тип условий.
-- Для веб-изменений: `npm test`, `npm run validate:data`, `npm run build`. Для изменения бинарного формата сверять браузерный парсер с Python и исходными checksum обоих исследованных файлов.
+- The public website is `site/` only. Do not add saves, `context/` or personal `reports/` to it. `npm run build` publishes only this directory.
+- To add unlocks, follow `.agents/skills/isaac-unlocks/SKILL.md`; the format and semantics are described in `docs/unlock-schema.md`.
+- By default, the main graph uses only slot progress. The user has explicitly requested that content availability be shown as well: a separate "Content availability" graph mode may use secrets to hide dependencies that are already available, but not for accomplishment statistics or for fulfilment of conditions in the slot. The toggle and its rationale must remain visible.
+- Preserve shared dependency IDs, three-valued logic for unknown conditions, AND/OR, and independent direct proof of the result. Do not add secrets as a condition type.
+- Language: English is the canonical source language in code and in `site/data/unlocks.json`; the website is English by default and offers a RU/EN switch in the header. Russian translations for the website live only in `site/js/locales/ru.js` (interface) and `site/js/locales/ru-catalog.js` (catalog text). All repository docs, comments and tooling output are English-only. See `docs/i18n.md`.
+- For web changes: `npm test`, `npm run validate:data`, `npm run build`. When changing the binary format, check the browser parser against Python and against the original checksums of both investigated files.

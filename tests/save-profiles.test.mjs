@@ -57,7 +57,7 @@ test('synthetic Rebirth and Repentance+ reject corruption, unknown schemas and t
   for(const profile of SAVE_PROFILES){
     const b=synthetic(profile),broken=Buffer.from(b);broken[40]^=1;
     assert.throws(()=>parseSave(broken),SaveError);assert.throws(()=>parseSave(b.subarray(0,-1)),SaveError);
-    assert.throws(()=>parseSave(Buffer.concat([b,Buffer.from('extra')])),/лишние/);
+    assert.throws(()=>parseSave(Buffer.concat([b,Buffer.from('extra')])),/Unexpected data/);
   }
   const unknown={...SAVE_PROFILES[2],counts:[643,...SAVE_PROFILES[2].counts.slice(1)]};
   assert.throws(()=>parseSave(synthetic(unknown)),error=>error.code==='unsupported_layout'&&error.message.includes('643'));

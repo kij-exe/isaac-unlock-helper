@@ -1,18 +1,18 @@
-# Источники и атрибуция
+# Sources and attribution
 
-Парсер `isaac_save.py` написан для этого проекта. Код сторонних редакторов не исполняется и не используется как runtime-зависимость. Он реализует описанный формат и сохраняет все исходные числовые данные.
+The `isaac_save.py` parser was written for this project. Code from third-party editors is not executed and is not used as a runtime dependency. The parser implements the documented format and preserves all original numeric data.
 
 ## REPENTOGON
 
-[TeamREPENTOGON/REPENTOGON](https://github.com/TeamREPENTOGON/REPENTOGON), снимок `9833f482100d6a62896831d2c744d1efe710d7f1`.
+[TeamREPENTOGON/REPENTOGON](https://github.com/TeamREPENTOGON/REPENTOGON), snapshot `9833f482100d6a62896831d2c744d1efe710d7f1`.
 
-Использованы описание формата и фактические соответствия enum ID → название из `EventCounter.md` и `BossType.md`. Исходный проект распространяется по GPL-2.0. Его C++-код не включён в этот проект. Ссылки и хеши файлов справочника сохранены в `data/catalog.json`.
+The format description and the actual enum ID → name mappings from `EventCounter.md` and `BossType.md` were used. The original project is distributed under GPL-2.0. Its C++ code is not included in this project. Links and hashes of the reference files are stored in `data/catalog.json`.
 
 ## Deadgod Tracker
 
-[Deadgod Tracker](https://deadgod.yeeterie.org/), публичный модуль `/assets/data-d8ce3ab0.js`. Встроенная страница атрибуции приложения указывает: “Deadgod Tracker is released under the MIT License. © 2026 Douwdy.”
+[Deadgod Tracker](https://deadgod.yeeterie.org/), public module `/assets/data-d8ce3ab0.js`. The application's built-in attribution page states: “Deadgod Tracker is released under the MIT License. © 2026 Douwdy.”
 
-В `data/catalog.json` сохранена выборка справочных данных: имена, игровые ID, соответствия достижениям, условия открытия, персонажи, награды испытаний и имена сущностей. Изображения, шрифты, эффекты предметов и исполняемый код приложения не включены. Снимок закреплён SHA-256 в `tools/build_catalog.py`; хеш также записан в каталоге.
+`data/catalog.json` contains a selection of reference data: names, game IDs, achievement mappings, unlock conditions, characters, challenge rewards and entity names. Images, fonts, item effects and the application's executable code are not included. The snapshot is pinned by SHA-256 in `tools/build_catalog.py`; the hash is also recorded in the catalog.
 
 MIT License — © 2026 Douwdy
 
@@ -34,14 +34,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-## Сверка контрольной суммы
+## Checksum cross-check
 
-[jamesthejellyfish/isaac-save-edit-script](https://github.com/jamesthejellyfish/isaac-save-edit-script), снимок `516fe1c8d3245677313c159bd1debde37f80fbd0`: использован для исследования алгоритма KAGE и сверки результатов. Таблица checksum не копируется; парсер генерирует её самостоятельно.
+[jamesthejellyfish/isaac-save-edit-script](https://github.com/jamesthejellyfish/isaac-save-edit-script), snapshot `516fe1c8d3245677313c159bd1debde37f80fbd0`: used to research the KAGE algorithm and to cross-check results. The checksum table is not copied; the parser generates it itself.
 
-Игра, её названия и игровые данные принадлежат соответствующим правообладателям. Проект — независимый инструмент чтения сохранений.
+The game, its names and its game data belong to their respective rights holders. This project is an independent save-reading tool.
 
-## Каталог фронтенда и игровые спрайты
+## Frontend catalog and game sprites
 
-Категории и порядок анлоков основаны на [Most & Least Important Unlocks, jnub](https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310). В `site/data/unlocks.json` приведены факты, краткие условия и ссылки на источники; полный текст руководства не воспроизводится. Подробности: `docs/guide-sources.md`.
+The unlock categories and order are based on [Most & Least Important Unlocks, jnub](https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310). `site/data/unlocks.json` contains facts, short conditions and links to sources; the full text of the guide is not reproduced. Details: `docs/guide-sources.md`.
 
-164 локальных PNG подготовлены из публичных ресурсов Isaac Save Editor и Deadgod Tracker. Manifest содержит исходные URL и SHA-256; права на игровую графику остаются у правообладателей игры. Лицензия MIT приложения не объявляется лицензией на игровые спрайты. Подробности: `docs/asset-sources.md`.
+164 local PNGs were prepared from public resources of Isaac Save Editor and Deadgod Tracker. The manifest contains the source URLs and SHA-256; rights to the game graphics remain with the game's rights holders. The application's MIT license is not declared to be a license for the game sprites. Details: `docs/asset-sources.md`.

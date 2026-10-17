@@ -4,7 +4,7 @@ const ref=id=>({type:'node',id});
 const all=conditions=>({type:'all',conditions});
 const mark=(character,target)=>({type:'mark',character,target,minimum:1});
 const counter=(id,atLeast,label)=>({type:'counter',id,atLeast,label});
-const manual=(key,label)=>({type:'manual',key,label,reason:'Сохранение не хранит подтверждённую историю этого действия.'});
+const manual=(key,label)=>({type:'manual',key,label,reason:'The save does not store a verified history of this action.'});
 
 export function linkChallengeCompletions(condition){
   if(!condition)return condition;
@@ -32,14 +32,14 @@ export function addChallengePaths(input,reference,profile){
   const source=profile.source.url;
   const wiki=name=>`https://bindingofisaacrebirth.wiki.gg/wiki/${encodeURIComponent(name.replaceAll(' ','_'))}`;
   const prerequisites=[
-    [11,counter(1,9,'Победить Mom’s Heart / It Lives! 9 раз')],
-    [15,manual('defeat-lokii','Победить Lokii')],
+    [11,counter(1,9,'Defeat Mom’s Heart / It Lives! 9 times')],
+    [15,manual('defeat-lokii','Defeat Lokii')],
     [21,all([ref('character:cain'),ref('feature:cathedral'),mark('Cain','Isaac')]),mark('Cain','Isaac')],
-    [28,counter(3,10,'Разрушить 10 Tinted Rocks')],
-    [58,manual('both-key-pieces','Собрать оба Key Piece от ангелов за один забег')],
-    [65,manual('guppy-transform','В одном забеге превратиться в Guppy')],
+    [28,counter(3,10,'Destroy 10 Tinted Rocks')],
+    [58,manual('both-key-pieces','Collect both Key Pieces from angels in one run')],
+    [65,manual('guppy-transform','Transform into Guppy in one run')],
     [71,all([ref('character:magdalene'),ref('feature:dark-room'),mark('Magdalene','The Lamb')]),mark('Magdalene','The Lamb')],
-    [415,all([ref('feature:home'),manual('open-moms-chest-home','Открыть Mom’s Chest в Home')])],
+    [415,all([ref('feature:home'),manual('open-moms-chest-home','Open Mom’s Chest in Home')])],
     [418,all([ref('character:bethany'),ref('feature:sheol'),mark('Bethany','Satan')]),mark('Bethany','Satan')],
   ];
   for(const [secretId,requirements,evidence] of prerequisites){
@@ -60,14 +60,14 @@ export function addChallengePaths(input,reference,profile){
       return ref(prerequisite.id);
     });
     const access=dependencies.length===0?{type:'constant',value:true}:dependencies.length===1?dependencies[0]:all(dependencies);
-    const completed={type:'challenge',id:entry.id,label:`Пройти #${entry.id}: ${entry.name}`};
+    const completed={type:'challenge',id:entry.id,label:`Complete challenge #${entry.id}: ${entry.name}`};
     const wikiUrl=old?.wikiUrl||wiki(entry.name);
     put({...old,id,kind:'challenge',name,wikiUrl,challenge:{id:entry.id,role:'access'},
-      unlock:{description:`Открыть испытание #${entry.id}: ${entry.name}.`,requirements:access,evidence:completed},
+      unlock:{description:`Unlock challenge #${entry.id}: ${entry.name}.`,requirements:access,evidence:completed},
       sources:[...new Set([...(old?.sources||[]),source,wikiUrl])]});
-    put({id:`challenge-complete:${entry.id}`,kind:'challenge',name:`Пройти #${entry.id}: ${entry.name}`,wikiUrl,
+    put({id:`challenge-complete:${entry.id}`,kind:'challenge',name:`Complete challenge #${entry.id}: ${entry.name}`,wikiUrl,
       challenge:{id:entry.id,role:'completion'},
-      unlock:{description:`Завершить испытание #${entry.id}: ${entry.name} и забрать трофей.`,
+      unlock:{description:`Complete challenge #${entry.id}: ${entry.name} and collect its trophy.`,
         requirements:all([ref(id),completed]),evidence:completed},sources:[source,wikiUrl]});
   }
   // Only requirements are linked. Direct evidence always remains a raw slot fact.

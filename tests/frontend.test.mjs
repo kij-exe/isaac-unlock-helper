@@ -38,14 +38,14 @@ test('published catalog has unique IDs, valid references and an acyclic graph',(
 test('invalid or cyclic dependencies fail validation',()=>{
   const sample=structuredClone(data);
   sample.nodes[0].unlock.requirements={type:'node',id:sample.nodes[0].id};
-  assert.ok(validateCatalog(sample).some(e=>e.includes('Цикл')));
+  assert.ok(validateCatalog(sample).some(e=>e.includes('cycle')));
   sample.nodes[0].unlock.requirements={type:'node',id:'does:not-exist'};
-  assert.ok(validateCatalog(sample).some(e=>e.includes('Нет зависимости')));
+  assert.ok(validateCatalog(sample).some(e=>e.includes('Missing dependency')));
 });
 test('secret flags are not a supported evidence condition',()=>{
   const sample=structuredClone(data);
   sample.nodes[0].unlock.evidence={type:'achievement',id:1};
-  assert.ok(validateCatalog(sample).some(e=>e.includes('Неизвестное условие')));
+  assert.ok(validateCatalog(sample).some(e=>e.includes('Unknown condition')));
 });
 
 test('collected items infer the unlock result only when save evidence inference is enabled',()=>{
@@ -79,8 +79,8 @@ test('browser parser agrees with game checksums and recorded slot progress',{ski
 test('short, corrupt and trailing save data are rejected',{skip:!hasFixtures},()=>{
   const bytes=fs.readFileSync(new URL('../context/rep_persistentgamedata1.dat',import.meta.url));
   for(const length of [0,15,31,2000,bytes.length-1])assert.throws(()=>parseSave(bytes.subarray(0,length)),SaveError);
-  const corrupt=Buffer.from(bytes);corrupt[0x2aa+8]^=1;assert.throws(()=>parseSave(corrupt),/сумма/);
-  assert.throws(()=>parseSave(Buffer.concat([bytes,Buffer.from('extra')])),/лишние/);
+  const corrupt=Buffer.from(bytes);corrupt[0x2aa+8]^=1;assert.throws(()=>parseSave(corrupt),/Checksum mismatch/);
+  assert.throws(()=>parseSave(Buffer.concat([bytes,Buffer.from('extra')])),/Unexpected data/);
 });
 test('all 637 secrets on an empty slot create no gameplay or progress graph',()=>{
   const bytes=syntheticEmptyBytes();
@@ -191,9 +191,9 @@ test('tier-list entries store only a rank and a unique position inside it',()=>{
   assert.equal(rankFor({id:'support'}),null);
   assert.equal(rankFor({id:'unknown',rank:'Z'}),null);
   const sample=structuredClone(data);sample.nodes.find(node=>node.rank).rank='Z';
-  assert.match(validateCatalog(sample).join('\n'),/Некорректный rank/);
+  assert.match(validateCatalog(sample).join('\n'),/Invalid rank or order/);
   sample.nodes.find(node=>node.rank==='S').tier='good-1';
-  assert.match(validateCatalog(sample).join('\n'),/Устаревшее поле tier/);
+  assert.match(validateCatalog(sample).join('\n'),/Legacy tier field/);
 });
 test('dragging an entry moves it between ranks, renumbers both rows and can be restored',()=>{
   const base=structuredClone(data),copy=structuredClone(data),repo=layoutOf(base);
@@ -320,5 +320,5 @@ test('collection conditions preserve unknown bytes and reject invalid item IDs',
   assert.equal(e.evaluate({type:'collected',id:1}),STATUS.NO);
   assert.equal(e.evaluate({type:'collected',id:733}),STATUS.UNKNOWN);
   const broken=synthetic();broken.nodes[0].unlock.requirements={type:'collected',id:733};
-  assert.ok(validateCatalog(broken).some(error=>error.includes('Некорректный предмет коллекции')));
+  assert.ok(validateCatalog(broken).some(error=>error.includes('Invalid collection item')));
 });

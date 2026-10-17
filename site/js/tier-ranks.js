@@ -1,14 +1,14 @@
 // Tier-list rows. Each tier-list entry in unlocks.json stores its row in `rank`
 // and its position inside that row in `order`; nodes without `rank` are graph-only.
 export const RANKS = [
-  {id:'DEAD GOD',label:'Полное прохождение Repentance',color:'#c7b48a'},
-  {id:'S',label:'Открыть в первую очередь',color:'#f39eaa'},
-  {id:'A',label:'Высокий приоритет',color:'#eec18a'},
-  {id:'B',label:'Полезное пополнение',color:'#e5d988'},
-  {id:'C',label:'После основных анлоков',color:'#a8cfb1'},
-  {id:'D',label:'Низкий приоритет',color:'#9cbfda'},
-  {id:'F',label:'Можно отложить',color:'#b9a5d5'},
-  {id:'OPEN',label:'Открыты по умолчанию',color:'#9aa6a0'},
+  {id:'DEAD GOD',label:'Complete Repentance',color:'#c7b48a'},
+  {id:'S',label:'Unlock first',color:'#f39eaa'},
+  {id:'A',label:'High priority',color:'#eec18a'},
+  {id:'B',label:'Useful additions',color:'#e5d988'},
+  {id:'C',label:'After the main unlocks',color:'#a8cfb1'},
+  {id:'D',label:'Low priority',color:'#9cbfda'},
+  {id:'F',label:'Can wait',color:'#b9a5d5'},
+  {id:'OPEN',label:'Available by default',color:'#9aa6a0'},
 ];
 export const RANK_IDS = new Set(RANKS.map(rank=>rank.id));
 // The completion goal stays alone above S; it cannot be dragged and nothing can be dropped there.

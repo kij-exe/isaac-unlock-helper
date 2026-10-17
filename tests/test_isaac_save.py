@@ -185,8 +185,8 @@ class SaveTests(unittest.TestCase):
             reference_report = json.loads(reference_path.read_text())
             self.assertNotIn("progress", reference_report)
             main_md = (root / "reports/20261014.rep_persistentgamedata1.md").read_text()
-            self.assertNotIn("## Открытые достижения", main_md)
-            self.assertNotIn("## Разблокированные предметы", main_md)
+            self.assertNotIn("## Unlocked secrets", main_md)
+            self.assertNotIn("## Item unlocks from secrets", main_md)
 
     def test_cli_rejects_output_symlink_to_input(self):
         with tempfile.TemporaryDirectory() as directory:

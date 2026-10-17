@@ -1,54 +1,54 @@
-# Источники изображений
+# Image sources
 
-Каждый из 234 узлов каталога имеет локальное изображение в `site/assets/icons/`: 200 игровых PNG и 34 собственные SVG-иллюстрации. Предметы, брелоки, карты, руны и персонажи используют проверенные игровые изображения. Для дополнительных механик используются игровые картинки уведомлений об открытии; для испытаний и маршрутов без проверенного спрайта — отдельные условные иллюстрации. SVG не являются игровым артом и не выдаются за него.
+Each of the catalog's 234 nodes has a local image in `site/assets/icons/`: 200 game PNGs and 34 original SVG illustrations. Items, trinkets, cards, runes and characters use verified game images. Additional mechanics use the game's unlock notification images; challenges and routes without a verified sprite use separate symbolic illustrations. The SVGs are not game art and are not presented as such.
 
-В браузере изображения загружаются только из собственного каталога сайта. Внешний CDN, вики или сетевой запрос для их показа не требуются.
+In the browser, images are loaded only from the website's own directory. No external CDN, wiki or network request is needed to display them.
 
-## Публичные источники игровых изображений
+## Public sources of game images
 
-- [Isaac Save Editor — ardor.guru](https://isaac.ardor.guru/): PNG предметов `/gfx/items/NNN.png`, персонажей `/gfx/characters/Name.png`, а также игровые уведомления об открытии `/gfx/achievements/ID.png`. Последние дают настоящие изображения золотого и костяного сердца, монет, мешка, крана, исповедальни, планетария и других механик.
-- [Dead God Tracker](https://deadgod.yeeterie.org/): атласы `/sprites/trinket_sheet.webp` и `/sprites/consumable_sheet.webp`; координаты берутся из публичного модуля `/assets/data-d8ce3ab0.js`. Нужные клетки вырезаются без масштабирования и сохраняются в PNG.
-- Состав подборки взят из [Most & Least Important Unlocks (Repentance+), jnub](https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310). Сам гайд не является источником растровых изображений.
+- [Isaac Save Editor — ardor.guru](https://isaac.ardor.guru/): item PNGs `/gfx/items/NNN.png`, character PNGs `/gfx/characters/Name.png`, and the game's unlock notifications `/gfx/achievements/ID.png`. The latter provide genuine images of the golden and bone hearts, coins, the sack, the crane, the confessional, the planetarium and other mechanics.
+- [Dead God Tracker](https://deadgod.yeeterie.org/): the atlases `/sprites/trinket_sheet.webp` and `/sprites/consumable_sheet.webp`; coordinates are taken from the public module `/assets/data-d8ce3ab0.js`. The required cells are cut out without scaling and saved as PNG.
+- The selection is taken from [Most & Least Important Unlocks (Repentance+), jnub](https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310). The guide itself is not a source of raster images.
 
-Картинки из `/gfx/achievements/` — только оформление узлов. Их наличие, имя файла и `artworkId` не читают и не меняют секреты, не подтверждают достижения Steam и не участвуют в расчёте игрового прогресса. Цвет таблетки на картинке уведомления также не определяет её цвет в забеге: игровые цвета эффектов меняются между забегами. Некоторые уведомления относятся сразу к нескольким эффектам; эти узлы могут использовать одинаковую игровую картинку.
+Images from `/gfx/achievements/` are node decoration only. Their presence, file name and `artworkId` do not read or change secrets, do not confirm Steam achievements and do not take part in computing gameplay progress. The pill color in a notification image also does not determine its color in a run: the game's effect colors change between runs. Some notifications cover several effects at once; those nodes may use the same game image.
 
-`tools/icon-overrides.json` позволяет явно выбрать подходящий источник независимо от `secretId` узла. Например, изображение Charged Key берётся из уведомления 333; это сопоставление изображения не исправляет и не переинтерпретирует данные сохранения.
+`tools/icon-overrides.json` lets you explicitly choose a suitable source independently of the node's `secretId`. For example, the Charged Key image is taken from notification 333; this image mapping does not correct or reinterpret save data.
 
-## Собственные иллюстрации
+## Original illustrations
 
-`tools/fetch_icons.py#designed_svg` воспроизводимо создаёт SVG размером 64×64. Испытания показаны листком с номером; для Cathedral, Sheol, Chest, Dark Room, Void, Corpse, Home, Mega Satan и Greed Mode нарисованы отдельные символы соответствующего места или механики. Эти иллюстрации имеют статус `designed` и отметку `original-vector-illustration`. Они не взяты из игры, не сгенерированы нейросетью и не заменяют предметы похожими чужими спрайтами.
+`tools/fetch_icons.py#designed_svg` reproducibly generates 64×64 SVGs. Challenges are shown as a sheet with a number; Cathedral, Sheol, Chest, Dark Room, Void, Corpse, Home, Mega Satan and Greed Mode get separate symbols for the corresponding location or mechanic. These illustrations have the status `designed` and the marker `original-vector-illustration`. They are not taken from the game, are not generated by a neural network and do not substitute other people's similar-looking sprites for items.
 
-## Манифест и повторная загрузка
+## Manifest and re-downloading
 
-`site/assets/icons/manifest.json` (schema 2) содержит по записи на каждый узел: статус `downloaded` либо `designed`, путь, размеры и SHA-256 локального изображения. Для скачанных изображений указаны URL и SHA-256 исходника; для атласов — ключ и прямоугольник вырезки; для иллюстраций — функция-источник и явное описание их условности. Неудачные загрузки отражаются статусом `missing`, и скрипт завершается с ненулевым кодом.
+`site/assets/icons/manifest.json` (schema 2) contains one entry per node: the status `downloaded` or `designed`, the path, dimensions and SHA-256 of the local image. Downloaded images list the source URL and SHA-256; atlas images list the key and the crop rectangle; illustrations list the source function and an explicit description of their symbolic nature. Failed downloads are reflected with the status `missing`, and the script exits with a non-zero code.
 
-Сборка сайта не требует Python. Вспомогательный шаг для обновления каталога:
+Building the website does not require Python. Helper step for updating the catalog:
 
 ```sh
 python3 -m pip install Pillow
 python3 tools/fetch_icons.py
 ```
 
-Обычный запуск проверяет локальный SHA-256, PNG/SVG и прозрачность растров. Корректные файлы остаются в кэше; запросы выполняются только для отсутствующих или повреждённых изображений. Атласы нужны только при отсутствии соответствующих брелоков или расходников, поэтому недоступность внешнего сервиса не мешает повторной упаковке полного локального набора. SVG создаются из исходника при необходимости.
+A normal run checks the local SHA-256, PNG/SVG validity and raster transparency. Valid files stay in the cache; requests are made only for missing or corrupted images. The atlases are needed only when the corresponding trinkets or consumables are missing, so unavailability of the external service does not prevent repackaging the complete local set. SVGs are generated from source when needed.
 
-Для принудительного обновления:
+To force a refresh:
 
 ```sh
 python3 tools/fetch_icons.py --refresh
 ```
 
-Если обновить уже проверенный файл не удалось, он сохраняется, а причина записывается в `refreshError` его записи. Ошибки не стирают рабочие изображения. Если переименуют публичный модуль атласа, нужно обновить `ATLAS_DATA` и сверить результат; проверка размеров обнаруживает несовпадение версии метаданных с изображением.
+If refreshing an already verified file fails, the file is kept and the reason is written to `refreshError` in its entry. Errors do not erase working images. If the public atlas module is renamed, `ATLAS_DATA` must be updated and the result checked; the dimension check detects a mismatch between the metadata version and the image.
 
-Соглашение об именах: `collectible-{itemId}.png`, `trinket-{itemId}.png`, `consumable-{itemId}.png`, `character-{slug}.png`, `feature-{slug}.png`, `challenge-{number}.svg`, `feature-{slug}.svg`. Скрипт использует только публичные HTTP GET и не изменяет сохранения.
+Naming convention: `collectible-{itemId}.png`, `trinket-{itemId}.png`, `consumable-{itemId}.png`, `character-{slug}.png`, `feature-{slug}.png`, `challenge-{number}.svg`, `feature-{slug}.svg`. The script uses only public HTTP GET requests and does not modify saves.
 
-Права на игровые изображения сохраняются за соответствующими правообладателями The Binding of Isaac. Публичная доступность зеркала не означает открытую лицензию, разрешение правообладателя или право на коммерческое использование. Проект не заявляет владения игровой графикой и не приписывает изображениям непроверенную лицензию.
+Rights to the game images remain with the respective rights holders of The Binding of Isaac. Public availability of a mirror does not imply an open license, permission from the rights holder or a right to commercial use. The project does not claim ownership of the game graphics and does not attribute an unverified license to the images.
 
-## Бренд Skill Issue Tracker
+## Skill Issue Tracker brand
 
-Танцующий Isaac — реальная мемная анимация **Isaac Shmoovin**: [публикация и атрибуция на Know Your Meme](https://knowyourmeme.com/photos/2088770-the-binding-of-isaac), [исходная публикация u/Waether_is_good](https://www.reddit.com/user/Waether_is_good/comments/msbmnz/isaac_danc/). Автор исходной анимации указан как `u/Waether_is_good`, прозрачной версии — загрузивший её `professorploopy`.
+The dancing Isaac is a real meme animation, **Isaac Shmoovin**: [post and attribution on Know Your Meme](https://knowyourmeme.com/photos/2088770-the-binding-of-isaac), [original post by u/Waether_is_good](https://www.reddit.com/user/Waether_is_good/comments/msbmnz/isaac_danc/). The author of the original animation is credited as `u/Waether_is_good`; the transparent version is credited to its uploader, `professorploopy`.
 
-Локальный файл `site/assets/brand/dancing-isaac.gif` сохранён без изменений из [публичного GIF](https://i.kym-cdn.com/photos/images/original/002/088/770/f90.gif): 190×190, 60 кадров, 5,87 секунды, бесконечный цикл, 513 956 байт. Прозрачность проверена во всех кадрах. Provenance, размеры, длительность и SHA-256 записаны в `site/assets/brand/manifest.json`. Нейросеть не использовалась; это оригинальный скачанный GIF, а не CSS-имитация танца.
+The local file `site/assets/brand/dancing-isaac.gif` is saved unmodified from the [public GIF](https://i.kym-cdn.com/photos/images/original/002/088/770/f90.gif): 190×190, 60 frames, 5.87 seconds, infinite loop, 513,956 bytes. Transparency was verified in every frame. Provenance, dimensions, duration and SHA-256 are recorded in `site/assets/brand/manifest.json`. No neural network was used; this is the original downloaded GIF, not a CSS imitation of the dance.
 
-Для Dead God используется реальное игровое изображение уведомления [637.png](https://isaac.ardor.guru/gfx/achievements/637.png), сохранённое как `site/assets/icons/feature-dead-god.png` с записью в общем манифесте. Оно декоративное и не является доказательством заслуг слота.
+For Dead God, the real game notification image [637.png](https://isaac.ardor.guru/gfx/achievements/637.png) is used, saved as `site/assets/icons/feature-dead-god.png` with an entry in the shared manifest. It is decorative and is not proof of the slot's accomplishments.
 
-Публичная публикация GIF и указание авторства не означают проверенную открытую лицензию. Права на персонажа и исходный игровой арт принадлежат их правообладателям; проект не заявляет владения анимацией.
+Public posting of the GIF and crediting its authors do not imply a verified open license. Rights to the character and the original game art belong to their rights holders; the project does not claim ownership of the animation.
