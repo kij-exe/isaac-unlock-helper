@@ -17,7 +17,7 @@ class Element {
 }
 async function app(t,{savedLanguage=null}={}){
   const ids=[...fs.readFileSync('site/index.html','utf8').matchAll(/id="([^"]+)"/g)].map(m=>'#'+m[1]);
-  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#show-default-open','#infer-save-evidence','#tier-rows','#result-count', '#graph-mode','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label'].map(id=>[id,new Element()]));
+  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#show-default-open','#infer-save-evidence','#tier-rows','#result-count','#next-up', '#graph-mode','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label'].map(id=>[id,new Element()]));
   const nav=['tiers','stats','graph'].map(page=>{const element=new Element();element.dataset.page=page;return element;});
   const os=['windows','mac','linux'].map(value=>{const element=new Element();element.dataset.os=value;return element;});
   const languages=['ru','en'].map(value=>{const element=new Element();element.dataset.language=value;return element;});

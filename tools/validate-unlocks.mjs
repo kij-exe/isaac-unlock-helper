@@ -5,6 +5,14 @@ import {validateCatalog} from '../site/js/unlock-engine.js';
 const file=process.argv[2]||'site/data/unlocks.json';
 const data=JSON.parse(fs.readFileSync(file,'utf8'));
 const errors=validateCatalog(data);
+// Mark and character conditions must name a character exactly as the save parser reports it.
+const characters=new Set(JSON.parse(fs.readFileSync('site/data/game-catalog.json','utf8')).characters.map(character=>character.name));
+const checkCharacters=(condition,owner)=>{
+  if(!condition)return;
+  if(['mark','character_played'].includes(condition.type)&&!characters.has(condition.character))errors.push(`Unknown character "${condition.character}": ${owner}`);
+  (condition.conditions||[]).forEach(child=>checkCharacters(child,owner));
+};
+for(const node of data.nodes){checkCharacters(node.unlock.requirements,node.id);checkCharacters(node.unlock.evidence,node.id);}
 const manifest=JSON.parse(fs.readFileSync('site/assets/icons/manifest.json','utf8'));
 const icons=new Map();
 for(const entry of manifest.icons){

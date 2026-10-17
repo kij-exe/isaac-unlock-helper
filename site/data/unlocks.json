@@ -45567,7 +45567,7 @@
             },
             {
               "type": "mark",
-              "character": "Blue Baby",
+              "character": "???",
               "target": "Delirium",
               "minimum": 1,
               "label": "Blue Baby: Delirium"
@@ -45576,7 +45576,7 @@
         },
         "evidence": {
           "type": "mark",
-          "character": "Blue Baby",
+          "character": "???",
           "target": "Delirium",
           "minimum": 1,
           "label": "Blue Baby: Delirium"
@@ -51403,7 +51403,7 @@
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "The Beast",
               "minimum": 1,
               "label": "Tainted Blue Baby: The Beast"
@@ -51412,7 +51412,7 @@
         },
         "evidence": {
           "type": "mark",
-          "character": "Tainted Blue Baby",
+          "character": "Tainted ???",
           "target": "The Beast",
           "minimum": 1,
           "label": "Tainted Blue Baby: The Beast"
@@ -51613,7 +51613,7 @@
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "The Beast",
               "minimum": 1,
               "label": "Tainted Forgotten: The Beast"
@@ -51622,7 +51622,7 @@
         },
         "evidence": {
           "type": "mark",
-          "character": "Tainted Forgotten",
+          "character": "Tainted The Forgotten",
           "target": "The Beast",
           "minimum": 1,
           "label": "Tainted Forgotten: The Beast"
@@ -52341,7 +52341,7 @@
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Delirium",
               "minimum": 1,
               "label": "Tainted Forgotten: Delirium"
@@ -52350,7 +52350,7 @@
         },
         "evidence": {
           "type": "mark",
-          "character": "Tainted Forgotten",
+          "character": "Tainted The Forgotten",
           "target": "Delirium",
           "minimum": 1,
           "label": "Tainted Forgotten: Delirium"
@@ -56846,28 +56846,28 @@
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "Isaac",
               "minimum": 1,
               "label": "Tainted Blue Baby: Isaac"
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "???",
               "minimum": 1,
               "label": "Tainted Blue Baby: ???"
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "Satan",
               "minimum": 1,
               "label": "Tainted Blue Baby: Satan"
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "The Lamb",
               "minimum": 1,
               "label": "Tainted Blue Baby: The Lamb"
@@ -56879,28 +56879,28 @@
           "conditions": [
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "Isaac",
               "minimum": 1,
               "label": "Tainted Blue Baby: Isaac"
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "???",
               "minimum": 1,
               "label": "Tainted Blue Baby: ???"
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "Satan",
               "minimum": 1,
               "label": "Tainted Blue Baby: Satan"
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "The Lamb",
               "minimum": 1,
               "label": "Tainted Blue Baby: The Lamb"
@@ -56935,7 +56935,7 @@
             },
             {
               "type": "mark",
-              "character": "Tainted Blue Baby",
+              "character": "Tainted ???",
               "target": "Mother",
               "minimum": 1,
               "label": "Tainted Blue Baby: Mother"
@@ -56944,7 +56944,7 @@
         },
         "evidence": {
           "type": "mark",
-          "character": "Tainted Blue Baby",
+          "character": "Tainted ???",
           "target": "Mother",
           "minimum": 1,
           "label": "Tainted Blue Baby: Mother"
@@ -57108,28 +57108,28 @@
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Isaac",
               "minimum": 1,
               "label": "Tainted Forgotten: Isaac"
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "???",
               "minimum": 1,
               "label": "Tainted Forgotten: ???"
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Satan",
               "minimum": 1,
               "label": "Tainted Forgotten: Satan"
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "The Lamb",
               "minimum": 1,
               "label": "Tainted Forgotten: The Lamb"
@@ -57141,28 +57141,28 @@
           "conditions": [
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Isaac",
               "minimum": 1,
               "label": "Tainted Forgotten: Isaac"
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "???",
               "minimum": 1,
               "label": "Tainted Forgotten: ???"
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Satan",
               "minimum": 1,
               "label": "Tainted Forgotten: Satan"
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "The Lamb",
               "minimum": 1,
               "label": "Tainted Forgotten: The Lamb"
@@ -57197,7 +57197,7 @@
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Mother",
               "minimum": 1,
               "label": "Tainted Forgotten: Mother"
@@ -57206,7 +57206,7 @@
         },
         "evidence": {
           "type": "mark",
-          "character": "Tainted Forgotten",
+          "character": "Tainted The Forgotten",
           "target": "Mother",
           "minimum": 1,
           "label": "Tainted Forgotten: Mother"
@@ -59418,13 +59418,13 @@
         "description": "Defeat Ultra Greedier as Tainted Forgotten.",
         "requirements": {
           "type": "mark",
-          "character": "Tainted Forgotten",
+          "character": "Tainted The Forgotten",
           "target": "Greed / Greedier",
           "minimum": 2
         },
         "evidence": {
           "type": "mark",
-          "character": "Tainted Forgotten",
+          "character": "Tainted The Forgotten",
           "target": "Greed / Greedier",
           "minimum": 2
         }
@@ -59942,13 +59942,13 @@
           "conditions": [
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Hush",
               "minimum": 1
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Boss Rush",
               "minimum": 1
             }
@@ -59959,13 +59959,13 @@
           "conditions": [
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Hush",
               "minimum": 1
             },
             {
               "type": "mark",
-              "character": "Tainted Forgotten",
+              "character": "Tainted The Forgotten",
               "target": "Boss Rush",
               "minimum": 1
             }
@@ -60186,13 +60186,13 @@
         "description": "Defeat Mega Satan as Tainted Forgotten.",
         "requirements": {
           "type": "mark",
-          "character": "Tainted Forgotten",
+          "character": "Tainted The Forgotten",
           "target": "Mega Satan",
           "minimum": 1
         },
         "evidence": {
           "type": "mark",
-          "character": "Tainted Forgotten",
+          "character": "Tainted The Forgotten",
           "target": "Mega Satan",
           "minimum": 1
         }

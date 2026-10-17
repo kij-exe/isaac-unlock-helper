@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8fa">
   <script>try { const saved=localStorage.getItem('atlas-theme'); document.documentElement.dataset.theme=saved==='light'||saved==='dark'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); } catch { document.documentElement.dataset.theme='light'; }</script>
+  <script>try { if(localStorage.getItem('skill-issue-save')) document.documentElement.dataset.restoring='true'; } catch {}</script>
   <meta name="description" content="Your The Binding of Isaac progress: unlock priorities, dependency graphs and save statistics. Everything runs in your browser.">
   <title>Skill Issue Tracker — The Binding of Isaac</title>
   <link rel="icon" href="assets/icons/character-isaac.png" type="image/png">
@@ -31,6 +32,7 @@
         <span class="eyebrow">THE BINDING OF ISAAC</span>
         <h1>What to unlock <em>next?</em></h1>
         <p>Turn your save into a clear unlock plan.</p>
+        <div class="landing-cta"><button type="button" id="hero-choose" class="button primary">Choose your save file</button><button type="button" id="hero-help" class="button">Where can I find my save?</button></div>
       </div>
       <figure class="landing-demo" id="landing-demo" aria-label="Example: upload a save, select Mom’s Knife in the tier list and see its requirement: defeat Satan as Isaac.">
         <div class="demo-topline"><span><i></i> HOW IT WORKS</span><button id="demo-pause" class="demo-pause" aria-label="Pause animation" aria-pressed="false" title="Pause animation">Ⅱ</button></div>
@@ -70,7 +72,7 @@
           <p class="wrong-file-note"><b>gamestate is not needed:</b> it stores the current run. Do not select rep+gamestate, options.ini, log.txt, an archive or a folder.</p>
         </div>
         <details class="save-help" id="save-help">
-          <summary>Where can I find my save? <span>↗</span></summary>
+          <summary>Where can I find my save? <span aria-hidden="true">›</span></summary>
           <div class="os-tabs" role="group" aria-label="Operating system">
             <button data-os="windows" aria-pressed="true">Windows</button><button data-os="mac" aria-pressed="false">macOS</button><button data-os="linux" aria-pressed="false">Linux / Deck</button>
           </div>
@@ -81,7 +83,7 @@
       </div>
     </section>
     <div id="workspace" hidden>
-      <div class="save-strip"><span class="save-indicator"></span><strong id="save-name"></strong><span id="save-edition" class="save-edition"></span><span id="save-meta"></span><button class="text-button" id="clear-save">Forget save</button></div>
+      <div class="save-strip"><span class="save-indicator"></span><strong id="save-name"></strong><span id="save-edition" class="save-edition"></span><span id="save-meta"></span><span class="save-actions"><button class="text-button" id="strip-change-save">Change save</button><button class="text-button" id="clear-save" title="Remove this save from the browser">Forget save</button></span></div>
       <p id="file-error" class="file-error" role="alert" hidden></p>
       <div id="view"></div>
     </div>

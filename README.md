@@ -4,6 +4,8 @@
 
 The finished frontend lives in `site/`: `.dat` upload without sending anything to a server, a tier list, an item wiki, statistics, a graph for each unlock and a full graph with shared dependencies. The catalog contains 188 entries from jnub's guide, grouped into S–F by unlock priority, 311 nodes with dependencies and 311 local icons (209 game PNGs and 102 SVG illustrations).
 
+The last save read successfully is kept in this browser's `localStorage` (key `skill-issue-save`), so reloading the page reopens it on the same screen. It never leaves the browser; “Forget save” removes it.
+
 ```sh
 npm run dev
 ```
