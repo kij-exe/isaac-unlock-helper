@@ -2,7 +2,7 @@ import {createI18n, localizeCatalog, translate} from './i18n.js';
 import {catalogForSave} from './catalog-profile.js';
 import {RANKS, LOCKED_RANK, rankEntries, moveEntry, layoutOf, applyLayout} from './tier-ranks.js';
 import {createGraphView, edgeGeometry, graphNeighborhood} from './graph-view.js';
-import {parseSave, slotProgress} from './save-parser.js';
+import {parseSave, slotProgress, emptySaveBytes} from './save-parser.js';
 import {STATUS, validateCatalog, createEvaluator, buildGraph, layoutGraph, conditionLabel} from './unlock-engine.js';
 
 const i18n=createI18n(), t=source=>i18n.t(source);
@@ -58,39 +58,102 @@ function setPaths(os) {
 // The last successfully read save is kept in this browser only, so a reload reopens it; "Forget save" removes it.
 const SAVE_KEY='skill-issue-save';
 const toBase64=bytes=>{let text='';for(let i=0;i<bytes.length;i+=0x8000)text+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(text);};
-function storeSave(name,bytes) {
-  try{localStorage.setItem(SAVE_KEY,JSON.stringify({name,data:toBase64(bytes)}));}catch{}
+function storeSave(name,bytes,empty=false) {
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify(empty?{empty:true}:{name,data:toBase64(bytes)}));}catch{}
 }
 function forgetStoredSave() { try{localStorage.removeItem(SAVE_KEY);}catch{} }
 function storedSave() {
   try{
     const entry=JSON.parse(localStorage.getItem(SAVE_KEY));
+    if(entry?.empty)return emptySaveFile(true);
     if(!entry?.name||!entry.data)return null;
     const bytes=Uint8Array.from(atob(entry.data),char=>char.charCodeAt(0));
     return {name:entry.name,restored:true,arrayBuffer:async()=>bytes.buffer};
   }catch{forgetStoredSave();return null;}
 }
 
-async function loadFile(file) {
+// "Continue without a save" reads a freshly created Repentance+ slot through the same parser as any upload.
+function emptySaveFile(restored=false) {
+  const bytes=emptySaveBytes();
+  return {name:'no-save.dat',empty:true,restored,arrayBuffer:async()=>bytes.buffer};
+}
+
+// Where the current save came from, so "Reload" can read it again after the game rewrites it.
+// A file handle (Chromium) returns the current contents on every read and is remembered across page
+// reloads; a plain File is kept for this tab only and may refuse to be read once the file changes.
+let saveSource=null;
+function handleStore(mode,action) {
+  if(!globalThis.indexedDB)return Promise.resolve(null);
+  return new Promise((resolve,reject)=>{
+    const open=indexedDB.open('skill-issue-tracker',1);
+    open.onupgradeneeded=()=>open.result.createObjectStore('handles');
+    open.onerror=()=>reject(open.error);
+    open.onsuccess=()=>{
+      const db=open.result,transaction=db.transaction('handles',mode),request=action(transaction.objectStore('handles'));
+      transaction.oncomplete=()=>{db.close();resolve(request.result);};
+      transaction.onerror=transaction.onabort=()=>{db.close();reject(transaction.error);};
+    };
+  });
+}
+const rememberHandle=handle=>handleStore('readwrite',store=>handle?store.put(handle,'save'):store.delete('save')).catch(()=>{});
+const rememberedHandle=()=>handleStore('readonly',store=>store.get('save')).catch(()=>null);
+function updateReloadButtons() { for(const id of ['#reload-save','#strip-reload-save'])$(id).hidden=!saveSource; }
+
+async function chooseSave() {
+  if(!window.showOpenFilePicker){$('#save-input').click();return;}
+  let handle;
+  try{[handle]=await window.showOpenFilePicker({id:'isaac-save',types:[{description:'Isaac save',accept:{'application/octet-stream':['.dat']}}]});}
+  catch(error){if(error.name!=='AbortError')$('#save-input').click();return;}
+  loadFile(await handle.getFile(),{handle});
+}
+async function reloadSave() {
+  if(!saveSource||!state.save)return;
+  try{
+    let file=saveSource.file;
+    if(saveSource.handle){
+      const handle=saveSource.handle,options={mode:'read'};
+      if(await handle.queryPermission(options)!=='granted'&&await handle.requestPermission(options)!=='granted')
+        throw new Error('The browser did not allow reading this file again. Choose it again.');
+      file=await handle.getFile();
+    }
+    const bytes=new Uint8Array(await file.arrayBuffer()),current=state.saveBytes;
+    if(bytes.length===current.length&&bytes.every((byte,index)=>byte===current[index])){toast('The file has not changed since it was loaded.');return;}
+    await loadFile({name:file.name,arrayBuffer:async()=>bytes.buffer},{reload:true});
+  }catch(error){
+    const unreadable=['NotReadableError','NotFoundError'].includes(error.name);
+    const message=unreadable?'This file changed or moved, so the browser can no longer read it. Choose it again.':error.message||'Could not read the file.';
+    toast(message);i18n.text($('#file-error'),message);$('#file-error').hidden=isHome();
+    if(unreadable)chooseSave();
+  }
+}
+function showSaveDetails() {
+  const name=state.emptySave?'No save file':state.fileName;
+  i18n.text($('#save-name'),name);i18n.text($('#resume-name'),name);$('#save-edition').textContent=state.save.profile.label;
+  i18n.text($('#save-meta'),state.emptySave?'Empty progress':`${(state.save.sizeBytes/1024).toFixed(1)} KB · checksum ✓`);
+}
+
+async function loadFile(file,{handle=null,reload=false}={}) {
   if (!file) return;
-  if (!state.data) { state.pendingFile=file; i18n.text($('#upload-status'),'Loading the catalog before reading your save…'); return; }
+  if (!state.data) { state.pendingFile={file,handle}; i18n.text($('#upload-status'),'Loading the catalog before reading your save…'); return; }
   const generation = ++uploadGeneration;
   const status=$('#upload-status'); status.classList.remove('error'); i18n.text(status,'Reading your save and verifying its checksum…');
   try {
     const bytes=new Uint8Array(await file.arrayBuffer());
     const save=parseSave(bytes,{fileName:file.name}), progress=slotProgress(save,state.catalog);
     if (generation !== uploadGeneration) return;
-    if(!file.restored)storeSave(file.name,bytes);
-    state.save=save; state.progress=progress;state.data=localizeCatalog(catalogForSave(state.baseData,save),i18n.language); state.fileName=file.name; state.manual={}; state.selected=null;
-    state.graphMode='progress';state.showOpened=false;state.zoom=1;state.openCharacters.clear();graphPositions.clear();
+    if(!file.restored)storeSave(file.name,bytes,file.empty);
+    if(!reload){saveSource=handle?{handle}:file.restored||file.empty?null:{file};if(!file.restored)rememberHandle(handle);}
+    state.save=save; state.saveBytes=bytes; state.emptySave=!!file.empty; state.progress=progress;state.data=localizeCatalog(catalogForSave(state.baseData,save),i18n.language); state.fileName=file.name;
+    // Reloading the same file keeps manual confirmations, the selection and the graph view.
+    if(!reload){state.manual={}; state.selected=null;state.graphMode='progress';state.showOpened=false;state.zoom=1;state.openCharacters.clear();graphPositions.clear();state.lastPage=null;}
     refreshEvaluator();
-    $('#save-name').textContent=file.name;$('#save-edition').textContent=save.profile.label;$('#file-error').hidden=true;
-    i18n.text($('#save-meta'),`${(save.sizeBytes/1024).toFixed(1)} KB · checksum ✓`);
-    $('#onboarding').hidden=true; $('#workspace').hidden=false; $('.main-nav').hidden=false; $('#change-save').hidden=false;
-    i18n.text(status,'Save loaded.');
-    // A restored save reopens the page that was showing before the reload.
+    showSaveDetails();$('#file-error').hidden=true;
+    $('.main-nav').hidden=false; $('#change-save').hidden=false; updateReloadButtons();
+    i18n.text(status,reload?'Save reloaded.':'Save loaded.');
+    if(reload){rerenderInPlace();toast('Save reloaded from the file.');return;}
+    // A restored save reopens the page (or the home screen) that was showing before the reload.
     const page=location.hash.slice(2).split('?')[0];
-    if(!file.restored||!(save.profile.planner?['tiers','stats','graph']:['stats']).includes(page))location.hash=save.profile.planner?'#/tiers':'#/stats';
+    if(!file.restored||!((save.profile.planner?['tiers','stats','graph']:['stats']).includes(page)||location.hash==='#/'))location.hash=defaultPage();
     renderPage();
     if(!file.restored)$('#main').focus({preventScroll:true});
   } catch (error) {
@@ -103,8 +166,8 @@ async function loadFile(file) {
 
 function resetSave() {
   graphView?.destroy();graphView=null;graphPositions.clear();
-  uploadGeneration++; forgetStoredSave(); state.save=null; state.progress=null; state.evaluator=null;state.slotEvaluator=null; state.manual={}; state.fileName=''; state.selected=null;state.data=state.baseData;
-  $('#workspace').hidden=true;$('#file-error').hidden=true; $('#view').replaceChildren(); $('#onboarding').hidden=false; $('.main-nav').hidden=true; $('#change-save').hidden=true;
+  uploadGeneration++; forgetStoredSave(); saveSource=null; rememberHandle(null); state.save=null; state.saveBytes=null; state.emptySave=false; state.lastPage=null; state.progress=null; state.evaluator=null;state.slotEvaluator=null; state.manual={}; state.fileName=''; state.selected=null;state.data=state.baseData;
+  $('#workspace').hidden=true;$('#file-error').hidden=true; $('#view').replaceChildren(); $('#onboarding').hidden=false; $('.main-nav').hidden=true; $('#change-save').hidden=true; $('#resume-save').hidden=true; updateReloadButtons();
   $('#save-input').value=''; $('#upload-status').classList.remove('error');
   i18n.text($('#upload-status'),'Save forgotten and removed from this browser.');
   location.hash='#/'; window.scrollTo(0,0);
@@ -413,11 +476,18 @@ function renderGraph({preserveSelection=false}={}) {
   }
 }
 
+// The brand link leads home (#/); with a save loaded, home keeps it and offers a way back to the last page.
+const isHome=()=>['','#','#/'].includes(location.hash);
+const defaultPage=()=>state.save?.profile.planner===false?'#/stats':'#/tiers';
 function renderPage({preserveSelection=false}={}) {
   if (!state.save) return;
   graphView?.destroy();graphView=null;
+  const home=isHome();
+  $('#onboarding').hidden=!home;$('#workspace').hidden=home;$('#resume-save').hidden=!home;
   const requested=location.hash.slice(2).split('?')[0];state.page=['tiers','stats','graph'].includes(requested)?requested:'tiers';
-  document.querySelectorAll('.main-nav a').forEach(link=>{link.classList.toggle('active',link.dataset.page===state.page);if(link.dataset.page===state.page)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
+  document.querySelectorAll('.main-nav a').forEach(link=>{const active=!home&&link.dataset.page===state.page;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
+  if(home){$('#view').replaceChildren();$('#resume-link').href=state.lastPage||defaultPage();document.title=t('Skill Issue Tracker — The Binding of Isaac');return;}
+  state.lastPage=location.hash;
   if(!state.save.profile.planner&&state.page!=='stats')$('#view').innerHTML=html('<div class="empty-state"><h2>This is a Rebirth save</h2><p>Save loaded: statistics are available for this edition. The tier list and graph target Repentance / Repentance+.</p><a class="button" href="#/stats">View Rebirth statistics</a></div>');else if(state.page==='stats')renderStats();else if(state.page==='graph')renderGraph({preserveSelection});else renderTiers();
   document.title=`${t(state.page==='stats'?'Statistics':state.page==='graph'?'Unlock map':'Tier list')} — Skill Issue Tracker`;
 }
@@ -507,11 +577,15 @@ function applyLanguage(){
   document.documentElement.lang=i18n.language;
   document.querySelectorAll('.topbar, #onboarding, .skip-link, .footer, meta[name="description"], .save-actions').forEach(root=>i18n.localizeDOM(root));
   document.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===i18n.language)));
-  const onGraph=state.save&&state.page==='graph',canvas=onGraph?$('#graph-canvas'):null,sidebar=onGraph?$('#graph-sidebar'):null;
-  const viewport={left:canvas?.scrollLeft||0,top:canvas?.scrollTop||0,sidebar:sidebar?.scrollTop||0,zoom:graphView?.zoom};
-  const opened=new Set([...document.querySelectorAll('.condition-disclosure[open]')].map(details=>details.dataset.conditionKey));
   if(state.baseData){state.data=localizeCatalog(state.save?catalogForSave(state.baseData,state.save):state.baseData,i18n.language);if(state.save)refreshEvaluator();}
   setPaths(state.os||'windows');i18n.refreshMessages();updateThemeButton();updateAnimationButton();
+  rerenderInPlace();
+}
+// Re-render the current page without moving the reader: graph zoom, scroll, sidebar and opened conditions survive.
+function rerenderInPlace(){
+  const onGraph=state.save&&!isHome()&&state.page==='graph',canvas=onGraph?$('#graph-canvas'):null,sidebar=onGraph?$('#graph-sidebar'):null;
+  const viewport={left:canvas?.scrollLeft||0,top:canvas?.scrollTop||0,sidebar:sidebar?.scrollTop||0,zoom:graphView?.zoom};
+  const opened=new Set([...document.querySelectorAll('.condition-disclosure[open]')].map(details=>details.dataset.conditionKey));
   renderPage({preserveSelection:true});
   if(onGraph){
     if(graphView&&viewport.zoom)graphView.setZoom(viewport.zoom);
@@ -538,13 +612,21 @@ $('#demo-pause').addEventListener('click',()=>{
   $('#demo-pause').setAttribute('aria-label',label);$('#demo-pause').title=label;$('#demo-pause').textContent=paused?'▷':'Ⅱ';
 });
 $('#save-input').addEventListener('change',event=>loadFile(event.target.files[0]));
-$('#change-save').addEventListener('click',()=>$('#save-input').click());$('#hero-choose').addEventListener('click',()=>$('#save-input').click());$('#strip-change-save').addEventListener('click',()=>$('#save-input').click());
+for(const id of ['#change-save','#hero-choose','#strip-change-save'])$(id).addEventListener('click',chooseSave);
+for(const id of ['#reload-save','#strip-reload-save'])$(id).addEventListener('click',reloadSave);
+$('#hero-empty').addEventListener('click',()=>loadFile(emptySaveFile()));
 $('#hero-help').addEventListener('click',()=>{const help=$('#save-help');help.open=true;help.scrollIntoView({behavior:'smooth',block:'start'});help.querySelector('summary').focus({preventScroll:true});});$('#clear-save').addEventListener('click',resetSave);
 document.querySelectorAll('[data-os]').forEach(button=>button.addEventListener('click',()=>setPaths(button.dataset.os)));
-const drop=$('#dropzone');drop.addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();$('#save-input').click();}});
+const drop=$('#dropzone');drop.addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();chooseSave();}});
+drop.addEventListener('click',event=>{if(window.showOpenFilePicker){event.preventDefault();chooseSave();}});
 for(const eventName of ['dragenter','dragover'])drop.addEventListener(eventName,event=>{event.preventDefault();drop.classList.add('dragging');});
 for(const eventName of ['dragleave','drop'])drop.addEventListener(eventName,event=>{event.preventDefault();drop.classList.remove('dragging');});
-drop.addEventListener('drop',event=>{if(event.dataTransfer.files.length)loadFile(event.dataTransfer.files[0]);});
+drop.addEventListener('drop',event=>{
+  const file=event.dataTransfer.files[0];if(!file)return;
+  // The handle must be requested during the drop event; it lets "Reload" read the file again later.
+  const pending=event.dataTransfer.items?.[0]?.getAsFileSystemHandle?.();
+  Promise.resolve(pending).catch(()=>null).then(handle=>loadFile(file,{handle:handle?.kind==='file'?handle:null}));
+});
 window.addEventListener('hashchange',()=>{if(location.hash==='#main')return;renderPage();window.scrollTo(0,0);});applyLanguage();
 
 try {
@@ -554,8 +636,8 @@ try {
   repoLayout=layoutOf(data);
   try{applyLayout(data,JSON.parse(localStorage.getItem(TIER_LAYOUT_KEY)));}catch{}
   state.data=localizeCatalog(data,i18n.language);state.baseData=data;state.catalog=catalog;state.icons=new Map(manifest.icons.filter(entry=>['downloaded','designed'].includes(entry.status)).map(entry=>[entry.nodeId,entry.path]));
-  if(state.pendingFile){const file=state.pendingFile;delete state.pendingFile;loadFile(file);}
-  else{const stored=storedSave();if(stored)await loadFile(stored);}
+  if(state.pendingFile){const {file,handle}=state.pendingFile;delete state.pendingFile;loadFile(file,{handle});}
+  else{const stored=storedSave();if(stored)await loadFile(stored,{handle:stored.empty?null:await rememberedHandle()});}
   if(location.protocol==='file:')throw new Error('Open the site through an HTTP server or GitHub Pages.');
 } catch(error) { $('#upload-status').classList.add('error');i18n.text($('#upload-status'),error.message);toast(error.message); }
 delete document.documentElement.dataset.restoring;

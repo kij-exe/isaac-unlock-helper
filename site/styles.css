@@ -75,7 +75,8 @@ select:hover{border-color:var(--dot)}
 .save-strip{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 0;color:var(--muted);font-size:13px;border-bottom:1px dashed var(--line)}
 .save-strip strong{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:45%}
 .save-actions{display:flex;gap:14px;margin-left:auto;flex-shrink:0}
-#strip-change-save{display:none}
+#strip-change-save,#strip-reload-save{display:none}
+.reload-button{min-width:32px;padding:5px 9px;font-size:15px}
 .save-indicator{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-soft);flex-shrink:0}
 .save-edition{font-size:12px;font-weight:600;padding:2px 8px;background:var(--accent-soft);color:var(--accent);border-radius:99px;white-space:nowrap}
 #save-meta{color:var(--faint)}
@@ -422,8 +423,8 @@ tr:last-child td{border-bottom:0}
   .main-nav{order:3;width:100%}
   .main-nav a{flex:1;text-align:center;padding:7px 8px}
   #workspace{padding:0 16px 36px}
-  .header-actions #change-save{display:none}
-  #strip-change-save{display:inline}
+  .header-actions #change-save,.header-actions #reload-save{display:none}
+  #strip-change-save,#strip-reload-save{display:inline}
   .save-strip{gap:8px;font-size:12px}
   .save-strip strong{flex:0 1 auto;min-width:0;max-width:none;font-size:12px}
   .save-actions{gap:10px}

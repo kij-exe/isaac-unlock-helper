@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
-import {parseSave,slotProgress,kageChecksum,rebirthChecksum,SaveError} from '../site/js/save-parser.js';
+import {parseSave,slotProgress,kageChecksum,rebirthChecksum,SaveError,emptySaveBytes} from '../site/js/save-parser.js';
 import {SAVE_PROFILES,decodeCompletion} from '../site/js/save-profiles.js';
 import {catalogForSave} from '../site/js/catalog-profile.js';
 import {createEvaluator,buildGraph,validateCatalog,STATUS} from '../site/js/unlock-engine.js';
@@ -31,6 +31,15 @@ test('each supported edition parses a synthetic empty slot, independent of all i
     assert.equal(a.characters.length,profile.characters);assert.equal(a.capabilities.marks,profile.characters*profile.marksPerCharacter);
     if(profile.planner){const adapted=catalogForSave(data,before);assert.deepEqual(buildGraph(adapted,createEvaluator(adapted,before,a)),buildGraph(adapted,createEvaluator(adapted,after,b)));}
   }
+});
+test('"no save" is a freshly created slot that parses like a synthetic empty one',()=>{
+  for(const profile of SAVE_PROFILES.filter(entry=>entry.planner)){
+    const save=parseSave(emptySaveBytes(profile.id));
+    assert.equal(save.profile.id,profile.id);assert.equal(save.checksum.valid,true);
+    assert.deepEqual(slotProgress(save,catalog),slotProgress(parseSave(synthetic(profile)),catalog));
+  }
+  assert.equal(parseSave(emptySaveBytes()).profile.id,'repentance-plus');
+  assert.throws(()=>emptySaveBytes('rebirth'),SaveError);
 });
 test('Repentance+ decodes every offline/online combination without treating online Normal as Hard',()=>{
   for(let raw=0;raw<16;raw++){

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {parseSave,kageChecksum} from '../site/js/save-parser.js';
+import {parseSave,kageChecksum,emptySaveBytes} from '../site/js/save-parser.js';
 
 // DOM doubles exercise the actual upload handlers and generated screens without a browser.
 class Element {
@@ -112,6 +112,40 @@ test('initial incorrect upload keeps instructions visible and expands the file g
   assert.equal(elements.get('#workspace').hidden,true);
   assert.equal(elements.get('#save-help').open,true);
   assert.match(elements.get('#upload-status').textContent,/persistent progress/);
+});
+
+test('continuing without a save opens an empty Repentance+ slot; the brand leads home and back to the same page',async t=>{
+  const {elements,storage,navigate}=await app(t);
+  await elements.get('#hero-empty').events.get('click')();
+  assert.equal(elements.get('#save-name').textContent,'No save file');assert.equal(elements.get('#save-edition').textContent,'Repentance+');
+  assert.equal(location.hash,'#/tiers');assert.equal(elements.get('#workspace').hidden,false);assert.equal(elements.get('#onboarding').hidden,true);
+  assert.equal(elements.get('#reload-save').hidden,true,'an empty slot has no file to reload');
+  assert.deepEqual(JSON.parse(storage.get('skill-issue-save')),{empty:true});
+  assert.match(elements.get('#next-up').innerHTML,/next-card/);
+  navigate('#/stats');navigate('#/');
+  assert.equal(elements.get('#onboarding').hidden,false);assert.equal(elements.get('#workspace').hidden,true);
+  assert.equal(elements.get('#resume-save').hidden,false);assert.equal(elements.get('#resume-name').textContent,'No save file');
+  assert.equal(elements.get('#resume-link').href,'#/stats');assert.equal(elements.get('.main-nav').hidden,false);
+  navigate(elements.get('#resume-link').href);
+  assert.equal(elements.get('#workspace').hidden,false);assert.equal(elements.get('#resume-save').hidden,true);
+  assert.match(document.title,/Statistics/);
+});
+test('reload rereads the chosen file in place and reports when nothing changed',async t=>{
+  const {elements,navigate}=await app(t);
+  let bytes=emptySaveBytes('repentance');
+  const file={name:'rep_persistentgamedata1.dat',arrayBuffer:async()=>bytes.buffer};
+  await elements.get('#save-input').events.get('change')({target:{files:[file]}});
+  assert.equal(elements.get('#save-edition').textContent,'Repentance');assert.equal(elements.get('#reload-save').hidden,false);
+  navigate('#/stats');
+  await elements.get('#reload-save').events.get('click')();
+  assert.equal(elements.get('#toast').textContent,'The file has not changed since it was loaded.');
+  bytes=emptySaveBytes('repentance-plus');
+  await elements.get('#strip-reload-save').events.get('click')();
+  assert.equal(elements.get('#save-edition').textContent,'Repentance+');assert.equal(location.hash,'#/stats');
+  assert.equal(elements.get('#save-name').textContent,'rep_persistentgamedata1.dat');
+  assert.equal(elements.get('#toast').textContent,'Save reloaded from the file.');
+  elements.get('#clear-save').events.get('click')();
+  assert.equal(elements.get('#reload-save').hidden,true);assert.equal(elements.get('#resume-save').hidden,true);
 });
 
 test('English is the default; switching to Russian persists and rerenders tiers/statistics without reuploading or losing filters',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{

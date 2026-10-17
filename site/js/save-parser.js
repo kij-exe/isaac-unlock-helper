@@ -1,4 +1,4 @@
-import {matchingProfile,decodeCompletion} from './save-profiles.js';
+import {SAVE_PROFILES,matchingProfile,decodeCompletion} from './save-profiles.js';
 const CHUNKS = [null, ['achievements', 1], ['eventCounters', 4], ['levelCounters', 4],
   ['collection', 1], ['minibosses', 1], ['bosses', 1], ['challenges', 1],
   ['cutscenes', 4], ['settings', 4], ['specialSeeds', 1], ['bestiary', 0]];
@@ -95,6 +95,26 @@ export function parseSave(input,{fileName=''}={}) {
   if(!profile)throw new SaveError(`Format ${header.trim()} recognized, but this layout has not been verified: ${chunks.achievements.length} secret slots, ${chunks.eventCounters.length} counters. Supported: Rebirth (179/95), Repentance (638/496), Repentance+ (642/523). The filename does not determine its version.`,'unsupported_layout');
   if(legacy){chunks.specialSeeds=[];chunks.bestiary={deaths:{},kills:{},hits:{},encounters:{}};}
   return {header,profile,sizeBytes:bytes.length,checksum:{stored,computed,valid:true},gameStateChecksum,loadCounter,layout,chunks};
+}
+
+// A freshly created slot: every chunk of the edition's layout is present and zeroed, with a valid checksum.
+// It goes through parseSave like any uploaded file, so "no save" is exactly an empty save.
+export function emptySaveBytes(profileId='repentance-plus') {
+  const profile=SAVE_PROFILES.find(entry=>entry.id===profileId);
+  if(profile?.header!=='ISAACNGSAVE09R  ')throw new SaveError('Only Repentance and Repentance+ empty saves can be created.');
+  const parts=[new TextEncoder().encode(profile.header)];
+  const uints=(...values)=>{const part=new Uint8Array(values.length*4),view=new DataView(part.buffer);values.forEach((value,i)=>view.setUint32(i*4,value,true));parts.push(part);};
+  uints(0);
+  profile.counts.forEach((count,index)=>{
+    const id=index+1,width=CHUNKS[id][1];
+    if(!width){uints(id,0,count,4,0,2,0,3,0,1,0);return;}
+    uints(id,count*(id===1?1:4),count);parts.push(new Uint8Array(count*width));
+  });
+  uints(0,0);
+  const bytes=new Uint8Array(parts.reduce((size,part)=>size+part.length,0));
+  parts.reduce((offset,part)=>{bytes.set(part,offset);return offset+part.length;},0);
+  new DataView(bytes.buffer).setUint32(bytes.length-4,kageChecksum(bytes.subarray(16,bytes.length-4)),true);
+  return bytes;
 }
 
 const TARGETS = {KILL_MOMS_HEART: 'Mom’s Heart / It Lives!', KILL_ISAAC: 'Isaac', KILL_SATAN: 'Satan',

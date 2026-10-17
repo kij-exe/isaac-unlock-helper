@@ -8,6 +8,11 @@
 .landing-cta .button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .landing-cta .button.primary:hover{opacity:.9}
 .landing-cta .upload-local{font-size:14px}
+.landing-cta .text-button{font-size:14px}
+.resume-save{display:flex;align-items:center;gap:12px;max-width:520px;margin:0 auto 30px;padding:10px 10px 10px 16px;border:1px solid var(--line);border-radius:14px;background:var(--white);box-shadow:var(--shadow-sm);text-align:left}
+.resume-copy{display:flex;flex-direction:column;min-width:0;flex:1}
+.resume-copy small{font-size:11px;font-weight:650;letter-spacing:1px;text-transform:uppercase;color:var(--faint)}
+.resume-copy strong{font-family:var(--mono);font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* Hidden while a save stored in this browser is reopened, so the landing page does not flash. */
 [data-restoring] #onboarding{visibility:hidden}

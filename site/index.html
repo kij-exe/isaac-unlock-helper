@@ -15,7 +15,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="topbar">
-    <a class="brand" href="#/tiers" aria-label="Skill Issue Tracker, home">
+    <a class="brand" href="#/" aria-label="Skill Issue Tracker, home">
       <span class="brand-mascot" aria-hidden="true"><img class="brand-dance" src="assets/brand/dancing-isaac.gif" width="48" height="48" alt=""></span>
       <span>Skill Issue <b>Tracker</b><small>THE BINDING OF ISAAC</small></span>
     </a>
@@ -24,15 +24,16 @@
       <a href="#/stats" data-page="stats">Statistics</a>
       <a href="#/graph" data-page="graph">Graph</a>
     </nav>
-    <div class="header-actions"><div id="language-switch" class="language-switch" role="group" aria-label="Language / Язык"><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="true">EN</button><button type="button" data-language="ru" lang="ru" aria-label="Русский" aria-pressed="false">RU</button></div><button id="theme-toggle" class="theme-toggle" aria-label="Switch theme" title="Switch theme">◐</button><button id="change-save" class="button small" hidden>Change save</button></div>
+    <div class="header-actions"><div id="language-switch" class="language-switch" role="group" aria-label="Language / Язык"><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="true">EN</button><button type="button" data-language="ru" lang="ru" aria-label="Русский" aria-pressed="false">RU</button></div><button id="theme-toggle" class="theme-toggle" aria-label="Switch theme" title="Switch theme">◐</button><button id="reload-save" class="button small reload-button" hidden aria-label="Reload save from file" title="Reload save from file">↻</button><button id="change-save" class="button small" hidden>Change save</button></div>
   </header>
   <main id="main" tabindex="-1">
     <section id="onboarding" class="onboarding">
       <div class="landing-heading">
+        <div id="resume-save" class="resume-save" hidden><span class="save-indicator"></span><span class="resume-copy"><small>Current save</small><strong id="resume-name"></strong></span><a id="resume-link" class="button primary small" href="#/tiers">Return to this save <span aria-hidden="true">→</span></a></div>
         <span class="eyebrow">THE BINDING OF ISAAC</span>
         <h1>What to unlock <em>next?</em></h1>
         <p>Turn your save into a clear unlock plan.</p>
-        <div class="landing-cta"><button type="button" id="hero-choose" class="button primary">Choose your save file</button><button type="button" id="hero-help" class="button">Where can I find my save?</button></div>
+        <div class="landing-cta"><button type="button" id="hero-choose" class="button primary">Choose your save file</button><button type="button" id="hero-help" class="button">Where can I find my save?</button><button type="button" id="hero-empty" class="text-button" title="Start from an empty Repentance+ slot">Continue without a save</button></div>
       </div>
       <figure class="landing-demo" id="landing-demo" aria-label="Example: upload a save, select Mom’s Knife in the tier list and see its requirement: defeat Satan as Isaac.">
         <div class="demo-topline"><span><i></i> HOW IT WORKS</span><button id="demo-pause" class="demo-pause" aria-label="Pause animation" aria-pressed="false" title="Pause animation">Ⅱ</button></div>
@@ -83,7 +84,7 @@
       </div>
     </section>
     <div id="workspace" hidden>
-      <div class="save-strip"><span class="save-indicator"></span><strong id="save-name"></strong><span id="save-edition" class="save-edition"></span><span id="save-meta"></span><span class="save-actions"><button class="text-button" id="strip-change-save">Change save</button><button class="text-button" id="clear-save" title="Remove this save from the browser">Forget save</button></span></div>
+      <div class="save-strip"><span class="save-indicator"></span><strong id="save-name"></strong><span id="save-edition" class="save-edition"></span><span id="save-meta"></span><span class="save-actions"><button class="text-button" id="strip-change-save">Change save</button><button class="text-button" id="strip-reload-save" title="Read the latest version of this file" hidden>Reload</button><button class="text-button" id="clear-save" title="Remove this save from the browser">Forget save</button></span></div>
       <p id="file-error" class="file-error" role="alert" hidden></p>
       <div id="view"></div>
     </div>
