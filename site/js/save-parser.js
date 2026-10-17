@@ -32,12 +32,12 @@ export function kageChecksum(bytes) {
 
 export function parseSave(input,{fileName=''}={}) {
   const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
-  if (bytes.length > 2 * 1024 * 1024) throw new SaveError('Файл слишком большой. Выберите persistentgamedata*.dat.');
+  if (bytes.length > 2 * 1024 * 1024) throw new SaveError('File too large. Choose persistentgamedata*.dat.');
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   let position = 0;
   const take = size => {
     if (!Number.isSafeInteger(size) || size < 0 || position + size > bytes.length)
-      throw new SaveError(`Файл обрезан или имеет неизвестный формат (позиция ${position}).`);
+      throw new SaveError(`File is truncated or has an unknown format (position ${position}).`);
     const part = bytes.subarray(position, position + size);
     position += size;
     return part;
@@ -46,53 +46,53 @@ export function parseSave(input,{fileName=''}={}) {
   const header=new TextDecoder().decode(take(16));
   if(header.startsWith('ISAACNG_GSR')){
     const match=fileName.match(/((?:rep\+|rep_|abp_|ab_)?)(?:gamestate)([123])/i);
-    const expected=match?`${match[1]}persistentgamedata${match[2]}.dat`:'rep+persistentgamedata1.dat (или номер вашего слота)';
-    throw new SaveError(`Это gamestate — состояние текущего забега, а не общий прогресс. Выберите в той же папке ${expected}. Файл gamestate для тирлиста и общей статистики не нужен.`,'run_state');
+    const expected=match?`${match[1]}persistentgamedata${match[2]}.dat`:'rep+persistentgamedata1.dat (or your slot number)';
+    throw new SaveError(`This gamestate stores the current run, rather than persistent progress. Choose ${expected} in the same folder. A gamestate file is not needed for the tier list or overall statistics.`,'run_state');
   }
   if(!['ISAACNGSAVE09R  ','ISAACNGSAVE06R  '].includes(header))
-    throw new SaveError('Неизвестный формат файла. Нужен двоичный persistentgamedata*.dat из Rebirth, Repentance или Repentance+. gamestate, options.ini, log.txt и архивы не подходят.','unknown_format');
+    throw new SaveError('Unknown file format. Choose a binary persistentgamedata*.dat from Rebirth, Repentance or Repentance+. gamestate, options.ini, log.txt and archives are not supported.','unknown_format');
   const legacy=header==='ISAACNGSAVE06R  ';
   const gameStateChecksum = uint();
   const chunks = {}, layout = [];
   for (let expected = 1; expected <= (legacy?9:11); expected++) {
     const offset = position, id = uint(), sizeWritten = uint(), count = uint();
-    if (id !== expected || !count) throw new SaveError(`Неизвестная структура блока ${expected}.`);
+    if (id !== expected || !count) throw new SaveError(`Unknown structure in chunk ${expected}.`);
     const [name, width] = CHUNKS[id], dataOffset = position;
     if (!width) {
-      if (![4, 5].includes(count)) throw new SaveError('Неизвестная структура бестиария.');
+      if (![4, 5].includes(count)) throw new SaveError('Unknown bestiary structure.');
       const sections = {}, sectionNames = [[4, 'deaths'], [2, 'kills'], [3, 'hits'], [1, 'encounters']];
       let total = 0;
       for (const [expectedSection, sectionName] of sectionNames) {
         const section = uint(), written = uint();
-        if (section !== expectedSection || written % 4) throw new SaveError('Некорректная секция бестиария.');
+        if (section !== expectedSection || written % 4) throw new SaveError('Invalid bestiary section.');
         total += written;
         const entries = {};
         take(written * 2);
         for (let cursor = position - written * 2; cursor < position; cursor += 8) {
           const key = view.getUint32(cursor, true), value = view.getInt32(cursor + 4, true);
-          if (Object.hasOwn(entries, key) || value < 0) throw new SaveError('Некорректная запись бестиария.');
+          if (Object.hasOwn(entries, key) || value < 0) throw new SaveError('Invalid bestiary entry.');
           entries[key] = value;
         }
         sections[sectionName] = entries;
       }
-      if (sizeWritten !== total) throw new SaveError('Размер бестиария не совпадает с данными.');
+      if (sizeWritten !== total) throw new SaveError('Bestiary size does not match its data.');
       chunks[name] = sections;
     } else {
-      if (sizeWritten !== count * (id === 1 ? 1 : 4)) throw new SaveError(`Некорректный размер блока ${id}.`);
+      if (sizeWritten !== count * (id === 1 ? 1 : 4)) throw new SaveError(`Invalid size in chunk ${id}.`);
       const part = take(count * width);
       if (width === 1) {
-        if (part.some(value => value > 1)) throw new SaveError(`Некорректный флаг в блоке ${id}.`);
+        if (part.some(value => value > 1)) throw new SaveError(`Invalid flag in chunk ${id}.`);
         chunks[name] = Array.from(part);
       } else chunks[name] = Array.from({length: count}, (_, i) => view.getInt32(dataOffset + i * 4, true));
     }
     layout.push({id, name, count, offset, dataOffset, sizeWritten, actualSize: position - dataOffset});
   }
   const loadCounter = uint(), stored = uint();
-  if (position !== bytes.length) throw new SaveError('После сохранения обнаружены лишние данные.');
+  if (position !== bytes.length) throw new SaveError('Unexpected data after the save.');
   const computed=legacy?rebirthChecksum(bytes,layout,gameStateChecksum,loadCounter):kageChecksum(bytes.subarray(16,bytes.length-4));
-  if(stored!==computed)throw new SaveError('Контрольная сумма не совпала: файл повреждён или изменён. Выберите другую копию persistentgamedata, например последнюю резервную копию с датой.','checksum');
+  if(stored!==computed)throw new SaveError('Checksum mismatch: the file is corrupted or modified. Choose another persistentgamedata copy, such as the latest dated backup.','checksum');
   const profile=matchingProfile(header,layout);
-  if(!profile)throw new SaveError(`Формат ${header.trim()} распознан, но схема пока не проверена: ${chunks.achievements.length} ячеек секретов, ${chunks.eventCounters.length} счётчиков. Поддержаны Rebirth (179/95), Repentance (638/496), Repentance+ (642/523). Имя файла не определяет его версию.`,'unsupported_layout');
+  if(!profile)throw new SaveError(`Format ${header.trim()} recognized, but this layout has not been verified: ${chunks.achievements.length} secret slots, ${chunks.eventCounters.length} counters. Supported: Rebirth (179/95), Repentance (638/496), Repentance+ (642/523). The filename does not determine its version.`,'unsupported_layout');
   if(legacy){chunks.specialSeeds=[];chunks.bestiary={deaths:{},kills:{},hits:{},encounters:{}};}
   return {header,profile,sizeBytes:bytes.length,checksum:{stored,computed,valid:true},gameStateChecksum,loadCounter,layout,chunks};
 }
@@ -121,14 +121,14 @@ export function slotProgress(save, catalog) {
     const id = Number(key);
     if (id >= raw.eventCounters.length || !entry.name.startsWith('PROGRESSION_')) continue;
     const match = entry.name.match(/^PROGRESSION_(.+)_WITH_(.+)$/);
-    if (!match || !TARGETS[match[1]]) throw new SaveError('Неизвестный счётчик отметки.');
+    if (!match || !TARGETS[match[1]]) throw new SaveError('Unknown completion mark counter.');
     const tainted = match[2].startsWith('T_'), base = tainted ? match[2].slice(2) : match[2];
     const name = tainted && base === 'JACOB_AND_ESAU' ? 'Tainted Jacob' : `${tainted ? 'Tainted ' : ''}${CHARACTERS[base]}`;
-    if(!byName[name])throw new SaveError('Неизвестный персонаж в отметках.');
+    if(!byName[name])throw new SaveError('Unknown character in completion marks.');
     let mark;try{mark=decodeCompletion(raw.eventCounters[id],profile?.id||'repentance');}catch(error){throw new SaveError(error.message);}
     byName[name].marks[TARGETS[match[1]]] = {...mark,counterId:id};
   }
-  if(characters.some(character=>Object.keys(character.marks).length!==(profile?.marksPerCharacter||12)))throw new SaveError('Каталог отметок не соответствует сохранению.');
+  if(characters.some(character=>Object.keys(character.marks).length!==(profile?.marksPerCharacter||12)))throw new SaveError('Completion mark catalog does not match the save.');
   let counters=[...raw.eventCounters];
   if(legacy){
     counters=Array(496).fill(null);
@@ -137,18 +137,18 @@ export function slotProgress(save, catalog) {
     counters[111]=raw.eventCounters[92];counters[113]=raw.eventCounters[93];
   }
   const itemNames = new Map(catalog.items.map(i => [i.id, i.name]));
-  const collection = raw.collection.flatMap((value, id) => value ? [{id, name: itemNames.get(id) ?? `Неизвестный флаг #${id}`, known: itemNames.has(id)}] : []);
+  const collection = raw.collection.flatMap((value, id) => value ? [{id, name: itemNames.get(id) ?? `Unknown flag #${id}`, known: itemNames.has(id)}] : []);
   const entityNames = new Map(catalog.entities.map(e => [`${e.id}.${e.variant}`, e]));
   const keys = new Set(Object.values(raw.bestiary).flatMap(section => Object.keys(section)));
   const bestiary = [...keys].map(key => {
     const type = Number(key) >>> 20, variant = (Number(key) >>> 8) & 4095;
     const entry = entityNames.get(`${type}.${variant}`);
-    return {key: Number(key), type, variant, name: entry?.name ?? `Сущность ${type}.${variant}`,
+    return {key: Number(key), type, variant, name: entry?.name ?? `Entity ${type}.${variant}`,
       isBoss: entry?.isBoss ?? null, ...Object.fromEntries(Object.entries(raw.bestiary).map(([name, section]) => [name, section[key] ?? 0]))};
   });
   return {characters, collection, bestiary, counters,
-    challenges: raw.challenges.map((value, id) => ({id, name: catalog.challenges[id]?.name ?? `Испытание ${id}`, completed: !!value})).slice(1),
-    bosses: raw.bosses.map((value, id) => ({id, name: catalog.bosses[id]?.name ?? `Босс ${id}`, killed: !!value})).slice(1),
+    challenges: raw.challenges.map((value, id) => ({id, name: catalog.challenges[id]?.name ?? `Challenge ${id}`, completed: !!value})).slice(1),
+    bosses: raw.bosses.map((value, id) => ({id, name: catalog.bosses[id]?.name ?? `Boss ${id}`, killed: !!value})).slice(1),
     summary: {marks: characters.reduce((n, c) => n + Object.values(c.marks).filter(m => m.value > 0).length, 0),
       challenges: raw.challenges.slice(1).filter(Boolean).length, collected: collection.filter(i => i.known).length,
       unknownCollectionFlags: collection.filter(i => !i.known).map(i => i.id), bestiary: bestiary.length},

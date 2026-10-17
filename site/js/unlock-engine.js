@@ -10,50 +10,50 @@ export function conditionReferences(condition) {
 
 export function validateCatalog(data) {
   const errors = [], ids = new Set(), tiers = new Set();
-  if (data?.schemaVersion !== 1 || !Array.isArray(data.nodes) || !Array.isArray(data.tiers)) return ['Неверная версия или структура каталога.'];
+  if (data?.schemaVersion !== 1 || !Array.isArray(data.nodes) || !Array.isArray(data.tiers)) return ['Invalid catalog version or structure.'];
   for (const tier of data.tiers) {
-    if (!tier.id || tiers.has(tier.id)) errors.push(`Дублирующаяся категория ${tier.id}`);
+    if (!tier.id || tiers.has(tier.id)) errors.push(`Duplicate tier ${tier.id}`);
     tiers.add(tier.id);
   }
   for (const node of data.nodes) {
-    if (!/^[a-z0-9][a-z0-9:._-]*$/.test(node.id) || ids.has(node.id)) errors.push(`Некорректный или повторяющийся ID: ${node.id}`);
+    if (!/^[a-z0-9][a-z0-9:._-]*$/.test(node.id) || ids.has(node.id)) errors.push(`Invalid or duplicate ID: ${node.id}`);
     ids.add(node.id);
-    if (!node.name || !node.kind || !node.unlock?.description) errors.push(`Неполная запись: ${node.id}`);
-    if (node.tier && !tiers.has(node.tier)) errors.push(`Нет категории ${node.tier}: ${node.id}`);
-    if (node.wikiUrl && !safeUrl(node.wikiUrl)) errors.push(`Небезопасная wiki URL: ${node.id}`);
-    if (!Array.isArray(node.sources) || !node.sources.length || node.sources.some(url => !safeUrl(url))) errors.push(`Нет корректных источников: ${node.id}`);
-    if (node.secretId != null && (!Number.isInteger(node.secretId) || node.secretId < 1 || node.secretId > 637)) errors.push(`Некорректный secretId: ${node.id}`);
-    if (node.catalog && (!Number.isInteger(node.catalog.itemId) || node.catalog.itemId < 1 || !['active','passive','trinket','consumable'].includes(node.catalog.kind))) errors.push(`Некорректный игровой ID: ${node.id}`);
+    if (!node.name || !node.kind || !node.unlock?.description) errors.push(`Incomplete entry: ${node.id}`);
+    if (node.tier && !tiers.has(node.tier)) errors.push(`Missing tier ${node.tier}: ${node.id}`);
+    if (node.wikiUrl && !safeUrl(node.wikiUrl)) errors.push(`Unsafe wiki URL: ${node.id}`);
+    if (!Array.isArray(node.sources) || !node.sources.length || node.sources.some(url => !safeUrl(url))) errors.push(`No valid sources: ${node.id}`);
+    if (node.secretId != null && (!Number.isInteger(node.secretId) || node.secretId < 1 || node.secretId > 637)) errors.push(`Invalid secretId: ${node.id}`);
+    if (node.catalog && (!Number.isInteger(node.catalog.itemId) || node.catalog.itemId < 1 || !['active','passive','trinket','consumable'].includes(node.catalog.kind))) errors.push(`Invalid game ID: ${node.id}`);
   }
   const validateCondition = (condition, owner, depth = 0) => {
-    if (!condition || depth > 40) { errors.push(`Отсутствующее или слишком глубокое условие: ${owner}`); return; }
+    if (!condition || depth > 40) { errors.push(`Missing or too deeply nested condition: ${owner}`); return; }
     if (['all','any'].includes(condition.type)) {
-      if (!Array.isArray(condition.conditions) || !condition.conditions.length) errors.push(`Пустое ${condition.type}: ${owner}`);
+      if (!Array.isArray(condition.conditions) || !condition.conditions.length) errors.push(`Empty ${condition.type}: ${owner}`);
       else condition.conditions.forEach(c => validateCondition(c, owner, depth + 1));
       return;
     }
-    if (!LEAVES.has(condition.type)) errors.push(`Неизвестное условие ${condition.type}: ${owner}`);
-    if (condition.type === 'node' && !ids.has(condition.id)) errors.push(`Нет зависимости ${condition.id}: ${owner}`);
-    if (condition.type === 'counter' && (!Number.isInteger(condition.id) || condition.id < 0 || condition.id >= 496 || !Number.isFinite(condition.atLeast) || condition.atLeast < 1)) errors.push(`Некорректный счётчик: ${owner}`);
-    if (condition.type === 'mark' && (!condition.character || !condition.target || ![1,2].includes(condition.minimum ?? 1))) errors.push(`Некорректная отметка: ${owner}`);
-    if (condition.type === 'collected' && (!Number.isInteger(condition.id) || condition.id < 1 || condition.id > 732)) errors.push(`Некорректный предмет коллекции: ${owner}`);
-    if (condition.type === 'challenge' && (!Number.isInteger(condition.id) || condition.id < 1 || condition.id > 45)) errors.push(`Некорректное испытание: ${owner}`);
-    if (condition.type === 'manual' && (!condition.key || !condition.label)) errors.push(`Неполное ручное условие: ${owner}`);
-    if (condition.type === 'constant' && typeof condition.value !== 'boolean') errors.push(`Некорректная константа: ${owner}`);
-    if (condition.type === 'character_played' && !condition.character) errors.push(`Нет персонажа: ${owner}`);
-    if (condition.type === 'boss_defeated' && !condition.boss) errors.push(`Нет босса: ${owner}`);
+    if (!LEAVES.has(condition.type)) errors.push(`Unknown condition ${condition.type}: ${owner}`);
+    if (condition.type === 'node' && !ids.has(condition.id)) errors.push(`Missing dependency ${condition.id}: ${owner}`);
+    if (condition.type === 'counter' && (!Number.isInteger(condition.id) || condition.id < 0 || condition.id >= 496 || !Number.isFinite(condition.atLeast) || condition.atLeast < 1)) errors.push(`Invalid counter: ${owner}`);
+    if (condition.type === 'mark' && (!condition.character || !condition.target || ![1,2].includes(condition.minimum ?? 1))) errors.push(`Invalid completion mark: ${owner}`);
+    if (condition.type === 'collected' && (!Number.isInteger(condition.id) || condition.id < 1 || condition.id > 732)) errors.push(`Invalid collection item: ${owner}`);
+    if (condition.type === 'challenge' && (!Number.isInteger(condition.id) || condition.id < 1 || condition.id > 45)) errors.push(`Invalid challenge: ${owner}`);
+    if (condition.type === 'manual' && (!condition.key || !condition.label)) errors.push(`Incomplete manual condition: ${owner}`);
+    if (condition.type === 'constant' && typeof condition.value !== 'boolean') errors.push(`Invalid constant: ${owner}`);
+    if (condition.type === 'character_played' && !condition.character) errors.push(`Missing character: ${owner}`);
+    if (condition.type === 'boss_defeated' && !condition.boss) errors.push(`Missing boss: ${owner}`);
   };
   const map = new Map(data.nodes.map(n => [n.id, n]));
   for (const node of data.nodes) {
     validateCondition(node.unlock?.requirements, node.id);
     if (node.unlock?.evidence) {
       validateCondition(node.unlock.evidence, node.id);
-      if (conditionReferences(node.unlock.evidence).length) errors.push(`Прямое доказательство не должно ссылаться на узлы: ${node.id}`);
+      if (conditionReferences(node.unlock.evidence).length) errors.push(`Direct evidence must not reference nodes: ${node.id}`);
     }
   }
   const visiting = new Set(), visited = new Set();
   const visit = id => {
-    if (visiting.has(id)) { errors.push(`Цикл зависимостей: ${id}`); return; }
+    if (visiting.has(id)) { errors.push(`Dependency cycle: ${id}`); return; }
     if (visited.has(id) || !map.has(id)) return;
     visiting.add(id);
     conditionReferences(map.get(id).unlock?.requirements).forEach(visit);
@@ -133,20 +133,20 @@ export function createEvaluator(data, save, progress, manual = {}, {inferCollect
 }
 
 export function conditionLabel(condition) {
-  if (!condition) return 'Нет данных';
+  if (!condition) return 'No data';
   if (condition.label) return condition.label;
   switch (condition.type) {
-    case 'all': return condition.conditions.filter(c => c.type !== 'node').map(conditionLabel).filter(Boolean).join(' + ') || 'Все зависимости';
-    case 'any': return condition.conditions.map(conditionLabel).join(' или ');
+    case 'all': return condition.conditions.filter(c => c.type !== 'node').map(conditionLabel).filter(Boolean).join(' + ') || 'All prerequisites';
+    case 'any': return condition.conditions.map(conditionLabel).join(' or ');
     case 'node': return '';
-    case 'mark': return `${condition.character}: ${condition.target}${condition.minimum === 2 ? ' на Hard / Greedier' : ''}`;
-    case 'counter': return `Счётчик #${condition.id} ≥ ${condition.atLeast}`;
-    case 'collected': return `Подобрать предмет #${condition.id}`;
-    case 'challenge': return `Пройти испытание #${condition.id}`;
-    case 'character_played': return `Отметка персонажа ${condition.character}`;
-    case 'boss_defeated': return `Победить ${condition.boss}`;
-    case 'constant': return condition.value ? 'Доступно изначально' : 'Не выполнено';
-    default: return 'Проверить условие';
+    case 'mark': return `${condition.character}: ${condition.target}${condition.minimum === 2 ? ' on Hard / Greedier' : ''}`;
+    case 'counter': return `Counter #${condition.id} ≥ ${condition.atLeast}`;
+    case 'collected': return `Collect item #${condition.id}`;
+    case 'challenge': return `Complete challenge #${condition.id}`;
+    case 'character_played': return `Completion mark as ${condition.character}`;
+    case 'boss_defeated': return `Defeat ${condition.boss}`;
+    case 'constant': return condition.value ? 'Available from the start' : 'Not completed';
+    default: return 'Check requirement';
   }
 }
 
@@ -187,7 +187,7 @@ export function buildGraph(data, evaluator, {targetId = null, mode = 'progress',
     if (!remaining.length) return null;
     if (remaining.length === 1) return remaining[0].endpoint;
     const id = `gate:${owner.id}:${path}`;
-    graphNodes.set(id, {id, kind:'gate', operator:condition.type, name:condition.type === 'all' ? 'ВСЕ УСЛОВИЯ' : 'ЛЮБОЕ УСЛОВИЕ', ownerId:owner.id, status:conditionStatus(condition)});
+    graphNodes.set(id, {id, kind:'gate', operator:condition.type, name:condition.type === 'all' ? 'ALL CONDITIONS' : 'ANY CONDITION', ownerId:owner.id, status:conditionStatus(condition)});
     for (const branch of remaining) edge(branch.endpoint, id, conditionLabel(branch.child));
     return id;
   };
@@ -218,7 +218,7 @@ export function layoutGraph(graph) {
     indegree.set(child,indegree.get(child)-1);
     if (!indegree.get(child)) queue.push(child);
   }
-  if (queue.length!==nodes.size) throw new Error('Цикл в графе разблокировок.');
+  if (queue.length!==nodes.size) throw new Error('Cycle in the unlock graph.');
 
   // Pack independent components in separate lanes. Within a component, place
   // prerequisites near their rewards instead of forcing every leaf into row 0.

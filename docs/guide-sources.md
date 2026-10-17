@@ -1,14 +1,14 @@
-# Источники и границы каталога анлоков
+# Sources and scope of the unlock catalog
 
-Каталог `site/data/unlocks.json` составлен 14 октября 2026 года по [Most & Least Important Unlocks (Repentance+) — jnub](https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310). Страница описывает **приоритет открытия**, а не универсальную силу предметов: трудность получения тоже влияет на расположение. Исходные категории автора сохранены в JSON. По запросу пользователя интерфейс объединяет их в S–F: это отдельная редакционная группировка приоритетов, а не буквенные оценки автора.
+The catalog `site/data/unlocks.json` was compiled on 14 October 2026 from [Most & Least Important Unlocks (Repentance+) — jnub](https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310). The page describes **unlock priority**, not the universal strength of items: difficulty of obtaining also affects placement. The author's original categories are preserved in the JSON. At the user's request, the interface groups them into S–F: this is a separate editorial grouping of priorities, not the author's letter grades.
 
-Сайт поддерживает разобранную структуру сохранения **Repentance: ISAACNGSAVE09R, 638 секретных флагов и 496 счётчиков**. Рейтинг на странице уже обновлён для Repentance+. Расширенные сохранения Repentance+ не объявляются совместимыми. Баланс предметов между версиями отличается; ссылки на вики открывают актуальную справку.
+The website supports the parsed save structure of **Repentance: ISAACNGSAVE09R, 638 secret flags and 496 counters**. The ranking on the page has already been updated for Repentance+. Extended Repentance+ saves are not declared compatible. Item balance differs between versions; wiki links open the current reference.
 
-## Покрытие
+## Coverage
 
-В каталоге 233 вершины, из них 188 включены в категории руководства. 130 вершин имеют точное соответствие игровому справочнику предметов/тринкетов/карт; остальные — персонажи, стартовые улучшения, этажи, испытания, таблетки и игровые механики. Все 34 персонажа представлены: строка автора «все остальные персонажи» раскрыта отдельными вершинами. Для пояснений и зависимостей добавлены 45 вершин без места в тирлисте.
+The catalog has 233 nodes, of which 188 are included in the guide's categories. 130 nodes have an exact match in the game's item/trinket/card catalog; the rest are characters, starting upgrades, floors, challenges, pills and game mechanics. All 34 characters are represented: the author's line "all other characters" is expanded into separate nodes. 45 nodes without a place in the tier list were added for explanations and dependencies.
 
-| Раздел автора | Вершин в категории |
+| Author's section | Nodes in category |
 | --- | ---: |
 | Runes | 9 |
 | The Good Ones (Part 1) | 28 |
@@ -21,66 +21,66 @@
 | The Bad Ones (Part 2) | 11 |
 | The Bad Ones (Part 3) | 6 |
 
-Внутри разделов сохранён порядок самостоятельных рекомендаций. Совместные награды разделены: например, Blank Rune / Clear Rune, The Sun? / The Moon?, Strange Door / Jacob & Esau. Опциональные улучшения Keeper’s Penny и Inner Child остаются в своём разделе. Confessional, обсуждаемый рядом с Magic Skin, показан отдельно. Предметы, упомянутые только для контекста (например, Death Certificate, Mega Mush, D4, Holy Mantle), добавлены без собственного ранга.
+Within sections, the order of standalone recommendations is preserved. Joint rewards are split: for example, Blank Rune / Clear Rune, The Sun? / The Moon?, Strange Door / Jacob & Esau. The optional upgrades Keeper’s Penny and Inner Child stay in their section. Confessional, discussed next to Magic Skin, is shown separately. Items mentioned only for context (for example, Death Certificate, Mega Mush, D4, Holy Mantle) are added without a rank of their own.
 
-Автор сохранил старые записи об **Berkano, Hushy, D100 и Plan C**, но в дополнениях снял рекомендацию избегать их. Каталог сохраняет исходный раздел и явно сообщает об изменении в `sourceNote`. D100 в частности нужен для получения Godhead. Приоритеты — мнение автора, а не объективный запрет на получение предмета.
+The author kept the old entries for **Berkano, Hushy, D100 and Plan C**, but in the addenda withdrew the recommendation to avoid them. The catalog keeps the original section and explicitly reports the change in `sourceNote`. D100 in particular is needed to obtain Godhead. Priorities are the author's opinion, not an objective prohibition on obtaining an item.
 
-## Буквенные тиры интерфейса
+## Interface letter tiers
 
-`site/js/tier-ranks.js` задаёт шесть визуальных рядов: S — открыть в первую очередь, A — высокий приоритет, B — полезное пополнение, C — после основных анлоков, D — низкий приоритет, F — можно отложить. Базовое соответствие разделов: good-1 → S; good-2/3 → A; good-4 и before-1 → B; before-2 → C; avoid-1 → D; avoid-2/3 → F.
+`site/js/tier-ranks.js` defines six visual rows: S — unlock first, A — high priority, B — useful addition, C — after the main unlocks, D — low priority, F — can be postponed. Base mapping of sections: good-1 → S; good-2/3 → A; good-4 and before-1 → B; before-2 → C; avoid-1 → D; avoid-2/3 → F.
 
-Руны распределены отдельно. The D6, Birthright, C Section, Twisted Pair, Glitched Crown и Spindown Dice подняты в S; Rock Bottom, Keeper’s Sack, Revelation, Stop Watch и Echo Chamber — в A. Для Berkano, Hushy, D100 и Plan C учтены снятые автором рекомендации «отложить»: они перенесены в B/C. Это субъективная редакционная оценка приоритета открытия; условия и зависимости от неё не меняются. Узел может переопределить визуальное место полем `rank`.
+Runes are distributed separately. The D6, Birthright, C Section, Twisted Pair, Glitched Crown and Spindown Dice are raised to S; Rock Bottom, Keeper’s Sack, Revelation, Stop Watch and Echo Chamber to A. For Berkano, Hushy, D100 and Plan C, the author's withdrawn "postpone" recommendations are taken into account: they are moved to B/C. This is a subjective editorial assessment of unlock priority; conditions and dependencies are not affected by it. A node can override its visual placement with the `rank` field.
 
-## Как проверялись условия
+## How conditions were verified
 
-Числовые Item ID, Save Secret ID и базовые условия сопоставлены с существующим `data/catalog.json`. Его provenance находится в `sources` этого файла: [REPENTOGON EventCounter](https://github.com/TeamREPENTOGON/REPENTOGON/blob/main/docs/docs/enums/EventCounter.md), BossType и справочник [Dead God](https://deadgod.yeeterie.org/). У каждого узла есть отдельный `sources` и ссылка `wikiUrl`.
+Numeric Item IDs, Save Secret IDs and base conditions were matched against the existing `data/catalog.json`. Its provenance is in the `sources` of that file: [REPENTOGON EventCounter](https://github.com/TeamREPENTOGON/REPENTOGON/blob/main/docs/docs/enums/EventCounter.md), BossType and the [Dead God](https://deadgod.yeeterie.org/) catalog. Every node has its own `sources` and a `wikiUrl` link.
 
-Уточнения сложных зависимостей сверены с доступными индексированными материалами [Isaac Wiki](https://bindingofisaacrebirth.wiki.gg/):
+Refinements of complex dependencies were checked against available indexed material from the [Isaac Wiki](https://bindingofisaacrebirth.wiki.gg/):
 
-- [The Tank](https://bindingofisaacrebirth.wiki.gg/wiki/The_Tank): доступ определяется открытием Magdalene; дополнительные победы над сердцем не нужны.
-- [Solar System](https://bindingofisaacrebirth.wiki.gg/wiki/Solar_System): три победы над Mom’s Heart.
-- [Darkness Falls](https://bindingofisaacrebirth.wiki.gg/wiki/Darkness_Falls): для Repentance нужны 11 побед над сердцем и победа над ??? за Eve, связанная с Sacrificial Dagger.
-- [Cat Got Your Tongue](https://bindingofisaacrebirth.wiki.gg/wiki/Cat_Got_Your_Tongue): требуется превращение в Guppy; сбор трёх Guppy-предметов в разных забегах не засчитывается как это действие.
-- [The Family Man](https://bindingofisaacrebirth.wiki.gg/wiki/The_Family_Man): 11 побед над сердцем и оба Key Piece в одном забеге.
-- [Glass Cannon (Challenge)](https://bindingofisaacrebirth.wiki.gg/wiki/Glass_Cannon_(Challenge)): нужны Family Man, Lokii, Judas и It Lives!.
-- [The Guardian](https://bindingofisaacrebirth.wiki.gg/wiki/The_Guardian): доступ открывается после Mom; завершение открывает Blank Rune и Clear Rune.
-- [Isaac’s Awakening](https://bindingofisaacrebirth.wiki.gg/wiki/Isaac%27s_Awakening): открывается победой над Mother.
-- [The Forgotten](https://bindingofisaacrebirth.wiki.gg/wiki/Forgotten): требуется предыдущая победа над The Lamb; обычная цепочка Broken Shovel → Boss Rush → могила дополнена альтернативой через Spindown Dice. The Negative полезен, но не обязателен: Dark Room доступен через Sacrifice Room.
-- [Holy Mantle](https://bindingofisaacrebirth.wiki.gg/wiki/Holy_Mantle): 879 пожертвованных монет дают **стартовый щит The Lost**, а не открывают сам предмет. Collectible 313 доступен изначально.
-- [Godhead](https://bindingofisaacrebirth.wiki.gg/wiki/Godhead) и [Completion Marks](https://bindingofisaacrebirth.wiki.gg/wiki/Completion_Marks): в Repentance нужны все 12 отметок The Lost на Hard, включая Greedier; старые значения 6/9/10 к этой версии не применяются.
-- [Isaac (Boss)](https://bindingofisaacrebirth.wiki.gg/wiki/Isaac_(Boss)), [Satan](https://bindingofisaacrebirth.wiki.gg/wiki/Satan) и [Delirium](https://bindingofisaacrebirth.wiki.gg/wiki/Delirium): награды за конкретного персонажа проверяются его отметкой, а не общим флагом секрета.
+- [The Tank](https://bindingofisaacrebirth.wiki.gg/wiki/The_Tank): access is determined by unlocking Magdalene; additional Heart victories are not needed.
+- [Solar System](https://bindingofisaacrebirth.wiki.gg/wiki/Solar_System): three victories over Mom’s Heart.
+- [Darkness Falls](https://bindingofisaacrebirth.wiki.gg/wiki/Darkness_Falls): in Repentance it requires 11 Heart victories and a victory over ??? as Eve, tied to Sacrificial Dagger.
+- [Cat Got Your Tongue](https://bindingofisaacrebirth.wiki.gg/wiki/Cat_Got_Your_Tongue): requires the Guppy transformation; collecting three Guppy items across different runs does not count as this action.
+- [The Family Man](https://bindingofisaacrebirth.wiki.gg/wiki/The_Family_Man): 11 Heart victories and both Key Pieces in one run.
+- [Glass Cannon (Challenge)](https://bindingofisaacrebirth.wiki.gg/wiki/Glass_Cannon_(Challenge)): requires Family Man, Lokii, Judas and It Lives!.
+- [The Guardian](https://bindingofisaacrebirth.wiki.gg/wiki/The_Guardian): access opens after Mom; completion unlocks Blank Rune and Clear Rune.
+- [Isaac’s Awakening](https://bindingofisaacrebirth.wiki.gg/wiki/Isaac%27s_Awakening): unlocked by defeating Mother.
+- [The Forgotten](https://bindingofisaacrebirth.wiki.gg/wiki/Forgotten): requires a prior victory over The Lamb; the usual Broken Shovel → Boss Rush → grave chain is supplemented with an alternative via Spindown Dice. The Negative is useful but not mandatory: the Dark Room is reachable through the Sacrifice Room.
+- [Holy Mantle](https://bindingofisaacrebirth.wiki.gg/wiki/Holy_Mantle): 879 donated coins grant **The Lost's starting shield**, not the item itself. Collectible 313 is available from the start.
+- [Godhead](https://bindingofisaacrebirth.wiki.gg/wiki/Godhead) and [Completion Marks](https://bindingofisaacrebirth.wiki.gg/wiki/Completion_Marks): in Repentance all 12 of The Lost's marks on Hard, including Greedier, are required; the old values 6/9/10 do not apply to this version.
+- [Isaac (Boss)](https://bindingofisaacrebirth.wiki.gg/wiki/Isaac_(Boss)), [Satan](https://bindingofisaacrebirth.wiki.gg/wiki/Satan) and [Delirium](https://bindingofisaacrebirth.wiki.gg/wiki/Delirium): rewards for a specific character are checked by that character's mark, not by a general secret flag.
 
-Прямое чтение некоторых wiki.gg-страниц было ограничено сервером (403); для перечисленных уточнений использовалось индексированное содержимое этих же страниц. Каталог не заявляет, что все текущие условия перепроверены по установленной копии игры. Неоднозначные или не сохраняемые действия оставлены ручными условиями, а не угаданы по секретам.
+Direct reading of some wiki.gg pages was restricted by the server (403); for the refinements listed, the indexed content of the same pages was used. The catalog does not claim that all current conditions were re-verified against an installed copy of the game. Ambiguous or unsaved actions are left as manual conditions rather than guessed from secrets.
 
-## Доказательство заслуги и план открытия
+## Proof of merit and the unlock plan
 
-`unlock.requirements` — рекурсивное выражение **all / any**, объединяющее ссылки на другие вершины и конкретные действия. Оно используется для построения маршрута. `unlock.evidence` — независимое доказательство из игрового прогресса слота: отметка, completed-флаг испытания, проверенный счётчик, факт собственной игры персонажем либо победа над боссом. В `evidence` нет ссылок на вершины, чтобы не создавать косвенного подтверждения через доступность и не зависеть от циклов.
+`unlock.requirements` is a recursive **all / any** expression combining references to other nodes and specific actions. It is used to build the route. `unlock.evidence` is independent proof from the slot's game progress: a mark, a challenge completed flag, a verified counter, the fact of having played the character, or a boss victory. `evidence` contains no node references, so as not to create indirect confirmation through availability and not to depend on cycles.
 
-Например, для Mom’s Knife нужны Isaac, доступ к Sheol и победа над Satan за Isaac. Но уже записанная отметка Isaac/Satan сама по себе доказывает выполненное действие, даже если файл не позволяет восстановить, как игрок открыл ранний проход в Sheol. Это выражено отдельным `evidence`.
+For example, Mom’s Knife requires Isaac, access to Sheol and a victory over Satan as Isaac. But an already recorded Isaac/Satan mark proves the action was completed by itself, even if the file does not allow reconstructing how the player opened early passage to Sheol. This is expressed by a separate `evidence`.
 
-Для сложных условий сохраняется структура, а не только одна текстовая строка:
+For complex conditions the structure is preserved, not just a single text string:
 
-- Soul of Eden: **Boss Rush AND Hush** за Tainted Eden; разные забеги допустимы.
-- RC Remote: **Isaac AND ??? AND Satan AND The Lamb** за Tainted Jacob.
-- The Left Hand: **??? за Judas OR Ultra Pride любым персонажем**.
-- Bethany: Heart на Hard за Lazarus **AND** неиспользованная жизнь Lazarus. Одной отметки Lazarus/Heart недостаточно; собственные отметки Bethany доказывают, что ей уже играли.
-- Marbles: доступ к Gulp! **AND** пять использований за один забег; общий счётчик съеденных таблеток здесь непригоден.
-- Godhead: все 12 отметок на максимальной сложности; одна общая отметка или секрет не заменяет это выражение.
+- Soul of Eden: **Boss Rush AND Hush** as Tainted Eden; different runs are allowed.
+- RC Remote: **Isaac AND ??? AND Satan AND The Lamb** as Tainted Jacob.
+- The Left Hand: **??? as Judas OR Ultra Pride with any character**.
+- Bethany: Heart on Hard as Lazarus **AND** an unused Lazarus life. A Lazarus/Heart mark alone is not enough; Bethany's own marks prove she has already been played.
+- Marbles: access to Gulp! **AND** five uses in a single run; the general counter of pills eaten is unsuitable here.
+- Godhead: all 12 marks at the highest difficulty; a single general mark or secret does not replace this expression.
 
-Доступ к Cathedral и Sheol моделируется через **OR**: обычный путь после It Lives! либо ранний Angel/Devil Room. Для Dark Room допускается Sacrifice Room, чтобы ошибочно не делать The Negative обязательным. Вершины этажей означают доступ к маршруту, а не победу над его боссом.
+Access to the Cathedral and Sheol is modeled with **OR**: the regular path after It Lives! or an early Angel/Devil Room. For the Dark Room the Sacrifice Room is allowed, so that The Negative is not wrongly made mandatory. Floor nodes mean access to the route, not a victory over its boss.
 
-## Что нельзя считать подтверждённым автоматически
+## What cannot be considered confirmed automatically
 
-Секретный флаг (`secretId`) — только ключ отдельной справки о доступности. Его наличие **никогда не используется для зачёта условия**, очистки графа прогресса или вывода о заслугах. В явно выбранном отдельном режиме «По доступности контента» секрет может скрыть уже доступную зависимость, без зачёта её условия этому слоту. Он может быть синхронизирован из Steam; источник по одному файлу неизвестен. Save Secret ID не объявляется Steam API ID.
+A secret flag (`secretId`) is only a key for a separate availability reference. Its presence is **never used to credit a condition**, to clear the progress graph, or to draw conclusions about merit. In the explicitly selected separate "Content availability" mode, a secret may hide an already available dependency, without crediting its condition to this slot. It may have been synced from Steam; the source cannot be determined from a single file. A Save Secret ID is not declared a Steam API ID.
 
-Некоторые действия нельзя восстановить однозначно: три Devil Deal за один забег, семь красных контейнеров одновременно, 55 монет одновременно, отсутствие урона/поднятых сердец на двух этажах, превращение в Guppy, три астральных предмета вместе, 50 предметов в одном забеге, потраченная жизнь Lazarus, использование Gulp! пять раз за забег, прохождение Victory Laps. Для них есть стабильные `manual.key`, подпись действия и причина ограничения. Отсутствие доказательства **не означает**, что предмет точно закрыт.
+Some actions cannot be reconstructed unambiguously: three Devil Deals in one run, seven red heart containers at once, 55 coins at once, no damage taken/no hearts picked up on two floors, the Guppy transformation, three astrology items together, 50 items in one run, a spent Lazarus life, using Gulp! five times in a run, completing Victory Laps. For these there are stable `manual.key` values, an action label and the reason for the limitation. Absence of evidence **does not mean** the item is definitely locked.
 
-Собственная отметка персонажа — доказательство, что им играли на этом слоте, даже если неизвестно его исходное условие открытия. Она не фильтруется по секретам.
+A character's own mark is proof that the character has been played on this slot, even if its original unlock condition is unknown. It is not filtered by secrets.
 
-Счётчик `MOM_KILLS` (ID 1) означает зачтённые победы **Mom’s Heart / It Lives!**, а не Mom. Он используется для порогов 3/10/11. Первую победу над Mom нельзя напрямую читать как `counter(1) >= 1`; последующий проход сердца лишь достаточное косвенное доказательство доступа к Womb.
+The `MOM_KILLS` counter (ID 1) means credited victories over **Mom’s Heart / It Lives!**, not Mom. It is used for the 3/10/11 thresholds. The first victory over Mom cannot be read directly as `counter(1) >= 1`; a subsequent Heart clear is only sufficient indirect evidence of access to the Womb.
 
-Текущие значения Donation Machine и Daily Streak могут уменьшаться или сбрасываться. Достижение порога сейчас доказывает достаточное действие, а значение ниже порога не восстанавливает всю прошлую историю. Разблокировка может существовать, пока её заслуга остаётся неизвестной. Коллекция предметов хранится отдельно и означает факт подбора, а не способ открытия; у тринкетов, карточек, таблеток и механик такой аналог коллекции не обещается.
+Current Donation Machine and Daily Streak values may decrease or reset. Reaching a threshold now proves a sufficient action, while a value below the threshold does not reconstruct the full past history. An unlock may exist while its merit remains unknown. The item collection is stored separately and means the item was picked up, not how it was unlocked; no such collection analogue is promised for trinkets, cards, pills and mechanics.
 
-## Проверка целостности
+## Integrity check
 
-Проверены уникальность ID, существование всех `node`-ссылок, отсутствие циклов в зависимостях и отсутствие ссылок на вершины в `evidence`. В каталоге нет динамического чтения достижения как игрового условия. Новый анлок добавляется декларативно, через тот же набор выражений, без изменения парсера сохранения.
+Checked: uniqueness of IDs, existence of all `node` references, absence of cycles in dependencies and absence of node references in `evidence`. The catalog contains no dynamic reading of an achievement as a game condition. A new unlock is added declaratively, through the same set of expressions, without changing the save parser.

@@ -69,39 +69,40 @@ test('collected items override a false secret flag and satisfy their unlock when
   assert.match(card(),/availability-dot no/);
   elements.get('#infer-save-evidence').events.get('change')({target:{checked:true}});
   assert.match(card(),/availability-dot yes/);
-  assert.match(card(),/Подобран в сохранении, поэтому считается открытым/);
+  assert.match(card(),/Collected in this save, so considered unlocked/);
   elements.get('#status-filter').events.get('change')({target:{value:'open'}});
   assert.match(elements.get('#tier-rows').innerHTML,/data-node="collectible:538"/);
   navigate('#/graph?item=collectible:538');
   elements.get('#graph-mode').events.get('change')({target:{value:'availability'}});
   assert.match(elements.get('#view').innerHTML,/id="infer-save-evidence"[^>]*checked/);
   assert.match(elements.get('#view').innerHTML,/evidence-tooltip/);
-  assert.match(elements.get('#view').innerHTML,/● Доступность с учётом данных слота/);
-  assert.match(elements.get('#view').innerHTML,/✓ Доступно/);
+  assert.match(elements.get('#view').innerHTML,/● Availability includes slot data/);
+  assert.match(elements.get('#view').innerHTML,/✓ Available/);
   elements.get('#graph-mode').events.get('change')({target:{value:'progress'}});
-  assert.match(elements.get('#view').innerHTML,/● Прогресс этого слота с учётом коллекции/);
-  assert.match(elements.get('#view').innerHTML,/✓ Открыт по коллекции/);
+  assert.match(elements.get('#view').innerHTML,/● This slot’s progress includes collection data/);
+  assert.match(elements.get('#view').innerHTML,/✓ Unlocked by collection/);
   const sidebar=()=>elements.get('#graph-sidebar').innerHTML;
-  assert.match(sidebar(),/Анлок подтверждён по коллекции/);
-  assert.match(sidebar(),/Ручное подтверждение условия не требуется/);
-  assert.doesNotMatch(sidebar(),/data-manual=/);
-  switchLanguage('en');
+  assert.match(sidebar(),/Unlock confirmed by collection/);
   assert.match(sidebar(),/No manual confirmation is needed/);
+  assert.doesNotMatch(sidebar(),/data-manual=/);
   assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
   switchLanguage('ru');
+  assert.match(sidebar(),/Ручное подтверждение условия не требуется/);
+  assert.match(elements.get('#view').innerHTML,/✓ Открыт по коллекции/);
+  switchLanguage('en');
   elements.get('#infer-save-evidence').events.get('change')({target:{checked:false}});
-  assert.match(elements.get('#view').innerHTML,/\? Нужна проверка/);
+  assert.match(elements.get('#view').innerHTML,/\? Needs verification/);
   assert.match(sidebar(),/data-manual=/);
   elements.get('#graph-mode').events.get('change')({target:{value:'availability'}});
-  assert.match(elements.get('#view').innerHTML,/● Доступность по секретам/);
-  assert.match(elements.get('#view').innerHTML,/○ Закрыто/);
+  assert.match(elements.get('#view').innerHTML,/● Availability from secret flags/);
+  assert.match(elements.get('#view').innerHTML,/○ Locked/);
 });
 test('actual Rebirth upload renders its own 66 marks and 20 challenges with a compatibility explanation',{skip:!fs.existsSync('context/persistentgamedata1.dat')},async t=>{
   const {elements,upload}=await app(t);await upload('persistentgamedata1.dat');
   assert.equal(location.hash,'#/stats');assert.equal(elements.get('#save-edition').textContent,'Rebirth');
   const html=elements.get('#view').innerHTML;
-  assert.match(html,/Сохранение Rebirth прочитано/);assert.match(html,/\/ 66/);assert.match(html,/\/ 20/);
-  assert.doesNotMatch(html,/\/ 408/);assert.match(html,/Rebirth не хранит бестиарий/);
+  assert.match(html,/Rebirth save loaded/);assert.match(html,/\/ 66/);assert.match(html,/\/ 20/);
+  assert.doesNotMatch(html,/\/ 408/);assert.match(html,/Rebirth does not store a bestiary/);
 });
 test('initial incorrect upload keeps instructions visible and expands the file guide',async t=>{
   const {elements,upload}=await app(t);elements.get('#workspace').hidden=true;
@@ -110,41 +111,42 @@ test('initial incorrect upload keeps instructions visible and expands the file g
   await upload('rep+gamestate1.dat',Buffer.concat([Buffer.from('ISAACNG_GSR0169'),Buffer.alloc(20)]));
   assert.equal(elements.get('#workspace').hidden,true);
   assert.equal(elements.get('#save-help').open,true);
-  assert.match(elements.get('#upload-status').textContent,/общий прогресс/);
+  assert.match(elements.get('#upload-status').textContent,/persistent progress/);
 });
 
-test('language switch persists English and rerenders tiers/statistics without reuploading or losing filters',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
+test('English is the default; switching to Russian persists and rerenders tiers/statistics without reuploading or losing filters',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
   const {elements,upload,switchLanguage,storage,navigate}=await app(t);await upload('rep+persistentgamedata1.dat');
+  assert.equal(document.documentElement.lang,'en');
+  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
   elements.get('#item-search').events.get('input')({target:{value:'Marbles'}});
   elements.get('#status-filter').events.get('change')({target:{value:'open'}});
   elements.get('#kind-filter').events.get('change')({target:{value:'collectible'}});
   const before=elements.get('#result-count').textContent;
-  switchLanguage('en');
-  assert.equal(document.documentElement.lang,'en');assert.equal(storage.get('atlas-language'),'en');
+  switchLanguage('ru');
+  assert.equal(document.documentElement.lang,'ru');assert.equal(storage.get('atlas-language'),'ru');
   assert.equal(elements.get('#save-name').textContent,'rep+persistentgamedata1.dat');
   assert.match(elements.get('#view').innerHTML,/value="Marbles"/);
   assert.equal(elements.get('#result-count').textContent,before);
   assert.equal(elements.get('#status-filter').value,'open');assert.equal(elements.get('#kind-filter').value,'collectible');
+  assert.match(elements.get('#view').innerHTML,/Тирлист/);
+  navigate('#/stats');assert.match(document.title,/Статистика/);
+  assert.match(elements.get('#view').innerHTML,/не участвуют/);
+  switchLanguage('en');assert.match(elements.get('#view').innerHTML,/do not contribute/);
   assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
-  assert.doesNotMatch(elements.get('#tier-rows').innerHTML,/[А-Яа-яЁё]/);
-  navigate('#/stats');assert.match(document.title,/Statistics/);
-  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
-  assert.match(elements.get('#view').innerHTML,/do not contribute/);
-  switchLanguage('ru');assert.match(elements.get('#view').innerHTML,/Статистика/);
-  assert.equal(storage.get('atlas-language'),'ru');assert.equal(location.hash,'#/stats');
+  assert.equal(storage.get('atlas-language'),'en');assert.equal(location.hash,'#/stats');
 });
 
-test('saved English preference localizes file errors, theme and Rebirth statistics',{skip:!fs.existsSync('context/persistentgamedata1.dat')},async t=>{
-  const {elements,upload,switchLanguage}=await app(t,{savedLanguage:'en'});
-  assert.equal(document.documentElement.lang,'en');assert.match(elements.get('#theme-toggle').getAttribute('aria-label'),/light|dark/);
+test('saved Russian preference localizes file errors, theme and Rebirth statistics',{skip:!fs.existsSync('context/persistentgamedata1.dat')},async t=>{
+  const {elements,upload,switchLanguage}=await app(t,{savedLanguage:'ru'});
+  assert.equal(document.documentElement.lang,'ru');assert.match(elements.get('#theme-toggle').getAttribute('aria-label'),/светлую|тёмную/);
   await upload('rep+gamestate2.dat',Buffer.concat([Buffer.from('ISAACNG_GSR0169'),Buffer.alloc(20)]));
   assert.match(elements.get('#upload-status').textContent,/rep\+persistentgamedata2.dat/);
+  assert.match(elements.get('#upload-status').textContent,/общий прогресс/);
+  switchLanguage('en');assert.match(elements.get('#upload-status').textContent,/persistent progress/);
   assert.doesNotMatch(elements.get('#upload-status').textContent,/[А-Яа-яЁё]/);
-  switchLanguage('ru');assert.match(elements.get('#upload-status').textContent,/общий прогресс/);
-  switchLanguage('en');await upload('persistentgamedata1.dat');
-  assert.match(elements.get('#view').innerHTML,/Rebirth save loaded/);
-  assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
-  assert.equal(location.hash,'#/stats');assert.match(elements.get('#save-meta').textContent,/ KB /);
+  switchLanguage('ru');await upload('persistentgamedata1.dat');
+  assert.match(elements.get('#view').innerHTML,/Сохранение Rebirth прочитано/);
+  assert.equal(location.hash,'#/stats');assert.match(elements.get('#save-meta').textContent,/ КБ /);
 });
 
 test('switching graph language preserves manual facts, selected node and zoom',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
@@ -156,8 +158,11 @@ test('switching graph language preserves manual facts, selected node and zoom',{
   const canvas=elements.get('#graph-canvas');
   canvas.events.get('wheel')({preventDefault(){},deltaY:-80,deltaMode:0,clientX:100,clientY:100});
   const zoom=elements.get('#zoom-label').textContent;canvas.scrollLeft=25;canvas.scrollTop=70;
-  switchLanguage('en');
+  switchLanguage('ru');
   assert.equal(elements.get('#zoom-label').textContent,zoom);assert.equal(canvas.scrollLeft,25);assert.equal(canvas.scrollTop,70);
+  assert.match(elements.get('#graph-sidebar').innerHTML,new RegExp(`data-manual="${key}" checked`));
+  assert.match(elements.get('#graph-sidebar').innerHTML,/[А-Яа-яЁё]/);
+  switchLanguage('en');
   assert.match(elements.get('#graph-sidebar').innerHTML,new RegExp(`data-manual="${key}" checked`));
   assert.doesNotMatch(elements.get('#graph-sidebar').innerHTML,/[А-Яа-яЁё]/);
   assert.deepEqual([...elements.get('#view').innerHTML.matchAll(/[А-Яа-яЁё]+/g)].map(([word])=>word),[]);
@@ -199,7 +204,7 @@ test('click and keyboard selection highlight a junction and its immediate neighb
     for(const edge of edges)assert.equal(edge.classes.has('connected'),edge.dataset.from===selected.dataset.id||edge.dataset.to===selected.dataset.id);
   };
   elements.get('#view').events.get('click')({target:{closest:selector=>selector==='.graph-node,[data-select]'?junction:null}});
-  check(junction);assert.doesNotMatch(elements.get('#graph-sidebar').innerHTML,/Выберите вершину/);
+  check(junction);assert.doesNotMatch(elements.get('#graph-sidebar').innerHTML,/Select a node/);
   const reward=nodes.find(node=>node.dataset.id===junction.dataset.owner);
   elements.get('#view').events.get('click')({target:{closest:selector=>selector==='.graph-node,[data-select]'?reward:null}});
   check(reward);

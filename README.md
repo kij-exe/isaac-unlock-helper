@@ -1,30 +1,30 @@
 # Isaac Unlock Helper
 
-## Сайт Skill Issue Tracker
+## Skill Issue Tracker website
 
-Готовый фронтенд находится в `site/`: загрузка `.dat` без отправки на сервер, тирлист, вики предметов, статистика, граф каждого анлока и полный граф с общими зависимостями. В каталоге — 188 записей из руководства jnub, сгруппированных в S–F по приоритету открытия, 311 вершин с зависимостями и 311 локальных иконок (209 игровых PNG и 102 SVG-иллюстрации).
+The finished frontend lives in `site/`: `.dat` upload without sending anything to a server, a tier list, an item wiki, statistics, a graph for each unlock and a full graph with shared dependencies. The catalog contains 188 entries from jnub's guide, grouped into S–F by unlock priority, 311 nodes with dependencies and 311 local icons (209 game PNGs and 102 SVG illustrations).
 
 ```sh
 npm run dev
 ```
 
-Откройте `http://127.0.0.1:4173/`, найдите сохранение по инструкции и прикрепите файл. Установка пакетов не нужна. Node.js используется только для локального сервера и проверок; опубликованный сайт полностью статический.
+Open `http://127.0.0.1:4173/`, locate your save using the instructions and attach the file. No package installation is needed. Node.js is used only for the local server and checks; the published website is fully static.
 
-- [Публикация на GitHub Pages](docs/github-pages.md): workflow уже находится в `.github/workflows/pages.yml`.
-- [Устройство условий и графа](docs/unlock-schema.md): вложенные AND/OR, подтверждённые отметки, пороги счётчиков и ручные факты.
-- [Навык добавления анлоков](.agents/skills/isaac-unlocks/SKILL.md): новый предмет подключается к общему графу через JSON.
-- [Локализация RU / EN](docs/i18n.md): устройство перевода и добавление новых подписей.
-- [Источники тирлиста](docs/guide-sources.md) и [локальных спрайтов](docs/asset-sources.md).
+- [Publishing to GitHub Pages](docs/github-pages.md): the workflow is already in `.github/workflows/pages.yml`.
+- [How conditions and the graph work](docs/unlock-schema.md): nested AND/OR, confirmed marks, counter thresholds and manual facts.
+- [Skill for adding unlocks](.agents/skills/isaac-unlocks/SKILL.md): a new item is connected to the shared graph via JSON.
+- [Localization (EN / RU)](docs/i18n.md): how translation works and how to add new strings.
+- [Tier list sources](docs/guide-sources.md) and [local sprite sources](docs/asset-sources.md).
 
-Все 45 испытаний подключены к графу: условия доступа → испытание → отдельный шаг «Пройти #…» → общая цель и награды. Открытое испытание не считается пройденным; завершение подтверждается только completed-флагом слота.
+All 45 challenges are connected to the graph: access conditions → challenge → a separate "Complete #…" step → shared goal and rewards. An unlocked challenge is not counted as completed; completion is confirmed only by the slot's completed flag.
 
-Над S–F есть отдельный тир Dead God с одной целью: все 636 условий открытия и 717 предметов коллекции Repentance. Подробности и границы автоматического подтверждения описаны в [схеме](docs/unlock-schema.md#цель-dead-god). Айзек в логотипе танцует постоянно: локальная GIF зациклена и видна без наведения.
+Above S–F there is a separate Dead God tier with a single goal: all 636 unlock conditions and 717 collection items of Repentance. Details and the limits of automatic confirmation are described in the [schema](docs/unlock-schema.md#the-dead-god-goal). Isaac in the logo dances constantly: the local GIF loops and is visible without hovering.
 
-Стартовый экран показывает короткий анимированный пример «сохранение → тирлист → граф открытия» с паузой и поддержкой уменьшения движения.
+The start screen shows a short animated "save → tier list → unlock graph" example with a pause control and support for reduced motion.
 
-Нажатие на спрайт открывает граф; отдельная кнопка ↗ открывает вики. Название и подписи состояний появляются при наведении или фокусе. Точка показывает доступность по секретам, галочка — подбор в этом слоте. Кнопка ☾ / ☀ переключает светлую и тёмную темы. Переключатель RU / EN в шапке переводит интерфейс, инструкции, статистику и условия анлоков. Сохраняются только тема и язык; сейв и ручные подтверждения остаются в текущей вкладке. Смена языка не требует повторной загрузки файла и сохраняет фильтры, выбранную вершину и масштаб графа. Вертикальный граф поддерживает зум колёсиком вокруг курсора, перетаскивание блоков и фона, перемещение блоков стрелками, вписывание и плавное восстановление раскладки. Основная статистика и граф по умолчанию используют только прогресс слота. Отдельный режим графа «По доступности контента» скрывает уже доступные зависимости по секретам и явно обозначен как справочный; он не меняет зачёт заслуг слота.
+Clicking a sprite opens the graph; a separate ↗ button opens the wiki. The name and state labels appear on hover or focus. A dot indicates availability via secrets; a check mark indicates a pickup in this slot. The ☾ / ☀ button toggles between light and dark themes. The website is in English by default; the RU / EN switch in the header translates the interface, instructions, statistics and unlock conditions. English is the canonical source language in code and in `site/data/unlocks.json`; Russian website translations live in `site/js/locales/ru.js` and `site/js/locales/ru-catalog.js`. Only the theme and language are persisted (the language preference is stored in the `localStorage` key `atlas-language`); the save and manual confirmations stay in the current tab. Switching the language does not require re-uploading the file and preserves filters, the selected node and the graph zoom. The vertical graph supports mouse-wheel zoom around the cursor, dragging of blocks and the background, moving blocks with the arrow keys, fit-to-view and smooth layout restoration. The main statistics and the graph use only slot progress by default. A separate "Content availability" graph mode hides dependencies that are already available via secrets and is clearly marked as reference-only; it does not change how the slot's accomplishments are credited.
 
-Если B нужна для A и C, закрытая B отображается общей вершиной. Когда B выполнена в выбранном режиме, она и её предыстория скрываются, A/C остаются отдельными задачами. Условия без сохранённого доказательства отображаются как неизвестные; их можно явно подтвердить вручную в текущей вкладке.
+If B is required for both A and C, a locked B is shown as a shared node. When B is fulfilled in the selected mode, it and its history are hidden, and A/C remain separate tasks. Conditions without saved proof are shown as unknown; they can be explicitly confirmed manually in the current tab.
 
 ```sh
 npm test
@@ -32,93 +32,93 @@ npm run validate:data
 npm run build
 ```
 
-`dist/` содержит только публичный сайт: сохранения и персональные отчёты туда не копируются. Поддержаны Repentance и Repentance+; для Rebirth доступна статистика своей версии. Нужен файл persistentgamedata, а не gamestate. [Форматы и выбор файла](docs/save-formats.md). Исходные 10 категорий сохранены в данных. Буквенные S–F — редакционная группировка интерфейса, а не оценки автора или универсальный рейтинг силы предметов; правила находятся в `site/js/tier-ranks.js`.
+`dist/` contains only the public website: saves and personal reports are not copied into it. Repentance and Repentance+ are supported; for Rebirth, statistics for that version are available. You need the persistentgamedata file, not gamestate. [Formats and choosing the file](docs/save-formats.md). The original 10 categories are preserved in the data. The S–F letter grades are an editorial grouping in the interface, not the author's ratings or a universal item power ranking; the rules are in `site/js/tier-ranks.js`.
 
-## Python-анализатор
+## Python analyzer
 
-Локальный анализатор сохранений **The Binding of Isaac: Repentance**. Читает файлы, проверяет KAGE checksum и создаёт JSON и Markdown с прогрессом. **Достижения и зависящие от них разблокировки исключены из основного анализа** и вынесены в отдельную справку. Требуется Python 3.10+; сторонних библиотек, запуска игры и интернета для анализа не нужно. Исходные `.dat` не изменяются и никуда не отправляются.
+A local save analyzer for **The Binding of Isaac: Repentance**. It reads the files, verifies the KAGE checksum and produces JSON and Markdown with progress. **Achievements and unlocks that depend on them are excluded from the main analysis** and moved into a separate reference. Requires Python 3.10+; analysis needs no third-party libraries, no running game and no internet access. Source `.dat` files are never modified or sent anywhere.
 
-## Результаты для ваших файлов
+## Results for your files
 
-| Данные | Слот 1 | Слот 2 |
+| Data | Slot 1 | Slot 2 |
 | --- | ---: | ---: |
-| Контрольная сумма | OK | OK |
-| Персонажи с записанными отметками | Azazel | Нет |
-| Отметки прохождения | 3 / 408 | 0 / 408 |
-| Пройденные испытания | 1 / 45 | 0 / 45 |
-| Распознанные подобранные предметы | 144 | 0 |
-| Дополнительные неизвестные флаги коллекции | 2 | 0 |
-| Записи бестиария | 231 | 0 |
+| Checksum | OK | OK |
+| Characters with recorded marks | Azazel | None |
+| Completion marks | 3 / 408 | 0 / 408 |
+| Completed challenges | 1 / 45 | 0 / 45 |
+| Recognized collected items | 144 | 0 |
+| Additional unknown collection flags | 2 | 0 |
+| Bestiary entries | 231 | 0 |
 
-Слот 1: **записаны отметки Azazel на Hard за Mom’s Heart / It Lives!, Satan и Boss Rush**. Пройдено испытание **#6 Solar System**. Эти выводы основаны на счётчиках и completed-флагах этого слота, а не на достижениях.
+Slot 1: **Azazel has recorded Hard marks for Mom’s Heart / It Lives!, Satan and Boss Rush**. Challenge **#6 Solar System** is completed. These conclusions are based on this slot's counters and completed flags, not on achievements.
 
-Отдельная справка: в блоке секретов первого файла установлено 77 флагов из 637, второго — 0. Это **не проверка состояния Steam-аккаунта** и не доказательство выполнения условий в соответствующем слоте. Происхождение флагов неизвестно. На число достижений в Steam по этим двум файлам выводов нет.
+Separate reference: in the secrets chunk, 77 of 637 flags are set in the first file and 0 in the second. This is **not a check of the Steam account state** and not proof that the conditions were fulfilled in the corresponding slot. The origin of the flags is unknown. No conclusions about the number of Steam achievements are drawn from these two files.
 
-В статистике: 11 зачтённых побед над Mom’s Heart / It Lives!, 1 победа над Satan, 1 смерть, лучшая серия побед 10, 11 Eden Tokens и 273 монеты в Donation Machine. Hush присутствует в бестиарии: убийств 0, смертей игрока от него 1.
+Statistics: 11 credited wins over Mom’s Heart / It Lives!, 1 win over Satan, 1 death, a best win streak of 10, 11 Eden Tokens and 273 coins in the Donation Machine. Hush is present in the bestiary: 0 kills, 1 player death caused by it.
 
-Флаги коллекции 43 и 61 установлены, но в подключённом справочнике им не соответствует предмет. Они сохранены в JSON без придуманного названия. Число 146 — сумма всех установленных флагов, **не число надёжно распознанных предметов**.
+Collection flags 43 and 61 are set, but no item in the bundled reference corresponds to them. They are kept in the JSON without an invented name. The number 146 is the sum of all set flags, **not the number of reliably recognized items**.
 
-Готовые результаты:
+Ready-made results:
 
-- [Отчёт по слоту 1](reports/rep_persistentgamedata1.md) и [полный JSON](reports/rep_persistentgamedata1.json).
-- [Отчёт по слоту 2](reports/rep_persistentgamedata2.md) и [полный JSON](reports/rep_persistentgamedata2.json).
-- [Секреты слота 1, отдельная справка](reports/rep_persistentgamedata1.achievements.md) и [JSON](reports/rep_persistentgamedata1.achievements.json).
-- [Секреты слота 2, отдельная справка](reports/rep_persistentgamedata2.achievements.md) и [JSON](reports/rep_persistentgamedata2.achievements.json).
-- [Исследование формата и подхода к извлечению](RESEARCH.md).
+- [Slot 1 report](reports/rep_persistentgamedata1.md) and [full JSON](reports/rep_persistentgamedata1.json).
+- [Slot 2 report](reports/rep_persistentgamedata2.md) and [full JSON](reports/rep_persistentgamedata2.json).
+- [Slot 1 secrets, separate reference](reports/rep_persistentgamedata1.achievements.md) and [JSON](reports/rep_persistentgamedata1.achievements.json).
+- [Slot 2 secrets, separate reference](reports/rep_persistentgamedata2.achievements.md) and [JSON](reports/rep_persistentgamedata2.achievements.json).
+- [Research on the format and the extraction approach](RESEARCH.md).
 
-## Запуск
+## Running
 
-Из корня проекта:
+From the project root:
 
 ```sh
 python3 isaac_save.py context/rep_persistentgamedata1.dat context/rep_persistentgamedata2.dat --output reports
 ```
 
-Для одного файла JSON можно получить в stdout:
+For a single file, JSON can be written to stdout:
 
 ```sh
 python3 isaac_save.py context/rep_persistentgamedata1.dat
 ```
 
-Все 11 блоков, включая неизвестные счётчики и служебные значения:
+All 11 chunks, including unknown counters and internal values:
 
 ```sh
 python3 isaac_save.py context/rep_persistentgamedata1.dat --raw
 ```
 
-Обычно файл с неправильной контрольной суммой отклоняется. Для диагностики можно передать `--allow-invalid-checksum`: тогда JSON и отчёт явно помечают данные как непроверенные. Неправильная структура всё равно отклоняется.
+A file with an invalid checksum is normally rejected. For diagnostics you can pass `--allow-invalid-checksum`: the JSON and the report then explicitly mark the data as unverified. An invalid structure is still rejected.
 
-## Steam, секреты и заслуги слота
+## Steam, secrets and slot accomplishments
 
-В Isaac секреты можно синхронизировать со Steam на новом слоте, не восстановив соответствующие отметки персонажей и completed-флаги испытаний. Этот сценарий описан автором [инструмента восстановления отметок из Steam](https://github.com/agusaenz/isaac-save-auto-editor-steam#first-steps). Сам инструмент не запускался. Steam хранит достижения для пользователя и приложения: [Steamworks GetPlayerAchievements](https://partner.steamgames.com/doc/webapi/ISteamUserStats?l=english#GetPlayerAchievements) не содержит понятия игрового слота.
+In Isaac, secrets can be synced from Steam into a new slot without restoring the corresponding character marks and challenge completed flags. This scenario is described by the author of a [tool that restores marks from Steam](https://github.com/agusaenz/isaac-save-auto-editor-steam#first-steps). The tool itself was not run. Steam stores achievements per user and application: [Steamworks GetPlayerAchievements](https://partner.steamgames.com/doc/webapi/ISteamUserStats?l=english#GetPlayerAchievements) has no concept of a game slot.
 
-Поэтому открытое достижение не засчитывает босса, испытание, предмет в коллекции, игру персонажем или условие достижения в этом слоте. Это правило действует всегда, независимо от предполагаемого происхождения флага. Мы не определяем, происходила ли синхронизация конкретно у вас.
+Therefore an unlocked achievement does not credit a boss, a challenge, a collection item, playing as a character or an achievement condition in this slot. This rule always applies, regardless of the presumed origin of the flag. We do not determine whether a sync actually happened in your case.
 
-**Проверенный сценарий:** на копии пустого слота в памяти установлены все 637 секретов и пересчитан checksum. Основной анализ остался побайтово эквивалентным по значениям JSON анализу исходного пустого слота: 0 отметок, 0 испытаний, 0 предметов коллекции, пустой бестиарий. Исходные `.dat` не изменялись.
+**Verified scenario:** on an in-memory copy of an empty slot, all 637 secrets were set and the checksum was recalculated. The main analysis remained equivalent, value for value in the JSON, to the analysis of the original empty slot: 0 marks, 0 challenges, 0 collection items, an empty bestiary. The source `.dat` files were not modified.
 
-## Что находится в JSON (schema_version = 2)
+## What the JSON contains (schema_version = 2)
 
-- `raw`: все блоки, исходные массивы, смещения, размеры, SHA-256, сохранённая и рассчитанная контрольные суммы.
-- `progress`: **единственный источник дальнейших выводов о заслугах в слоте**. Его результат не меняется при изменении любых значений блока достижений.
-- `progress.characters`: 34 персонажа × 12 целей; значения `not_completed`, `normal`, `hard`, `greed`, `greedier`. Доступность персонажей по секретам не используется. `roster_index` — индекс в списке анализатора, **не PlayerType игры**.
-- `progress.items`: только collectibles с флагом `collected` из коллекции. Здесь нет состояний открытия предмета или достижений.
-- `progress.bosses`: отдельные флаги убитых боссов по BossType.
-- `progress.challenges`: 45 испытаний, пройденные и непройденные, с наградами.
-- `progress.bestiary`: Type/Variant, полный упакованный ключ, убийства, встречи, полученные от врага попадания и смерти игрока.
-- `progress.event_counters`: все 496 счётчиков, включая нулевые и нерасшифрованные.
-- `achievement_reference`: отдельная справка, `excluded_from_gameplay_analysis=true`. В ней `achievements` — флаги секретов сохранения, `content_unlocks` — доступность персонажей/предметов по этим флагам. Поле `earned_in_this_slot=null`: не установлено, где выполнено условие.
-- `achievement_reference.steam_account`: `status=not_queried`, `achievements=null`. Steam не запрашивался; неизвестное состояние не выдаётся за нулевые достижения.
-- `catalog_sources`: URL и SHA-256 источников справочника.
+- `raw`: all chunks, source arrays, offsets, sizes, SHA-256, and the stored and computed checksums.
+- `progress`: **the only source for further conclusions about accomplishments in the slot**. Its result does not change when any values of the achievements chunk change.
+- `progress.characters`: 34 characters × 12 goals; values `not_completed`, `normal`, `hard`, `greed`, `greedier`. Character availability via secrets is not used. `roster_index` is an index in the analyzer's list, **not the game's PlayerType**.
+- `progress.items`: only collectibles with the `collected` flag from the collection. There are no item unlock states or achievements here.
+- `progress.bosses`: individual killed-boss flags by BossType.
+- `progress.challenges`: 45 challenges, completed and not completed, with rewards.
+- `progress.bestiary`: Type/Variant, the full packed key, kills, encounters, hits taken from the enemy and player deaths.
+- `progress.event_counters`: all 496 counters, including zero and undecoded ones.
+- `achievement_reference`: a separate reference, `excluded_from_gameplay_analysis=true`. In it, `achievements` are the save's secret flags and `content_unlocks` is character/item availability based on those flags. The field `earned_in_this_slot=null`: where the condition was fulfilled is not established.
+- `achievement_reference.steam_account`: `status=not_queried`, `achievements=null`. Steam was not queried; an unknown state is not presented as zero achievements.
+- `catalog_sources`: URLs and SHA-256 of the reference sources.
 
-В версии схемы 2 достижения и доступность персонажей/предметов удалены из `progress` и его сводки. Полный JSON сохраняет их только в отдельной ветке; файлы `*.achievements.json` / `*.achievements.md` содержат справку отдельно. `raw.chunks.achievements` остаётся для проверки исходных байтов, а не для анализа заслуг. Правило дальнейшей работы закреплено в [AGENTS.md](AGENTS.md).
+In schema version 2, achievements and character/item availability were removed from `progress` and its summary. The full JSON keeps them only in a separate branch; the `*.achievements.json` / `*.achievements.md` files contain the reference separately. `raw.chunks.achievements` remains for checking the source bytes, not for accomplishment analysis. The rule for further work is set out in [AGENTS.md](AGENTS.md).
 
-**Открыт ≠ подобран ≠ условие выполнено здесь.** Отсутствие предмета в коллекции не означает, что он закрыт. Для брелоков и карт эти файлы не дают аналогичного списка «хотя бы раз подобрано».
+**Unlocked ≠ collected ≠ condition fulfilled here.** An item missing from the collection does not mean it is locked. For trinkets and cards, these files do not provide a similar "picked up at least once" list.
 
-Названия, условия и соответствия предметов достижениям берутся из общественного справочника. Это интерпретация данных, а не выгрузка ресурсов вашей установленной версии. Некоторые предметы доступны изначально; связанное с ними достижение само по себе ещё не означает обязательный порог разблокировки. Доступность предмета также не гарантирует его выпадение: остаются ограничения комнат, пулов и условий забега.
+Names, conditions and item-to-achievement mappings come from a community reference. This is an interpretation of the data, not an export of your installed version's resources. Some items are available from the start; an associated achievement does not by itself imply a mandatory unlock threshold. Item availability also does not guarantee that it will drop: room, pool and run restrictions still apply.
 
-## Уточнение предметов по ресурсам вашей игры
+## Refining items using your game's resources
 
-Для более точного соответствия конкретной версии можно указать распакованные `items.xml`. Порядок — базовые ресурсы, затем DLC; более поздний файл перекрывает более ранний:
+For a more precise match with a specific version, you can provide unpacked `items.xml` files. Order them base resources first, then DLC; a later file overrides an earlier one:
 
 ```sh
 python3 isaac_save.py context/rep_persistentgamedata1.dat --output reports \
@@ -126,26 +126,26 @@ python3 isaac_save.py context/rep_persistentgamedata1.dat --output reports \
   --items-xml /path/to/resources-dlc3/items.xml
 ```
 
-Анализатор использует `id`, тип и `achievement` из XML. Если `achievement` отсутствует или равен 0, предмет считается не требующим достижения. **Все выводы об открытии относятся только к `achievement_reference` и не участвуют в анализе заслуг.** Служебные локализационные имена вида `#...` не заменяют уже известное читаемое имя. XML уточняет collectibles и trinkets; условия, не выраженные достижением, карты и пилюли требуют отдельного справочника. Частичный XML перекрывает только содержащиеся в нём записи.
+The analyzer uses `id`, the type and `achievement` from the XML. If `achievement` is missing or equals 0, the item is considered not to require an achievement. **All unlock conclusions belong only to `achievement_reference` and do not take part in accomplishment analysis.** Internal localization names of the form `#...` do not replace an already known readable name. The XML refines collectibles and trinkets; conditions not expressed as an achievement, cards and pills require a separate reference. A partial XML overrides only the entries it contains.
 
-## Поддержка версий
+## Version support
 
-Проверен именно Repentance: **638 ячеек достижений, 496 счётчиков, 733 ячейки коллекции**. Ячейка 0 достижений не используется: реальных достижений 637.
+Specifically Repentance has been verified: **638 achievement cells, 496 counters, 733 collection cells**. Achievement cell 0 is unused: there are 637 real achievements.
 
-Afterbirth+, Repentance и Repentance+ используют одинаковую строку заголовка. Поэтому заголовка недостаточно для определения версии. Для другого набора достижений/счётчиков именованный анализ завершается понятной ошибкой. `--raw` дополнительно проверен на Repentance+ (642/523) и Rebirth (9 блоков,179/95, другой checksum). Именованный Python-анализ по-прежнему ограничен Repentance; поддержка новых редакций в сайте описана выше. Afterbirth не проверен.
+Afterbirth+, Repentance and Repentance+ use the same header string, so the header alone is not enough to determine the version. For a different set of achievements/counters, the named analysis stops with a clear error. `--raw` has additionally been verified on Repentance+ (642/523) and Rebirth (9 chunks, 179/95, a different checksum). The named Python analysis is still limited to Repentance; website support for newer editions is described above. Afterbirth has not been verified.
 
-## Проверки
+## Tests
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-24 проверки: обе исходные контрольные суммы, смещения блоков, отметки Азазеля, пустой слот, Hush, различие открытия/коллекции, повреждения и усечения, неизвестные сущности, разные версии, XML, сохранность входных файлов, независимость прогресса от секретов и разделение файлов отчётов. В том числе проверяется пустой слот с открытыми 637 секретами. Проверки двух сохранений рассчитаны на предоставленные исследовательские образцы в `context/`.
+24 tests: both original checksums, chunk offsets, Azazel's marks, the empty slot, Hush, the unlocked/collected distinction, corruption and truncation, unknown entities, different versions, XML, preservation of input files, independence of progress from secrets and separation of report files. Among other things, an empty slot with all 637 secrets unlocked is tested. The tests for the two saves depend on the research samples provided in `context/`.
 
-## Обновление справочника
+## Updating the reference
 
 ```sh
 python3 tools/build_catalog.py
 ```
 
-Только эта отдельная операция обращается к интернету. Она читает закреплённые исходники REPENTOGON и снимок данных Deadgod Tracker, проверяет хеш снимка и сохраняет `data/catalog.json`. Загруженный JavaScript не исполняется: читаются только литералы данных. Если удалённый снимок изменился или исчез, нужно осознанно обновить ссылку и закреплённый хеш. Атрибуция: [THIRD_PARTY.md](THIRD_PARTY.md).
+Only this separate operation accesses the internet. It reads pinned REPENTOGON sources and a Deadgod Tracker data snapshot, verifies the snapshot hash and writes `data/catalog.json`. The downloaded JavaScript is not executed: only data literals are read. If the remote snapshot changes or disappears, the link and the pinned hash must be updated deliberately. Attribution: [THIRD_PARTY.md](THIRD_PARTY.md).

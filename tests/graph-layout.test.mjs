@@ -55,7 +55,7 @@ test('independent components have separate lanes and cycles still fail explicitl
   const layout=layoutGraph({nodes:['a','b','c','d'].map(id=>node(id)),edges:[edge('a','b'),edge('c','d')]}),map=new Map(layout.nodes.map(n=>[n.id,n]));
   assert.ok(map.get('a').x+map.get('a').width<map.get('c').x);
   assert.equal(map.get('a').x,map.get('b').x);assert.equal(map.get('c').x,map.get('d').x);
-  assert.throws(()=>layoutGraph({nodes:[node('a'),node('b')],edges:[edge('a','b'),edge('b','a')]}),/Цикл/);
+  assert.throws(()=>layoutGraph({nodes:[node('a'),node('b')],edges:[edge('a','b'),edge('b','a')]}),/Cycle/);
   assert.deepEqual(layoutGraph({nodes:[],edges:[]}),{nodes:[],edges:[],width:620,height:520});
 });
 

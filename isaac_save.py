@@ -39,17 +39,17 @@ CHARACTER_NAMES = {
     "JACOB_AND_ESAU": "Jacob & Esau",
 }
 IMPORTANT_STATS = {
-    1: "Mom’s Heart / It Lives!: зачтённые победы", 10: "Смерти",
-    11: "Isaac: зачтённые победы", 13: "Satan: зачтённые победы",
-    24: "???: зачтённые победы", 25: "The Lamb: зачтённые победы",
-    26: "Mega Satan: зачтённые победы", 111: "Boss Rush: прохождения",
-    158: "Hush: зачтённые победы", 187: "Delirium: зачтённые победы",
-    491: "Mother: зачтённые победы", 492: "The Beast: зачтённые победы",
-    20: "Монеты в Donation Machine", 115: "Монеты в Greed Donation Machine",
-    21: "Eden Tokens", 22: "Текущая серия побед", 23: "Лучшая серия побед",
-    113: "Текущая серия поражений", 2: "Разрушено камней",
-    3: "Разрушено tinted rocks", 5: "Разрушено кучек", 6: "Съедено пилюль",
-    15: "Взято сделок ангела", 16: "Взято сделок дьявола", 197: "Покупки в магазине",
+    1: "Mom’s Heart / It Lives!: credited wins", 10: "Deaths",
+    11: "Isaac: credited wins", 13: "Satan: credited wins",
+    24: "???: credited wins", 25: "The Lamb: credited wins",
+    26: "Mega Satan: credited wins", 111: "Boss Rush: completions",
+    158: "Hush: credited wins", 187: "Delirium: credited wins",
+    491: "Mother: credited wins", 492: "The Beast: credited wins",
+    20: "Coins in the Donation Machine", 115: "Coins in the Greed Donation Machine",
+    21: "Eden Tokens", 22: "Current win streak", 23: "Best win streak",
+    113: "Current losing streak", 2: "Rocks destroyed",
+    3: "Tinted rocks destroyed", 5: "Poops destroyed", 6: "Pills swallowed",
+    15: "Angel deals taken", 16: "Devil deals taken", 197: "Shop purchases",
 }
 
 
@@ -404,60 +404,60 @@ def markdown_report(report):
     raw, progress = report["raw"], report["progress"]
     summary = progress["summary"]
     lines = [
-        f"# {report['file']}", "", f"Версия: {progress['edition']}.", "",
-        f"Размер: {raw['size_bytes']} байт. KAGE checksum: **{'OK' if raw['checksum']['valid'] else 'FAIL'}**.",
+        f"# {report['file']}", "", f"Edition: {progress['edition']}.", "",
+        f"Size: {raw['size_bytes']} bytes. KAGE checksum: **{'OK' if raw['checksum']['valid'] else 'FAIL'}**.",
         f"SHA-256: `{raw['sha256']}`", "",
-        "## Прогресс этого слота", "",
-        "Достижения и разблокировки исключены из анализа. Учитываются только отдельные записи прохождений, коллекции и статистики.", "",
-        f"- Записи игрового прогресса: **{'есть' if summary['has_recorded_gameplay'] else 'нет'}**.",
-        f"- Персонажи с отметками: **{summary['characters_with_marks']} / 34**.",
-        f"- Отметки прохождения: **{summary['completed_marks']} / 408**.",
-        f"- Испытания: **{summary['completed_challenges']} / 45**.",
-        f"- Коллекция: **{summary['named_collected_items']} распознанных предметов**; "
-        f"всего установлено {summary['collected_flags_raw']} байтовых флагов.",
-        f"- Бестиарий: **{summary['bestiary_entries']}** записей.", "",
-        "## Статистика", "", "| Показатель | Значение |", "| --- | ---: |",
+        "## This slot's progress", "",
+        "Achievements and unlocks are excluded from the analysis. Only the slot's own completion records, collection and statistics are used.", "",
+        f"- Recorded gameplay progress: **{'yes' if summary['has_recorded_gameplay'] else 'no'}**.",
+        f"- Characters with completion marks: **{summary['characters_with_marks']} / 34**.",
+        f"- Completion marks: **{summary['completed_marks']} / 408**.",
+        f"- Challenges: **{summary['completed_challenges']} / 45**.",
+        f"- Collection: **{summary['named_collected_items']} recognized items**; "
+        f"{summary['collected_flags_raw']} byte flags set in total.",
+        f"- Bestiary: **{summary['bestiary_entries']}** entries.", "",
+        "## Statistics", "", "| Statistic | Value |", "| --- | ---: |",
     ]
     lines += [f"| {entry['name']} | {entry['value']} |" for entry in progress["statistics"]]
-    lines += ["", "`MOM_KILLS` в игре означает зачтённые победы над Mom’s Heart / It Lives!, а не над Mom.",
-              "", "## Персонажи и отметки", ""]
-    lines.append("Доступность персонажа по секретам не используется для зачёта его прохождений.")
-    lines += ["", "| Персонаж | Цель | Сложность | ID счётчика |", "| --- | --- | --- | ---: |"]
+    lines += ["", "In the game, `MOM_KILLS` means credited wins against Mom’s Heart / It Lives!, not against Mom.",
+              "", "## Characters and completion marks", ""]
+    lines.append("Character availability from secrets is not used to credit that character's completions.")
+    lines += ["", "| Character | Target | Difficulty | Counter ID |", "| --- | --- | --- | ---: |"]
     for character in progress["characters"]:
         for name, mark in character["marks"].items():
             if mark["value"]:
                 lines.append(f"| {character['name']} | {name} | {mark['status']} | {mark['counter_id']} |")
-    lines += ["", "Все 408 состояний, включая незакрытые отметки, есть в JSON.",
-              "", "## Испытания", ""]
+    lines += ["", "All 408 states, including unearned marks, are in the JSON.",
+              "", "## Challenges", ""]
     completed = [c for c in progress["challenges"] if c["completed"]]
-    lines += [f"- #{c['id']} {c['name']}." for c in completed] or ["Нет пройденных."]
-    lines += ["", "## Флаги побеждённых боссов", "",
-              "Это отдельный учёт для разблокировок. Для количества убийств см. бестиарий; для персонажа и сложности — отметки.", ""]
-    lines.append(", ".join(f"{b['name']} (#{b['id']})" for b in progress["bosses"] if b["killed_flag"]) or "Нет установленных флагов.")
-    lines += ["", f"Минибоссы: флаги по индексам 0–6 = `{raw['chunks']['minibosses']}`."]
-    lines += ["", "## Коллекция: подобранные предметы", ""]
+    lines += [f"- #{c['id']} {c['name']}." for c in completed] or ["None completed."]
+    lines += ["", "## Defeated boss flags", "",
+              "This is a separate record used for unlocks. See the bestiary for kill counts and completion marks for character and difficulty.", ""]
+    lines.append(", ".join(f"{b['name']} (#{b['id']})" for b in progress["bosses"] if b["killed_flag"]) or "No flags set.")
+    lines += ["", f"Minibosses: flags at indices 0–6 = `{raw['chunks']['minibosses']}`."]
+    lines += ["", "## Collection: collected items", ""]
     collected = [i for i in progress["items"] if i.get("collected")]
-    lines.append(", ".join(f"{i['name']} (#{i['item_id']})" for i in sorted(collected, key=lambda i: i['item_id'])) or "Пусто.")
+    lines.append(", ".join(f"{i['name']} (#{i['item_id']})" for i in sorted(collected, key=lambda i: i['item_id'])) or "Empty.")
     if progress["unknown_collection_flags"]:
-        lines += ["", f"Неопознанные флаги коллекции: `{progress['unknown_collection_flags']}`. Названия не угадываются."]
-    lines += ["", "## Боссы в бестиарии", "",
-              "Встречи могут учитывать составные части и повторные появления. Это не число забегов.", "",
-              "| Враг | Type.Variant | Убийства | Встречи | Попадания по игроку | Смерти игрока |",
+        lines += ["", f"Unrecognized collection flags: `{progress['unknown_collection_flags']}`. Names are not guessed."]
+    lines += ["", "## Bosses in the bestiary", "",
+              "Encounters may count multi-part bosses and repeat appearances. This is not a number of runs.", "",
+              "| Enemy | Type.Variant | Kills | Encounters | Hits on player | Player deaths |",
               "| --- | --- | ---: | ---: | ---: | ---: |"]
     lines += [f"| {b['name']} | {b['entity_type']}.{b['variant']} | {b['kills']} | {b['encounters']} | {b['hits']} | {b['deaths']} |"
               for b in progress["bestiary"] if b["is_boss"]]
-    lines += ["", "## Служебные и нерасшифрованные данные", "",
+    lines += ["", "## Internal and undecoded data", "",
               f"Level counters: `{raw['chunks']['level_counters']}`.",
               f"Cutscene counters: `{raw['chunks']['cutscenes']}`.",
               f"Settings: `{raw['chunks']['settings']}`.",
-              f"Special seeds (установленные индексы): `{[i for i,v in enumerate(raw['chunks']['special_seeds']) if v]}`.",
-              f"GameState checksum: `{raw['gamestate_checksum']}`. Сам забег хранится в отдельном gamestate*.dat.",
-              f"Служебный счётчик загрузок (предположительное назначение): `{raw['load_counter_raw']}`.",
-              "", "## Ограничения", ""]
+              f"Special seeds (set indices): `{[i for i,v in enumerate(raw['chunks']['special_seeds']) if v]}`.",
+              f"GameState checksum: `{raw['gamestate_checksum']}`. The run itself is stored in a separate gamestate*.dat.",
+              f"Internal load counter (presumed purpose): `{raw['load_counter_raw']}`.",
+              "", "## Limitations", ""]
     lines += ["- " + warning for warning in progress["warnings"]]
     reference_name = Path(report["file"]).stem + ".achievements.md"
-    lines += ["", f"[Отдельная справка о секретах и разблокировках]({reference_name}). "
-              "Её значения не участвуют в основном анализе; состояние Steam-аккаунта не проверялось."]
+    lines += ["", f"[Separate reference for secrets and unlocks]({reference_name}). "
+              "Its values are not used in the main analysis; the Steam account state was not checked."]
     return "\n".join(lines) + "\n"
 
 
@@ -465,25 +465,25 @@ def markdown_achievement_reference(report):
     reference = report["achievement_reference"]
     summary = reference["summary"]
     lines = [
-        f"# Секреты и разблокировки: {report['file']}", "",
-        "**Только справка. Эти данные исключены из анализа заслуг в текущем слоте.**", "",
-        f"Установлено флагов секретов: **{summary['unlocked_save_secrets']} / {summary['total_save_secrets']}**.", "",
-        "Источник — блок 1 сохранения. Steam-аккаунт не запрашивался: это не проверенный список достижений Steam. "
-        "Нельзя определить, какие флаги получены здесь, перенесены из Steam, импортированы или отредактированы.", "",
-        "Условия ниже приведены из справочника. Открытый секрет не доказывает выполнение условия в этом слоте. "
-        "ID — игровой Save Secret ID; соответствие Steam API здесь не устанавливается.", "",
-        "## Открытые секреты", "", "| Save Secret ID | Название | Условие из справочника |",
+        f"# Secrets and unlocks: {report['file']}", "",
+        "**Reference only. This data is excluded from the analysis of accomplishments in this slot.**", "",
+        f"Secret flags set: **{summary['unlocked_save_secrets']} / {summary['total_save_secrets']}**.", "",
+        "Source: save chunk 1. The Steam account was not queried, so this is not a verified list of Steam achievements. "
+        "It is impossible to tell which flags were earned here, synced from Steam, imported or edited.", "",
+        "The conditions below come from the reference catalog. An unlocked secret does not prove its condition was met in this slot. "
+        "The ID is the in-game Save Secret ID; no mapping to Steam API IDs is established here.", "",
+        "## Unlocked secrets", "", "| Save Secret ID | Name | Reference condition |",
         "| ---: | --- | --- |",
     ]
     lines += [f"| {a['save_secret_id']} | {a['name']} | {a.get('condition', '')} |"
               for a in reference["achievements"] if a["unlocked"]]
-    lines += ["", "## Доступность персонажей по секретам", ""]
+    lines += ["", "## Character availability from secrets", ""]
     lines.append(", ".join(c["name"] for c in reference["content_unlocks"]["characters"] if c["unlocked"]) + ".")
-    lines += ["", "Это доступность для выбора, а не доказательство игры или прохождений этим персонажем.",
-              "", "## Разблокировки предметов по секретам", "",
-              "Предметы с открытым секретом из справочника. Их наличие не засчитывается как выполнение условий в этом слоте. "
-              "Коллекция читается отдельно в основном отчёте.", "",
-              "| Название | Тип | ID предмета | Save Secret ID |", "| --- | --- | ---: | ---: |"]
+    lines += ["", "This is availability for selection, not proof of playing or completing anything as that character.",
+              "", "## Item unlocks from secrets", "",
+              "Items whose reference secret is unlocked. Their presence does not count as meeting conditions in this slot. "
+              "The collection is read separately in the main report.", "",
+              "| Name | Type | Item ID | Save Secret ID |", "| --- | --- | ---: | ---: |"]
     lines += [f"| {i['name']} | {i['kind']} | {i['item_id']} | {i['achievement_id']} |"
               for i in reference["content_unlocks"]["items"]
               if i["unlock_basis"] == "save_secret_flag" and i["unlocked"]]

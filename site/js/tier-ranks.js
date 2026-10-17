@@ -1,13 +1,13 @@
 // Presentation only: the guide's original categories remain in unlocks.json.
 export const RANKS = [
-  {id:'DEAD GOD',label:'Полное прохождение Repentance',color:'#c7b48a'},
-  {id:'S',label:'Открыть в первую очередь',color:'#f39eaa'},
-  {id:'A',label:'Высокий приоритет',color:'#eec18a'},
-  {id:'B',label:'Полезное пополнение',color:'#e5d988'},
-  {id:'C',label:'После основных анлоков',color:'#a8cfb1'},
-  {id:'D',label:'Низкий приоритет',color:'#9cbfda'},
-  {id:'F',label:'Можно отложить',color:'#b9a5d5'},
-  {id:'OPEN',label:'Открыты по умолчанию',color:'#9aa6a0'},
+  {id:'DEAD GOD',label:'Complete Repentance',color:'#c7b48a'},
+  {id:'S',label:'Unlock first',color:'#f39eaa'},
+  {id:'A',label:'High priority',color:'#eec18a'},
+  {id:'B',label:'Useful additions',color:'#e5d988'},
+  {id:'C',label:'After the main unlocks',color:'#a8cfb1'},
+  {id:'D',label:'Low priority',color:'#9cbfda'},
+  {id:'F',label:'Can wait',color:'#b9a5d5'},
+  {id:'OPEN',label:'Available by default',color:'#9aa6a0'},
 ];
 const categoryRanks = {'good-1':'S','good-2':'A','good-3':'A','good-4':'B','before-1':'B','before-2':'C','avoid-1':'D','avoid-2':'F','avoid-3':'F','default-open':'OPEN'};
 const editorialRanks = {'consumable:33':'S','consumable:37':'S','consumable:39':'A','collectible:263':'A','collectible:389':'B','consumable:36':'B','consumable:35':'B','consumable:40':'C','consumable:34':'C',

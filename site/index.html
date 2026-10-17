@@ -1,92 +1,92 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8fa">
   <script>try { const saved=localStorage.getItem('atlas-theme'); document.documentElement.dataset.theme=saved==='light'||saved==='dark'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); } catch { document.documentElement.dataset.theme='light'; }</script>
-  <meta name="description" content="Ваш прогресс в The Binding of Isaac: тирлист приоритетных открытий, граф разблокировок и статистика из сохранения. Всё работает в вашем браузере.">
+  <meta name="description" content="Your The Binding of Isaac progress: unlock priorities, dependency graphs and save statistics. Everything runs in your browser.">
   <title>Skill Issue Tracker — The Binding of Isaac</title>
   <link rel="icon" href="assets/icons/character-isaac.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="landing.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">К содержимому</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="topbar">
-    <a class="brand" href="#/tiers" aria-label="Skill Issue Tracker, главная">
+    <a class="brand" href="#/tiers" aria-label="Skill Issue Tracker, home">
       <span class="brand-mascot" aria-hidden="true"><img class="brand-dance" src="assets/brand/dancing-isaac.gif" width="48" height="48" alt=""></span>
       <span>Skill Issue <b>Tracker</b><small>THE BINDING OF ISAAC</small></span>
     </a>
-    <nav class="main-nav" aria-label="Основная навигация" hidden>
-      <a href="#/tiers" data-page="tiers">Тирлист</a>
-      <a href="#/stats" data-page="stats">Статистика</a>
-      <a href="#/graph" data-page="graph">Граф</a>
+    <nav class="main-nav" aria-label="Main navigation" hidden>
+      <a href="#/tiers" data-page="tiers">Tier list</a>
+      <a href="#/stats" data-page="stats">Statistics</a>
+      <a href="#/graph" data-page="graph">Graph</a>
     </nav>
-    <div class="header-actions"><div id="language-switch" class="language-switch" role="group" aria-label="Язык / Language"><button type="button" data-language="ru" lang="ru" aria-label="Русский" aria-pressed="true">RU</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div><button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему" title="Переключить тему">◐</button><button id="change-save" class="button small" hidden>Другой сейв</button></div>
+    <div class="header-actions"><div id="language-switch" class="language-switch" role="group" aria-label="Language / Язык"><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="true">EN</button><button type="button" data-language="ru" lang="ru" aria-label="Русский" aria-pressed="false">RU</button></div><button id="theme-toggle" class="theme-toggle" aria-label="Switch theme" title="Switch theme">◐</button><button id="change-save" class="button small" hidden>Change save</button></div>
   </header>
   <main id="main" tabindex="-1">
     <section id="onboarding" class="onboarding">
       <div class="landing-heading">
         <span class="eyebrow">THE BINDING OF ISAAC</span>
-        <h1>Что открыть <em>дальше?</em></h1>
-        <p>Ваш сейв превращается в понятный план открытий.</p>
+        <h1>What to unlock <em>next?</em></h1>
+        <p>Turn your save into a clear unlock plan.</p>
       </div>
-      <figure class="landing-demo" id="landing-demo" aria-label="Пример: загрузите сохранение, выберите Mom's Knife в тирлисте и узнайте условие — победить Satan за Isaac.">
-        <div class="demo-topline"><span><i></i> КАК ЭТО РАБОТАЕТ</span><button id="demo-pause" class="demo-pause" aria-label="Приостановить анимацию" aria-pressed="false" title="Приостановить анимацию">Ⅱ</button></div>
+      <figure class="landing-demo" id="landing-demo" aria-label="Example: upload a save, select Mom’s Knife in the tier list and see its requirement: defeat Satan as Isaac.">
+        <div class="demo-topline"><span><i></i> HOW IT WORKS</span><button id="demo-pause" class="demo-pause" aria-label="Pause animation" aria-pressed="false" title="Pause animation">Ⅱ</button></div>
         <div class="demo-scene" aria-hidden="true">
           <svg class="demo-connections" viewBox="0 0 720 160" preserveAspectRatio="none"><path class="demo-wire" d="M140 80 H265"/><path class="demo-wire" d="M405 80 H525"/><path class="demo-wire demo-wire-first" d="M140 80 H265"/><path class="demo-wire demo-wire-second" d="M405 80 H525"/></svg>
           <div class="demo-step demo-save">
             <div class="demo-file"><svg viewBox="0 0 48 56"><path d="M9 3h21l10 10v38a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z"/><path d="M29 3v12h11M14 25h18M14 31h12"/></svg><span>.dat</span><b class="demo-file-check">✓</b></div>
-            <span class="demo-step-label">Ваше сохранение</span>
+            <span class="demo-step-label">Your save</span>
           </div>
           <div class="demo-step demo-tier">
             <div class="demo-mini-tier"><div><b class="demo-rank-s">S</b><span class="demo-chosen"><img src="assets/icons/collectible-114.png" alt=""><i class="demo-click-ring"></i></span><span><img src="assets/icons/collectible-360.png" alt=""></span><span><img src="assets/icons/collectible-689.png" alt=""></span></div><div><b class="demo-rank-a">A</b><span><img src="assets/icons/collectible-286.png" alt=""></span><span><img src="assets/icons/collectible-562.png" alt=""></span></div><div><b class="demo-rank-b">B</b><span><img src="assets/icons/collectible-389.png" alt=""></span></div></div>
             <svg class="demo-cursor" width="22" height="26" viewBox="0 0 22 26"><path d="m3 2 16 12-8 1-4 8Z"/></svg>
-            <span class="demo-step-label">Выберите анлок</span>
+            <span class="demo-step-label">Choose an unlock</span>
           </div>
           <div class="demo-step demo-route">
             <div class="demo-route-card"><img src="assets/icons/character-isaac.png" alt=""><span>Isaac</span></div>
-            <div class="demo-route-edge"><i></i><span>Победить Satan</span><i></i></div>
+            <div class="demo-route-edge"><i></i><span>Defeat Satan</span><i></i></div>
             <div class="demo-route-card demo-reward"><img src="assets/icons/collectible-114.png" alt=""><span>Mom’s Knife</span><b>✓</b></div>
-            <span class="demo-step-label">Узнайте путь к нему</span>
+            <span class="demo-step-label">See how to get it</span>
           </div>
         </div>
-        <figcaption>Сохранение <span>→</span> тирлист <span>→</span> граф открытия <small>Пример</small></figcaption>
+        <figcaption>Save <span>→</span> tier list <span>→</span> unlock graph <small>Example</small></figcaption>
       </figure>
       <div class="upload-panel">
-        <div class="panel-title"><div><h2>Теперь ваш сейв</h2><p>Repentance / Repentance+ · любой слот</p></div><span class="upload-local"><i></i> Только в браузере</span></div>
+        <div class="panel-title"><div><h2>Now try your save</h2><p>Repentance / Repentance+ · any slot</p></div><span class="upload-local"><i></i> Stays in your browser</span></div>
         <label class="dropzone" id="dropzone" for="save-input" tabindex="0">
           <svg class="drop-file-icon" viewBox="0 0 32 38" aria-hidden="true"><path d="M6 2h14l7 8v23a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3Z"/><path d="M19 2v9h8M10 20h10M10 26h7"/></svg>
-          <span class="drop-copy"><strong>Перетащите persistentgamedata сюда</strong><small>Например, rep+persistentgamedata1.dat</small></span>
-          <span class="choose-file">Выбрать файл <span aria-hidden="true">↗</span></span>
+          <span class="drop-copy"><strong>Drop persistentgamedata here</strong><small>For example, rep+persistentgamedata1.dat</small></span>
+          <span class="choose-file">Choose file <span aria-hidden="true">↗</span></span>
         </label>
         <input id="save-input" type="file" accept=".dat" class="visually-hidden">
-        <p id="upload-status" class="upload-status" role="status" aria-live="polite">Repentance и Repentance+ — тирлист, граф и статистика. Rebirth — статистика своего слота.</p>
+        <p id="upload-status" class="upload-status" role="status" aria-live="polite">Repentance and Repentance+: tier list, graph and statistics. Rebirth: slot statistics.</p>
         <div class="file-guide">
-          <p>Нужен <b>один файл общего прогресса</b> выбранного слота:</p>
-          <dl><div><dt>Repentance+</dt><dd><code>rep+persistentgamedata1.dat</code></dd></div><div><dt>Repentance</dt><dd><code>rep_persistentgamedata1.dat</code></dd></div><div><dt>Rebirth / локальный сейв</dt><dd><code>persistentgamedata1.dat</code></dd></div></dl>
-          <p>В конце <b>1, 2 или 3</b> — номер слота. Знак <b>+</b> в <b>rep+</b> — часть имени. Файл без префикса может принадлежать разным редакциям: сайт определит версию по содержимому.</p>
-          <p class="wrong-file-note"><b>gamestate не нужен:</b> это текущий забег. Не выбирайте rep+gamestate, options.ini, log.txt, архив или папку.</p>
+          <p>Choose <b>one persistent progress file</b> for your slot:</p>
+          <dl><div><dt>Repentance+</dt><dd><code>rep+persistentgamedata1.dat</code></dd></div><div><dt>Repentance</dt><dd><code>rep_persistentgamedata1.dat</code></dd></div><div><dt>Rebirth / local save</dt><dd><code>persistentgamedata1.dat</code></dd></div></dl>
+          <p>The final digit, <b>1, 2 or 3</b> is the slot number. The <b>+</b> in <b>rep+</b> is part of the filename. A file without a prefix may belong to different editions: its contents determine the version.</p>
+          <p class="wrong-file-note"><b>gamestate is not needed:</b> it stores the current run. Do not select rep+gamestate, options.ini, log.txt, an archive or a folder.</p>
         </div>
         <details class="save-help" id="save-help">
-          <summary>Где найти нужный файл? <span>↗</span></summary>
-          <div class="os-tabs" role="group" aria-label="Операционная система">
+          <summary>Where can I find my save? <span>↗</span></summary>
+          <div class="os-tabs" role="group" aria-label="Operating system">
             <button data-os="windows" aria-pressed="true">Windows</button><button data-os="mac" aria-pressed="false">macOS</button><button data-os="linux" aria-pressed="false">Linux / Deck</button>
           </div>
           <div id="save-paths"></div>
-          <p class="help-note">Выберите папку той редакции, в которую играете сейчас. При включённом Steam Cloud смотрите папку <b>remote</b>, при выключенном — локальную папку игры. Если папок несколько, не путайте старый Rebirth-сейв с прогрессом Repentance+.<br><br>Можно загрузить резервную копию, например <code>20261015.rep+persistentgamedata1.dat</code>, без переименования. Для актуального прогресса выбирайте свежую копию нужного слота по дате изменения. Загружать gamestate в пару к ней не нужно. Пустой слот — тоже допустимый файл; он может ещё не существовать, пока игра его не создала.</p>
+          <p class="help-note">Use the folder for the edition you currently play. With Steam Cloud enabled, look in <b>remote</b>; otherwise, use the local game folder. If several folders exist, do not confuse an old Rebirth save with your Repentance+ progress.<br><br>You can also upload a backup, such as <code>20261015.rep+persistentgamedata1.dat</code>, without renaming it. For current progress, choose the latest copy of the correct slot by its modification date. No accompanying gamestate file is needed. An empty slot is also valid; its file may not exist until the game creates it.</p>
         </details>
         
       </div>
     </section>
     <div id="workspace" hidden>
-      <div class="save-strip"><span class="save-indicator"></span><strong id="save-name"></strong><span id="save-edition" class="save-edition"></span><span id="save-meta"></span><button class="text-button" id="clear-save">Забыть сохранение</button></div>
+      <div class="save-strip"><span class="save-indicator"></span><strong id="save-name"></strong><span id="save-edition" class="save-edition"></span><span id="save-meta"></span><button class="text-button" id="clear-save">Forget save</button></div>
       <p id="file-error" class="file-error" role="alert" hidden></p>
       <div id="view"></div>
     </div>
   </main>
-  <footer class="footer"><span>SKILL ISSUE TRACKER <b>·</b> всё локально</span><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310" target="_blank" rel="noopener noreferrer">Каталог по руководству jnub ↗</a><span>Независимый фанатский проект</span></footer>
+  <footer class="footer"><span>SKILL ISSUE TRACKER <b>·</b> everything stays local</span><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310" target="_blank" rel="noopener noreferrer">Catalog based on jnub’s guide ↗</a><span>Independent fan project</span></footer>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <script type="module" src="js/app.js"></script>
 </body>
