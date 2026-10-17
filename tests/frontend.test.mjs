@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {parseSave,kageChecksum,slotProgress,SaveError} from '../site/js/save-parser.js';
-import {RANKS,rankFor} from '../site/js/tier-ranks.js';
+import {RANKS,rankFor,rankEntries,moveEntry,layoutOf,applyLayout} from '../site/js/tier-ranks.js';
 import {edgeGeometry,zoomAnchor,clampZoom} from '../site/js/graph-view.js';
 import {validateCatalog,createEvaluator,buildGraph,layoutGraph,STATUS} from '../site/js/unlock-engine.js';
 
@@ -32,8 +32,8 @@ test('synthetic pristine Repentance save parses without private fixtures',()=>{
 
 test('published catalog has unique IDs, valid references and an acyclic graph',()=>{
   assert.deepEqual(validateCatalog(data),[]);
-  assert.ok(data.tiers.length>=10);
-  assert.ok(data.nodes.filter(n=>n.tier).length>=188);
+  assert.equal('tiers' in data,false);
+  assert.ok(data.nodes.filter(n=>n.rank).length>=188);
 });
 test('invalid or cyclic dependencies fail validation',()=>{
   const sample=structuredClone(data);
@@ -105,10 +105,10 @@ const all = (...conditions) => ({type:'all',conditions});
 function synthetic() {
   const nodes=[
     {id:'b',name:'B',kind:'character',secretId:1,unlock:{description:'B action',requirements:manual('b')}},
-    {id:'a',name:'A',kind:'collectible',tier:'tier',secretId:2,unlock:{description:'A action',requirements:all(ref('b'),manual('a'))}},
-    {id:'c',name:'C',kind:'collectible',tier:'tier',secretId:3,unlock:{description:'C action',requirements:all(ref('b'),manual('c'))}},
+    {id:'a',name:'A',kind:'collectible',rank:'S',order:0,secretId:2,unlock:{description:'A action',requirements:all(ref('b'),manual('a'))}},
+    {id:'c',name:'C',kind:'collectible',rank:'S',order:1,secretId:3,unlock:{description:'C action',requirements:all(ref('b'),manual('c'))}},
   ];
-  return {schemaVersion:1,tiers:[{id:'tier'}],nodes:nodes.map(n=>({...n,sources:['https://example.com']}))};
+  return {schemaVersion:1,nodes:nodes.map(n=>({...n,sources:['https://example.com']}))};
 }
 const blankSave=()=>({chunks:{achievements:[0,0,0,0],challenges:Array(46).fill(0),collection:Array(733).fill(0)}});
 const blankProgress=()=>({characters:[{name:'Isaac',marks:{Satan:{value:0}}}],counters:Array(496).fill(0)});
@@ -182,14 +182,35 @@ test('edges connect the bottom of a parent to the top of its child, including af
   const moved=edgeGeometry({...a,x:70,y:50},b);
   assert.match(moved.path,/^M 180 128 C /);assert.equal(moved.x,289);
 });
-test('tiered entries receive a rank including default-open items while source categories stay intact',()=>{
-  const ids=RANKS.map(rank=>rank.id),entries=data.nodes.filter(node=>node.tier);
+test('tier-list entries store only a rank and a unique position inside it',()=>{
+  const ids=RANKS.map(rank=>rank.id),entries=data.nodes.filter(node=>node.rank);
   assert.deepEqual(ids,['DEAD GOD','S','A','B','C','D','F','OPEN']);
+  for(const node of data.nodes)assert.equal('tier' in node,false,node.id);
   for(const node of entries)assert.ok(ids.includes(rankFor(node)),node.id);
-  assert.equal(rankFor({id:'new',tier:'new-category'}),'C');
-  assert.equal(rankFor({id:'new',tier:'new-category',rank:'S'}),'S');
+  for(const id of ids)assert.deepEqual(rankEntries(entries,id).map(node=>node.order),Array.from({length:rankEntries(entries,id).length},(_,i)=>i),id);
   assert.equal(rankFor({id:'support'}),null);
-  assert.equal(data.tiers.filter(tier=>tier.id!=='dead-god').length,11);
+  assert.equal(rankFor({id:'unknown',rank:'Z'}),null);
+  const sample=structuredClone(data);sample.nodes.find(node=>node.rank).rank='Z';
+  assert.match(validateCatalog(sample).join('\n'),/Некорректный rank/);
+  sample.nodes.find(node=>node.rank==='S').tier='good-1';
+  assert.match(validateCatalog(sample).join('\n'),/Устаревшее поле tier/);
+});
+test('dragging an entry moves it between ranks, renumbers both rows and can be restored',()=>{
+  const base=structuredClone(data),copy=structuredClone(data),repo=layoutOf(base);
+  const [first,second]=rankEntries(base.nodes,'S'),target=rankEntries(base.nodes,'F')[1];
+  assert.ok(moveEntry([base,copy],first.id,'F',target.id));
+  for(const catalog of [base,copy]){
+    const f=rankEntries(catalog.nodes,'F'),s=rankEntries(catalog.nodes,'S');
+    assert.equal(f[1].id,first.id);assert.equal(f[2].id,target.id);assert.equal(s[0].id,second.id);
+    for(const row of [f,s])assert.deepEqual(row.map(node=>node.order),row.map((_,i)=>i));
+  }
+  assert.ok(moveEntry([base],first.id,'F'));assert.equal(rankEntries(base.nodes,'F').at(-1).id,first.id);
+  assert.equal(moveEntry([base],'feature:dead-god','S'),false);
+  assert.equal(moveEntry([base],first.id,'DEAD GOD'),false);
+  const saved=JSON.parse(JSON.stringify(layoutOf(base))),fresh=structuredClone(data);
+  assert.ok(applyLayout(fresh,saved)>0);assert.deepEqual(layoutOf(fresh),layoutOf(base));
+  applyLayout(base,repo);assert.deepEqual(base,data);
+  assert.equal(applyLayout(fresh,{'feature:dead-god':['S',0],[second.id]:['Z',0],'missing':['S',0]}),0);
 });
 test('every provided local sprite is an actual PNG in the static site',()=>{
   const manifest=readJson('../site/assets/icons/manifest.json');
@@ -251,7 +272,7 @@ test('Charged Key availability reads its own secret, separate from Greed’s Gul
 
 test('Dead God is the single goal in a tier above S, with every other Repentance condition exactly once',()=>{
   assert.equal(RANKS[0].id,'DEAD GOD');
-  assert.deepEqual(data.nodes.filter(node=>node.tier==='dead-god').map(node=>node.id),['feature:dead-god']);
+  assert.deepEqual(data.nodes.filter(node=>node.rank==='DEAD GOD').map(node=>node.id),['feature:dead-god']);
   const conditions=data.nodes.find(node=>node.id==='feature:dead-god-conditions').unlock.requirements.conditions.flatMap(group=>group.conditions);
   assert.equal(conditions.length,636);
   assert.deepEqual(conditions.map(condition=>condition.goalSecretId),Array.from({length:636},(_,i)=>i+1));

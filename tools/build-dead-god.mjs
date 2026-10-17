@@ -10,7 +10,6 @@ const data=addChallengePaths(JSON.parse(fs.readFileSync(file)),reference,challen
 const collection=JSON.parse(fs.readFileSync('site/data/dead-god-collection.json'));
 const goalIds=new Set(['feature:dead-god','feature:dead-god-conditions','feature:dead-god-collection','feature:dead-god-challenges']);
 data.nodes=data.nodes.filter(node=>!goalIds.has(node.id));
-data.tiers=data.tiers.filter(tier=>tier.id!=='dead-god');
 const bySecret=new Map();
 for(const node of data.nodes)if(node.secretId&&!bySecret.has(node.secretId))bySecret.set(node.secretId,node);
 const chars=reference.characters.map(character=>character.name);
@@ -54,12 +53,11 @@ for(let offset=0;offset<collection.requiredItems.length;offset+=50){
   const items=collection.requiredItems.slice(offset,offset+50);
   collectorGroups.push(all(items.map(item=>({type:'collected',id:item.id,itemName:item.name,label:`Подобрать ${item.name} (#${item.id})`})),`Предметы ${offset+1}–${offset+items.length}`));
 }
-data.tiers.unshift({id:'dead-god',label:'Dead God',description:'Полное прохождение Repentance',color:'#c7b48a',order:-1});
 data.nodes.push(
   goalNode('feature:dead-god-conditions','Все 636 условий открытия','Выполнить условия всех остальных секретов Repentance (1–636). Флаги секретов не служат доказательством: используются известные зависимости, отметки и счётчики, остальное требует ручного подтверждения.',all(conditions,'Все условия открытия'),{goal:{type:'secret_conditions',requiredCount:636}}),
   goalNode('feature:dead-god-collection','Все 717 предметов коллекции','Подобрать все 717 видимых предметов коллекции Repentance, включая Death Certificate, Broken Glass Cannon и квестовые части. Hidden-предметы и отсутствующие ID не требуются.',all(collectorGroups,'Полная коллекция'),{goal:{type:'collection',requiredCount:717},sourceNote:'Список закреплён по items.xml Repentance 1.7.9b.J835; Recall, Hold, скрытые эффекты Book of Belial и Damocles исключены.'}),
   goalNode('feature:dead-god-challenges','Все 45 испытаний','Пройти все 45 испытаний Repentance, включая Ultra Hard и DELETE THIS. Проверяется отдельный completed-флаг каждого испытания.',all(Array.from({length:45},(_,i)=>ref(`challenge-complete:${i+1}`)),'Все испытания'),{goal:{type:'challenges',requiredCount:45}}),
-  goalNode('feature:dead-god','Dead God','Выполнить все остальные 636 условий открытия и подобрать все 717 предметов коллекции Repentance. Это включает 408 отметок на Hard / Greedier, 45 испытаний, ежедневные забеги и прочие действия.',all([ref('collectible:628'),ref('feature:dead-god-challenges'),ref('feature:dead-god-conditions'),ref('feature:dead-god-collection')],'Всё для Dead God'),{tier:'dead-god',rank:'DEAD GOD',order:0,secretId:637,goal:{type:'dead_god',gameVersion:collection.gameVersion}})
+  goalNode('feature:dead-god','Dead God','Выполнить все остальные 636 условий открытия и подобрать все 717 предметов коллекции Repentance. Это включает 408 отметок на Hard / Greedier, 45 испытаний, ежедневные забеги и прочие действия.',all([ref('collectible:628'),ref('feature:dead-god-challenges'),ref('feature:dead-god-conditions'),ref('feature:dead-god-collection')],'Всё для Dead God'),{rank:'DEAD GOD',order:0,secretId:637,goal:{type:'dead_god',gameVersion:collection.gameVersion}})
 );
 fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');
 let manual=0,automatic=0,reused=0;

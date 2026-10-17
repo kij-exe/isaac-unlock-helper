@@ -7,7 +7,7 @@ description: Add or correct Isaac unlock items, characters, routes and their pre
 
 Work in the user's `isaac-unlock-helper` checkout. Read its `AGENTS.md` and `docs/unlock-schema.md` before changing unlock data. Runtime data lives in `site/data/unlocks.json`; UI and graph engine consume it without per-item code changes.
 
-For the requested unlock, verify the actual game ID, type, wiki URL, condition and dependencies against game resources, IsaacDocs or a reputable community wiki. Preserve the source guide's category and order for existing entries. For an additional item, use an appropriate existing tier unless the user requests a new category. Paraphrase facts; keep source URLs on each new node.
+For the requested unlock, verify the actual game ID, type, wiki URL, condition and dependencies against game resources, IsaacDocs or a reputable community wiki. Keep the stored `rank` and `order` of existing entries unless the user asks to move them. For an additional tier-list item, set `rank` to one of `S`, `A`, `B`, `C`, `D`, `F`, `OPEN` and `order` to the next free position in that row; do not add a `tier` field. Paraphrase facts; keep source URLs on each new node.
 
 Use stable IDs (`collectible:114`, `character:isaac`, `feature:sheol`); reuse existing dependency nodes. Express conditions through the documented `all`, `any`, `node`, `mark`, `counter`, `challenge`, `character_played`, `boss_defeated`, `collected`, `manual` and `constant` forms. Model alternative access routes as OR, and simultaneous requirements as AND. Separate a collectible from a character's starting upgrade.
 

@@ -1,6 +1,6 @@
 import {createI18n, localizeCatalog, translate} from './i18n.js';
 import {catalogForSave} from './catalog-profile.js';
-import {RANKS, rankFor} from './tier-ranks.js';
+import {RANKS, LOCKED_RANK, rankEntries, moveEntry, layoutOf, applyLayout} from './tier-ranks.js';
 import {createGraphView, edgeGeometry, graphNeighborhood} from './graph-view.js';
 import {parseSave, slotProgress} from './save-parser.js';
 import {STATUS, validateCatalog, createEvaluator, buildGraph, layoutGraph, conditionLabel} from './unlock-engine.js';
@@ -16,6 +16,9 @@ const state = {data:null,baseData:null,catalog:null,icons:new Map(),save:null,pr
   manual:{},page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,inferSaveEvidence:false,graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null};
 let toastTimer, uploadGeneration = 0, graphView;
 const graphPositions = new Map();
+// The player's own tier arrangement lives only in this browser; "Выгрузить тиры" exports it as unlocks.json.
+const TIER_LAYOUT_KEY = 'skill-issue-tier-layout';
+let repoLayout = null, tierDrag = null;
 function toast(message) { const box=$('#toast'); i18n.text(box,message); box.hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>box.hidden=true,5500); }
 const graphLink = id => `#/graph${id ? '?item='+encodeURIComponent(id) : ''}`;
 const wikiLink = node => node.wikiUrl || `https://bindingofisaacrebirth.wiki.gg/wiki/${encodeURIComponent(node.name.replaceAll(' ','_'))}`;
@@ -94,7 +97,8 @@ function itemCard(node) {
   const status=availability.status, statusClass=status===STATUS.YES?'yes':status===STATUS.NO?'no':'muted';
   const collectionText=t(collected==null?'Подбор не хранится':collected?'Подобран в этом слоте':'Ещё не подобран');
   const evidenceText=availability.source==='collection'?'Подобран в сохранении, поэтому считается открытым':availability.source==='slot_evidence'?'Открытие подтверждено данными этого слота':'';
-  return html`<article class="item-card ${collected?'collected':''}" data-node="${esc(node.id)}">
+  const draggable=node.rank!==LOCKED_RANK;
+  return html`<article class="item-card ${collected?'collected':''}" data-node="${esc(node.id)}" ${draggable?'draggable="true"':''}>
     <a class="item-link" href="${graphLink(node.id)}" aria-label="Граф открытия ${esc(node.name)}" aria-describedby="tip-${esc(node.id)}">${icon(node)}<span class="availability-dot ${statusClass}" aria-hidden="true"></span>${collected?'<span class="collection-check" aria-hidden="true">✓</span>':''}</a>
     <a class="wiki-button" href="${esc(wikiLink(node))}" target="_blank" rel="noopener noreferrer" aria-label="Вики: ${esc(node.name)}" title="Открыть вики">↗</a>
     <div class="item-tooltip" id="tip-${esc(node.id)}" role="tooltip"><strong>${esc(node.name)}</strong><span><i class="availability-dot ${statusClass}"></i>${availabilityLabel(status)} · ${collectionText}</span>${evidenceText?html`<small>${evidenceText}</small>`:''}${node.sourceNote?'<small>Есть примечание в деталях анлока</small>':''}</div>
@@ -114,23 +118,89 @@ function matches(node) {
 }
 
 function renderTierRows() {
-  const tierNodes=state.data.nodes.filter(n=>n.tier&&(state.showDefaultOpen||n.tier!=='default-open'));
+  const tierNodes=state.data.nodes.filter(n=>n.rank&&(state.showDefaultOpen||n.rank!=='OPEN'));
   const nodes=tierNodes.filter(matches);
-  $('#tier-rows').innerHTML=RANKS.map(rank=>{
-    const entries=nodes.filter(n=>rankFor(n)===rank.id).toSorted((a,b)=>(a.order??0)-(b.order??0));
-    if(!entries.length)return '';
-    return html`<section class="tier-row ${rank.id==='DEAD GOD'?'dead-god-tier':''}" aria-label="Тир ${rank.id}: ${rank.label}"><div class="tier-label" style="--tier-color:${rank.color}" title="${rank.label}"><strong>${rank.id}</strong><small>${entries.length}</small></div><div class="tier-items">${entries.map(itemCard).join('')}</div></section>`;
-  }).join('')||html('<div class="empty-state">Ничего не найдено</div>');
+  $('#tier-rows').innerHTML=nodes.length?RANKS.filter(rank=>state.showDefaultOpen||rank.id!=='OPEN').map(rank=>{
+    const entries=rankEntries(nodes,rank.id);
+    if(!entries.length&&rank.id===LOCKED_RANK)return '';
+    return html`<section class="tier-row ${rank.id===LOCKED_RANK?'dead-god-tier':''}" aria-label="Тир ${rank.id}: ${rank.label}"><div class="tier-label" style="--tier-color:${rank.color}" title="${rank.label}"><strong>${rank.id}</strong><small>${entries.length}</small></div><div class="tier-items" data-rank="${esc(rank.id)}">${entries.map(itemCard).join('')}</div></section>`;
+  }).join(''):html('<div class="empty-state">Ничего не найдено</div>');
   $('#result-count').textContent=`${nodes.length} / ${tierNodes.length}`;
+  updateTierResetButton();
+}
+
+function tierLayoutEdited() {
+  const current=layoutOf(state.baseData);
+  return Object.entries(repoLayout||{}).some(([id,[rank,order]])=>current[id]?.[0]!==rank||current[id]?.[1]!==order);
+}
+function updateTierResetButton() {
+  const edited=tierLayoutEdited();
+  document.querySelectorAll('[data-tier-action="reset"]').forEach(button=>{button.disabled=!edited;});
+}
+function saveTierLayout() {
+  try{if(tierLayoutEdited())localStorage.setItem(TIER_LAYOUT_KEY,JSON.stringify(layoutOf(state.baseData)));else localStorage.removeItem(TIER_LAYOUT_KEY);}catch{}
+}
+function resetTierLayout() {
+  for(const catalog of new Set([state.baseData,state.data]))applyLayout(catalog,repoLayout);
+  saveTierLayout();renderTierRows();toast('Тиры возвращены к версии сайта.');
+}
+// Same shape and formatting as site/data/unlocks.json, so the file can replace it in the repository.
+function dumpTiers() {
+  const url=URL.createObjectURL(new Blob([JSON.stringify(state.baseData,null,2)+'\n'],{type:'application/json'}));const link=document.createElement('a');
+  link.href=url;link.download='unlocks.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+const TIER_EASE='cubic-bezier(.2,.8,.2,1)', TIER_LANDING_EASE='cubic-bezier(.2,1.25,.35,1)';
+const followingCard=element=>{let next=element.nextElementSibling;while(next&&!next.matches('.item-card:not(.drag-source)'))next=next.nextElementSibling;return next;};
+function tierSnapshot() {
+  const rows=new Map(),cards=new Map();
+  document.querySelectorAll('#tier-rows .tier-items[data-rank]').forEach(items=>rows.set(items.dataset.rank,items.parentElement.getBoundingClientRect()));
+  document.querySelectorAll('#tier-rows .item-card:not(.drag-source)').forEach(card=>cards.set(card.dataset.node,card.getBoundingClientRect()));
+  return {rows,cards};
+}
+// FLIP: measure where rows and cards are seen, change the DOM, then ease each one from its old place
+// into the new one. Rows slide as a whole, so only cards whose place inside their row changed animate.
+// `landing` is the released item: it grows out of the drag image under the cursor into its slot.
+function animateTierChange(change,landing=null) {
+  const root=document.querySelector('#tier-rows');
+  if(!root?.animate||globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches){change();return;}
+  const before=tierSnapshot();
+  if(landing)before.cards.set(landing.id,landing.rect);
+  root.getAnimations({subtree:true}).forEach(animation=>animation.cancel());
+  change();
+  const after=tierSnapshot(),rowShift=new Map();
+  for(const [rank,last] of after.rows){const first=before.rows.get(rank);rowShift.set(rank,first?first.top-last.top:0);}
+  const cards=[...root.querySelectorAll('.item-card:not(.drag-source)')];
+  for(const items of root.querySelectorAll('.tier-items[data-rank]')){
+    const dy=rowShift.get(items.dataset.rank);
+    if(Math.abs(dy)>.5)items.parentElement.animate([{transform:`translateY(${dy}px)`},{transform:'none'}],{duration:240,easing:TIER_EASE});
+  }
+  for(const card of cards){
+    const id=card.dataset.node,first=before.cards.get(id),last=after.cards.get(id);
+    if(!first){card.animate([{opacity:0,transform:'scale(.8)'},{opacity:1,transform:'none'}],{duration:200,easing:TIER_EASE});continue;}
+    const dx=first.left-last.left,dy=first.top-last.top-(rowShift.get(card.parentElement.dataset.rank)??0);
+    if(id===landing?.id){
+      card.style.zIndex=3;
+      card.animate([{transform:`translate(${dx}px,${dy}px) scale(1.12)`,boxShadow:'0 12px 26px rgba(20,20,40,.28)'},{transform:'none',boxShadow:'0 0 0 rgba(20,20,40,0)'}],{duration:380,easing:TIER_LANDING_EASE})
+        .finished.catch(()=>{}).finally(()=>{card.style.zIndex='';});
+    }else if(Math.abs(dx)>.5||Math.abs(dy)>.5)card.animate([{transform:`translate(${dx}px,${dy}px)`},{transform:'none'}],{duration:240,easing:TIER_EASE});
+  }
+}
+// Cards wrap onto several lines, so the drop point is the first card that starts after the pointer in reading
+// order. Layout offsets (relative to the row) ignore running animations, which keeps the target from flickering.
+function tierDropBefore(items,event) {
+  const row=items.parentElement.getBoundingClientRect(),x=event.clientX-row.left,y=event.clientY-row.top;
+  return [...items.querySelectorAll('.item-card:not(.drag-source)')]
+    .find(card=>y<card.offsetTop||(y<=card.offsetTop+card.offsetHeight&&x<card.offsetLeft+card.offsetWidth/2))||null;
 }
 
 function renderTiers() {
-  $('#view').innerHTML=html`<div class="page-heading tier-heading"><div><span class="eyebrow">ПРИОРИТЕТ ОТКРЫТИЯ</span><h1>Тирлист<span class="title-dot">.</span></h1></div><div class="heading-tools"><span class="subtle">Предмет → граф открытия</span><details class="view-help"><summary aria-label="Как читать тирлист">?</summary><div class="help-popover"><h3>Как читать тирлист</h3><p><i class="availability-dot yes"></i> Открыт · <i class="availability-dot no"></i> Закрыт · ✓ Подобран в слоте.</p><p>Нажмите на предмет, чтобы открыть граф. Кнопка ↗ ведёт на вики. Название видно при наведении или фокусе.</p><p>При включённой галочке подбор предмета и подтверждённые отметки, испытания или счётчики слота могут показать анлок открытым, даже если флаг секрета выключен.</p><p>Без этой галочки доступность определяется по секретам. Флаги секретов не доказывают выполнение условия в этом слоте: они могли быть перенесены из Steam. В статистике и графе прогресса они не засчитываются.</p><p>S–F — наша группировка приоритетов открытия по <a href="${esc(state.data.source.url)}" target="_blank" rel="noopener noreferrer">руководству jnub ↗</a>, а не рейтинг силы предметов. Руны распределены отдельно. Dead God — добавленная цель полного прохождения Repentance. Приоритеты рассчитаны на Repentance+ и могут отличаться в Repentance.</p></div></details></div></div>
+  $('#view').innerHTML=html`<div class="page-heading tier-heading"><div><span class="eyebrow">ПРИОРИТЕТ ОТКРЫТИЯ</span><h1>Тирлист<span class="title-dot">.</span></h1></div><div class="heading-tools"><span class="subtle">Предмет → граф открытия</span><details class="view-help"><summary aria-label="Как читать тирлист">?</summary><div class="help-popover"><h3>Как читать тирлист</h3><p><i class="availability-dot yes"></i> Открыт · <i class="availability-dot no"></i> Закрыт · ✓ Подобран в слоте.</p><p>Нажмите на предмет, чтобы открыть граф. Кнопка ↗ ведёт на вики. Название видно при наведении или фокусе.</p><p>При включённой галочке подбор предмета и подтверждённые отметки, испытания или счётчики слота могут показать анлок открытым, даже если флаг секрета выключен.</p><p>Без этой галочки доступность определяется по секретам. Флаги секретов не доказывают выполнение условия в этом слоте: они могли быть перенесены из Steam. В статистике и графе прогресса они не засчитываются.</p><p>S–F — наша группировка приоритетов открытия по <a href="${esc(state.data.source.url)}" target="_blank" rel="noopener noreferrer">руководству jnub ↗</a>, а не рейтинг силы предметов. Dead God — добавленная цель полного прохождения Repentance. Приоритеты рассчитаны на Repentance+ и могут отличаться в Repentance. Предметы можно перетаскивать между рядами; ваш порядок хранится в этом браузере.</p></div></details></div></div>
     <div class="toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="item-search" type="search" placeholder="Найти предмет…" aria-label="Поиск по тирлисту" value="${esc(state.search)}"></label>
     <select id="status-filter" aria-label="Фильтр по состоянию"><option value="all">Все состояния</option><option value="closed">Закрыты</option><option value="open">Открыты</option><option value="uncollected">Не подобраны</option><option value="earned">Подтверждены в слоте</option></select>
     <select id="kind-filter" aria-label="Тип анлока"><option value="all">Все типы</option>${['collectible','trinket','card','rune','pill','character','stage','boss','challenge','feature'].map(k=>html`<option value="${k}">${kindNames[k]}</option>`).join('')}</select>
     <label class="checkbox-label tier-default-toggle"><input id="show-default-open" type="checkbox" ${state.showDefaultOpen?'checked':''}>Показывать предметы, открытые по умолчанию</label>
     <label class="checkbox-label tier-evidence-toggle" title="Если предмет есть в коллекции или условие подтверждено отметками, испытаниями и счётчиками слота, считать анлок открытым."><input id="infer-save-evidence" type="checkbox" ${state.inferSaveEvidence?'checked':''}>Учитывать данные сейва при определении открытых</label><span id="result-count" class="result-count"></span></div>
+    <div class="tier-edit-bar"><span class="subtle">Перетащите предмет в другой ряд, чтобы изменить его тир. Порядок хранится только в этом браузере.</span><button class="button small" type="button" data-tier-action="reset" disabled>Сбросить тиры</button><button class="button small" type="button" data-tier-action="dump" title="Скачать unlocks.json с текущими тирами, чтобы заменить site/data/unlocks.json в репозитории">Выгрузить тиры (JSON)</button></div>
     <div id="tier-rows" class="tierlist"></div><div class="tier-caption"><span><i class="availability-dot yes"></i> Открыт <span class="caption-gap">✓ Подобран</span></span><span>S — в первую очередь · F — можно отложить</span></div>`;
   $('#status-filter').value=state.filter; $('#kind-filter').value=state.kind;
   $('#item-search').addEventListener('input',event=>{state.search=event.target.value;renderTierRows();});
@@ -282,7 +352,41 @@ $('#view').addEventListener('click',event=>{
   const graph=event.target.closest('[data-graph]');if(graph){location.hash=graphLink(graph.dataset.graph);return;}
   const selected=event.target.closest('.graph-node,[data-select]');if(selected){state.selected=selected.dataset.id||selected.dataset.select;renderGraphSidebar();return;}
   const zoom=event.target.closest('[data-zoom]');if(zoom){graphView?.setZoom(graphView.zoom*(zoom.dataset.zoom==='in'?1.2:1/1.2));return;}
-  const exported=event.target.closest('[data-export]');if(exported)download(exported.dataset.export);
+  const exported=event.target.closest('[data-export]');if(exported){download(exported.dataset.export);return;}
+  const tierAction=event.target.closest('[data-tier-action]');if(tierAction)(tierAction.dataset.tierAction==='dump'?dumpTiers:resetTierLayout)();
+});
+$('#view').addEventListener('dragstart',event=>{
+  const card=event.target.closest?.('.item-card[draggable="true"]');if(!card)return;
+  const box=card.getBoundingClientRect(),placeholder=document.createElement('div');
+  placeholder.className='drop-placeholder';placeholder.setAttribute('aria-hidden','true');
+  placeholder.style.width=`${box.width}px`;placeholder.style.height=`${box.height}px`;
+  tierDrag={id:card.dataset.node,source:card,placeholder,grabX:event.clientX-box.left,grabY:event.clientY-box.top};
+  event.dataTransfer.effectAllowed='move';event.dataTransfer.setData('text/plain',tierDrag.id);
+  // The browser has captured the drag image by the next task; only then may the card make room for the placeholder.
+  setTimeout(()=>{if(tierDrag?.source===card){card.before(placeholder);card.classList.add('drag-source');}},0);
+});
+$('#view').addEventListener('dragover',event=>{
+  if(!tierDrag||!event.target.closest?.('#tier-rows'))return;
+  event.preventDefault();event.dataTransfer.dropEffect='move';
+  const items=event.target.closest('.tier-row')?.querySelector('.tier-items[data-rank]');
+  if(!items||items.dataset.rank===LOCKED_RANK||!tierDrag.placeholder.isConnected)return;
+  const before=tierDropBefore(items,event),placeholder=tierDrag.placeholder;
+  if(placeholder.parentElement===items&&followingCard(placeholder)===before)return;
+  animateTierChange(()=>items.insertBefore(placeholder,before));
+});
+$('#view').addEventListener('drop',event=>{
+  if(!tierDrag||!event.target.closest?.('#tier-rows'))return;
+  event.preventDefault();
+  const {id,placeholder,grabX,grabY}=tierDrag,items=placeholder.parentElement;
+  if(!items?.dataset.rank)return;
+  const rank=items.dataset.rank,before=followingCard(placeholder)?.dataset.node??null;tierDrag=null;
+  animateTierChange(()=>{if(moveEntry([state.baseData,state.data],id,rank,before))saveTierLayout();renderTierRows();},
+    {id,rect:{left:event.clientX-grabX,top:event.clientY-grabY}});
+});
+$('#view').addEventListener('dragend',()=>{
+  if(!tierDrag)return;
+  const {source,placeholder}=tierDrag;tierDrag=null;
+  animateTierChange(()=>{placeholder.remove();source.classList.remove('drag-source');});
 });
 $('#view').addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)&&event.target.matches('.graph-node')){event.preventDefault();state.selected=event.target.dataset.id;renderGraphSidebar();}});
 $('#view').addEventListener('change',event=>{
@@ -355,6 +459,8 @@ try {
   const urls=['../data/unlocks.json','../data/game-catalog.json','../assets/icons/manifest.json'];
   const [data,catalog,manifest]=await Promise.all(urls.map(async url=>{const response=await fetch(new URL(url,import.meta.url));if(!response.ok)throw new Error('Не удалось загрузить каталог. Перезагрузите страницу.');return response.json();}));
   const errors=validateCatalog(data);if(errors.length)throw new Error(`Ошибка каталога: ${errors[0]}`);
+  repoLayout=layoutOf(data);
+  try{applyLayout(data,JSON.parse(localStorage.getItem(TIER_LAYOUT_KEY)));}catch{}
   state.data=localizeCatalog(data,i18n.language);state.baseData=data;state.catalog=catalog;state.icons=new Map(manifest.icons.filter(entry=>['downloaded','designed'].includes(entry.status)).map(entry=>[entry.nodeId,entry.path]));
   if(state.pendingFile){const file=state.pendingFile;delete state.pendingFile;loadFile(file);}
   if(location.protocol==='file:')throw new Error('Откройте сайт через HTTP-сервер или GitHub Pages.');

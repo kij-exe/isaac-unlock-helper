@@ -1,3 +1,5 @@
+import {RANK_IDS} from './tier-ranks.js';
+
 export const STATUS = {YES: 'satisfied', NO: 'missing', UNKNOWN: 'unknown'};
 const LEAVES = new Set(['constant','node','counter','mark','challenge','manual','character_played','boss_defeated','collected']);
 const safeUrl = value => { try { return new URL(value).protocol === 'https:'; } catch { return false; } };
@@ -9,17 +11,14 @@ export function conditionReferences(condition) {
 }
 
 export function validateCatalog(data) {
-  const errors = [], ids = new Set(), tiers = new Set();
-  if (data?.schemaVersion !== 1 || !Array.isArray(data.nodes) || !Array.isArray(data.tiers)) return ['Неверная версия или структура каталога.'];
-  for (const tier of data.tiers) {
-    if (!tier.id || tiers.has(tier.id)) errors.push(`Дублирующаяся категория ${tier.id}`);
-    tiers.add(tier.id);
-  }
+  const errors = [], ids = new Set();
+  if (data?.schemaVersion !== 1 || !Array.isArray(data.nodes)) return ['Неверная версия или структура каталога.'];
   for (const node of data.nodes) {
     if (!/^[a-z0-9][a-z0-9:._-]*$/.test(node.id) || ids.has(node.id)) errors.push(`Некорректный или повторяющийся ID: ${node.id}`);
     ids.add(node.id);
     if (!node.name || !node.kind || !node.unlock?.description) errors.push(`Неполная запись: ${node.id}`);
-    if (node.tier && !tiers.has(node.tier)) errors.push(`Нет категории ${node.tier}: ${node.id}`);
+    if ('tier' in node) errors.push(`Устаревшее поле tier, используйте rank: ${node.id}`);
+    if (node.rank != null && (!RANK_IDS.has(node.rank) || !Number.isFinite(node.order))) errors.push(`Некорректный rank или order: ${node.id}`);
     if (node.wikiUrl && !safeUrl(node.wikiUrl)) errors.push(`Небезопасная wiki URL: ${node.id}`);
     if (!Array.isArray(node.sources) || !node.sources.length || node.sources.some(url => !safeUrl(url))) errors.push(`Нет корректных источников: ${node.id}`);
     if (node.secretId != null && (!Number.isInteger(node.secretId) || node.secretId < 1 || node.secretId > 637)) errors.push(`Некорректный secretId: ${node.id}`);
@@ -201,7 +200,7 @@ export function buildGraph(data, evaluator, {targetId = null, mode = 'progress',
     const endpoint = conditionEndpoint(node.unlock.requirements, node, 'root');
     if (endpoint) edge(endpoint, id, conditionLabel(node.unlock.requirements) || node.unlock.description);
   }
-  const roots = targetId ? [targetId] : data.nodes.filter(node => node.tier).map(node => node.id);
+  const roots = targetId ? [targetId] : data.nodes.filter(node => node.rank).map(node => node.id);
   roots.forEach(id => visit(id, !!targetId));
   return {nodes:[...graphNodes.values()], edges:[...edges.values()].filter(e => graphNodes.has(e.from) && graphNodes.has(e.to)), mode, targetId};
 }

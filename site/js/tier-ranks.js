@@ -1,4 +1,5 @@
-// Presentation only: the guide's original categories remain in unlocks.json.
+// Tier-list rows. Each tier-list entry in unlocks.json stores its row in `rank`
+// and its position inside that row in `order`; nodes without `rank` are graph-only.
 export const RANKS = [
   {id:'DEAD GOD',label:'Полное прохождение Repentance',color:'#c7b48a'},
   {id:'S',label:'Открыть в первую очередь',color:'#f39eaa'},
@@ -9,15 +10,43 @@ export const RANKS = [
   {id:'F',label:'Можно отложить',color:'#b9a5d5'},
   {id:'OPEN',label:'Открыты по умолчанию',color:'#9aa6a0'},
 ];
-const categoryRanks = {'good-1':'S','good-2':'A','good-3':'A','good-4':'B','before-1':'B','before-2':'C','avoid-1':'D','avoid-2':'F','avoid-3':'F','default-open':'OPEN'};
-const editorialRanks = {'consumable:33':'S','consumable:37':'S','consumable:39':'A','collectible:263':'A','collectible:389':'B','consumable:36':'B','consumable:35':'B','consumable:40':'C','consumable:34':'C',
-  'collectible:105':'S','collectible:619':'S','collectible:678':'S','collectible:698':'S','collectible:689':'S','collectible:723':'S',
-  'collectible:562':'A','collectible:716':'A','collectible:643':'A','collectible:232':'A','collectible:700':'A',
-  // These recommendations were withdrawn in the source's later notes.
-  'collectible:283':'B','collectible:470':'C','collectible:475':'C','consumable:38':'C'};
-export function rankFor(node) {
-  if (!node.tier) return null;
-  if (node.tier==='dead-god')return 'DEAD GOD';
-  if (RANKS.some(rank=>rank.id===node.rank)) return node.rank;
-  return editorialRanks[node.id] || categoryRanks[node.tier] || 'C';
+export const RANK_IDS = new Set(RANKS.map(rank=>rank.id));
+// The completion goal stays alone above S; it cannot be dragged and nothing can be dropped there.
+export const LOCKED_RANK = 'DEAD GOD';
+
+export const rankFor = node => RANK_IDS.has(node.rank) ? node.rank : null;
+export const rankEntries = (nodes, rank) => nodes.filter(node=>node.rank===rank).toSorted((a,b)=>(a.order??0)-(b.order??0));
+
+// Moves one entry into `rank` before `beforeId` (or to the end) and renumbers the
+// affected rows 0..n-1. Applies the same placement to every catalog copy given.
+export function moveEntry(catalogs, id, rank, beforeId=null) {
+  const [primary,...copies]=catalogs, node=primary.nodes.find(entry=>entry.id===id);
+  if (!node || !RANK_IDS.has(rank) || rank===LOCKED_RANK || node.rank===LOCKED_RANK || id===beforeId) return false;
+  const from=node.rank, row=rankEntries(primary.nodes,rank).filter(entry=>entry.id!==id);
+  const index=beforeId==null?-1:row.findIndex(entry=>entry.id===beforeId);
+  row.splice(index<0?row.length:index,0,node);
+  node.rank=rank;
+  const placements=new Map(row.map((entry,order)=>[entry.id,{rank,order}]));
+  if (from!==rank) rankEntries(primary.nodes,from).forEach((entry,order)=>placements.set(entry.id,{rank:from,order}));
+  for (const catalog of new Set(catalogs)) for (const entry of catalog.nodes) {
+    const placement=placements.get(entry.id);
+    if (placement) Object.assign(entry,placement);
+  }
+  return true;
+}
+
+// Per-browser tier layout: {id: [rank, order]} for every ranked entry.
+export const layoutOf = catalog => Object.fromEntries(catalog.nodes.filter(node=>RANK_IDS.has(node.rank)).map(node=>[node.id,[node.rank,node.order]]));
+export function applyLayout(catalog, layout) {
+  if (!layout || typeof layout!=='object') return 0;
+  let changed=0;
+  for (const node of catalog.nodes) {
+    const placement=layout[node.id];
+    if (!RANK_IDS.has(node.rank) || node.rank===LOCKED_RANK || !Array.isArray(placement)) continue;
+    const [rank,order]=placement;
+    if (!RANK_IDS.has(rank) || rank===LOCKED_RANK || !Number.isFinite(order)) continue;
+    if (node.rank!==rank || node.order!==order) changed++;
+    node.rank=rank; node.order=order;
+  }
+  return changed;
 }

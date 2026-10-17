@@ -77,6 +77,6 @@ test('a challenge completion is shared with its reward; completed branches disap
 test('challenge authoring is reproducible, preserves the guide ranks and never changes direct evidence into node references',()=>{
   const before=structuredClone(data),updated=addChallengePaths(data,reference,profile);
   assert.deepEqual(data,before);assert.deepEqual(updated,data);
-  const guide=input=>input.nodes.filter(n=>n.tier).map(n=>[n.id,n.tier,n.order]);assert.deepEqual(guide(updated),guide(data));
+  const guide=input=>input.nodes.filter(n=>n.rank).map(n=>[n.id,n.rank,n.order]);assert.deepEqual(guide(updated),guide(data));
   for(const node of updated.nodes)assert.equal(conditionReferences(node.unlock.evidence).length,0);
 });

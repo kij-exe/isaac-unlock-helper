@@ -36,4 +36,4 @@ for(const entry of icons.values()){
   if(createHash('sha256').update(bytes).digest('hex')!==entry.sha256)errors.push(`Checksum иконки не совпадает: ${entry.path}`);
 }
 if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}
-else console.log(`Catalog OK: ${data.nodes.length} nodes, ${data.nodes.filter(n=>n.tier).length} tier entries, ${png+svg} local icons (${png} PNG, ${svg} SVG).`);
+else console.log(`Catalog OK: ${data.nodes.length} nodes, ${data.nodes.filter(n=>n.rank).length} ranked entries, ${png+svg} local icons (${png} PNG, ${svg} SVG).`);
