@@ -133,9 +133,11 @@ function nextUpNodes() {
   return state.data.nodes.filter(node=>node.rank&&node.rank!==LOCKED_RANK&&node.rank!=='OPEN'&&tierAvailability(node).status===STATUS.NO)
     .toSorted((a,b)=>order.get(a.rank)-order.get(b.rank)||(a.order??0)-(b.order??0)).slice(0,NEXT_UP_COUNT);
 }
-function renderNextUp() {
-  const nodes=nextUpNodes(),colors=new Map(RANKS.map(rank=>[rank.id,rank.color]));
-  $('#next-up').innerHTML=html`<div class="next-up-head"><div><h2>Next up</h2><p>The highest-priority unlocks still locked in this save. Select one to see how to get it.</p></div><span class="subtle">Based on the save’s unlock flags</span></div>
+function renderNextUp({ifChanged=false}={}) {
+  const nodes=nextUpNodes(),colors=new Map(RANKS.map(rank=>[rank.id,rank.color])),box=$('#next-up'),key=nodes.map(node=>`${node.id}:${node.rank}`).join();
+  if(ifChanged&&box.dataset.key===key)return;
+  box.dataset.key=key;
+  box.innerHTML=html`<div class="next-up-head"><div><h2>Next up</h2><p>The highest-priority unlocks still locked in this save. Select one to see how to get it.</p></div><span class="subtle">Based on the save’s unlock flags</span></div>
     ${nodes.length?html`<ul class="next-up-list">${nodes.map(node=>html`<li><a class="next-card" href="${graphLink(node.id)}"><span class="next-card-icon">${icon(node,'',false)}</span><span class="next-card-title"><b class="rank-badge" style="--tier-color:${colors.get(node.rank)}">${esc(node.rank)}</b><span>${esc(node.name)}</span></span><p>${esc(node.unlock.description)}</p></a></li>`).join('')}</ul>`:html('<p class="next-up-done">Everything ranked S–F is already unlocked in this save.</p>')}`;
 }
 
@@ -165,6 +167,12 @@ function renderTierRows() {
   updateTierResetButton();
 }
 
+function updateTierCounts() {
+  document.querySelectorAll('#tier-rows .tier-items[data-rank]').forEach(items=>{
+    const count=items.parentElement.querySelector('.tier-label small');
+    if(count)count.textContent=items.querySelectorAll('.item-card').length;
+  });
+}
 function tierLayoutEdited() {
   const current=layoutOf(state.baseData);
   return Object.entries(repoLayout||{}).some(([id,[rank,order]])=>current[id]?.[0]!==rank||current[id]?.[1]!==order);
@@ -185,7 +193,7 @@ function dumpTiers() {
   const url=URL.createObjectURL(new Blob([JSON.stringify(state.baseData,null,2)+'\n'],{type:'application/json'}));const link=document.createElement('a');
   link.href=url;link.download='unlocks.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-const TIER_EASE='cubic-bezier(.2,.8,.2,1)', TIER_LANDING_EASE='cubic-bezier(.2,1.25,.35,1)';
+const TIER_EASE='cubic-bezier(.2,.8,.2,1)', TIER_LANDING_EASE='cubic-bezier(.22,1,.36,1)';
 const followingCard=element=>{let next=element.nextElementSibling;while(next&&!next.matches('.item-card:not(.drag-source)'))next=next.nextElementSibling;return next;};
 function tierSnapshot() {
   const rows=new Map(),cards=new Map();
@@ -195,7 +203,7 @@ function tierSnapshot() {
 }
 // FLIP: measure where rows and cards are seen, change the DOM, then ease each one from its old place
 // into the new one. Rows slide as a whole, so only cards whose place inside their row changed animate.
-// `landing` is the released item: it grows out of the drag image under the cursor into its slot.
+// `landing` is the released item: it glides from where the drag image was released into its slot.
 function animateTierChange(change,landing=null) {
   const root=document.querySelector('#tier-rows');
   if(!root?.animate||globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches){change();return;}
@@ -216,7 +224,7 @@ function animateTierChange(change,landing=null) {
     const dx=first.left-last.left,dy=first.top-last.top-(rowShift.get(card.parentElement.dataset.rank)??0);
     if(id===landing?.id){
       card.style.zIndex=3;
-      card.animate([{transform:`translate(${dx}px,${dy}px) scale(1.12)`,boxShadow:'0 12px 26px rgba(20,20,40,.28)'},{transform:'none',boxShadow:'0 0 0 rgba(20,20,40,0)'}],{duration:380,easing:TIER_LANDING_EASE})
+      card.animate([{transform:`translate(${dx}px,${dy}px)`,boxShadow:'0 10px 22px rgba(20,20,40,.22)'},{transform:'none',boxShadow:'0 0 0 rgba(20,20,40,0)'}],{duration:260,easing:TIER_LANDING_EASE})
         .finished.catch(()=>{}).finally(()=>{card.style.zIndex='';});
     }else if(Math.abs(dx)>.5||Math.abs(dy)>.5)card.animate([{transform:`translate(${dx}px,${dy}px)`},{transform:'none'}],{duration:240,easing:TIER_EASE});
   }
@@ -458,10 +466,12 @@ $('#view').addEventListener('dragover',event=>{
 $('#view').addEventListener('drop',event=>{
   if(!tierDrag||!event.target.closest?.('#tier-rows'))return;
   event.preventDefault();
-  const {id,placeholder,grabX,grabY}=tierDrag,items=placeholder.parentElement;
+  const {id,source,placeholder,grabX,grabY}=tierDrag,items=placeholder.parentElement;
   if(!items?.dataset.rank)return;
   const rank=items.dataset.rank,before=followingCard(placeholder)?.dataset.node??null;tierDrag=null;
-  animateTierChange(()=>{if(moveEntry([state.baseData,state.data],id,rank,before))saveTierLayout();renderTierRows();},
+  // The card element keeps its decoded icon, so it never blinks while it settles into the placeholder's slot.
+  animateTierChange(()=>{placeholder.replaceWith(source);source.classList.remove('drag-source');
+    if(moveEntry([state.baseData,state.data],id,rank,before)){saveTierLayout();updateTierCounts();renderNextUp({ifChanged:true});updateTierResetButton();}},
     {id,rect:{left:event.clientX-grabX,top:event.clientY-grabY}});
 });
 $('#view').addEventListener('dragend',()=>{
