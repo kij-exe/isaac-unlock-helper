@@ -2,6 +2,7 @@ import {createI18n, localizeCatalog, translate} from './i18n.js';
 import {catalogForSave} from './catalog-profile.js';
 import {RANKS, LOCKED_RANK, rankEntries, moveEntry, layoutOf, applyLayout} from './tier-ranks.js';
 import {createGraphView, edgeGeometry, graphNeighborhood} from './graph-view.js';
+import {roulettePool, buildReel, reelEasing, createRouletteSound} from './roulette.js';
 import {parseSave, slotProgress, emptySaveBytes} from './save-parser.js';
 import {STATUS, validateCatalog, createEvaluator, buildGraph, layoutGraph, conditionLabel} from './unlock-engine.js';
 
@@ -13,7 +14,7 @@ const kindNames = {collectible:'Item',trinket:'Trinket',card:'Card',rune:'Rune',
   stage:'Route',boss:'Boss',challenge:'Challenge',feature:'Feature',condition:'Condition',gate:'Logic'};
 const symbols = {collectible:'✦',trinket:'♧',card:'▤',rune:'◈',pill:'◒',character:'♙',stage:'⌂',boss:'♜',challenge:'⚑',feature:'◇'};
 const state = {data:null,baseData:null,catalog:null,icons:new Map(),save:null,progress:null,evaluator:null,fileName:'',
-  manual:{},page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,inferSaveEvidence:false,graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null,openCharacters:new Set()};
+  manual:{},page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,inferSaveEvidence:false,graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null,openCharacters:new Set(),rouletteMode:'best',rouletteResult:null};
 let toastTimer, uploadGeneration = 0, graphView;
 const graphPositions = new Map();
 // The player's own tier arrangement lives only in this browser; "Dump tiers" exports it as unlocks.json.
@@ -145,7 +146,7 @@ async function loadFile(file,{handle=null,reload=false}={}) {
     if(!reload){saveSource=handle?{handle}:file.restored||file.empty?null:{file};if(!file.restored)rememberHandle(handle);}
     state.save=save; state.saveBytes=bytes; state.emptySave=!!file.empty; state.progress=progress;state.data=localizeCatalog(catalogForSave(state.baseData,save),i18n.language); state.fileName=file.name;
     // Reloading the same file keeps manual confirmations, the selection and the graph view.
-    if(!reload){state.manual={}; state.selected=null;state.graphMode='progress';state.showOpened=false;state.zoom=1;state.openCharacters.clear();graphPositions.clear();state.lastPage=null;}
+    if(!reload){state.manual={}; state.selected=null;state.graphMode='progress';state.showOpened=false;state.zoom=1;state.openCharacters.clear();state.rouletteResult=null;graphPositions.clear();state.lastPage=null;}
     refreshEvaluator();
     showSaveDetails();$('#file-error').hidden=true;
     $('.main-nav').hidden=false; $('#change-save').hidden=false; updateReloadButtons();
@@ -153,7 +154,7 @@ async function loadFile(file,{handle=null,reload=false}={}) {
     if(reload){rerenderInPlace();toast('Save reloaded from the file.');return;}
     // A restored save reopens the page (or the home screen) that was showing before the reload.
     const page=location.hash.slice(2).split('?')[0];
-    if(!file.restored||!((save.profile.planner?['tiers','stats','graph']:['stats']).includes(page)||location.hash==='#/'))location.hash=defaultPage();
+    if(!file.restored||!((save.profile.planner?['tiers','stats','graph','roulette']:['stats']).includes(page)||location.hash==='#/'))location.hash=defaultPage();
     renderPage();
     if(!file.restored)$('#main').focus({preventScroll:true});
   } catch (error) {
@@ -200,7 +201,7 @@ function renderNextUp({ifChanged=false}={}) {
   const nodes=nextUpNodes(),colors=new Map(RANKS.map(rank=>[rank.id,rank.color])),box=$('#next-up'),key=nodes.map(node=>`${node.id}:${node.rank}`).join();
   if(ifChanged&&box.dataset.key===key)return;
   box.dataset.key=key;
-  box.innerHTML=html`<div class="next-up-head"><div><h2>Next up</h2><p>The highest-priority unlocks still locked in this save. Select one to see how to get it.</p></div><span class="subtle">Based on the save’s unlock flags</span></div>
+  box.innerHTML=html`<div class="next-up-head"><div><h2>Next up</h2><p>The highest-priority unlocks still locked in this save. Select one to see how to get it.</p></div><div class="next-up-tools"><span class="subtle">Based on the save’s unlock flags</span><a class="button small" href="#/roulette"><span aria-hidden="true">🎰</span> Spin the roulette</a></div></div>
     ${nodes.length?html`<ul class="next-up-list">${nodes.map(node=>html`<li><a class="next-card" href="${graphLink(node.id)}"><span class="next-card-icon">${icon(node,'',false)}</span><span class="next-card-title"><b class="rank-badge" style="--tier-color:${colors.get(node.rank)}">${esc(node.rank)}</b><span>${esc(node.name)}</span></span><p>${esc(node.unlock.description)}</p></a></li>`).join('')}</ul>`:html('<p class="next-up-done">Everything ranked S–F is already unlocked in this save.</p>')}`;
 }
 
@@ -379,6 +380,81 @@ function renderStats() {
     <details class="reference-box"><summary>Secrets · separate reference (${secrets.length})</summary><p>These are file flags, not a verified Steam account achievement list. Their origin is unknown. They are excluded from the statistics above and do not prove requirements were met in this slot.</p><div class="reference-list">${secrets.map(s=>html`<span>#${s.id} ${esc(s.name)}</span>`).join('')||'No flags are set.'}</div><div class="export-actions"><button class="button small" data-export="secrets">Download reference ↓</button></div></details></div></div>`;
 }
 
+// Unlock roulette: a case-opening reel over locked tier-list entries.
+const ROULETTE_SOUND_KEY='skill-issue-roulette-sound', REEL_WINNER=48, REEL_DURATION=6500;
+const rouletteSound=createRouletteSound();
+try{rouletteSound.muted=localStorage.getItem(ROULETTE_SOUND_KEY)==='off';}catch{}
+let rouletteSpin=null;
+function rouletteCandidates() {
+  return roulettePool(state.data.nodes,{mode:state.rouletteMode,
+    isLocked:node=>tierAvailability(node).status===STATUS.NO,
+    isAvailable:id=>{const node=state.evaluator.nodes.get(id);return !!node&&tierAvailability(node).status===STATUS.YES;}});
+}
+const rankColor=rank=>RANKS.find(entry=>entry.id===rank)?.color||'#9aa6a0';
+const reelTile=node=>html`<div class="reel-tile" style="--tier-color:${rankColor(node.rank)}">${icon(node,'',false)}<span>${esc(node.name)}</span></div>`;
+function rouletteSummary(pool) {
+  if(!pool.nodes.length)return t('Nothing left to draw: every unlock from S to F is already unlocked.');
+  if(state.rouletteMode==='full')return t(`${pool.nodes.length} locked unlocks from S to F`);
+  return t(pool.ready?`${pool.nodes.length} locked unlocks in tier ${pool.rank} you can go for now`:`${pool.nodes.length} locked unlocks in tier ${pool.rank}`);
+}
+function renderRouletteResult() {
+  const node=state.rouletteResult&&state.evaluator.nodes.get(state.rouletteResult);
+  $('#roulette-result').innerHTML=node?html`<div class="roulette-result-card" style="--tier-color:${rankColor(node.rank)}"><span class="roulette-result-icon">${icon(node,'',false)}</span><div><span class="eyebrow">YOUR NEXT UNLOCK</span><h2><b class="rank-badge" style="--tier-color:${rankColor(node.rank)}">${esc(node.rank)}</b> ${esc(node.name)}</h2><p>${esc(node.unlock.description)}</p><div class="detail-actions"><a class="button primary" href="${graphLink(node.id)}">How to unlock it</a><a class="button" href="${esc(wikiLink(node))}" target="_blank" rel="noopener noreferrer">Open wiki ↗</a><button class="button" type="button" data-roulette-spin>Spin again</button></div></div></div>`:'';
+}
+function updateRouletteControls() {
+  const spinning=!!rouletteSpin,pool=rouletteCandidates();
+  document.querySelectorAll('[data-roulette-mode]').forEach(button=>{button.setAttribute('aria-checked',String(button.dataset.rouletteMode===state.rouletteMode));button.disabled=spinning;});
+  document.querySelectorAll('[data-roulette-spin]').forEach(button=>{button.disabled=spinning||!pool.nodes.length;});
+  const sound=$('#roulette-sound');
+  sound.setAttribute('aria-pressed',String(!rouletteSound.muted));sound.textContent=t(rouletteSound.muted?'🔇 Sound off':'🔊 Sound on');
+  $('#roulette-pool').textContent=rouletteSummary(pool);
+}
+function renderRoulette() {
+  const pool=rouletteCandidates(),preview=[...pool.nodes].sort(()=>Math.random()-.5).slice(0,12);
+  const winner=state.rouletteResult&&state.evaluator.nodes.get(state.rouletteResult);
+  $('#view').innerHTML=pageHeading('FEELING LUCKY?','Unlock roulette<span class="title-dot">.</span>','Can’t decide what to unlock next? Open the case and go for whatever it lands on.',
+    '<button class="button small" type="button" id="roulette-sound" aria-pressed="true"></button>')+
+    html`<div class="roulette-controls"><div class="roulette-modes" role="radiogroup" aria-label="Roulette mode"><button type="button" role="radio" data-roulette-mode="best"><strong>Best next</strong><small>A random pick from the highest tier that has an unlock you can go for right now.</small></button><button type="button" role="radio" data-roulette-mode="full"><strong>Full random</strong><small>Any locked unlock from S to F, whatever its tier.</small></button></div>
+    <div class="roulette-spin"><p id="roulette-pool" class="subtle"></p><button class="button roulette-button" type="button" data-roulette-spin>Open case</button></div></div>
+    <div class="roulette-case"><div class="roulette-window" id="roulette-window"><div class="roulette-reel" id="roulette-reel">${(winner?[winner]:preview).map(reelTile).join('')}</div><i class="roulette-marker" aria-hidden="true"></i></div></div>
+    <div id="roulette-result" class="roulette-result" aria-live="polite"></div>`;
+  const reel=$('#roulette-reel'),first=reel.firstElementChild;
+  if(winner&&first){first.classList.add('winner');reel.style.transform=`translateX(${-first.offsetWidth/2}px)`;}
+  else reel.style.transform=`translateX(${-$('#roulette-window').clientWidth/2}px)`;
+  renderRouletteResult();updateRouletteControls();
+}
+// The reel's left edge sits at the marker (the window's centre), so its transform is minus the reel point under the
+// marker and a landed result stays centred when the window resizes. It lands with a small random offset inside the
+// winning tile; a tick plays whenever a tile crosses the marker.
+function spinRoulette() {
+  if(rouletteSpin)return;
+  const pool=rouletteCandidates().nodes;if(!pool.length)return;
+  rouletteSound.prepare();
+  const winner=pool[Math.floor(Math.random()*pool.length)],reel=$('#roulette-reel'),view=$('#roulette-window');
+  reel.innerHTML=buildReel(pool,winner,{winnerIndex:REEL_WINNER}).map(reelTile).join('');state.rouletteResult=null;renderRouletteResult();
+  const tile=reel.firstElementChild,step=tile.offsetWidth+(parseFloat(getComputedStyle(reel).columnGap)||0),from=view.clientWidth/2;
+  const to=REEL_WINNER*step+tile.offsetWidth/2+(Math.random()-.5)*tile.offsetWidth*.7;
+  reel.style.transform=`translateX(${-from}px)`;
+  const duration=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches?0:REEL_DURATION;
+  rouletteSpin={winner,frame:0};updateRouletteControls();rouletteSound.open();
+  let start=null,lastIndex=Math.floor(from/step);
+  const frame=now=>{
+    start??=now;
+    const progress=duration?Math.min(1,(now-start)/duration):1,point=from+(to-from)*reelEasing(progress),index=Math.floor(point/step);
+    reel.style.transform=`translateX(${-point}px)`;
+    if(index!==lastIndex){lastIndex=index;rouletteSound.tick();}
+    if(progress<1){rouletteSpin.frame=requestAnimationFrame(frame);return;}
+    reel.children[REEL_WINNER].classList.add('winner');rouletteSound.reveal(winner.rank);finishRoulette();
+  };
+  rouletteSpin.frame=requestAnimationFrame(frame);
+}
+// Leaving the page mid-spin keeps the drawn result instead of discarding it.
+function finishRoulette() {
+  if(!rouletteSpin)return;
+  cancelAnimationFrame(rouletteSpin.frame);state.rouletteResult=rouletteSpin.winner.id;rouletteSpin=null;
+  if(state.page==='roulette'&&document.querySelector('#roulette-result')){renderRouletteResult();updateRouletteControls();}
+}
+
 function renderCondition(condition,path='root') {
   if (['all','any'].includes(condition.type)) {
     const label=condition.label||(condition.type==='all'?'ALL REQUIRED':'ANY ONE REQUIRED');
@@ -481,15 +557,15 @@ const isHome=()=>['','#','#/'].includes(location.hash);
 const defaultPage=()=>state.save?.profile.planner===false?'#/stats':'#/tiers';
 function renderPage({preserveSelection=false}={}) {
   if (!state.save) return;
-  graphView?.destroy();graphView=null;
+  graphView?.destroy();graphView=null;finishRoulette();
   const home=isHome();
   $('#onboarding').hidden=!home;$('#workspace').hidden=home;$('#resume-save').hidden=!home;
-  const requested=location.hash.slice(2).split('?')[0];state.page=['tiers','stats','graph'].includes(requested)?requested:'tiers';
+  const requested=location.hash.slice(2).split('?')[0];state.page=['tiers','stats','graph','roulette'].includes(requested)?requested:'tiers';
   document.querySelectorAll('.main-nav a').forEach(link=>{const active=!home&&link.dataset.page===state.page;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
   if(home){$('#view').replaceChildren();$('#resume-link').href=state.lastPage||defaultPage();document.title=t('Skill Issue Tracker — The Binding of Isaac');return;}
   state.lastPage=location.hash;
-  if(!state.save.profile.planner&&state.page!=='stats')$('#view').innerHTML=html('<div class="empty-state"><h2>This is a Rebirth save</h2><p>Save loaded: statistics are available for this edition. The tier list and graph target Repentance / Repentance+.</p><a class="button" href="#/stats">View Rebirth statistics</a></div>');else if(state.page==='stats')renderStats();else if(state.page==='graph')renderGraph({preserveSelection});else renderTiers();
-  document.title=`${t(state.page==='stats'?'Statistics':state.page==='graph'?'Unlock map':'Tier list')} — Skill Issue Tracker`;
+  if(!state.save.profile.planner&&state.page!=='stats')$('#view').innerHTML=html('<div class="empty-state"><h2>This is a Rebirth save</h2><p>Save loaded: statistics are available for this edition. The tier list and graph target Repentance / Repentance+.</p><a class="button" href="#/stats">View Rebirth statistics</a></div>');else if(state.page==='stats')renderStats();else if(state.page==='graph')renderGraph({preserveSelection});else if(state.page==='roulette')renderRoulette();else renderTiers();
+  document.title=`${t(state.page==='stats'?'Statistics':state.page==='graph'?'Unlock map':state.page==='roulette'?'Unlock roulette':'Tier list')} — Skill Issue Tracker`;
 }
 
 function download(kind) {
@@ -505,6 +581,9 @@ $('#view').addEventListener('click',event=>{
   const graph=event.target.closest('[data-graph]');if(graph){location.hash=graphLink(graph.dataset.graph);return;}
   const selected=event.target.closest('.graph-node,[data-select]');if(selected){state.selected=selected.dataset.id||selected.dataset.select;renderGraphSidebar();return;}
   const zoom=event.target.closest('[data-zoom]');if(zoom){graphView?.setZoom(graphView.zoom*(zoom.dataset.zoom==='in'?1.2:1/1.2));return;}
+  const mode=event.target.closest('[data-roulette-mode]');if(mode){state.rouletteMode=mode.dataset.rouletteMode;updateRouletteControls();return;}
+  if(event.target.closest('[data-roulette-spin]')){spinRoulette();return;}
+  if(event.target.closest('#roulette-sound')){rouletteSound.muted=!rouletteSound.muted;try{localStorage.setItem(ROULETTE_SOUND_KEY,rouletteSound.muted?'off':'on');}catch{}updateRouletteControls();return;}
   const toggle=event.target.closest('[data-character]');if(toggle){
     const name=toggle.dataset.character,open=!state.openCharacters.has(name);
     if(open)state.openCharacters.add(name);else state.openCharacters.delete(name);
