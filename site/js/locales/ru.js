@@ -482,6 +482,24 @@ const messages = {
   "Available": "Доступен",
   "Verified": "Подтверждён",
   "Not verified": "Не подтверждён",
+  // Unlock roulette.
+  "Roulette": "Рулетка",
+  "Unlock roulette": "Рулетка анлоков",
+  "FEELING LUCKY?": "ИСПЫТАЕТЕ УДАЧУ?",
+  "Can’t decide what to unlock next? Open the case and go for whatever it lands on.": "Не знаете, что открывать дальше? Откройте кейс и идите за тем, что выпадет.",
+  "Roulette mode": "Режим рулетки",
+  "Best next": "Лучшее следующее",
+  "A random pick from the highest tier that has an unlock you can go for right now.": "Случайный выбор из самого высокого тира, где есть анлок, за которым можно идти прямо сейчас.",
+  "Full random": "Полный рандом",
+  "Any locked unlock from S to F, whatever its tier.": "Любой закрытый анлок от S до F, независимо от тира.",
+  "Open case": "Открыть кейс",
+  "YOUR NEXT UNLOCK": "ВАШ СЛЕДУЮЩИЙ АНЛОК",
+  "How to unlock it": "Как его открыть",
+  "Spin again": "Крутить ещё",
+  "🔊 Sound on": "🔊 Звук включён",
+  "🔇 Sound off": "🔇 Звук выключен",
+  "Nothing left to draw: every unlock from S to F is already unlocked.": "Выпадать нечему: все анлоки от S до F уже открыты.",
+  "Spin the roulette": "Крутить рулетку",
 };
 
 export default {...catalog, ...messages};
@@ -492,6 +510,9 @@ export const orSeparator = ' или ';
 // Runtime strings that embed numbers, names or filenames. `translate` renders
 // nested parts that are themselves message keys.
 export const patterns = [
+  [/^(\d+) locked unlocks from S to F$/, (_t,_,count)=>`Закрытых анлоков от S до F: ${count}`],
+  [/^(\d+) locked unlocks in tier (\S+) you can go for now$/, (_t,_,count,rank)=>`Закрытых анлоков тира ${rank}, доступных прямо сейчас: ${count}`],
+  [/^(\d+) locked unlocks in tier (\S+)$/, (_t,_,count,rank)=>`Закрытых анлоков тира ${rank}: ${count}`],
   [/^(\d+) of (\d+) unlocks met in this slot$/, (_t,_,done,total)=>`Выполнено ${done} из ${total} анлоков в этом слоте`],
   [/^Tier (\S+)$/, (_t,_,rank)=>`Тир ${rank}`],
   [/^(\d+) of (\d+) shown$/, (_t,_,shown,total)=>`Показано ${shown} из ${total}`],

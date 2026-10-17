@@ -6,6 +6,8 @@ The finished frontend lives in `site/`: `.dat` upload without sending anything t
 
 The last save read successfully is kept in this browser's `localStorage` (key `skill-issue-save`), so reloading the page reopens it on the same screen. It never leaves the browser; “Forget save” removes it.
 
+The Roulette page picks the next unlock to go for with a case-opening reel. “Best next” draws from the highest tier that still has a locked entry whose prerequisites are available; “Full random” draws from every locked entry from S to F. The sounds are synthesized in the browser with the Web Audio API and can be muted.
+
 ```sh
 npm run dev
 ```
