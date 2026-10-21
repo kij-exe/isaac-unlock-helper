@@ -8,6 +8,8 @@ The last save read successfully is kept in this browser's `localStorage` (key `s
 
 The Roulette page picks the next unlock to go for with a case-opening reel. “Best next” draws from the highest tier that still has a locked entry whose prerequisites are available; “Full random” draws from every locked entry from S to F. The sounds are synthesized in the browser with the Web Audio API and can be muted.
 
+The Phases page shows a vertical roadmap from Mom to Dead God, with a parallel Greed branch. Completion uses the slot's own progress; unknown Mom and historical donation milestones can be confirmed manually. Phase confirmations are stored with the current browser save snapshot and cleared when another save is chosen. Each phase has a curated recommendation tier list with independent priorities, obtained-item filtering and links to unlock requirements. Dead God shows the next twelve missing collection items. [Progression map behavior and extension points](docs/progression-phases.md).
+
 ```sh
 npm run dev
 ```

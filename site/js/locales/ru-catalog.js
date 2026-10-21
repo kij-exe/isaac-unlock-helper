@@ -2,6 +2,20 @@
 // reason, sourceNote) from site/data/unlocks.json and site/js/catalog-profile.js.
 // English source strings are the keys. Game names, IDs and numbers stay as in the source.
 export default {
+  "A few optional foundations while you learn the route to Mom.": "Несколько необязательных открытий, пока вы осваиваете путь к Mom.",
+  "Build your item pool through Heart milestones and early challenges.": "Пополняйте пул предметов за победы над сердцем и первые испытания.",
+  "Make your Isaac and Satan runs count for valuable character rewards.": "Совмещайте походы к Isaac и Satan с полезными открытиями за персонажей.",
+  "Choose Hush rewards to work toward while opening the alternate path.": "Выберите награды Hush, за которыми стоит идти при открытии альтернативного пути.",
+  "Prioritize these rewards as you return to the alternate route with new characters.": "Отдавайте приоритет этим наградам, возвращаясь на альтернативный путь за новых персонажей.",
+  "Turn Home visits and Beast victories into the next major additions to your pool.": "Пополняйте пул полезными предметами за походы в Home и победы над Beast.",
+  "Revisit classic routes, Boss Rush and Delirium for high-impact unlocks.": "Возвращайтесь на классические маршруты, в Boss Rush и к Delirium ради полезных открытий.",
+  "Long-term rewards to aim for while filling the remaining character pages.": "Долгосрочные награды, к которым стоит стремиться, заполняя листы персонажей.",
+  "Useful challenge rewards and special conditions to finish alongside your marks.": "Полезные награды испытаний и особые условия, которые можно закрывать параллельно с отметками.",
+  "Your next missing collection pickups, refreshed from this slot. Already collected items leave this list.": "Следующие недостающие предметы по коллекции этого слота. Подобранные предметы уходят из списка.",
+  "Build Greed experience and useful rewards while donating to the machine.": "Осваивайте Greed, открывайте полезные награды и пополняйте автомат пожертвований.",
+  "Rewards for the harder Greed route, with a separate local priority order.": "Награды сложного режима Greed со своим порядком приоритетов.",
+  "After the starting shield, work toward useful Lost rewards at your own pace.": "После стартового щита открывайте полезные награды Lost в удобном для вас порядке.",
+  "Build Keeper rewards, then bring his Tainted counterpart into the plan.": "Открывайте награды Keeper, а затем добавьте в план его Tainted-версию.",
   "Initial S–F ranks were derived from the categories and order of this Repentance+ guide; from then on ranks are stored and edited independently of it. The site reads only Repentance ISAACNGSAVE09R (638 secret slots / 496 counters), not Repentance+ with its extended chunks. Check version-dependent requirements on the wiki.": "Начальные ранги S–F выведены из категорий и порядка этого руководства Repentance+; дальше ранги хранятся и редактируются независимо от него. Сайт читает только Repentance ISAACNGSAVE09R (638 secret slots / 496 counters), а не Repentance+ с расширенными блоками. Условия, зависящие от версии, проверяйте на вики.",
   "Initial priorities are the guide author’s opinion. Secrets are shown separately and do not confirm game progress in this slot.": "Начальные приоритеты — мнение автора руководства. Секреты показаны отдельно и не подтверждают игровой прогресс этого слота.",
   "Priority · I": "Приоритетные · I",

@@ -1,0 +1,221 @@
+/* An illustrated progress journal. Cards remain in document flow for future tier rows. */
+.phase-overview{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:36px 0 24px}
+.phase-overview .eyebrow{color:var(--gold);letter-spacing:2px;font-size:10px}
+.phase-overview h1{font:700 clamp(32px,3.6vw,48px)/1.1 Georgia,"Times New Roman",serif;margin:12px 0 14px;letter-spacing:-1.6px}
+.phase-overview p{max-width:600px;margin:0;color:var(--muted);font-size:14px;line-height:1.8}
+.phase-overview-count{position:relative;display:grid;justify-items:center;gap:2px;flex-shrink:0;text-align:center;color:var(--muted);font-size:11px;padding:58px 8px 0;min-width:140px}
+.phase-trophy{position:absolute;top:-8px;left:calc(50% - 43px);width:86px;height:86px;color:var(--gold);opacity:.9}
+.phase-trophy svg,.phase-medal svg,.phase-award-medal svg{width:100%;height:100%;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.phase-overview-count strong{font:650 34px/1.2 var(--mono);letter-spacing:-2px;color:var(--ink)}
+.phase-overview-count strong span{font-size:18px;letter-spacing:-1px;color:var(--faint)}
+.phase-chapter-shelf{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;padding:15px 0 23px;position:relative}
+.phase-chapter-shelf::before{content:'';position:absolute;top:43px;left:30px;right:30px;height:1px;background:var(--line);z-index:-1}
+.phase-mini{position:relative;display:grid;justify-items:center;align-content:center;gap:3px;min-width:0;height:67px;border:1px dashed var(--dot);border-radius:5px;background:var(--soft);color:var(--faint);transition:transform .2s,border-color .2s,box-shadow .2s}
+.phase-mini span{font:600 10px var(--mono);position:absolute;top:3px;left:5px}
+.phase-mini img{width:33px;height:33px;object-fit:contain;image-rendering:pixelated;filter:grayscale(1);opacity:.45}
+.phase-mini:hover{transform:translateY(-4px);border-style:solid;border-color:var(--accent)}
+.phase-mini.is-complete{border:1px solid var(--green);background:var(--green-soft);color:var(--green);box-shadow:0 3px 0 color-mix(in srgb,var(--green) 30%,transparent)}
+.phase-mini.is-complete span{font-size:15px;line-height:1}
+.phase-mini.is-complete img{filter:none;opacity:1}
+.phase-mini.is-current{border:2px solid var(--accent);color:var(--accent);background:var(--white);box-shadow:0 0 0 3px var(--accent-soft);transform:translateY(-4px)}
+.phase-mini.is-current img{filter:none;opacity:1}
+.phase-mini.is-current::after{content:'';position:absolute;bottom:-8px;left:calc(50% - 4px);border-top:6px solid var(--accent);border-left:4px solid transparent;border-right:4px solid transparent}
+.phase-focus{display:flex;align-items:center;gap:14px;padding:18px 22px;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-left:4px solid var(--accent);border-radius:3px 12px 12px 3px;background:linear-gradient(110deg,var(--accent-soft),var(--white));box-shadow:var(--shadow-sm)}
+.phase-focus>span:nth-child(2){display:block;color:var(--accent);font:650 10px/1.8 var(--mono);letter-spacing:1px}
+.phase-focus small{font:inherit;color:var(--muted)}
+.phase-focus strong{display:block;color:var(--ink);font:700 22px/1.35 Georgia,serif;letter-spacing:-.5px}
+.phase-focus-icon{color:var(--accent);font:36px/1 Georgia,serif}
+.phase-focus-icon svg{width:32px;height:32px}
+.phase-focus .button{margin-left:auto;background:var(--white)}
+.phase-legend{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:18px 0 30px;color:var(--muted);font-size:11px}
+.phase-legend>span{display:flex;align-items:center;gap:6px}
+.phase-legend i{font-style:normal;color:var(--accent)}
+.phase-legend .phase-legend-done{color:var(--green);font-weight:800}
+.phase-legend svg,.phase-result svg,.phase-state svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.8;flex-shrink:0}
+.phase-legend p{margin:0 0 0 auto;font-size:10px}
+.phase-roadmap{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,.42fr);gap:48px;max-width:1180px;margin:0 auto}
+.phase-main-path,.phase-side-path{position:relative;min-width:0}
+.phase-main-path::before{content:'';position:absolute;left:14px;top:50px;bottom:75px;width:2px;background:repeating-linear-gradient(to bottom,var(--dot) 0 6px,transparent 6px 11px)}
+.phase-lane-label{display:flex;justify-content:space-between;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--muted);padding:0 3px 24px 42px}
+.phase-lane-label span{font-size:17px;line-height:1}
+.phase-card{--phase-hue:30;--phase-sat:25%;--paper:hsl(var(--phase-hue) 24% 94%);--paper-edge:hsl(var(--phase-hue) 21% 72%);--paper-ink:#302c29;--paper-muted:#625d55;--chapter-color:hsl(var(--phase-hue) 34% 35%);position:relative;isolation:isolate;margin:0 0 44px 42px;filter:drop-shadow(0 4px 0 #473c2c12) drop-shadow(0 8px 13px #1d181508);scroll-margin-top:100px;transition:filter .2s,transform .2s}
+.phase-card::before{content:'';position:absolute;width:78px;height:18px;left:calc(50% - 39px);top:-9px;background:linear-gradient(90deg,#bdb39b36,#d5c9ac75,#bdb39b36);border-left:2px dotted #a3977922;border-right:2px dotted #a3977922;transform:rotate(-2deg);z-index:3;pointer-events:none}
+.phase-paper{position:relative;isolation:isolate;padding:23px 25px 21px;border:1px solid var(--paper-edge);border-radius:3px;color:var(--paper-ink);background:var(--paper);clip-path:polygon(0 4px,1% 0,99% 2px,100% 6px,99.8% 97.5%,97% 99%,94% 98.2%,90% 100%,86% 98.8%,82% 99.7%,77% 98.5%,72% 99.8%,67% 99%,61% 100%,55% 98.9%,49% 99.8%,43% 98.5%,37% 99.7%,31% 98.8%,25% 100%,19% 98.6%,13% 99.8%,7% 98.8%,2% 100%,0 98%)}
+.phase-paper::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 98% 1%,hsl(var(--phase-hue) var(--phase-sat) 55% / .18),transparent 65%),repeating-linear-gradient(3deg,transparent 0 3px,#43331c03 3px 4px),radial-gradient(circle at 20% 60%,#45342106 1px,transparent 1.3px);background-size:auto,auto,7px 9px}
+.phase-paper::after{content:'';position:absolute;inset:8px 8px 13px;border:1px solid color-mix(in srgb,var(--paper-edge) 45%,transparent);pointer-events:none;z-index:-1;transform:rotate(-.25deg)}
+.phase-card:not(:last-child)::after{content:'↓';position:absolute;bottom:-34px;left:-35px;font:20px/1 Georgia,serif;color:var(--dot)}
+.phase-rail-node{position:absolute;left:-42px;top:24px;width:29px;height:29px;border:2px solid var(--dot);background:var(--bg);color:var(--faint);border-radius:50%;display:grid;place-items:center;font:600 13px var(--mono);z-index:2;box-shadow:0 0 0 6px var(--bg)}
+.phase-depths{--phase-hue:28;--phase-sat:38%}
+.phase-heart{--phase-hue:350;--phase-sat:58%}
+.phase-photographs{--phase-hue:42;--phase-sat:28%}
+.phase-hush{--phase-hue:211;--phase-sat:59%}
+.phase-corpse{--phase-hue:126;--phase-sat:29%}
+.phase-home{--phase-hue:21;--phase-sat:52%}
+.phase-void{--phase-hue:267;--phase-sat:42%}
+.phase-marks{--phase-hue:353;--phase-sat:48%}
+.phase-challenges{--phase-hue:189;--phase-sat:31%}
+.phase-god,.phase-greed{--phase-hue:42;--phase-sat:58%}
+.phase-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;position:relative;z-index:1}
+.phase-number{font:650 10px/1.3 var(--mono);letter-spacing:2px;color:var(--chapter-color)}
+.phase-state{display:inline-flex;align-items:center;gap:5px;font-size:9px;color:var(--paper-muted);padding:4px 7px;border:1px solid color-mix(in srgb,var(--paper-muted) 22%,transparent);border-radius:3px;text-align:right;background:#ffffff32}
+.phase-chapter{position:relative;min-height:112px;display:flex;align-items:center;padding:4px 0 16px}
+.phase-title{position:relative;z-index:1;width:calc(100% - 125px)}
+.phase-card h2{font:700 clamp(27px,2.5vw,34px)/1.06 Georgia,"Times New Roman",serif;letter-spacing:-1px;margin:0 0 10px;color:var(--paper-ink);text-wrap:balance}
+.phase-subtitle{font-size:12px;line-height:1.75;margin:0;color:var(--paper-muted);max-width:390px}
+.phase-art{position:absolute;right:-6px;top:-15px;width:155px;height:145px;color:var(--chapter-color);pointer-events:none}
+.phase-scene{position:absolute;width:100%;height:100%;opacity:.25;transform:rotate(-4deg)}
+.phase-scene .scene-fill{fill:var(--paper)}
+.phase-sprites{position:absolute;inset:25px 20px 10px;display:flex;align-items:center;justify-content:center;transform:rotate(-9deg);filter:drop-shadow(3px 6px 0 #302c2919);transition:transform .25s}
+.phase-sprites img{width:70px;height:70px;object-fit:contain;image-rendering:pixelated}
+.phase-sprites img+img{margin-left:-27px;transform:translateY(16px) rotate(17deg)}
+.phase-card:hover .phase-sprites{transform:rotate(-4deg) translateY(-3px)}
+.phase-goals{position:relative;border-top:1px dashed color-mix(in srgb,var(--paper-ink) 18%,transparent);padding-top:12px}
+.phase-goal{display:flex;align-items:center;gap:8px;min-height:28px;font-size:11px;color:var(--paper-muted);line-height:1.6}
+.phase-goal-symbol{width:14px;height:14px;border:1px solid color-mix(in srgb,var(--paper-muted) 45%,transparent);border-radius:2px;flex-shrink:0;display:grid;place-items:center;font:700 10px/1 var(--mono)}
+.phase-goal.goal-done .phase-goal-symbol{background:var(--green);border-color:var(--green);color:var(--white);transform:rotate(-5deg)}
+.phase-goal small{font-size:9px;color:var(--green);margin-left:auto}
+.phase-count{margin-left:auto;white-space:nowrap;font:650 12px var(--mono);color:var(--paper-ink)}
+.phase-count span{opacity:.6;font-weight:400}
+.phase-meter{height:6px;border:1px solid color-mix(in srgb,var(--paper-muted) 25%,transparent);border-radius:1px;background:#00000005;overflow:hidden;margin:5px 0 9px;padding:1px}
+.phase-meter i{display:block;height:100%;background:repeating-linear-gradient(115deg,transparent 0 3px,#ffffff30 3px 5px),var(--chapter-color);transition:width .3s}
+.phase-note{font-size:10px;line-height:1.8;color:var(--paper-muted);margin:11px 0 0;padding-left:9px;border-left:2px solid color-mix(in srgb,var(--chapter-color) 25%,transparent)}
+.phase-confirm{display:flex;align-items:center;gap:7px;margin:10px 0 4px;font-size:10px;color:var(--paper-muted);cursor:pointer;min-height:28px}
+.phase-confirm input{margin:0;accent-color:var(--green);width:15px;height:15px;flex-shrink:0}
+.phase-card-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:45px;padding-top:13px;margin-top:13px;border-top:1px solid color-mix(in srgb,var(--paper-muted) 16%,transparent)}
+.phase-card-bottom a{font-size:10px;text-decoration:none;white-space:nowrap;color:var(--paper-muted);font-weight:600}
+.phase-card-bottom a:hover{text-decoration:underline;text-underline-offset:4px}
+.phase-result{display:inline-flex;align-items:center;gap:6px;color:var(--paper-muted);font:500 9px/1.6 var(--mono)}
+.phase-result b{font-size:12px;margin-left:4px}
+.phase-medal{position:absolute;width:73px;height:73px;right:-1px;bottom:-1px;color:var(--green);background:var(--paper);border-radius:50%;transform:rotate(9deg);filter:drop-shadow(1px 3px 0 #1b72441a)}
+.phase-art-lock{position:absolute;right:12px;bottom:20px;width:34px;height:34px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:50%;display:grid;place-items:center;color:var(--paper-muted)}
+.phase-art-lock svg{width:17px;height:17px;stroke:currentColor;stroke-width:1.6}
+/* Completed chapters are trophies; completion is communicated by shape, text and color. */
+.phase-card.is-complete{--paper:#f2f1e4;--paper-edge:#91ab87;--chapter-color:#39714a;filter:drop-shadow(0 5px 0 #47774721) drop-shadow(0 10px 16px #2f59350b)}
+.phase-card.is-complete .phase-paper{border-top:3px solid var(--green);padding-top:21px}
+.phase-card.is-complete .phase-paper::before{background:radial-gradient(ellipse at 100% 0,#bdd2a05e,transparent 65%),repeating-linear-gradient(3deg,transparent 0 3px,#43331c03 3px 4px)}
+.phase-card.is-complete .phase-state{color:var(--green);border-color:color-mix(in srgb,var(--green) 38%,transparent);background:color-mix(in srgb,var(--green-soft) 80%,transparent)}
+.phase-card.is-complete .phase-rail-node{color:var(--white);border-color:var(--green);background:var(--green);box-shadow:0 0 0 5px var(--bg),0 0 0 6px color-mix(in srgb,var(--green) 25%,transparent)}
+.phase-card.is-complete .phase-sprites{transform:rotate(-7deg) translate(-14px,-7px)}
+.phase-card.is-complete .phase-meter i{background:repeating-linear-gradient(115deg,transparent 0 3px,#ffffff30 3px 5px),var(--green)}
+.phase-card.is-complete .phase-card-bottom{border-top:1px dashed color-mix(in srgb,var(--green) 30%,transparent)}
+.phase-stamp{position:relative;color:var(--green);border:2px solid currentColor;font:800 17px/1.2 var(--mono);letter-spacing:2px;padding:4px 10px;transform:rotate(-5deg);border-radius:3px;text-shadow:.5px .5px currentColor;box-shadow:inset 0 0 0 2px var(--paper),inset 0 0 0 3px color-mix(in srgb,var(--green) 50%,transparent)}
+/* The active chapter has a clear pointer and a vivid ink border. */
+.phase-card.is-current{--paper-edge:var(--accent);filter:drop-shadow(0 5px 0 color-mix(in srgb,var(--accent) 24%,transparent)) drop-shadow(0 0 18px color-mix(in srgb,var(--accent) 10%,transparent))}
+.phase-card.is-current .phase-paper{border-top:3px solid var(--accent);padding-top:21px}
+.phase-card.is-current .phase-state{background:var(--accent);color:var(--white);border-color:var(--accent);font-weight:600}
+.phase-card.is-current .phase-rail-node{color:var(--white);border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 5px var(--bg),0 0 0 7px color-mix(in srgb,var(--accent) 30%,transparent)}
+.phase-card.is-current .phase-result{color:var(--accent);font-weight:700}
+/* Fog mutes future scenes while leaving requirements and navigation readable. */
+.phase-card:is(.is-locked,.is-unverified){--paper:#e8e8e3;--paper-edge:#cccec8;--paper-ink:#70726e;--paper-muted:#6b6e68;--chapter-color:#91958e;filter:drop-shadow(0 3px 0 #777a7011)}
+.phase-card:is(.is-locked,.is-unverified) .phase-paper::before{background:radial-gradient(ellipse at 80% 50%,#fafbf8c9,transparent 78%),repeating-linear-gradient(3deg,transparent 0 3px,#646d5704 3px 4px)}
+.phase-card:is(.is-locked,.is-unverified) .phase-sprites{filter:grayscale(1) blur(1.1px);opacity:.25;transform:rotate(-7deg)}
+.phase-card:is(.is-locked,.is-unverified) .phase-scene{opacity:.09;filter:blur(1px)}
+.phase-card:is(.is-locked,.is-unverified) .phase-art-lock{z-index:1;opacity:.9}
+.phase-card:is(.is-locked,.is-unverified) .phase-state{border-style:dashed}
+.phase-card:is(.is-locked,.is-unverified) .phase-number{color:var(--paper-muted)}
+.phase-card:is(.is-locked,.is-unverified) .phase-goals{opacity:.83}
+.phase-side-path{padding-top:170px}
+.phase-side-path::before{content:'';position:absolute;top:139px;left:-48px;width:calc(50% + 48px);height:31px;border-top:2px dashed var(--dot);border-right:2px dashed var(--dot);border-top-right-radius:20px}
+.phase-side-path .phase-lane-label{padding-left:0}
+.phase-branch-note{font-size:11px;color:var(--muted);line-height:1.8;margin:0 2px 25px}
+.phase-branch{margin-left:0}
+.phase-branch .phase-paper{padding:19px 18px 22px}
+.phase-branch .phase-card-top{gap:4px}
+.phase-branch .phase-number{font-size:8px;letter-spacing:1px}
+.phase-branch .phase-state{font-size:8px;padding:3px 5px}
+.phase-branch .phase-title{width:calc(100% - 62px)}
+.phase-branch h2{font-size:25px}
+.phase-branch .phase-chapter{min-height:100px}
+.phase-branch .phase-art{right:-7px;top:0;width:96px;height:100px}
+.phase-branch .phase-sprites{inset:10px 12px}
+.phase-branch .phase-sprites img{width:49px;height:49px}
+.phase-branch .phase-medal{width:49px;height:49px;bottom:-3px;right:0}
+.phase-branch .phase-card-bottom{flex-wrap:wrap;gap:14px}
+.phase-branch .phase-rail-node{display:none}
+.phase-branch:not(:last-child)::after{left:calc(50% - 7px);color:var(--gold)}
+.phase-branch.is-complete .phase-paper,.phase-branch.is-current .phase-paper{padding-top:17px}
+.phase-branch .phase-stamp{font-size:13px;letter-spacing:1px}
+.phase-policy{max-width:850px;margin:12px auto 0;text-align:center;font-size:11px;color:var(--muted);line-height:1.9}
+/* Completion feedback runs once for a newly completed milestone, never on ordinary navigation. */
+.phase-card.just-completed{animation:phase-rise .65s cubic-bezier(.2,.8,.2,1) both}
+.just-completed .phase-stamp{animation:phase-stamp .7s cubic-bezier(.17,.85,.3,1.25) both}
+.just-completed .phase-medal{animation:phase-medal .9s cubic-bezier(.2,.9,.2,1.2) both}
+.phase-sparks{position:absolute;inset:0;pointer-events:none;z-index:4;overflow:visible}
+.phase-sparks i{--angle:calc(var(--spark)*30deg);position:absolute;left:75%;top:30%;width:4px;height:9px;background:var(--gold);border-radius:1px;animation:phase-spark 1.05s ease-out both;transform:rotate(var(--angle));animation-delay:calc(var(--spark)*12ms)}
+.phase-sparks i:nth-child(3n){background:var(--green);height:5px}
+.phase-award{position:fixed;z-index:110;bottom:25px;left:50%;display:flex;align-items:center;gap:14px;width:min(440px,calc(100vw - 32px));padding:14px 20px 14px 12px;border:1px solid #c2b079;border-bottom:3px solid #a58b46;border-radius:5px;background:#f5efd9;color:#393526;box-shadow:0 12px 45px #0003;pointer-events:none;animation:phase-award 4.8s both}
+.phase-award-medal{width:65px;height:65px;flex-shrink:0;color:#6c8b42}
+.phase-award>div{min-width:0}
+.phase-award>div>span{display:block;font:650 9px var(--mono);letter-spacing:1.7px;color:#69813f}
+.phase-award strong{display:block;font:700 22px/1.2 Georgia,serif;margin:5px 0;overflow-wrap:anywhere}
+.phase-award small{display:block;font-size:11px;color:#7a715a}
+.phase-award-stars{font-size:29px;margin-left:auto;color:#b0903c}
+@keyframes phase-rise{0%{transform:translateY(4px) scale(.99)}45%{transform:translateY(-5px) scale(1.012)}100%{transform:none}}
+@keyframes phase-stamp{0%{opacity:0;transform:rotate(-15deg) scale(1.8)}50%{opacity:1;transform:rotate(-5deg) scale(.94)}75%{transform:rotate(-5deg) scale(1.06)}100%{transform:rotate(-5deg) scale(1)}}
+@keyframes phase-medal{0%,15%{opacity:0;transform:rotate(-25deg) scale(.5)}100%{opacity:1;transform:rotate(9deg) scale(1)}}
+@keyframes phase-spark{0%{opacity:0;transform:rotate(var(--angle)) translateY(0)}12%{opacity:1}100%{opacity:0;transform:rotate(var(--angle)) translateY(-105px) rotate(130deg)}}
+@keyframes phase-award{0%{opacity:0;transform:translate(-50%,35px) scale(.96)}10%,82%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,12px) scale(.98);visibility:hidden}}
+:root[data-theme=dark] .phase-card{--paper:hsl(var(--phase-hue) 13% 16%);--paper-edge:hsl(var(--phase-hue) 18% 33%);--paper-ink:#e5dfd3;--paper-muted:#b9b1a4;--chapter-color:hsl(var(--phase-hue) 32% 65%)}
+:root[data-theme=dark] .phase-paper::before{opacity:.5}
+:root[data-theme=dark] .phase-card.is-complete{--paper:#202b22;--paper-edge:#50715a;--paper-ink:#e2ebd9;--paper-muted:#b7c2b1;--chapter-color:#91bb87}
+:root[data-theme=dark] .phase-card.is-complete .phase-paper::before{opacity:.11}
+:root[data-theme=dark] .phase-card:is(.is-locked,.is-unverified){--paper:#202224;--paper-edge:#35383a;--paper-ink:#92979b;--paper-muted:#959c9e;--chapter-color:#7b8387}
+:root[data-theme=dark] .phase-card:is(.is-locked,.is-unverified) .phase-paper::before{background:radial-gradient(ellipse at 80% 50%,#505a612e,transparent 78%);opacity:.8}
+:root[data-theme=dark] .phase-card.is-current{--paper-edge:var(--accent)}
+:root[data-theme=dark] .phase-state{background:#ffffff06}
+:root[data-theme=dark] .phase-card.is-current .phase-state{background:var(--accent);color:#1e1931}
+:root[data-theme=dark] .phase-medal{filter:drop-shadow(1px 3px 0 #0003)}
+:root[data-theme=dark] .phase-award{background:#262b21;border-color:#6c7952;color:#e4e8d7}
+:root[data-theme=dark] .phase-award>div>span,:root[data-theme=dark] .phase-award-medal{color:#9fbc7b}
+:root[data-theme=dark] .phase-award small{color:#b5b8a3}
+@media(min-width:761px) and (max-width:1200px){.main-nav a{padding:7px 12px}.topbar{gap:12px}.phase-roadmap{gap:30px;grid-template-columns:minmax(0,1fr) minmax(230px,.46fr)}.phase-side-path::before{left:-30px;width:calc(50% + 30px)}.phase-paper{padding-left:19px;padding-right:19px}.phase-title{width:calc(100% - 95px)}.phase-art{width:125px;height:125px;right:-10px}.phase-sprites img{width:60px;height:60px}.phase-card h2{font-size:28px}}
+@media(max-width:760px){
+ .phase-overview{padding-top:25px;gap:16px;align-items:center}.phase-overview h1{letter-spacing:-1px;font-size:33px}.phase-overview p{font-size:12px;line-height:1.8}.phase-overview-count{min-width:94px;padding-top:57px;font-size:9px}.phase-overview-count strong{font-size:28px}.phase-trophy{width:76px;height:76px;left:calc(50% - 38px);top:0}
+ .phase-chapter-shelf{gap:5px;padding-top:5px}.phase-mini{height:55px}.phase-mini img{width:27px;height:27px}.phase-mini span{font-size:8px;top:2px;left:3px}
+ .phase-focus{padding:15px 16px;gap:11px}.phase-focus strong{font-size:21px}.phase-focus .button{font-size:11px}.phase-legend{gap:13px;margin-bottom:27px}.phase-legend p{width:100%;margin:0}.phase-roadmap{display:flex;flex-direction:column;gap:0}.phase-side-path{padding:24px 0 0 24px;border-left:2px dashed var(--dot);margin:0 0 0 14px}.phase-side-path::before{display:none}
+ .phase-card{margin-left:37px}.phase-paper{padding:21px 19px 24px}.phase-rail-node{left:-37px;width:27px;height:27px}.phase-main-path::before{left:13px}.phase-card:not(:last-child)::after{left:-31px}.phase-title{width:calc(100% - 122px)}.phase-card h2{font-size:30px}.phase-art{width:145px;height:135px;top:-5px;right:-5px}.phase-sprites img{width:64px;height:64px}.phase-medal{width:62px;height:62px;right:0;bottom:0}.phase-chapter{min-height:135px}.phase-subtitle{font-size:12px}.phase-lane-label{padding-left:37px}
+ .phase-card-bottom{gap:10px}.phase-card-bottom a{font-size:10px}.phase-stamp{font-size:15px}.phase-branch{margin-left:0}.phase-branch .phase-title{width:calc(100% - 105px)}.phase-branch .phase-art{width:130px;height:115px;top:-8px}.phase-branch .phase-sprites img{width:60px;height:60px}.phase-branch .phase-medal{width:58px;height:58px}.phase-branch h2{font-size:29px}.phase-branch .phase-chapter{min-height:120px}.phase-policy{margin-top:20px}
+}
+@media(max-width:450px){.phase-overview-count{display:none}.phase-overview h1{font-size:33px}.phase-mini{height:46px}.phase-mini img{width:21px;height:21px;margin-top:6px}.phase-chapter-shelf{gap:4px}.phase-mini.is-complete span{font-size:11px}.phase-focus-icon{display:none}.phase-focus{padding:13px 12px}.phase-focus strong{font-size:19px}.phase-focus .button{font-size:10px;padding:6px 8px}.phase-focus>span:nth-child(2){font-size:8px;letter-spacing:.6px}.phase-focus small{display:block}.phase-card h2{font-size:26px}.phase-title{width:calc(100% - 88px)}.phase-art{width:110px;height:115px;top:0;right:-8px}.phase-sprites{inset:17px 12px}.phase-sprites img{width:54px;height:54px}.phase-medal{width:51px;height:51px;right:2px;bottom:0}.phase-card-top{gap:5px}.phase-number{font-size:9px;letter-spacing:1px}.phase-state{font-size:8px;padding:3px 4px}.phase-card-bottom{flex-wrap:wrap}.phase-result{max-width:100%}.phase-goal{font-size:10px}.phase-paper{padding-left:14px;padding-right:14px}.phase-subtitle{font-size:11px}.phase-count{font-size:11px}.phase-legend{font-size:10px;gap:10px}.phase-legend p{font-size:9px}.phase-branch .phase-title{width:calc(100% - 80px)}.phase-branch .phase-art{width:100px;height:105px}.phase-branch h2{font-size:25px}.phase-award strong{font-size:20px}.main-nav a{font-size:12px;padding-left:5px;padding-right:5px}}
+@media(prefers-reduced-motion:reduce){.phase-card,.phase-card *, .phase-mini{animation:none!important;transition:none!important}.phase-sparks{display:none}.phase-award{animation:phase-award-static 4.8s both!important}.phase-card:hover .phase-sprites{transform:rotate(-9deg)}}
+@keyframes phase-award-static{0%,90%{opacity:1;transform:translateX(-50%)}100%{opacity:0;transform:translateX(-50%);visibility:hidden}}
+
+/* Phase-local recommendations use shared catalog items and independent letter rows. */
+.phase-recommendation-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:-7px 0 30px;padding:12px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);font-size:11px;color:var(--muted)}
+.phase-recommendation-toolbar label{display:flex;align-items:center;gap:7px;cursor:pointer;min-height:24px}
+.phase-recommendation-toolbar input{width:14px;height:14px;margin:0;accent-color:var(--accent)}
+.phase-recommendations{position:relative;margin-top:18px;border-top:1px dashed color-mix(in srgb,var(--paper-muted) 30%,transparent);color:var(--paper-ink)}
+.phase-recommendations>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;min-height:43px;font:650 9px/1.6 var(--mono);letter-spacing:.7px}
+.phase-recommendations>summary::-webkit-details-marker{display:none}
+.phase-recommendation-count{color:var(--paper-muted);letter-spacing:0;font-size:9px;white-space:nowrap;font-weight:400}
+.phase-recommendation-count i{display:inline-block;font-style:normal;font-size:16px;line-height:1;margin-left:5px;transition:transform .2s}
+.phase-recommendations[open] .phase-recommendation-count i{transform:rotate(180deg)}
+.phase-recommendation-content>p{font-size:10px;line-height:1.8;color:var(--paper-muted);margin:0 0 12px}
+.phase-unlock-tiers{display:grid;gap:5px}
+.phase-unlock-row{display:grid;grid-template-columns:27px minmax(0,1fr);background:color-mix(in srgb,var(--recommendation-color) 8%,transparent);border:1px solid color-mix(in srgb,var(--paper-muted) 20%,transparent);border-radius:3px;overflow:hidden;min-height:78px}
+.phase-unlock-rank{display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--recommendation-color) 74%,var(--paper));color:#342c28;font:800 17px/1 var(--mono);border-right:1px solid color-mix(in srgb,var(--paper-muted) 15%,transparent)}
+.phase-unlock-items{display:flex;align-items:flex-start;align-content:flex-start;flex-wrap:wrap;gap:8px 6px;padding:8px;min-width:0}
+.phase-unlock-item{display:grid;justify-items:center;align-content:start;gap:4px;width:58px;min-height:64px;padding:2px;border-radius:3px;text-decoration:none;color:var(--paper-ink);transition:background .15s,transform .15s;position:relative}
+.phase-unlock-item:hover,.phase-unlock-item:focus-visible{background:color-mix(in srgb,var(--chapter-color) 12%,transparent);transform:translateY(-2px)}
+.phase-unlock-sprite{position:relative;width:39px;height:37px;display:grid;place-items:center}
+.phase-unlock-sprite img{width:34px;height:34px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(1px 2px 0 #201a1719)}
+.phase-unlock-name{text-align:center;font-size:8px;font-weight:550;line-height:1.35;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.phase-unlock-state{position:absolute;right:-3px;bottom:-1px;display:grid;place-items:center;min-width:14px;height:14px;padding:1px;font:700 10px/1 var(--mono);color:var(--paper-muted);background:var(--paper);border:1px solid color-mix(in srgb,var(--paper-muted) 30%,transparent);border-radius:50%}
+.phase-unlock-item.is-obtained .phase-unlock-state{color:var(--green);border-color:var(--green)}
+.phase-unlock-item.is-collected .phase-unlock-state{background:var(--green);color:var(--white);font-size:8px}
+.phase-unlock-item.is-obtained img{opacity:.5}
+.phase-unlock-item.is-obtained .phase-unlock-name{opacity:.7}
+.phase-unlock-item.is-obtained:hover img,.phase-unlock-item.is-obtained:focus-visible img{opacity:1}
+.phase-recommendation-key{display:flex;gap:13px;flex-wrap:wrap;margin-top:12px;font-size:9px;color:var(--green)}
+.phase-recommendation-content .phase-recommendation-help{font-size:9px;margin:6px 0 0;opacity:.9}
+.phase-recommendations-done{color:var(--green)!important;font-weight:600;padding:8px 0}
+.phase-card:is(.is-locked,.is-unverified) .phase-unlock-sprite img{filter:grayscale(1);opacity:.5}
+.phase-branch .phase-recommendations>summary{font-size:8px;letter-spacing:.3px;flex-wrap:wrap;gap:1px;padding:8px 0}
+.phase-branch .phase-unlock-row{grid-template-columns:23px minmax(0,1fr)}
+.phase-branch .phase-unlock-items{padding:6px;gap:7px 3px}
+.phase-branch .phase-unlock-item{width:49px}
+.phase-branch .phase-unlock-name{font-size:8px}
+.phase-branch .phase-unlock-sprite{width:34px;height:34px}
+.phase-branch .phase-unlock-sprite img{width:30px;height:30px}
+@media(max-width:760px){.phase-recommendation-toolbar{font-size:10px;gap:8px;margin-bottom:25px}.phase-unlock-item{width:57px}.phase-unlock-items{gap:8px 5px;padding:8px 6px}.phase-recommendations>summary{font-size:9px;letter-spacing:.3px}.phase-branch .phase-unlock-item{width:57px}}
+@media(max-width:450px){.phase-recommendation-toolbar>span{width:100%;font-size:10px}.phase-unlock-row{grid-template-columns:24px minmax(0,1fr)}.phase-unlock-items{padding:7px 4px;gap:8px 4px}.phase-unlock-item{width:49px}.phase-unlock-name{font-size:8px}.phase-unlock-sprite{width:33px;height:34px}.phase-unlock-sprite img{width:30px;height:30px}.phase-recommendations>summary{gap:4px;flex-wrap:wrap;padding:7px 0}.phase-recommendation-count{font-size:8px}.phase-branch .phase-unlock-item{width:49px}}
