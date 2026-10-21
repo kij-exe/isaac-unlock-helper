@@ -5,6 +5,9 @@ import {createGraphView, edgeGeometry, graphNeighborhood} from './graph-view.js'
 import {roulettePool, buildReel, reelEasing, createRouletteSound} from './roulette.js';
 import {parseSave, slotProgress, emptySaveBytes} from './save-parser.js';
 import {STATUS, validateCatalog, createEvaluator, buildGraph, layoutGraph, conditionLabel} from './unlock-engine.js';
+import {PHASES,BRANCHES,progressionForSave,cleanPhaseConfirmations} from './progression.js';
+import {progressionMarkup} from './progression-view.js';
+import {validatePhaseRecommendations} from './phase-recommendations.js';
 
 const i18n=createI18n(), t=source=>i18n.t(source);
 const html=(strings,...values)=>i18n.html(typeof strings==='string'?strings:strings.reduce((result,part,index)=>result+part+(index<values.length?values[index]:''),''));
@@ -14,7 +17,7 @@ const kindNames = {collectible:'Item',trinket:'Trinket',card:'Card',rune:'Rune',
   stage:'Route',boss:'Boss',challenge:'Challenge',feature:'Feature',condition:'Condition',gate:'Logic'};
 const symbols = {collectible:'✦',trinket:'♧',card:'▤',rune:'◈',pill:'◒',character:'♙',stage:'⌂',boss:'♜',challenge:'⚑',feature:'◇'};
 const state = {data:null,baseData:null,catalog:null,icons:new Map(),save:null,progress:null,evaluator:null,fileName:'',
-  manual:{},page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,inferSaveEvidence:false,graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null,openCharacters:new Set(),rouletteMode:'best',rouletteResult:null};
+  manual:{},phaseManual:{},phaseRecommendations:null,phaseHideObtained:false,phaseRecommendationOpen:new Map(),page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,inferSaveEvidence:false,graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null,openCharacters:new Set(),rouletteMode:'best',rouletteResult:null};
 let toastTimer, uploadGeneration = 0, graphView;
 const graphPositions = new Map();
 // The player's own tier arrangement lives only in this browser; "Dump tiers" exports it as unlocks.json.
@@ -59,17 +62,19 @@ function setPaths(os) {
 // The last successfully read save is kept in this browser only, so a reload reopens it; "Forget save" removes it.
 const SAVE_KEY='skill-issue-save';
 const toBase64=bytes=>{let text='';for(let i=0;i<bytes.length;i+=0x8000)text+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(text);};
-function storeSave(name,bytes,empty=false) {
-  try{localStorage.setItem(SAVE_KEY,JSON.stringify(empty?{empty:true}:{name,data:toBase64(bytes)}));}catch{}
+function storeSave(name,bytes,empty=false,phaseManual={}) {
+  const confirmations=cleanPhaseConfirmations(phaseManual),entry=empty?{empty:true}:{name,data:toBase64(bytes)};
+  if(Object.keys(confirmations).length)entry.phaseManual=confirmations;
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify(entry));}catch{}
 }
 function forgetStoredSave() { try{localStorage.removeItem(SAVE_KEY);}catch{} }
 function storedSave() {
   try{
     const entry=JSON.parse(localStorage.getItem(SAVE_KEY));
-    if(entry?.empty)return emptySaveFile(true);
+    if(entry?.empty)return {...emptySaveFile(true),phaseManual:cleanPhaseConfirmations(entry.phaseManual)};
     if(!entry?.name||!entry.data)return null;
     const bytes=Uint8Array.from(atob(entry.data),char=>char.charCodeAt(0));
-    return {name:entry.name,restored:true,arrayBuffer:async()=>bytes.buffer};
+    return {name:entry.name,restored:true,phaseManual:cleanPhaseConfirmations(entry.phaseManual),arrayBuffer:async()=>bytes.buffer};
   }catch{forgetStoredSave();return null;}
 }
 
@@ -142,11 +147,13 @@ async function loadFile(file,{handle=null,reload=false}={}) {
     const bytes=new Uint8Array(await file.arrayBuffer());
     const save=parseSave(bytes,{fileName:file.name}), progress=slotProgress(save,state.catalog);
     if (generation !== uploadGeneration) return;
-    if(!file.restored)storeSave(file.name,bytes,file.empty);
     if(!reload){saveSource=handle?{handle}:file.restored||file.empty?null:{file};if(!file.restored)rememberHandle(handle);}
     state.save=save; state.saveBytes=bytes; state.emptySave=!!file.empty; state.progress=progress;state.data=localizeCatalog(catalogForSave(state.baseData,save),i18n.language); state.fileName=file.name;
     // Reloading the same file keeps manual confirmations, the selection and the graph view.
     if(!reload){state.manual={}; state.selected=null;state.graphMode='progress';state.showOpened=false;state.zoom=1;state.openCharacters.clear();state.rouletteResult=null;graphPositions.clear();state.lastPage=null;}
+    if(!reload)state.phaseSnapshot=null;
+    if(!reload)state.phaseManual=cleanPhaseConfirmations(file.restored?file.phaseManual:{});
+    if(!file.restored)storeSave(file.name,bytes,file.empty,state.phaseManual);
     refreshEvaluator();
     showSaveDetails();$('#file-error').hidden=true;
     $('.main-nav').hidden=false; $('#change-save').hidden=false; updateReloadButtons();
@@ -154,7 +161,7 @@ async function loadFile(file,{handle=null,reload=false}={}) {
     if(reload){rerenderInPlace();toast('Save reloaded from the file.');return;}
     // A restored save reopens the page (or the home screen) that was showing before the reload.
     const page=location.hash.slice(2).split('?')[0];
-    if(!file.restored||!((save.profile.planner?['tiers','stats','graph','roulette']:['stats']).includes(page)||location.hash==='#/'))location.hash=defaultPage();
+    if(!file.restored||!((save.profile.planner?['tiers','phases','stats','graph','roulette']:['stats']).includes(page)||location.hash==='#/'))location.hash=defaultPage();
     renderPage();
     if(!file.restored)$('#main').focus({preventScroll:true});
   } catch (error) {
@@ -168,6 +175,8 @@ async function loadFile(file,{handle=null,reload=false}={}) {
 function resetSave() {
   graphView?.destroy();graphView=null;graphPositions.clear();
   uploadGeneration++; forgetStoredSave(); saveSource=null; rememberHandle(null); state.save=null; state.saveBytes=null; state.emptySave=false; state.lastPage=null; state.progress=null; state.evaluator=null;state.slotEvaluator=null; state.manual={}; state.fileName=''; state.selected=null;state.data=state.baseData;
+  state.phaseManual={};
+  state.phaseSnapshot=null;
   $('#workspace').hidden=true;$('#file-error').hidden=true; $('#view').replaceChildren(); $('#onboarding').hidden=false; $('.main-nav').hidden=true; $('#change-save').hidden=true; $('#resume-save').hidden=true; updateReloadButtons();
   $('#save-input').value=''; $('#upload-status').classList.remove('error');
   i18n.text($('#upload-status'),'Save forgotten and removed from this browser.');
@@ -176,6 +185,16 @@ function resetSave() {
 
 function pageHeading(eyebrow, title, description, aside='') {
   return html`<div class="page-heading"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div>${aside}</div>`;
+}
+
+function renderPhases(){
+  const model=progressionForSave(catalogForSave(state.baseData,state.save),state.save,state.progress,state.manual,state.phaseManual,state.phaseRecommendations);
+  const entries=[...model.phases,...model.branches],previous=state.phaseSnapshot;
+  const celebrating=previous?entries.filter(entry=>entry.status===STATUS.YES&&previous.get(entry.id)!==STATUS.YES).map(entry=>entry.id):[];
+  state.phaseSnapshot=new Map(entries.map(entry=>[entry.id,entry.status]));
+  $('#view').innerHTML=progressionMarkup(model,{t,icons:state.icons,confirmations:{...state.manual,...state.phaseManual},celebrating,
+    hideObtained:state.phaseHideObtained,openRecommendations:state.phaseRecommendationOpen});
+  return celebrating.length>0;
 }
 
 function itemCard(node) {
@@ -560,12 +579,12 @@ function renderPage({preserveSelection=false}={}) {
   graphView?.destroy();graphView=null;finishRoulette();
   const home=isHome();
   $('#onboarding').hidden=!home;$('#workspace').hidden=home;$('#resume-save').hidden=!home;
-  const requested=location.hash.slice(2).split('?')[0];state.page=['tiers','stats','graph','roulette'].includes(requested)?requested:'tiers';
+  const requested=location.hash.slice(2).split('?')[0];state.page=['tiers','phases','stats','graph','roulette'].includes(requested)?requested:'tiers';
   document.querySelectorAll('.main-nav a').forEach(link=>{const active=!home&&link.dataset.page===state.page;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
   if(home){$('#view').replaceChildren();$('#resume-link').href=state.lastPage||defaultPage();document.title=t('Skill Issue Tracker — The Binding of Isaac');return;}
   state.lastPage=location.hash;
-  if(!state.save.profile.planner&&state.page!=='stats')$('#view').innerHTML=html('<div class="empty-state"><h2>This is a Rebirth save</h2><p>Save loaded: statistics are available for this edition. The tier list and graph target Repentance / Repentance+.</p><a class="button" href="#/stats">View Rebirth statistics</a></div>');else if(state.page==='stats')renderStats();else if(state.page==='graph')renderGraph({preserveSelection});else if(state.page==='roulette')renderRoulette();else renderTiers();
-  document.title=`${t(state.page==='stats'?'Statistics':state.page==='graph'?'Unlock map':state.page==='roulette'?'Unlock roulette':'Tier list')} — Skill Issue Tracker`;
+  if(!state.save.profile.planner&&state.page!=='stats')$('#view').innerHTML=html('<div class="empty-state"><h2>This is a Rebirth save</h2><p>Save loaded: statistics are available for this edition. The tier list and graph target Repentance / Repentance+.</p><a class="button" href="#/stats">View Rebirth statistics</a></div>');else if(state.page==='phases')renderPhases();else if(state.page==='stats')renderStats();else if(state.page==='graph')renderGraph({preserveSelection});else if(state.page==='roulette')renderRoulette();else renderTiers();
+  document.title=`${t(state.page==='phases'?'Phases':state.page==='stats'?'Statistics':state.page==='graph'?'Unlock map':state.page==='roulette'?'Unlock roulette':'Tier list')} — Skill Issue Tracker`;
 }
 
 function download(kind) {
@@ -578,6 +597,7 @@ function download(kind) {
 }
 
 $('#view').addEventListener('click',event=>{
+  const phaseJump=event.target.closest('[data-phase-jump]');if(phaseJump){event.preventDefault();document.getElementById('phase-'+phaseJump.dataset.phaseJump)?.scrollIntoView({behavior:'smooth',block:'center'});return;}
   const graph=event.target.closest('[data-graph]');if(graph){location.hash=graphLink(graph.dataset.graph);return;}
   const selected=event.target.closest('.graph-node,[data-select]');if(selected){state.selected=selected.dataset.id||selected.dataset.select;renderGraphSidebar();return;}
   const zoom=event.target.closest('[data-zoom]');if(zoom){graphView?.setZoom(graphView.zoom*(zoom.dataset.zoom==='in'?1.2:1/1.2));return;}
@@ -629,7 +649,23 @@ $('#view').addEventListener('dragend',()=>{
   animateTierChange(()=>{placeholder.remove();source.classList.remove('drag-source');});
 });
 $('#view').addEventListener('keydown',event=>{if(['Enter',' '].includes(event.key)&&event.target.matches('.graph-node')){event.preventDefault();state.selected=event.target.dataset.id;renderGraphSidebar();}});
+$('#view').addEventListener('toggle',event=>{
+  const id=event.target.dataset?.phaseRecommendations;
+  if(id)state.phaseRecommendationOpen.set(id,event.target.open);
+},true);
 $('#view').addEventListener('change',event=>{
+  if(event.target.dataset?.phaseFilter==='obtained'){
+    state.phaseHideObtained=event.target.checked;renderPhases();
+    $('#phase-hide-obtained')?.focus({preventScroll:true});return;
+  }
+  if(event.target.dataset?.phaseManual){
+    const key=event.target.dataset.phaseManual;
+    state.phaseManual=cleanPhaseConfirmations({...state.phaseManual,[key]:event.target.checked});
+    if(!event.target.checked){delete state.manual[key];refreshEvaluator();}
+    storeSave(state.fileName,state.saveBytes,state.emptySave,state.phaseManual);const celebrated=renderPhases();
+    [...document.querySelectorAll('[data-phase-manual]')].find(input=>input.dataset.phaseManual===key)?.focus({preventScroll:true});
+    if(!celebrated)toast('Phase confirmation saved in this browser.');return;
+  }
   if(!event.target.matches('[data-manual]'))return;
   const key=event.target.dataset.manual,sidebar=$('#graph-sidebar'),scroll=sidebar?.scrollTop||0;
   const canvas=$('#graph-canvas'),viewport={left:canvas?.scrollLeft||0,top:canvas?.scrollTop||0,zoom:graphView?.zoom};
@@ -709,9 +745,10 @@ drop.addEventListener('drop',event=>{
 window.addEventListener('hashchange',()=>{if(location.hash==='#main')return;renderPage();window.scrollTo(0,0);});applyLanguage();
 
 try {
-  const urls=['../data/unlocks.json','../data/game-catalog.json','../assets/icons/manifest.json'];
-  const [data,catalog,manifest]=await Promise.all(urls.map(async url=>{const response=await fetch(new URL(url,import.meta.url));if(!response.ok)throw new Error('Could not load the catalog. Reload the page.');return response.json();}));
-  const errors=validateCatalog(data);if(errors.length)throw new Error(`Catalog error: ${errors[0]}`);
+  const urls=['../data/unlocks.json','../data/game-catalog.json','../assets/icons/manifest.json','../data/phase-recommendations.json'];
+  const [data,catalog,manifest,phaseRecommendations]=await Promise.all(urls.map(async url=>{const response=await fetch(new URL(url,import.meta.url));if(!response.ok)throw new Error('Could not load the catalog. Reload the page.');return response.json();}));
+  const errors=[...validateCatalog(data),...validatePhaseRecommendations(phaseRecommendations,data,[...PHASES,...BRANCHES].map(phase=>phase.id))];if(errors.length)throw new Error(`Catalog error: ${errors[0]}`);
+  state.phaseRecommendations=phaseRecommendations;
   repoLayout=layoutOf(data);
   try{applyLayout(data,JSON.parse(localStorage.getItem(TIER_LAYOUT_KEY)));}catch{}
   state.data=localizeCatalog(data,i18n.language);state.baseData=data;state.catalog=catalog;state.icons=new Map(manifest.icons.filter(entry=>['downloaded','designed'].includes(entry.status)).map(entry=>[entry.nodeId,entry.path]));

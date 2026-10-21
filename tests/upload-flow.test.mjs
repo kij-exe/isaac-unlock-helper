@@ -15,13 +15,14 @@ class Element {
   removeEventListener(name){this.events.delete(name);}
   querySelectorAll(){return [];}
 }
-async function app(t,{savedLanguage=null}={}){
+async function app(t,{savedLanguage=null,savedEntries=[]}={}){
   const ids=[...fs.readFileSync('site/index.html','utf8').matchAll(/id="([^"]+)"/g)].map(m=>'#'+m[1]);
-  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#show-default-open','#infer-save-evidence','#tier-rows','#result-count','#next-up', '#graph-mode','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label'].map(id=>[id,new Element()]));
-  const nav=['tiers','stats','graph'].map(page=>{const element=new Element();element.dataset.page=page;return element;});
+  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#show-default-open','#infer-save-evidence','#tier-rows','#result-count','#next-up', '#graph-mode','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label','#phase-hide-obtained'].map(id=>[id,new Element()]));
+  const nav=['tiers','phases','stats','graph','roulette'].map(page=>{const element=new Element();element.dataset.page=page;return element;});
   const os=['windows','mac','linux'].map(value=>{const element=new Element();element.dataset.os=value;return element;});
   const languages=['ru','en'].map(value=>{const element=new Element();element.dataset.language=value;return element;});
-  const storage=new Map(savedLanguage?[['atlas-language',savedLanguage]]:[]),windowEvents=new Map();
+  const storage=new Map(savedEntries),windowEvents=new Map();
+  if(savedLanguage)storage.set('atlas-language',savedLanguage);
   Object.assign(elements.get('#graph-canvas'),{clientWidth:652,clientHeight:460,scrollLeft:0,scrollTop:0,getBoundingClientRect:()=>({left:0,top:0})});
   const replacements={
     document:{querySelector(selector){const result=elements.get(selector);if(!result)throw new Error('Unregistered DOM selector '+selector);return result;},querySelectorAll(selector){return selector==='.main-nav a'?nav:selector==='[data-os]'?os:selector==='[data-language]'?languages:[];},documentElement:{dataset:{theme:'light'}},title:''},
@@ -40,6 +41,60 @@ async function app(t,{savedLanguage=null}={}){
   }
   return {elements,upload,storage,switchLanguage:language=>languages.find(button=>button.dataset.language===language).events.get('click')(),navigate:hash=>{location.hash=hash;windowEvents.get('hashchange')();}};
 }
+
+test('phases keep manual milestones through language changes and restoration, and clear them for another save',async t=>{
+  const change=(context,checked)=>context.elements.get('#view').events.get('change')({target:{dataset:{phaseManual:'defeat-mom'},checked}});
+  let savedEntries;
+  await t.test('record a manual milestone',async sub=>{
+    const first=await app(sub);
+    await first.elements.get('#hero-empty').events.get('click')();
+    first.navigate('#/phases');
+    assert.match(first.elements.get('#view').innerHTML,/One save\. A whole journey\./);
+    change(first,true);
+    assert.match(first.elements.get('#view').innerHTML,/Confirmed manually/);
+    assert.match(first.elements.get('#view').innerHTML,/class="phase-award"/);
+    assert.deepEqual(JSON.parse(first.storage.get('skill-issue-save')).phaseManual,{'defeat-mom':true});
+    first.switchLanguage('ru');
+    assert.doesNotMatch(first.elements.get('#view').innerHTML,/class="phase-award"/);
+    assert.match(first.elements.get('#view').innerHTML,/Подтверждено вручную/);
+    assert.match(first.elements.get('#view').innerHTML,/Цикл сердца/);
+    savedEntries=[...first.storage];
+  });
+  await t.test('restore and revoke it, then change saves',async sub=>{
+    const restored=await app(sub,{savedEntries});
+    restored.navigate('#/phases');
+    assert.match(restored.elements.get('#view').innerHTML,/Подтверждено вручную/);
+    assert.doesNotMatch(restored.elements.get('#view').innerHTML,/class="phase-award"/);
+    change(restored,false);
+    assert.doesNotMatch(restored.elements.get('#view').innerHTML,/class="phase-award"/);
+    assert.equal(JSON.parse(restored.storage.get('skill-issue-save')).phaseManual,undefined);
+    change(restored,true);
+    await restored.upload('another-slot.dat',emptySaveBytes());
+    restored.navigate('#/phases');
+    assert.doesNotMatch(restored.elements.get('#view').innerHTML,/Подтверждено вручную/);
+  });
+});
+
+test('phase recommendation filters and disclosure state survive language changes without changing phase status',async t=>{
+  const {elements,upload,navigate,switchLanguage}=await app(t);
+  const bytes=Buffer.from(emptySaveBytes()),parsed=parseSave(bytes);
+  bytes[parsed.layout.find(chunk=>chunk.name==='collection').dataOffset+119]=1;
+  bytes.writeUInt32LE(kageChecksum(bytes.subarray(16,-4)),bytes.length-4);
+  await upload('recommendations.dat',bytes);navigate('#/phases');
+  const view=()=>elements.get('#view').innerHTML;
+  assert.match(view(),/data-phase-item="collectible:119"/);
+  assert.match(view(),/#\/graph\?item=collectible%3A119/);
+  assert.match(view(),/data-phase="mom" data-status="unknown"/);
+  elements.get('#view').events.get('toggle')({target:{dataset:{phaseRecommendations:'mom'},open:false}});
+  elements.get('#view').events.get('change')({target:{dataset:{phaseFilter:'obtained'},checked:true}});
+  assert.doesNotMatch(view(),/data-phase-item="collectible:119"/);
+  assert.match(view(),/data-phase="mom" data-status="unknown"/);
+  switchLanguage('ru');
+  assert.match(view(),/id="phase-hide-obtained"[^>]*checked/);
+  assert.match(view(),/ЧТО ОТКРЫТЬ В ЭТОЙ ФАЗЕ/);
+  assert.match(view(),/data-phase-recommendations="mom" >/);
+  assert.doesNotMatch(view(),/class="phase-award"/);
+});
 
 test('actual upload flow opens Repentance+ tierlist and keeps the previous save when gamestate is selected',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
   const {elements,upload}=await app(t);await upload('rep+persistentgamedata1.dat');
@@ -65,7 +120,7 @@ test('collected items override a false secret flag and satisfy their unlock when
   bytes[secrets.dataOffset+386]=0; // Marbles, already present in this save's collection.
   bytes.writeUInt32LE(kageChecksum(bytes.subarray(16,bytes.length-4)),bytes.length-4);
   await upload('rep+persistentgamedata1.dat',bytes);
-  const card=()=>elements.get('#tier-rows').innerHTML.match(/<article class="item-card[^>]*data-node="collectible:538">([\s\S]*?)<\/article>/)?.[1]||'';
+  const card=()=>elements.get('#tier-rows').innerHTML.match(/<article class="item-card[^>]*data-node="collectible:538"[^>]*>([\s\S]*?)<\/article>/)?.[1]||'';
   assert.match(card(),/availability-dot no/);
   elements.get('#infer-save-evidence').events.get('change')({target:{checked:true}});
   assert.match(card(),/availability-dot yes/);
@@ -160,7 +215,7 @@ test('English is the default; switching to Russian persists and rerenders tiers/
   assert.equal(document.documentElement.lang,'ru');assert.equal(storage.get('atlas-language'),'ru');
   assert.equal(elements.get('#save-name').textContent,'rep+persistentgamedata1.dat');
   assert.match(elements.get('#view').innerHTML,/value="Marbles"/);
-  assert.equal(elements.get('#result-count').textContent,before);
+  assert.deepEqual(elements.get('#result-count').textContent.match(/\d+/g),before.match(/\d+/g));
   assert.equal(elements.get('#status-filter').value,'open');assert.equal(elements.get('#kind-filter').value,'collectible');
   assert.match(elements.get('#view').innerHTML,/Тирлист/);
   navigate('#/stats');assert.match(document.title,/Статистика/);

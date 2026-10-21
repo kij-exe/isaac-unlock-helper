@@ -1,0 +1,648 @@
+{
+  "schemaVersion": 1,
+  "sourceNote": "Curated unlock priorities for this roadmap. Phase placement and letter ranks are editorial, not official item quality or mandatory phase conditions. Exact unlock rules and their sources remain in the shared catalog.",
+  "sources": [
+    "https://steamcommunity.com/sharedfiles/filedetails/?id=2994836310",
+    "https://bindingofisaacrebirth.wiki.gg/wiki/Hush",
+    "https://bindingofisaacrebirth.wiki.gg/wiki/Mother",
+    "https://bindingofisaacrebirth.wiki.gg/wiki/Beast",
+    "https://bindingofisaacrebirth.wiki.gg/wiki/Spindown",
+    "https://bindingofisaacrebirth.wiki.gg/wiki/Stairway"
+  ],
+  "phases": {
+    "mom": {
+      "description": "A few optional foundations while you learn the route to Mom.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:106",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:101",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:86",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:119",
+          "rank": "B",
+          "order": 1
+        }
+      ]
+    },
+    "heart": {
+      "description": "Build your item pool through Heart milestones and early challenges.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "consumable:33",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "consumable:37",
+          "rank": "S",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:244",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:221",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:32",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:189",
+          "rank": "A",
+          "order": 3
+        },
+        {
+          "nodeId": "collectible:149",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "trinket:50",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "consumable:45",
+          "rank": "B",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:90",
+          "rank": "B",
+          "order": 3
+        }
+      ]
+    },
+    "photographs": {
+      "description": "Make your Isaac and Satan runs count for valuable character rewards.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:105",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:114",
+          "rank": "S",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:292",
+          "rank": "S",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:286",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:127",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:237",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:584",
+          "rank": "A",
+          "order": 3
+        },
+        {
+          "nodeId": "collectible:389",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:157",
+          "rank": "B",
+          "order": 1
+        }
+      ]
+    },
+    "hush": {
+      "description": "Choose Hush rewards to work toward while opening the alternate path.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:360",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:408",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:409",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:399",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:381",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:363",
+          "rank": "B",
+          "order": 1
+        }
+      ]
+    },
+    "mother": {
+      "description": "Prioritize these rewards as you return to the alternate route with new characters.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:643",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:716",
+          "rank": "S",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:665",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:609",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:695",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:631",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:683",
+          "rank": "B",
+          "order": 2
+        }
+      ]
+    },
+    "beast": {
+      "description": "Turn Home visits and Beast victories into the next major additions to your pool.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:678",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:698",
+          "rank": "S",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:689",
+          "rank": "S",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:700",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:691",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:675",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:670",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:677",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:719",
+          "rank": "B",
+          "order": 2
+        }
+      ]
+    },
+    "routes": {
+      "description": "Revisit classic routes, Boss Rush and Delirium for high-impact unlocks.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:723",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:619",
+          "rank": "S",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:562",
+          "rank": "S",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:586",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:489",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:230",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:417",
+          "rank": "A",
+          "order": 3
+        },
+        {
+          "nodeId": "collectible:496",
+          "rank": "A",
+          "order": 4
+        },
+        {
+          "nodeId": "collectible:166",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:172",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:490",
+          "rank": "B",
+          "order": 2
+        }
+      ]
+    },
+    "marks": {
+      "description": "Long-term rewards to aim for while filling the remaining character pages.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:628",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:331",
+          "rank": "S",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:625",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:333",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:335",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:441",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:283",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:547",
+          "rank": "B",
+          "order": 2
+        }
+      ]
+    },
+    "conditions": {
+      "description": "Useful challenge rewards and special conditions to finish alongside your marks.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:514",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "trinket:92",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "consumable:39",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:263",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:232",
+          "rank": "A",
+          "order": 3
+        },
+        {
+          "nodeId": "collectible:531",
+          "rank": "A",
+          "order": 4
+        },
+        {
+          "nodeId": "trinket:52",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:520",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:532",
+          "rank": "B",
+          "order": 2
+        },
+        {
+          "nodeId": "consumable:43",
+          "rank": "B",
+          "order": 3
+        }
+      ]
+    },
+    "dead-god": {
+      "description": "Your next missing collection pickups, refreshed from this slot. Already collected items leave this list.",
+      "mode": "collection",
+      "entries": [
+        {
+          "nodeId": "collectible:628",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:723",
+          "rank": "S",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:689",
+          "rank": "S",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:331",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:625",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:678",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:698",
+          "rank": "A",
+          "order": 3
+        },
+        {
+          "nodeId": "collectible:691",
+          "rank": "A",
+          "order": 4
+        },
+        {
+          "nodeId": "collectible:562",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:716",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:643",
+          "rank": "B",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:619",
+          "rank": "B",
+          "order": 3
+        }
+      ]
+    },
+    "greed": {
+      "description": "Build Greed experience and useful rewards while donating to the machine.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:411",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:387",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:357",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:686",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "collectible:349",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:362",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:688",
+          "rank": "B",
+          "order": 2
+        }
+      ]
+    },
+    "greedier": {
+      "description": "Rewards for the harder Greed route, with a separate local priority order.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:622",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:462",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:464",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:498",
+          "rank": "A",
+          "order": 2
+        },
+        {
+          "nodeId": "consumable:41",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:476",
+          "rank": "B",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:500",
+          "rank": "B",
+          "order": 2
+        }
+      ]
+    },
+    "lost": {
+      "description": "After the starting shield, work toward useful Lost rewards at your own pace.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:331",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:333",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:335",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:283",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:612",
+          "rank": "B",
+          "order": 1
+        }
+      ]
+    },
+    "keeper": {
+      "description": "Build Keeper rewards, then bring his Tainted counterpart into the plan.",
+      "mode": "unlocks",
+      "entries": [
+        {
+          "nodeId": "collectible:716",
+          "rank": "S",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:485",
+          "rank": "A",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:719",
+          "rank": "A",
+          "order": 1
+        },
+        {
+          "nodeId": "collectible:717",
+          "rank": "B",
+          "order": 0
+        },
+        {
+          "nodeId": "collectible:450",
+          "rank": "B",
+          "order": 1
+        }
+      ]
+    }
+  }
+}

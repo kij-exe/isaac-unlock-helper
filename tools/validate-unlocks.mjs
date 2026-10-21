@@ -2,9 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {validateCatalog} from '../site/js/unlock-engine.js';
+import {PHASES,BRANCHES} from '../site/js/progression.js';
+import {validatePhaseRecommendations} from '../site/js/phase-recommendations.js';
 const file=process.argv[2]||'site/data/unlocks.json';
 const data=JSON.parse(fs.readFileSync(file,'utf8'));
 const errors=validateCatalog(data);
+const phaseRecommendations=JSON.parse(fs.readFileSync('site/data/phase-recommendations.json','utf8'));
+errors.push(...validatePhaseRecommendations(phaseRecommendations,data,[...PHASES,...BRANCHES].map(phase=>phase.id)));
 // Mark and character conditions must name a character exactly as the save parser reports it.
 const characters=new Set(JSON.parse(fs.readFileSync('site/data/game-catalog.json','utf8')).characters.map(character=>character.name));
 const checkCharacters=(condition,owner)=>{
