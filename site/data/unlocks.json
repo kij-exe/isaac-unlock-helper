@@ -3465,7 +3465,7 @@
         "https://bindingofisaacrebirth.wiki.gg/wiki/Book_of_Virtues"
       ],
       "catalog": {
-        "kind": "active",
+        "kind": "passive",
         "itemId": 584
       },
       "order": 33,
@@ -21658,23 +21658,20 @@
                   "label": "#4 · The Womb: Defeat Mom"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:5",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:130",
                   "goalSecretId": 5,
                   "label": "#5 · The Harbingers: Defeat Mom"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:6",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:73",
                   "goalSecretId": 6,
                   "label": "#6 · A Cube of Meat: Defeat Mom"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:7",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:78",
                   "goalSecretId": 7,
                   "label": "#7 · The Book of Revelations: Defeat a Harbinger"
                 },
@@ -21685,17 +21682,14 @@
                   "label": "#8 · A Noose: Defeat Mom's Heart 3 times"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:83",
                   "goalSecretId": 9,
                   "label": "#9 · The Nail: Complete the Boss Rush as Azazel"
                 },
                 {
-                  "type": "counter",
-                  "id": 1,
-                  "atLeast": 8,
+                  "type": "node",
+                  "id": "collectible:74",
                   "goalSecretId": 10,
                   "label": "#10 · A Quarter: Defeat Mom's Heart 8 times"
                 },
@@ -21706,23 +21700,20 @@
                   "label": "#11 · A Fetus in a Jar: Defeat Mom's Heart 9 times"
                 },
                 {
-                  "type": "counter",
-                  "id": 3,
-                  "atLeast": 100,
+                  "type": "node",
+                  "id": "collectible:90",
                   "goalSecretId": 12,
                   "label": "#12 · A Small Rock: Destroy 100 Tinted Rocks"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:13",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:86",
                   "goalSecretId": 13,
                   "label": "#13 · Monstro's Tooth: Beat Chapter 1"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:14",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:88",
                   "goalSecretId": 14,
                   "label": "#14 · Lil' Chubby: Beat Chapter 2"
                 },
@@ -21754,17 +21745,14 @@
                   "label": "#18 · Something Sticky: Beat Chapter 3 20 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:19",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:92",
                   "goalSecretId": 19,
                   "label": "#19 · A Bandage: Make a Super Bandage Girl by picking up 4 copies of Ball of Bandages in one run"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "Isaac",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:98",
                   "goalSecretId": 20,
                   "label": "#20 · A Cross: Defeat Isaac as Magdalene"
                 },
@@ -21775,44 +21763,38 @@
                   "label": "#21 · A Bag of Pennies: Defeat Isaac as Cain"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:22",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:97",
                   "goalSecretId": 22,
                   "label": "#22 · The Book of Sin: Defeat all 7 Deadly Sins"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:23",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:99",
                   "goalSecretId": 23,
                   "label": "#23 · Little Gish: Defeat Gish"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:24",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:100",
                   "goalSecretId": 24,
                   "label": "#24 · Little Steven: Defeat Steven"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:25",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:96",
                   "goalSecretId": 25,
                   "label": "#25 · Little C.H.A.D.: Defeat C.H.A.D."
                 },
                 {
-                  "type": "counter",
-                  "id": 9,
-                  "atLeast": 10,
+                  "type": "node",
+                  "id": "collectible:93",
                   "goalSecretId": 26,
                   "label": "#26 · A Gamekid: Visit 10 Arcades"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:27",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:101",
                   "goalSecretId": 27,
                   "label": "#27 · A Halo: Defeat Mom, Mom's Heart, or It Lives! using The Bible or XV - The Devil?"
                 },
@@ -21835,9 +21817,8 @@
                   "label": "#30 · The Scissors: Die 100 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:31",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:104",
                   "goalSecretId": 31,
                   "label": "#31 · The Parasite: Pick up 2 dead-related items in a single run"
                 },
@@ -21861,16 +21842,14 @@
                   "label": "#34 · It Lives!: Defeat Mom's Heart 11 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:35",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:110",
                   "goalSecretId": 35,
                   "label": "#35 · Mom's Contact: Obtain three Yes Mother? items in one run"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:36",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:35",
                   "goalSecretId": 36,
                   "label": "#36 · The Necronomicon: Use XIII - Death 4 times"
                 },
@@ -21922,18 +21901,14 @@
                   "label": "#43 · Mom's Knife: Defeat Satan as Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:126",
                   "goalSecretId": 44,
                   "label": "#44 · The Razor: Defeat Satan as Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:112",
                   "goalSecretId": 45,
                   "label": "#45 · Guardian Angel: Defeat Satan as Magdalene"
                 },
@@ -21944,10 +21919,8 @@
                   "label": "#46 · A Bag of Bombs: Defeat Satan as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:113",
                   "goalSecretId": 47,
                   "label": "#47 · Demon Baby: Defeat The Lamb as Azazel"
                 },
@@ -21964,10 +21937,8 @@
                   "label": "#49 · The D20: Defeat ??? as Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:162",
                   "goalSecretId": 50,
                   "label": "#50 · Celtic Cross: Defeat ??? as Magdalene"
                 },
@@ -21996,18 +21967,14 @@
                   "label": "#54 · Bloody Lust: Defeat Isaac as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:49",
                   "goalSecretId": 55,
                   "label": "#55 · Blood Penny: Defeat ??? as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:186",
                   "goalSecretId": 56,
                   "label": "#56 · Blood Rights: Defeat Satan as Samson"
                 },
@@ -22024,9 +21991,8 @@
                   "label": "#58 · Dad's Key: Pick up both Key Pieces from the Angels in one run"
                 },
                 {
-                  "type": "counter",
-                  "id": 20,
-                  "atLeast": 900,
+                  "type": "node",
+                  "id": "collectible:164",
                   "goalSecretId": 59,
                   "label": "#59 · Blue Candle: Donate 900 coins to the Donation Machine"
                 },
@@ -22037,9 +22003,8 @@
                   "label": "#60 · Burnt Penny: Complete Beans! (challenge #13)"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:61",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:42",
                   "goalSecretId": 61,
                   "label": "#61 · Lucky Toe: Blow up 20 Shopkeepers"
                 },
@@ -22068,9 +22033,8 @@
                   "label": "#65 · Guppy's Hairball: Become Guppy"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:66",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:181",
                   "goalSecretId": 66,
                   "label": "#66 · A Forgotten Horseman: Take 10 Angel Room items"
                 },
@@ -22107,42 +22071,32 @@
                   "label": "#71 · Maggy's Faith: Defeat The Lamb as Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Judas",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:56",
                   "goalSecretId": 72,
                   "label": "#72 · Judas' Tongue: Defeat Satan as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "???",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:57",
                   "goalSecretId": 73,
                   "label": "#73 · ???'s Soul: Defeat The Lamb as ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:58",
                   "goalSecretId": 74,
                   "label": "#74 · Samson's Lock: Defeat The Lamb as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Cain",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:59",
                   "goalSecretId": 75,
                   "label": "#75 · Cain's Eye: Defeat ??? as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "Isaac",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:60",
                   "goalSecretId": 76,
                   "label": "#76 · Eve's Bird Foot: Defeat Isaac as Eve"
                 },
@@ -22197,9 +22151,8 @@
                   "label": "#84 · The Real Platinum God: Collect all non-DLC items, and unlock all non-DLC secrets and endings"
                 },
                 {
-                  "type": "counter",
-                  "id": 2,
-                  "atLeast": 100,
+                  "type": "node",
+                  "id": "trinket:15",
                   "goalSecretId": 85,
                   "label": "#85 · Lucky Rock: Destroy 100 rocks"
                 },
@@ -22339,42 +22292,32 @@
                   "label": "#107 · Guillotine: Defeat Isaac as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "Judas",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:311",
                   "goalSecretId": 108,
                   "label": "#108 · Judas' Shadow: Complete the Boss Rush as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:312",
                   "goalSecretId": 109,
                   "label": "#109 · Maggy's Bow: Complete the Boss Rush as Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Cain",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:319",
                   "goalSecretId": 110,
                   "label": "#110 · Cain's Other Eye: Complete the Boss Rush as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:17",
                   "goalSecretId": 111,
                   "label": "#111 · Black Lipstick: Defeat The Lamb as Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:310",
                   "goalSecretId": 112,
                   "label": "#112 · Eve's Mascara: Complete the Boss Rush as Eve"
                 },
@@ -22391,18 +22334,14 @@
                   "label": "#114 · ???'s Only Friend: Complete the Boss Rush as ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:321",
                   "goalSecretId": 115,
                   "label": "#115 · Samson's Chains: Complete the Boss Rush as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lazarus",
-                  "target": "Isaac",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:332",
                   "goalSecretId": 116,
                   "label": "#116 · Lazarus' Rags: Defeat Isaac as Lazarus"
                 },
@@ -22413,18 +22352,14 @@
                   "label": "#117 · Broken Ankh: Defeat Satan as Lazarus"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lazarus",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:13",
                   "goalSecretId": 118,
                   "label": "#118 · Store Credit: Defeat ??? as Lazarus"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lazarus",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:297",
                   "goalSecretId": 119,
                   "label": "#119 · Pandora's Box: Defeat The Lamb as Lazarus"
                 },
@@ -22441,34 +22376,26 @@
                   "label": "#121 · Blank Card: Defeat Isaac as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:287",
                   "goalSecretId": 122,
                   "label": "#122 · Book of Secrets: Defeat Satan as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:21",
                   "goalSecretId": 123,
                   "label": "#123 · Mysterious Paper: Defeat ??? as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:271",
                   "goalSecretId": 124,
                   "label": "#124 · Mystery Sack: Defeat The Lamb as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:324",
                   "goalSecretId": 125,
                   "label": "#125 · Undefined: Complete the Boss Rush as Eden"
                 },
@@ -22479,42 +22406,32 @@
                   "label": "#126 · Satanic Bible: Defeat Isaac as Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:22",
                   "goalSecretId": 127,
                   "label": "#127 · Daemon's Tail: Defeat Satan as Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:230",
                   "goalSecretId": 128,
                   "label": "#128 · Abaddon: Defeat ??? as Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "Isaac",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:276",
                   "goalSecretId": 129,
                   "label": "#129 · Isaac's Heart: Defeat Isaac as The Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:333",
                   "goalSecretId": 130,
                   "label": "#130 · The Mind: Defeat Satan as The Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:334",
                   "goalSecretId": 131,
                   "label": "#131 · The Body: Defeat ??? as The Lost"
                 },
@@ -22531,30 +22448,26 @@
                   "label": "#133 · The D100: Complete the Boss Rush as The Lost"
                 },
                 {
-                  "type": "counter",
-                  "id": 20,
-                  "atLeast": 10,
+                  "type": "node",
+                  "id": "collectible:246",
                   "goalSecretId": 134,
                   "label": "#134 · Blue Map: Donate 10 Coins to the Donation Machine"
                 },
                 {
-                  "type": "counter",
-                  "id": 20,
-                  "atLeast": 50,
+                  "type": "node",
+                  "id": "collectible:249",
                   "goalSecretId": 135,
                   "label": "#135 · There's Options: Donate 50 Coins to the Donation Machine"
                 },
                 {
-                  "type": "counter",
-                  "id": 20,
-                  "atLeast": 150,
+                  "type": "node",
+                  "id": "collectible:260",
                   "goalSecretId": 136,
                   "label": "#136 · Black Candle: Donate 150 Coins to the Donation Machine"
                 },
                 {
-                  "type": "counter",
-                  "id": 20,
-                  "atLeast": 400,
+                  "type": "node",
+                  "id": "collectible:289",
                   "goalSecretId": 137,
                   "label": "#137 · Red Candle: Donate 400 Coins to the Donation Machine"
                 },
@@ -22565,23 +22478,20 @@
                   "label": "#138 · Stop Watch: Donate 999 Coins to the Donation Machine"
                 },
                 {
-                  "type": "counter",
-                  "id": 1,
-                  "atLeast": 4,
+                  "type": "node",
+                  "id": "collectible:32",
                   "goalSecretId": 139,
                   "label": "#139 · Wire Coat Hanger: Defeat Mom's Heart 4 times"
                 },
                 {
-                  "type": "counter",
-                  "id": 1,
-                  "atLeast": 6,
+                  "type": "node",
+                  "id": "collectible:149",
                   "goalSecretId": 140,
                   "label": "#140 · Ipecac: Defeat Mom's Heart 6 times"
                 },
                 {
-                  "type": "counter",
-                  "id": 1,
-                  "atLeast": 7,
+                  "type": "node",
+                  "id": "collectible:240",
                   "goalSecretId": 141,
                   "label": "#141 · Experimental Treatment: Defeat Mom's Heart 7 times"
                 },
@@ -22593,9 +22503,8 @@
                   "label": "#142 · Krampus: Take 20 items from Devil Rooms"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:143",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:293",
                   "goalSecretId": 143,
                   "label": "#143 · Head of Krampus: Defeat Krampus"
                 },
@@ -22607,16 +22516,14 @@
                   "label": "#144 · Super Meat Boy: Make a Super Meat Boy by picking up 4 copies of Cube of Meat in one run"
                 },
                 {
-                  "type": "counter",
-                  "id": 5,
-                  "atLeast": 100,
+                  "type": "node",
+                  "id": "collectible:294",
                   "goalSecretId": 145,
                   "label": "#145 · Butter Bean: Destroy 100 Poops"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:146",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:252",
                   "goalSecretId": 146,
                   "label": "#146 · Little Baggy: Pick up 2 syringe-related items in a single run"
                 },
@@ -22639,9 +22546,8 @@
                   "label": "#149 · Missing Poster: Defeat The Lamb as Isaac"
                 },
                 {
-                  "type": "counter",
-                  "id": 1,
-                  "atLeast": 2,
+                  "type": "node",
+                  "id": "collectible:221",
                   "goalSecretId": 150,
                   "label": "#150 · Rubber Cement: Defeat Mom's Heart 2 times"
                 },
@@ -22857,42 +22763,32 @@
               "label": "Afterbirth · requirements 179–276",
               "conditions": [
                 {
-                  "type": "mark",
-                  "character": "Isaac",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:404",
                   "goalSecretId": 179,
                   "label": "#179 · Fart Baby: Defeat Hush as Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:407",
                   "goalSecretId": 180,
                   "label": "#180 · Purity: Defeat Hush as Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Cain",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:386",
                   "goalSecretId": 181,
                   "label": "#181 · D12: Defeat Hush as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Judas",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:391",
                   "goalSecretId": 182,
                   "label": "#182 · Betrayal: Defeat Hush as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "???",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:361",
                   "goalSecretId": 183,
                   "label": "#183 · Fate's Reward: Defeat Hush as ???"
                 },
@@ -22903,42 +22799,32 @@
                   "label": "#184 · Athame: Defeat Hush as Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:81",
                   "goalSecretId": 185,
                   "label": "#185 · Blind Rage: Defeat Hush as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:399",
                   "goalSecretId": 186,
                   "label": "#186 · Maw of the Void: Defeat Hush as Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lazarus",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:409",
                   "goalSecretId": 187,
                   "label": "#187 · Empty Vessel: Defeat Hush as Lazarus"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:381",
                   "goalSecretId": 188,
                   "label": "#188 · Eden's Blessing: Defeat Hush as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:363",
                   "goalSecretId": 189,
                   "label": "#189 · Sworn Protector: Defeat Hush as The Lost"
                 },
@@ -22955,58 +22841,44 @@
                   "label": "#191 · Keeper now holds... A Penny!: Defeat Hush as Keeper"
                 },
                 {
-                  "type": "mark",
-                  "character": "Isaac",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:362",
                   "goalSecretId": 192,
                   "label": "#192 · Lil' Chest: Defeat Ultra Greed as Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:387",
                   "goalSecretId": 193,
                   "label": "#193 · Censer: Defeat Ultra Greed as Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Cain",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:410",
                   "goalSecretId": 194,
                   "label": "#194 · Evil Eye: Defeat Ultra Greed as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Judas",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:433",
                   "goalSecretId": 195,
                   "label": "#195 · My Shadow: Defeat Ultra Greed as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "???",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:67",
                   "goalSecretId": 196,
                   "label": "#196 · Cracked Dice: Defeat Ultra Greed as ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:80",
                   "goalSecretId": 197,
                   "label": "#197 · Black Feather: Defeat Ultra Greed as Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:411",
                   "goalSecretId": 198,
                   "label": "#198 · Lusty Blood: Defeat Ultra Greed as Samson"
                 },
@@ -23017,42 +22889,32 @@
                   "label": "#199 · Lilith: Defeat Ultra Greed as Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lazarus",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:388",
                   "goalSecretId": 200,
                   "label": "#200 · Key Bum: Defeat Ultra Greed as Lazarus"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:405",
                   "goalSecretId": 201,
                   "label": "#201 · GB Bug: Defeat Ultra Greed as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:392",
                   "goalSecretId": 202,
                   "label": "#202 · Zodiac: Defeat Ultra Greed as The Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lilith",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:357",
                   "goalSecretId": 203,
                   "label": "#203 · Box of Friends: Defeat Ultra Greed as Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Keeper",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:84",
                   "goalSecretId": 204,
                   "label": "#204 · Rib of Greed: Defeat Ultra Greed as Keeper"
                 },
@@ -23173,26 +23035,20 @@
                   "label": "#219 · Cambion Conception: Defeat ??? as Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lilith",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:393",
                   "goalSecretId": 220,
                   "label": "#220 · Serpent's Kiss: Defeat Satan as Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lilith",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:417",
                   "goalSecretId": 221,
                   "label": "#221 · Succubus: Defeat The Lamb as Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lilith",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:413",
                   "goalSecretId": 222,
                   "label": "#222 · Immaculate Conception: Complete the Boss Rush as Lilith"
                 },
@@ -23298,10 +23154,8 @@
                   "label": "#238 · Deep Pockets: Defeat ??? as Keeper"
                 },
                 {
-                  "type": "mark",
-                  "character": "Keeper",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:85",
                   "goalSecretId": 239,
                   "label": "#239 · Karma: Defeat The Lamb as Keeper"
                 },
@@ -23333,9 +23187,8 @@
                   "label": "#243 · Special Hanging Shopkeepers: Donate 14 Coins to the Greed Donation Machine"
                 },
                 {
-                  "type": "counter",
-                  "id": 115,
-                  "atLeast": 33,
+                  "type": "node",
+                  "id": "collectible:349",
                   "goalSecretId": 244,
                   "label": "#244 · Wooden Nickel: Donate 33 Coins to the Greed Donation Machine"
                 },
@@ -23368,9 +23221,8 @@
                   "label": "#248 · Eve now holds Razor Blade: Donate 439 Coins to the Greed Donation Machine"
                 },
                 {
-                  "type": "counter",
-                  "id": 115,
-                  "atLeast": 666,
+                  "type": "node",
+                  "id": "trinket:83",
                   "goalSecretId": 249,
                   "label": "#249 · Store Key: Donate 666 Coins to the Greed Donation Machine"
                 },
@@ -24419,9 +24271,8 @@
                   "label": "#275 · Generosity: Donate 999 Coins to the Greed Donation Machine"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:276",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:441",
                   "goalSecretId": 276,
                   "label": "#276 · Mega: Defeat Mega Satan as every character ( except tainted characters)"
                 }
@@ -24479,10 +24330,8 @@
                   "label": "#283 · Eucharist: Defeat Delirium as Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Cain",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:110",
                   "goalSecretId": 284,
                   "label": "#284 · Silver Dollar: Defeat Delirium as Cain"
                 },
@@ -24493,26 +24342,20 @@
                   "label": "#285 · Shade: Defeat Delirium as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "???",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:472",
                   "goalSecretId": 286,
                   "label": "#286 · King Baby: Defeat Delirium as ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:111",
                   "goalSecretId": 287,
                   "label": "#287 · Bloody Crown: Defeat Delirium as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:486",
                   "goalSecretId": 288,
                   "label": "#288 · Dull Razor: Defeat Delirium as Eve"
                 },
@@ -24523,10 +24366,8 @@
                   "label": "#289 · Eden's Soul: Defeat Delirium as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:442",
                   "goalSecretId": 290,
                   "label": "#290 · Dark Prince's Crown: Defeat Delirium as Azazel"
                 },
@@ -24537,26 +24378,20 @@
                   "label": "#291 · Compound Fracture: Defeat Delirium as Lazarus"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lilith",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:496",
                   "goalSecretId": 292,
                   "label": "#292 · Euthanasia: Defeat Delirium as Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "consumable:51",
                   "goalSecretId": 293,
                   "label": "#293 · Holy Card: Defeat Delirium as The Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "Keeper",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:485",
                   "goalSecretId": 294,
                   "label": "#294 · Crooked Penny: Defeat Delirium as Keeper"
                 },
@@ -24567,74 +24402,56 @@
                   "label": "#295 · Void: Defeat Delirium as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Isaac",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:476",
                   "goalSecretId": 296,
                   "label": "#296 · D1: Defeat Ultra Greedier as Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:464",
                   "goalSecretId": 297,
                   "label": "#297 · Glyph of Balance: Defeat Ultra Greedier as Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Cain",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:500",
                   "goalSecretId": 298,
                   "label": "#298 · Sack of Sacks: Defeat Ultra Greedier as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Judas",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:462",
                   "goalSecretId": 299,
                   "label": "#299 · Eye of Belial: Defeat Ultra Greedier as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "???",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "trinket:91",
                   "goalSecretId": 300,
                   "label": "#300 · Meconium: Defeat Ultra Greedier as ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "trinket:119",
                   "goalSecretId": 301,
                   "label": "#301 · Stem Cell: Defeat Ultra Greedier as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "trinket:107",
                   "goalSecretId": 302,
                   "label": "#302 · Crow Heart: Defeat Ultra Greedier as Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:488",
                   "goalSecretId": 303,
                   "label": "#303 · Metronome: Defeat Ultra Greedier as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "trinket:118",
                   "goalSecretId": 304,
                   "label": "#304 · Bat Wing: Defeat Ultra Greedier as Azazel"
                 },
@@ -24645,74 +24462,56 @@
                   "label": "#305 · Plan C: Defeat Ultra Greedier as Lazarus"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lilith",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:498",
                   "goalSecretId": 306,
                   "label": "#306 · Duality: Defeat Ultra Greedier as Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:455",
                   "goalSecretId": 307,
                   "label": "#307 · Dad's Lost Coin: Defeat Ultra Greedier as The Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "Keeper",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:450",
                   "goalSecretId": 308,
                   "label": "#308 · Eye of Greed: Defeat Ultra Greedier as Keeper"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:41",
                   "goalSecretId": 309,
                   "label": "#309 · Black Rune: Defeat Ultra Greedier as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "Isaac",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:113",
                   "goalSecretId": 310,
                   "label": "#310 · Locust of Wrath: Defeat Isaac as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:114",
                   "goalSecretId": 311,
                   "label": "#311 · Locust of Pestilence: Defeat Satan as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:115",
                   "goalSecretId": 312,
                   "label": "#312 · Locust of Famine: Defeat ??? as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:116",
                   "goalSecretId": 313,
                   "label": "#313 · Locust of Death: Defeat The Lamb as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:117",
                   "goalSecretId": 314,
                   "label": "#314 · Locust of Conquest: Complete the Boss Rush as Apollyon"
                 },
@@ -24723,10 +24522,8 @@
                   "label": "#315 · Hushy: Defeat Hush as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:504",
                   "goalSecretId": 316,
                   "label": "#316 · Brown Nugget: Defeat Ultra Greed as Apollyon"
                 },
@@ -24863,16 +24660,14 @@
                   "label": "#325 · Dedication: Participate in 31 Daily Challenges"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:326",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "consumable:28",
                   "goalSecretId": 326,
                   "label": "#326 · ZIP!: Defeat The Lamb in under 20 minutes"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:327",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "consumable:29",
                   "goalSecretId": 327,
                   "label": "#327 · It's the Key: Defeat The Lamb without taking Hearts, Coins, or Bombs through the entire run"
                 },
@@ -24884,9 +24679,8 @@
                   "label": "#328 · Mr. Resetter!: Reset 7 times in a row SwitchPS 4 Get a minus 10-win streak"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:329",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "consumable:30",
                   "goalSecretId": 329,
                   "label": "#329 · Living on the edge: Complete a chapter start-to-finish with only half a Heart total"
                 },
@@ -25012,37 +24806,32 @@
                   "label": "#348 · The gate is open!: Defeat The Lamb"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:349",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:512",
                   "goalSecretId": 349,
                   "label": "#349 · Black Hole: Defeat 20 Portals"
                 },
                 {
-                  "type": "counter",
-                  "id": 2,
-                  "atLeast": 500,
+                  "type": "node",
+                  "id": "collectible:515",
                   "goalSecretId": 350,
                   "label": "#350 · Mystery Gift: Destroy 500 rocks"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:351",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:516",
                   "goalSecretId": 351,
                   "label": "#351 · Sprinkler: Beat Chapter 1 without taking damage"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:352",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:511",
                   "goalSecretId": 352,
                   "label": "#352 · Angry Fly: Become Beelzebub"
                 },
                 {
-                  "type": "counter",
-                  "id": 194,
-                  "atLeast": 5,
+                  "type": "node",
+                  "id": "collectible:513",
                   "goalSecretId": 353,
                   "label": "#353 · Bozo: Destroy 5 rainbow poops"
                 },
@@ -25053,218 +24842,188 @@
                   "label": "#354 · Broken Modem: Complete 7 Daily Challenges (by touching the trophy at the end)"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:355",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:518",
                   "goalSecretId": 355,
                   "label": "#355 · Buddy in a Box: Pick up 5 familiars in a single run"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:356",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:517",
                   "goalSecretId": 356,
                   "label": "#356 · Fast Bombs: Defeat Little Horn 20 times"
                 },
                 {
-                  "type": "boss_defeated",
-                  "boss": "Delirium",
+                  "type": "node",
+                  "id": "collectible:519",
                   "goalSecretId": 357,
                   "label": "#357 · Lil Delirium: Defeat Delirium for the 1st time"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:358",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:120",
                   "goalSecretId": 358,
                   "label": "#358 · Hairpin: Recharge using Lil' Batteries 20 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:359",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:121",
                   "goalSecretId": 359,
                   "label": "#359 · Wooden Cross: Sleep in a bed"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:360",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:122",
                   "goalSecretId": 360,
                   "label": "#360 · Butter!: Complete 2 Victory Laps by defeating The Lamb"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:361",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "consumable:52",
                   "goalSecretId": 361,
                   "label": "#361 · Huge Growth: Be 3 times larger than the starting size"
                 },
                 {
-                  "type": "counter",
-                  "id": 196,
-                  "atLeast": 20,
+                  "type": "node",
+                  "id": "consumable:53",
                   "goalSecretId": 362,
                   "label": "#362 · Ancient Recall: Use Cards and Runes 20 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:363",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "consumable:54",
                   "goalSecretId": 363,
                   "label": "#363 · Era Walk: Add both the Broken Watch and the Stop Watch to your collection"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:364",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:521",
                   "goalSecretId": 364,
                   "label": "#364 · Coupon: Purchase anything from Shops, Devil Rooms, and/or Black Markets 50 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:365",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:522",
                   "goalSecretId": 365,
                   "label": "#365 · Telekinesis: Beat Chapter 2 without taking damage"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:366",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:523",
                   "goalSecretId": 366,
                   "label": "#366 · Moving Box: Use Pandora's Box in Dark Room"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:367",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:520",
                   "goalSecretId": 367,
                   "label": "#367 · Jumper Cables: Pick up 2 battery-related items in a single run"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:368",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:525",
                   "goalSecretId": 368,
                   "label": "#368 · Leprosy: Beat Chapter 3 without taking damage"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:369",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:524",
                   "goalSecretId": 369,
                   "label": "#369 · Technology Zero: Pick up 2 technology-related items in a single run"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:370",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:123",
                   "goalSecretId": 370,
                   "label": "#370 · Filigree Feather: Acquire both Key Piece 1 and Key Piece 2"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:371",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:527",
                   "goalSecretId": 371,
                   "label": "#371 · Mr. ME!: Open 20 Locked Chests"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:372",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:526",
                   "goalSecretId": 372,
                   "label": "#372 · 7 Seals: Defeat all 5 Harbingers"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:373",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:528",
                   "goalSecretId": 373,
                   "label": "#373 · Angelic Prism: Defeat an Angel 10 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:374",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:529",
                   "goalSecretId": 374,
                   "label": "#374 · Pop!: Beat Chapter 4 without taking damage"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:375",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:124",
                   "goalSecretId": 375,
                   "label": "#375 · Door Stop: Blow up doors and Secret Room walls 50 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:376",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:530",
                   "goalSecretId": 376,
                   "label": "#376 · Death's List: Take 25 Deals with the Devil"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:377",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:531",
                   "goalSecretId": 377,
                   "label": "#377 · Haemolacria: Acquire Blood Clot 10 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:378",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:532",
                   "goalSecretId": 378,
                   "label": "#378 · Lachryphagy: Collect 10 \"Tears Up\" items or pills in one run"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:379",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:534",
                   "goalSecretId": 379,
                   "label": "#379 · Schoolbag: Enter 6 Shops in one run"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:380",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:533",
                   "goalSecretId": 380,
                   "label": "#380 · Trisagion: Take 25 Angel Rooms items"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:381",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:125",
                   "goalSecretId": 381,
                   "label": "#381 · Extension Cord: Have The Battery, 9 Volt, and Car Battery in Isaac's collection"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:382",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:540",
                   "goalSecretId": 382,
                   "label": "#382 · Flat Stone: Acquire Rubber Cement 5 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:383",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:536",
                   "goalSecretId": 383,
                   "label": "#383 · Sacrificial Altar: Take 50 Deals with the Devil"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:384",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:537",
                   "goalSecretId": 384,
                   "label": "#384 · Lil Spewer: Have Isaac die to his own explosion from an explosive and poisoned tear"
                 },
                 {
-                  "type": "counter",
-                  "id": 202,
-                  "atLeast": 10,
+                  "type": "node",
+                  "id": "collectible:535",
                   "goalSecretId": 385,
                   "label": "#385 · Blanket: Sleep in 10 beds"
                 },
@@ -25275,23 +25034,20 @@
                   "label": "#386 · Marbles: Use 5 Gulp! pills in one run Placebo uses count"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:387",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:539",
                   "goalSecretId": 387,
                   "label": "#387 · Mystery Egg: Spawn three charmed enemies in the same room"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:388",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:126",
                   "goalSecretId": 388,
                   "label": "#388 · Rotten Penny: Have 20 Blue Flies at the same time"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:389",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:127",
                   "goalSecretId": 389,
                   "label": "#389 · Baby-Bender: Use I - The Magician or Telepathy For Dummies while already having homing tears"
                 },
@@ -25308,82 +25064,62 @@
                   "label": "#391 · Bone Heart: It's complicated"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Mom’s Heart / It Lives!",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:541",
                   "goalSecretId": 392,
                   "label": "#392 · Marrow: Defeat Mom's Heart or It Lives! on Hard mode as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Isaac",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:542",
                   "goalSecretId": 393,
                   "label": "#393 · Slipped Rib: Defeat Isaac as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:544",
                   "goalSecretId": 394,
                   "label": "#394 · Pointy Rib: Defeat Satan as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "???",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:548",
                   "goalSecretId": 395,
                   "label": "#395 · Jaw Bone: Defeat ??? as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:549",
                   "goalSecretId": 396,
                   "label": "#396 · Brittle Bones: Defeat The Lamb as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:547",
                   "goalSecretId": 397,
                   "label": "#397 · Divorce Papers: Complete the Boss Rush as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:543",
                   "goalSecretId": 398,
                   "label": "#398 · Hallowed Ground: Defeat Hush as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Greed / Greedier",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:128",
                   "goalSecretId": 399,
                   "label": "#399 · Finger Bone: Defeat Ultra Greed as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:546",
                   "goalSecretId": 400,
                   "label": "#400 · Dad's Ring: Defeat Ultra Greedier as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:545",
                   "goalSecretId": 401,
                   "label": "#401 · Book of the Dead: Defeat Delirium as The Forgotten"
                 },
@@ -25505,30 +25241,26 @@
                   "label": "#407 · A Secret Exit: Defeat Hush 3 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:408",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:141",
                   "goalSecretId": 408,
                   "label": "#408 · Forgotten Lullaby: Blow up The Siren's skull after defeating her"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:409",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:649",
                   "goalSecretId": 409,
                   "label": "#409 · Fruity Plum: Defeat Baby Plum 10 times"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:410",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:650",
                   "goalSecretId": 410,
                   "label": "#410 · Plum Flute: Allow Baby Plum to escape instead of defeating her"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:411",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "feature:rotten-heart",
                   "goalSecretId": 411,
                   "label": "#411 · Rotten Heart: Enter Corpse for the first time"
                 },
@@ -25586,18 +25318,14 @@
                   "label": "#419 · Blessed Penny: Defeat ??? as Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Bethany",
-                  "target": "The Lamb",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:585",
                   "goalSecretId": 420,
                   "label": "#420 · Alabaster Box: Defeat The Lamb as Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Bethany",
-                  "target": "Boss Rush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:142",
                   "goalSecretId": 421,
                   "label": "#421 · Beth's Faith: Complete the Boss Rush as Bethany"
                 },
@@ -25608,18 +25336,14 @@
                   "label": "#422 · Soul Locket: Defeat Ultra Greed as Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Bethany",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:568",
                   "goalSecretId": 423,
                   "label": "#423 · Divine Intervention: Defeat Hush as Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Bethany",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "collectible:653",
                   "goalSecretId": 424,
                   "label": "#424 · Vade Retro: Defeat Ultra Greedier as Bethany"
                 },
@@ -25731,10 +25455,8 @@
                   "label": "#429 · The Stairway: Defeat Isaac as Jacob and Esau"
                 },
                 {
-                  "type": "mark",
-                  "character": "Jacob & Esau",
-                  "target": "Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:621",
                   "goalSecretId": 430,
                   "label": "#430 · Red Stew: Defeat Satan as Jacob and Esau"
                 },
@@ -25763,10 +25485,8 @@
                   "label": "#434 · Inner Child: Defeat Ultra Greed as Jacob and Esau"
                 },
                 {
-                  "type": "mark",
-                  "character": "Jacob & Esau",
-                  "target": "Hush",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:697",
                   "goalSecretId": 435,
                   "label": "#435 · Vanishing Twin: Defeat Hush as Jacob and Esau"
                 },
@@ -25777,10 +25497,8 @@
                   "label": "#436 · Genesis: Defeat Ultra Greedier as Jacob and Esau"
                 },
                 {
-                  "type": "mark",
-                  "character": "Jacob & Esau",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:709",
                   "goalSecretId": 437,
                   "label": "#437 · Suplex!: Defeat Delirium as Jacob and Esau"
                 },
@@ -25872,10 +25590,8 @@
                   "label": "#439 · Illusion Baby: Defeat Mega Satan as Jacob and Esau"
                 },
                 {
-                  "type": "mark",
-                  "character": "Isaac",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:631",
                   "goalSecretId": 440,
                   "label": "#440 · Meat Cleaver: Defeat Mother as Isaac"
                 },
@@ -25886,18 +25602,14 @@
                   "label": "#441 · Options?: Defeat The Beast as Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:639",
                   "goalSecretId": 442,
                   "label": "#442 · Yuck Heart: Defeat Mother as Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Magdalene",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:671",
                   "goalSecretId": 443,
                   "label": "#443 · Candy Heart: Defeat The Beast as Magdalene"
                 },
@@ -25908,18 +25620,14 @@
                   "label": "#444 · Guppy's Eye: Defeat Mother as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Cain",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:672",
                   "goalSecretId": 445,
                   "label": "#445 · A Pound of Flesh: Defeat The Beast as Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Judas",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:641",
                   "goalSecretId": 446,
                   "label": "#446 · Akeldama: Defeat Mother as Judas"
                 },
@@ -25930,34 +25638,26 @@
                   "label": "#447 · Redemption: Defeat The Beast as Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "???",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:609",
                   "goalSecretId": 448,
                   "label": "#448 · Eternal D6: Defeat Mother as ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "???",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:680",
                   "goalSecretId": 449,
                   "label": "#449 · Montezuma's Revenge: Defeat The Beast as ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:610",
                   "goalSecretId": 450,
                   "label": "#450 · Bird Cage: Defeat Mother as Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eve",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:675",
                   "goalSecretId": 451,
                   "label": "#451 · Cracked Orb: Defeat The Beast as Eve"
                 },
@@ -25968,18 +25668,14 @@
                   "label": "#452 · Bloody Gust: Defeat Mother as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Samson",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:676",
                   "goalSecretId": 453,
                   "label": "#453 · Empty Heart: Defeat The Beast as Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Azazel",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:146",
                   "goalSecretId": 454,
                   "label": "#454 · Devil's Crown: Defeat Mother as Azazel"
                 },
@@ -25996,10 +25692,8 @@
                   "label": "#456 · Tinytoma: Defeat Mother as Lazarus"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lazarus",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:677",
                   "goalSecretId": 457,
                   "label": "#457 · Astral Projection: Defeat The Beast as Lazarus"
                 },
@@ -26010,34 +25704,26 @@
                   "label": "#458 · 'M: Defeat Mother as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Eden",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:720",
                   "goalSecretId": 459,
                   "label": "#459 · Everything Jar: Defeat The Beast as Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:612",
                   "goalSecretId": 460,
                   "label": "#460 · Lost Soul: Defeat Mother as The Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Lost",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:684",
                   "goalSecretId": 461,
                   "label": "#461 · Hungry Soul: Defeat The Beast as The Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "Lilith",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:565",
                   "goalSecretId": 462,
                   "label": "#462 · Blood Puppy: Defeat Mother as Lilith"
                 },
@@ -26054,42 +25740,32 @@
                   "label": "#464 · Keeper's Sack: Defeat Mother as Keeper"
                 },
                 {
-                  "type": "mark",
-                  "character": "Keeper",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:719",
                   "goalSecretId": 465,
                   "label": "#465 · Keeper's Box: Defeat The Beast as Keeper"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:681",
                   "goalSecretId": 466,
                   "label": "#466 · Lil Portal: Defeat Mother as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Apollyon",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:682",
                   "goalSecretId": 467,
                   "label": "#467 · Worm Friend: Defeat The Beast as Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:683",
                   "goalSecretId": 468,
                   "label": "#468 · Bone Spurs: Defeat Mother as The Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "The Forgotten",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:674",
                   "goalSecretId": 469,
                   "label": "#469 · Spirit Shackles: Defeat The Beast as The Forgotten"
                 },
@@ -26100,10 +25776,8 @@
                   "label": "#470 · Revelation: Defeat Mother as Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Bethany",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:685",
                   "goalSecretId": 471,
                   "label": "#471 · Jar of Wisps: Defeat The Beast as Bethany"
                 },
@@ -26114,10 +25788,8 @@
                   "label": "#472 · Magic Skin: Defeat Mother as Jacob and Esau"
                 },
                 {
-                  "type": "mark",
-                  "character": "Jacob & Esau",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:687",
                   "goalSecretId": 473,
                   "label": "#473 · Friend Finder: Defeat The Beast as Jacob and Esau"
                 },
@@ -26230,66 +25902,50 @@
                   "label": "#491 · Glitched Crown: Defeat The Beast as Tainted Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Magdalene",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:690",
                   "goalSecretId": 492,
                   "label": "#492 · Belly Jelly: Defeat The Beast as Tainted Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Cain",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:150",
                   "goalSecretId": 493,
                   "label": "#493 · Blue Key: Defeat The Beast as Tainted Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Judas",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:692",
                   "goalSecretId": 494,
                   "label": "#494 · Sanguine Bond: Defeat The Beast as Tainted Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted ???",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:693",
                   "goalSecretId": 495,
                   "label": "#495 · The Swarm: Defeat The Beast as Tainted ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Eve",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:694",
                   "goalSecretId": 496,
                   "label": "#496 · Heartbreak: Defeat The Beast as Tainted Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Samson",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:611",
                   "goalSecretId": 497,
                   "label": "#497 · Larynx: Defeat The Beast as Tainted Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Azazel",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:699",
                   "goalSecretId": 498,
                   "label": "#498 · Azazel's Rage: Defeat The Beast as Tainted Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Lazarus",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:696",
                   "goalSecretId": 499,
                   "label": "#499 · Salvation: Defeat The Beast as Tainted Lazarus"
                 },
@@ -26312,10 +25968,8 @@
                   "label": "#502 · Twisted Pair: Defeat The Beast as Tainted Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Keeper",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:667",
                   "goalSecretId": 503,
                   "label": "#503 · Strawman: Defeat The Beast as Tainted Keeper"
                 },
@@ -26326,26 +25980,20 @@
                   "label": "#504 · Echo Chamber: Defeat The Beast as Tainted Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted The Forgotten",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:701",
                   "goalSecretId": 505,
                   "label": "#505 · Isaac's Tomb: Defeat The Beast as Tainted Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Bethany",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:702",
                   "goalSecretId": 506,
                   "label": "#506 · Vengeful Spirit: Defeat The Beast as Tainted Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Jacob",
-                  "target": "The Beast",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:703",
                   "goalSecretId": 507,
                   "label": "#507 · Esau Jr.: Defeat The Beast as Tainted Jacob"
                 },
@@ -26447,9 +26095,8 @@
                   "label": "#522 · Ice Cube: Complete Pica Run (challenge #41)"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:523",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:147",
                   "goalSecretId": 523,
                   "label": "#523 · Charged Penny: Donate to Battery Bums until they pay out with an item 5 times"
                 },
@@ -26460,10 +26107,8 @@
                   "label": "#524 · The Fool: Defeat Ultra Greedier as Tainted Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Judas",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:57",
                   "goalSecretId": 525,
                   "label": "#525 · The Magician: Defeat Ultra Greedier as Tainted Judas"
                 },
@@ -26474,10 +26119,8 @@
                   "label": "#526 · The High Priestess: Defeat Ultra Greedier as Tainted Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Eve",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:59",
                   "goalSecretId": 527,
                   "label": "#527 · The Empress: Defeat Ultra Greedier as Tainted Eve"
                 },
@@ -26494,10 +26137,8 @@
                   "label": "#529 · The Hierophant: Defeat Ultra Greedier as Tainted Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Magdalene",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:62",
                   "goalSecretId": 530,
                   "label": "#530 · The Lovers: Defeat Ultra Greedier as Tainted Magdalene"
                 },
@@ -26526,26 +26167,20 @@
                   "label": "#534 · Wheel of Fortune: Defeat Ultra Greedier as Tainted Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Samson",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:67",
                   "goalSecretId": 535,
                   "label": "#535 · Strength: Defeat Ultra Greedier as Tainted Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Keeper",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:68",
                   "goalSecretId": 536,
                   "label": "#536 · The Hanged Man: Defeat Ultra Greedier as Tainted Keeper"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted The Forgotten",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:69",
                   "goalSecretId": 537,
                   "label": "#537 · Death: Defeat Ultra Greedier as Tainted Forgotten"
                 },
@@ -26556,18 +26191,14 @@
                   "label": "#538 · Temperance: Complete DELETE THIS (challenge #45)"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Azazel",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:71",
                   "goalSecretId": 539,
                   "label": "#539 · The Devil: Defeat Ultra Greedier as Tainted Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Apollyon",
-                  "target": "Greed / Greedier",
-                  "minimum": 2,
+                  "type": "node",
+                  "id": "consumable:72",
                   "goalSecretId": 540,
                   "label": "#540 · The Tower: Defeat Ultra Greedier as Tainted Apollyon"
                 },
@@ -26596,16 +26227,14 @@
                   "label": "#544 · The World: Defeat Ultra Greedier as Tainted Eden"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:545",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "trinket:143",
                   "goalSecretId": 545,
                   "label": "#545 · Old Capacitor: Kill 10 Battery Bums"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:546",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:646",
                   "goalSecretId": 546,
                   "label": "#546 · Brimstone Bombs: After breaking Hornfel's minecart, kill him before he can escape"
                 },
@@ -26616,228 +26245,68 @@
                   "label": "#547 · Mega Mush: Earn all Hard mode Completion Marks for all non-Tainted characters"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Isaac",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Isaac",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Isaac",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Isaac",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:153",
                   "goalSecretId": 548,
                   "label": "#548 · Mom's Lock: Defeat Isaac, ???, Satan, and The Lamb as Tainted Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Isaac",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:154",
                   "goalSecretId": 549,
                   "label": "#549 · Dice Bag: Defeat Mother as Tainted Isaac"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Magdalene",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Magdalene",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Magdalene",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Magdalene",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:155",
                   "goalSecretId": 550,
                   "label": "#550 · Holy Crown: Defeat Isaac, ???, Satan, and The Lamb as Tainted Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Magdalene",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:156",
                   "goalSecretId": 551,
                   "label": "#551 · Mother's Kiss: Defeat Mother as Tainted Magdalene"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Cain",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Cain",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Cain",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Cain",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:159",
                   "goalSecretId": 552,
                   "label": "#552 · Gilded Key: Defeat Isaac, ???, Satan, and The Lamb as Tainted Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Cain",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:160",
                   "goalSecretId": 553,
                   "label": "#553 · Lucky Sack: Defeat Mother as Tainted Cain"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Judas",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Judas",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Judas",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Judas",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:173",
                   "goalSecretId": 554,
                   "label": "#554 · Your Soul: Defeat Isaac, ???, Satan, and The Lamb as Tainted Judas"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Judas",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:174",
                   "goalSecretId": 555,
                   "label": "#555 · Number Magnet: Defeat Mother as Tainted Judas"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted ???",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted ???",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted ???",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted ???",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:163",
                   "goalSecretId": 556,
                   "label": "#556 · Dingle Berry: Defeat Isaac, ???, Satan, and The Lamb as Tainted ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted ???",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:164",
                   "goalSecretId": 557,
                   "label": "#557 · Ring Cap: Defeat Mother as Tainted ???"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eve",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eve",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eve",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eve",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:175",
                   "goalSecretId": 558,
                   "label": "#558 · Strange Key: Defeat Isaac, ???, Satan, and The Lamb as Tainted Eve"
                 },
@@ -26848,111 +26317,32 @@
                   "label": "#559 · Lil Clot: Defeat Mother as Tainted Eve"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Samson",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Samson",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Samson",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Samson",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:177",
                   "goalSecretId": 560,
                   "label": "#560 · Temporary Tattoo: Defeat Isaac, ???, Satan, and The Lamb as Tainted Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Samson",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:178",
                   "goalSecretId": 561,
                   "label": "#561 · Swallowed M80: Defeat Mother as Tainted Samson"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Azazel",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Azazel",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Azazel",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Azazel",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:161",
                   "goalSecretId": 562,
                   "label": "#562 · Wicked Crown: Defeat Isaac, ???, Satan, and The Lamb as Tainted Azazel"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Azazel",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:162",
                   "goalSecretId": 563,
                   "label": "#563 · Azazel's Stump: Defeat Mother as Tainted Azazel"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lazarus",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lazarus",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lazarus",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lazarus",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:158",
                   "goalSecretId": 564,
                   "label": "#564 · Torn Pocket: Defeat Isaac, ???, Satan, and The Lamb as Tainted Lazarus"
                 },
@@ -26963,41 +26353,14 @@
                   "label": "#565 · Torn Card: Defeat Mother as Tainted Lazarus"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eden",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eden",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eden",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eden",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:165",
                   "goalSecretId": 566,
                   "label": "#566 · Nuh Uh!: Defeat Isaac, ???, Satan, and The Lamb as Tainted Eden"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Eden",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:166",
                   "goalSecretId": 567,
                   "label": "#567 · Modeling Clay: Defeat Mother as Tainted Eden"
                 },
@@ -27014,197 +26377,62 @@
                   "label": "#569 · Crystal Key: Defeat Mother as Tainted Lost"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lilith",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lilith",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lilith",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lilith",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:183",
                   "goalSecretId": 570,
                   "label": "#570 · The Twins: Defeat Isaac, ???, Satan, and The Lamb as Tainted Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Lilith",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:184",
                   "goalSecretId": 571,
                   "label": "#571 · Adoption Papers: Defeat Mother as Tainted Lilith"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Keeper",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Keeper",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Keeper",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Keeper",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:171",
                   "goalSecretId": 572,
                   "label": "#572 · Keeper's Bargain: Defeat Isaac, ???, Satan, and The Lamb as Tainted Keeper"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Keeper",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:172",
                   "goalSecretId": 573,
                   "label": "#573 · Cursed Penny: Defeat Mother as Tainted Keeper"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Apollyon",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Apollyon",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Apollyon",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Apollyon",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:185",
                   "goalSecretId": 574,
                   "label": "#574 · Cricket Leg: Defeat Isaac, ???, Satan, and The Lamb as Tainted Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Apollyon",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:186",
                   "goalSecretId": 575,
                   "label": "#575 · Apollyon's Best Friend: Defeat Mother as Tainted Apollyon"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted The Forgotten",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted The Forgotten",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted The Forgotten",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted The Forgotten",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:167",
                   "goalSecretId": 576,
                   "label": "#576 · Polished Bone: Defeat Isaac, ???, Satan, and The Lamb as Tainted Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted The Forgotten",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:168",
                   "goalSecretId": 577,
                   "label": "#577 · Hollow Heart: Defeat Mother as Tainted Forgotten"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Bethany",
-                      "target": "Isaac",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Bethany",
-                      "target": "???",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Bethany",
-                      "target": "Satan",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Bethany",
-                      "target": "The Lamb",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "trinket:181",
                   "goalSecretId": 578,
                   "label": "#578 · Expansion Pack: Defeat Isaac, ???, Satan, and The Lamb as Tainted Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Bethany",
-                  "target": "Mother",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "trinket:182",
                   "goalSecretId": 579,
                   "label": "#579 · Beth's Essence: Defeat Mother as Tainted Bethany"
                 },
@@ -27221,16 +26449,14 @@
                   "label": "#581 · Found Soul: Defeat Mother as Tainted Jacob"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:582",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:602",
                   "goalSecretId": 582,
                   "label": "#582 · Member Card: Spend 40+ coins in a single Shop"
                 },
                 {
-                  "type": "manual",
-                  "key": "dead-god:condition:583",
-                  "reason": "The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.",
+                  "type": "node",
+                  "id": "collectible:555",
                   "goalSecretId": 583,
                   "label": "#583 · Golden Razor: In a single run, obtain 99 Coins, then spend all of them"
                 },
@@ -27241,26 +26467,20 @@
                   "label": "#584 · Spindown Dice: Defeat Delirium as Tainted Isaac"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Magdalene",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:724",
                   "goalSecretId": 585,
                   "label": "#585 · Hypercoagulation: Defeat Delirium as Tainted Magdalene"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Cain",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:710",
                   "goalSecretId": 586,
                   "label": "#586 · Bag of Crafting: Defeat Delirium as Tainted Cain"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Judas",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:705",
                   "goalSecretId": 587,
                   "label": "#587 · Dark Arts: Defeat Delirium as Tainted Judas"
                 },
@@ -27271,26 +26491,20 @@
                   "label": "#588 · IBS: Defeat Delirium as Tainted ???"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Eve",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:713",
                   "goalSecretId": 589,
                   "label": "#589 · Sumptorium: Defeat Delirium as Tainted Eve"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Samson",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:704",
                   "goalSecretId": 590,
                   "label": "#590 · Berserk!: Defeat Delirium as Tainted Samson"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Azazel",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:726",
                   "goalSecretId": 591,
                   "label": "#591 · Hemoptysis: Defeat Delirium as Tainted Azazel"
                 },
@@ -27313,18 +26527,14 @@
                   "label": "#594 · Ghost Bombs: Defeat Delirium as Tainted Lost"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Lilith",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:728",
                   "goalSecretId": 595,
                   "label": "#595 · Gello: Defeat Delirium as Tainted Lilith"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Keeper",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:717",
                   "goalSecretId": 596,
                   "label": "#596 · Keeper's Kin: Defeat Delirium as Tainted Keeper"
                 },
@@ -27335,26 +26545,20 @@
                   "label": "#597 · Abyss: Defeat Delirium as Tainted Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted The Forgotten",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:729",
                   "goalSecretId": 598,
                   "label": "#598 · Decap Attack: Defeat Delirium as Tainted Forgotten"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Bethany",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:712",
                   "goalSecretId": 599,
                   "label": "#599 · Lemegeton: Defeat Delirium as Tainted Bethany"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted Jacob",
-                  "target": "Delirium",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "collectible:722",
                   "goalSecretId": 600,
                   "label": "#600 · Anima Sola: Defeat Delirium as Tainted Jacob"
                 },
@@ -27449,10 +26653,8 @@
                   "label": "#614 · Rotten Beggar: Defeat Mega Satan as Tainted Apollyon"
                 },
                 {
-                  "type": "mark",
-                  "character": "Tainted The Forgotten",
-                  "target": "Mega Satan",
-                  "minimum": 1,
+                  "type": "node",
+                  "id": "feature:golden-battery",
                   "goalSecretId": 615,
                   "label": "#615 · Golden Battery: Defeat Mega Satan as Tainted Forgotten"
                 },
@@ -27475,21 +26677,8 @@
                   "label": "#618 · Soul of Isaac: Defeat Hush and Boss Rush as Tainted Isaac"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Magdalene",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Magdalene",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:82",
                   "goalSecretId": 619,
                   "label": "#619 · Soul of Magdalene: Defeat Hush and Boss Rush as Tainted Magdalene"
                 },
@@ -27506,97 +26695,32 @@
                   "label": "#621 · Soul of Judas: Defeat Hush and Boss Rush as Tainted Judas"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted ???",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted ???",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:85",
                   "goalSecretId": 622,
                   "label": "#622 · Soul of ???: Defeat Hush and Boss Rush as Tainted ???"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eve",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Eve",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:86",
                   "goalSecretId": 623,
                   "label": "#623 · Soul of Eve: Defeat Hush and Boss Rush as Tainted Eve"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Samson",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Samson",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:87",
                   "goalSecretId": 624,
                   "label": "#624 · Soul of Samson: Defeat Hush and Boss Rush as Tainted Samson"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Azazel",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Azazel",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:88",
                   "goalSecretId": 625,
                   "label": "#625 · Soul of Azazel: Defeat Hush and Boss Rush as Tainted Azazel"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lazarus",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Lazarus",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:89",
                   "goalSecretId": 626,
                   "label": "#626 · Soul of Lazarus: Defeat Hush and Boss Rush as Tainted Lazarus"
                 },
@@ -27625,78 +26749,26 @@
                   "label": "#630 · Soul of the Keeper: Defeat Hush and Boss Rush as Tainted Keeper"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Apollyon",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Apollyon",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:94",
                   "goalSecretId": 631,
                   "label": "#631 · Soul of Apollyon: Defeat Hush and Boss Rush as Tainted Apollyon"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted The Forgotten",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted The Forgotten",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:95",
                   "goalSecretId": 632,
                   "label": "#632 · Soul of the Forgotten: Defeat Hush and Boss Rush as Tainted Forgotten"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Bethany",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Bethany",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:96",
                   "goalSecretId": 633,
                   "label": "#633 · Soul of Bethany: Defeat Hush and Boss Rush as Tainted Bethany"
                 },
                 {
-                  "type": "all",
-                  "conditions": [
-                    {
-                      "type": "mark",
-                      "character": "Tainted Jacob",
-                      "target": "Hush",
-                      "minimum": 1
-                    },
-                    {
-                      "type": "mark",
-                      "character": "Tainted Jacob",
-                      "target": "Boss Rush",
-                      "minimum": 1
-                    }
-                  ],
+                  "type": "node",
+                  "id": "consumable:97",
                   "goalSecretId": 634,
                   "label": "#634 · Soul of Jacob and Esau: Defeat Hush and Boss Rush as Tainted Jacob"
                 },
@@ -32383,13 +31455,13 @@
         "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml",
         "https://deadgod.yeeterie.org/assets/data-d8ce3ab0.js"
       ],
+      "rank": "DEAD GOD",
       "order": 0,
       "secretId": 637,
       "goal": {
         "type": "dead_god",
         "gameVersion": "Repentance 1.7.9b.J835"
-      },
-      "rank": "DEAD GOD"
+      }
     },
     {
       "id": "collectible:1",
@@ -33729,35 +32801,23 @@
       "name": "Steven",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Steven",
       "unlock": {
-        "description": "Clear Basement 40 times and defeat the Steven boss.",
+        "description": "Available from the start; there is no separate unlock requirement.",
         "requirements": {
-          "type": "all",
-          "conditions": [
-            {
-              "type": "manual",
-              "key": "beat-basement-40-times",
-              "label": "Defeat Basement 40 times",
-              "reason": "The save does not store a verified history of Basement victories."
-            },
-            {
-              "type": "manual",
-              "key": "defeat-steven-boss",
-              "label": "Defeat Steven",
-              "reason": "The save does not store a verified history of this victory."
-            }
-          ]
+          "type": "constant",
+          "value": true
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Steven"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Steven",
+        "https://isaacguru.com/wiki/isaac/c50"
       ],
       "catalog": {
         "kind": "passive",
         "itemId": 50
       },
       "order": 30,
-      "secretId": 16,
-      "rank": "S"
+      "rank": "S",
+      "sourceNote": "This item has no separate unlock gate. Its acquisition method is distinct from content availability."
     },
     {
       "id": "collectible:51",
@@ -37752,10 +36812,10 @@
       "name": "Ball of Bandages",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Ball_of_Bandages",
       "unlock": {
-        "description": "Available from the start; there is no separate unlock requirement.",
+        "description": "Defeat Mom to unlock the Harbinger item rewards.",
         "requirements": {
-          "type": "constant",
-          "value": true
+          "type": "node",
+          "id": "collectible:73"
         },
         "evidence": {
           "type": "collected",
@@ -37765,14 +36825,16 @@
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Ball_of_Bandages"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Ball_of_Bandages",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "passive",
         "itemId": 207
       },
       "order": 284,
-      "rank": "OPEN"
+      "rank": "OPEN",
+      "secretId": 6
     },
     {
       "id": "collectible:208",
@@ -41629,62 +40691,23 @@
       "name": "Glass Cannon",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Glass_Cannon",
       "unlock": {
-        "description": "Complete The Family Man, defeat Lokii, and unlock Judas and It Lives!.",
+        "description": "Available from the start; there is no separate unlock requirement.",
         "requirements": {
-          "type": "all",
-          "conditions": [
-            {
-              "type": "node",
-              "id": "character:judas"
-            },
-            {
-              "type": "counter",
-              "id": 1,
-              "atLeast": 11,
-              "label": "Unlock It Lives! by defeating Mom’s Heart / It Lives! 11 times"
-            },
-            {
-              "type": "node",
-              "id": "challenge-complete:19",
-              "label": "Complete challenge #19: The Family Man"
-            },
-            {
-              "type": "boss_defeated",
-              "boss": "Lokii"
-            }
-          ]
-        },
-        "evidence": {
-          "type": "all",
-          "conditions": [
-            {
-              "type": "counter",
-              "id": 1,
-              "atLeast": 11,
-              "label": "Defeat Mom’s Heart / It Lives! 11 times"
-            },
-            {
-              "type": "challenge",
-              "id": 19,
-              "label": "Complete challenge #19: The Family Man"
-            },
-            {
-              "type": "boss_defeated",
-              "boss": "Lokii"
-            }
-          ]
+          "type": "constant",
+          "value": true
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Glass_Cannon"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Glass_Cannon",
+        "https://isaacguru.com/wiki/isaac/c352"
       ],
       "catalog": {
         "kind": "active",
         "itemId": 352
       },
       "order": 97,
-      "secretId": 164,
-      "rank": "S"
+      "rank": "S",
+      "sourceNote": "This item has no separate unlock gate. Its acquisition method is distinct from content availability."
     },
     {
       "id": "collectible:353",
@@ -42484,62 +41507,23 @@
       "name": "Pay To Play",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Pay_To_Play",
       "unlock": {
-        "description": "Defeat Isaac as Cain and destroy 10 Tinted Rocks.",
+        "description": "Available from the start; there is no separate unlock requirement.",
         "requirements": {
-          "type": "all",
-          "conditions": [
-            {
-              "type": "node",
-              "id": "character:cain"
-            },
-            {
-              "type": "node",
-              "id": "feature:cathedral"
-            },
-            {
-              "type": "mark",
-              "character": "Cain",
-              "target": "Isaac",
-              "minimum": 1,
-              "label": "Cain: Isaac"
-            },
-            {
-              "type": "counter",
-              "id": 3,
-              "atLeast": 10,
-              "label": "Destroy 10 Tinted Rocks"
-            }
-          ]
-        },
-        "evidence": {
-          "type": "all",
-          "conditions": [
-            {
-              "type": "mark",
-              "character": "Cain",
-              "target": "Isaac",
-              "minimum": 1,
-              "label": "Cain: Isaac"
-            },
-            {
-              "type": "counter",
-              "id": 3,
-              "atLeast": 10,
-              "label": "Destroy 10 Tinted Rocks"
-            }
-          ]
+          "type": "constant",
+          "value": true
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Pay_To_Play"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Pay_To_Play",
+        "https://isaacguru.com/wiki/isaac/c380"
       ],
       "catalog": {
         "kind": "passive",
         "itemId": 380
       },
       "order": 103,
-      "secretId": 268,
-      "rank": "S"
+      "rank": "S",
+      "sourceNote": "This item has no separate unlock gate. Its acquisition method is distinct from content availability."
     },
     {
       "id": "collectible:381",
@@ -43639,10 +42623,10 @@
       "name": "More Options",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/More_Options",
       "unlock": {
-        "description": "Available from the start; there is no separate unlock requirement.",
+        "description": "Donate 50 coins to the Donation Machine.",
         "requirements": {
-          "type": "constant",
-          "value": true
+          "type": "node",
+          "id": "collectible:249"
         },
         "evidence": {
           "type": "collected",
@@ -43652,14 +42636,16 @@
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/More_Options"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/More_Options",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "passive",
         "itemId": 414
       },
       "order": 423,
-      "rank": "OPEN"
+      "rank": "OPEN",
+      "secretId": 135
     },
     {
       "id": "collectible:415",
@@ -45645,11 +44631,15 @@
         "https://bindingofisaacrebirth.wiki.gg/wiki/Broken_Glass_Cannon"
       ],
       "catalog": {
-        "kind": "passive",
+        "kind": "active",
         "itemId": 474
       },
       "order": 129,
-      "rank": "C"
+      "rank": "C",
+      "availability": {
+        "type": "node",
+        "id": "collectible:352"
+      }
     },
     {
       "id": "collectible:476",
@@ -46399,30 +45389,23 @@
       "name": "Little Horn",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Little_Horn",
       "unlock": {
-        "description": "Defeat ??? as three different characters",
+        "description": "Available from the start; there is no separate unlock requirement.",
         "requirements": {
-          "type": "manual",
-          "key": "collectible:503:unlock",
-          "label": "Defeat ??? as three different characters",
-          "reason": "The save does not record this action precisely enough to verify it automatically."
-        },
-        "evidence": {
-          "type": "manual",
-          "key": "collectible:503:unlock",
-          "label": "Defeat ??? as three different characters",
-          "reason": "The save does not record this action precisely enough to verify it automatically."
+          "type": "constant",
+          "value": true
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Little_Horn"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Little_Horn",
+        "https://isaacguru.com/wiki/isaac/c503"
       ],
       "catalog": {
         "kind": "passive",
         "itemId": 503
       },
       "order": 138,
-      "secretId": 346,
-      "rank": "C"
+      "rank": "C",
+      "sourceNote": "This item has no separate unlock gate. Its acquisition method is distinct from content availability."
     },
     {
       "id": "collectible:504",
@@ -55421,21 +54404,25 @@
       "name": "Hairpin",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Hairpin",
       "unlock": {
-        "description": "Available from the start; there is no separate unlock requirement.",
+        "description": "Collect 20 batteries.",
         "requirements": {
-          "type": "constant",
-          "value": true
+          "type": "counter",
+          "id": 195,
+          "atLeast": 20,
+          "label": "Collect 20 batteries"
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Hairpin"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Hairpin",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "trinket",
         "itemId": 120
       },
       "order": 197,
-      "rank": "OPEN"
+      "rank": "OPEN",
+      "secretId": 358
     },
     {
       "id": "trinket:121",
@@ -55443,21 +54430,25 @@
       "name": "Wooden Cross",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Wooden_Cross",
       "unlock": {
-        "description": "Available from the start; there is no separate unlock requirement.",
+        "description": "Sleep in a bed.",
         "requirements": {
-          "type": "constant",
-          "value": true
+          "type": "counter",
+          "id": 202,
+          "atLeast": 1,
+          "label": "Sleep in a bed"
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Wooden_Cross"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Wooden_Cross",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "trinket",
         "itemId": 121
       },
       "order": 199,
-      "rank": "OPEN"
+      "rank": "OPEN",
+      "secretId": 359
     },
     {
       "id": "trinket:122",
@@ -55465,21 +54456,25 @@
       "name": "Butter!",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Butter%21",
       "unlock": {
-        "description": "Available from the start; there is no separate unlock requirement.",
+        "description": "Complete two Victory Laps by defeating The Lamb.",
         "requirements": {
-          "type": "constant",
-          "value": true
+          "type": "manual",
+          "key": "trinket:122:unlock",
+          "label": "Complete two Victory Laps by defeating The Lamb",
+          "reason": "The save does not store a verified history of this action."
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Butter%21"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Butter%21",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "trinket",
         "itemId": 122
       },
       "order": 201,
-      "rank": "OPEN"
+      "rank": "OPEN",
+      "secretId": 360
     },
     {
       "id": "trinket:123",
@@ -55487,21 +54482,23 @@
       "name": "Filigree Feather",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Filigree_Feather",
       "unlock": {
-        "description": "Available from the start; there is no separate unlock requirement.",
+        "description": "Collect both Key Pieces from the angels in one run.",
         "requirements": {
-          "type": "constant",
-          "value": true
+          "type": "node",
+          "id": "collectible:175"
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Filigree_Feather"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Filigree_Feather",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "trinket",
         "itemId": 123
       },
       "order": 203,
-      "rank": "OPEN"
+      "rank": "OPEN",
+      "secretId": 370
     },
     {
       "id": "trinket:124",
@@ -55540,21 +54537,36 @@
       "name": "Extension Cord",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Extension_Cord",
       "unlock": {
-        "description": "Available from the start; there is no separate unlock requirement.",
+        "description": "Collect The Battery, 9 Volt and Car Battery in this slot.",
         "requirements": {
-          "type": "constant",
-          "value": true
+          "type": "all",
+          "conditions": [
+            {
+              "type": "collected",
+              "id": 63
+            },
+            {
+              "type": "collected",
+              "id": 116
+            },
+            {
+              "type": "collected",
+              "id": 356
+            }
+          ]
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Extension_Cord"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Extension_Cord",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "trinket",
         "itemId": 125
       },
       "order": 206,
-      "rank": "OPEN"
+      "rank": "OPEN",
+      "secretId": 381
     },
     {
       "id": "trinket:126",
@@ -56193,29 +55205,23 @@
       "name": "Telescope Lens",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Telescope_Lens",
       "unlock": {
-        "description": "Unlock this trinket by collecting three of the following in the same run: Magic 8 Ball, Tiny Planet, Crystal Ball, Star of Bethlehem or any of the Astrology-related items (e.g. Aries, Cancer, Capricorn, Leo etc.). The item called Zodiac does not count..",
+        "description": "Unlock the Planetarium by collecting three different items with the stars tag in one run.",
         "requirements": {
-          "type": "manual",
-          "key": "trinket:152:unlock",
-          "label": "Unlock this trinket by collecting three of the following in the same run: Magic 8 Ball, Tiny Planet, Crystal Ball, Star of Bethlehem or any of the Astrology-related items (e.g. Aries, Cancer, Capricorn, Leo etc.). The item called Zodiac does not count.",
-          "reason": "The save does not record this action or run history precisely enough to verify it automatically."
-        },
-        "evidence": {
-          "type": "manual",
-          "key": "trinket:152:unlock",
-          "label": "Unlock this trinket by collecting three of the following in the same run: Magic 8 Ball, Tiny Planet, Crystal Ball, Star of Bethlehem or any of the Astrology-related items (e.g. Aries, Cancer, Capricorn, Leo etc.). The item called Zodiac does not count.",
-          "reason": "The save does not record this action or run history precisely enough to verify it automatically."
+          "type": "node",
+          "id": "feature:planetarium"
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Telescope_Lens"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Telescope_Lens",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml"
       ],
       "catalog": {
         "kind": "trinket",
         "itemId": 152
       },
       "order": 91,
-      "rank": "C"
+      "rank": "C",
+      "secretId": 406
     },
     {
       "id": "trinket:153",
@@ -59076,27 +58082,23 @@
       "unlock": {
         "description": "Use cards and runes 20 times.",
         "requirements": {
-          "type": "manual",
-          "key": "consumable:53:unlock",
-          "label": "Use cards and runes 20 times.",
-          "reason": "The save does not record this action or run history precisely enough to verify it automatically."
-        },
-        "evidence": {
-          "type": "manual",
-          "key": "consumable:53:unlock",
-          "label": "Use cards and runes 20 times.",
-          "reason": "The save does not record this action or run history precisely enough to verify it automatically."
+          "type": "counter",
+          "id": 196,
+          "atLeast": 20,
+          "label": "Use cards and runes 20 times"
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Ancient_Recall"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Ancient_Recall",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/pocketitems.xml"
       ],
       "catalog": {
         "kind": "consumable",
         "itemId": 53
       },
       "order": 24,
-      "rank": "C"
+      "rank": "C",
+      "secretId": 362
     },
     {
       "id": "consumable:54",
@@ -59535,29 +58537,23 @@
       "name": "Cracked Key",
       "wikiUrl": "https://bindingofisaacrebirth.wiki.gg/wiki/Cracked_Key",
       "unlock": {
-        "description": "Open Mom's Chest in Home.",
+        "description": "Open Mom’s Chest in Home to unlock Red Key and Cracked Key.",
         "requirements": {
-          "type": "manual",
-          "key": "consumable:78:unlock",
-          "label": "Open Mom's Chest in Home.",
-          "reason": "The save does not record this action or run history precisely enough to verify it automatically."
-        },
-        "evidence": {
-          "type": "manual",
-          "key": "consumable:78:unlock",
-          "label": "Open Mom's Chest in Home.",
-          "reason": "The save does not record this action or run history precisely enough to verify it automatically."
+          "type": "node",
+          "id": "collectible:580"
         }
       },
       "sources": [
-        "https://bindingofisaacrebirth.wiki.gg/wiki/Cracked_Key"
+        "https://bindingofisaacrebirth.wiki.gg/wiki/Cracked_Key",
+        "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/pocketitems.xml"
       ],
       "catalog": {
         "kind": "consumable",
         "itemId": 78
       },
       "order": 47,
-      "rank": "C"
+      "rank": "C",
+      "secretId": 415
     },
     {
       "id": "consumable:82",
@@ -60319,5 +59315,22 @@
       "secretId": 411,
       "rank": "B"
     }
-  ]
+  ],
+  "availabilityProfile": {
+    "gameVersion": "Repentance 1.7.9b.J835",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml",
+        "sha256": "c568f4924b2b2cbe41d97c548445a1037366d0d24112582524bf30c975229086"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/pocketitems.xml",
+        "sha256": "54740cf19bc1186fe94b0731feca10ff38a49c07de213449c7cc07fd9196368e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/players.xml",
+        "sha256": "ccf46cd1d279d4a35f7d5a8634a78b3ec815ef184c76dfae77c68ec8d7a565c0"
+      }
+    ]
+  }
 }

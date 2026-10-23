@@ -8,7 +8,7 @@ export const RANKS = [
   {id:'C',label:'After the main unlocks',color:'#a8cfb1'},
   {id:'D',label:'Low priority',color:'#9cbfda'},
   {id:'F',label:'Can wait',color:'#b9a5d5'},
-  {id:'OPEN',label:'Available by default',color:'#9aa6a0'},
+  {id:'OPEN',label:'Other catalog items',color:'#9aa6a0'},
 ];
 export const RANK_IDS = new Set(RANKS.map(rank=>rank.id));
 // The completion goal stays alone above S; it cannot be dragged and nothing can be dropped there.

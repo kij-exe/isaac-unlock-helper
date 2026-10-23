@@ -4,9 +4,15 @@ import {createHash} from 'node:crypto';
 import {validateCatalog} from '../site/js/unlock-engine.js';
 import {PHASES,BRANCHES} from '../site/js/progression.js';
 import {validatePhaseRecommendations} from '../site/js/phase-recommendations.js';
+import {applyAvailabilityMappings} from './availability-catalog.mjs';
+import {isDeepStrictEqual} from 'node:util';
 const file=process.argv[2]||'site/data/unlocks.json';
 const data=JSON.parse(fs.readFileSync(file,'utf8'));
 const errors=validateCatalog(data);
+try{
+  const profile=JSON.parse(fs.readFileSync('data/unlock-availability-repentance.json','utf8'));
+  if(!isDeepStrictEqual(applyAvailabilityMappings(data,profile),data))errors.push('Availability mappings differ from the pinned game profile. Run node tools/build-dead-god.mjs.');
+}catch(error){errors.push(error.message);}
 const phaseRecommendations=JSON.parse(fs.readFileSync('site/data/phase-recommendations.json','utf8'));
 errors.push(...validatePhaseRecommendations(phaseRecommendations,data,[...PHASES,...BRANCHES].map(phase=>phase.id)));
 // Mark and character conditions must name a character exactly as the save parser reports it.

@@ -270,6 +270,9 @@ tr:last-child td{border-bottom:0}
 .reference-box p{margin:12px 0}
 .reference-list{display:flex;flex-wrap:wrap;gap:5px;max-height:260px;overflow:auto}
 .reference-list span{border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-size:12px;background:var(--white)}
+.reference-list .yes{color:var(--green)}
+.reference-list .no{color:var(--muted)}
+.availability-confirmed{padding:12px 14px;border-radius:10px;background:var(--green-soft);color:var(--green);font-size:13px;line-height:1.65}
 .export-actions{margin-top:16px}
 .edition-note{padding:14px 17px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 35%,var(--line));border-radius:12px;font-size:14px;line-height:1.7;color:var(--ink);margin-bottom:22px}
 
@@ -285,13 +288,21 @@ tr:last-child td{border-bottom:0}
 .zoom-controls button:hover{background:var(--soft);color:var(--ink)}
 #zoom-label{width:48px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted)}
 .graph-toolbar .button{min-height:38px}
-.graph-evidence-toggle{position:relative;display:inline-flex;align-items:center;gap:6px}
-.evidence-help{display:inline-grid;place-items:center;width:22px;height:22px;border:1px solid var(--line);border-radius:50%;background:var(--white);color:var(--muted);font-size:12px;line-height:1;cursor:help}
-.evidence-tooltip{position:absolute;top:calc(100% + 9px);left:0;z-index:30;display:flex;flex-direction:column;gap:8px;width:min(380px,calc(100vw - 36px));padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--white);color:var(--muted);box-shadow:var(--shadow);font-size:13px;line-height:1.6;opacity:0;visibility:hidden;transform:translateY(-3px);transition:opacity .15s,transform .15s,visibility .15s;pointer-events:none}
-.evidence-tooltip strong{color:var(--ink);font-size:14px;font-weight:650}
-.graph-evidence-toggle:hover .evidence-tooltip,.graph-evidence-toggle:focus-within .evidence-tooltip{opacity:1;visibility:visible;transform:translateY(0)}
 .graph-mode-note{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.55;color:var(--muted);margin-bottom:12px;padding:10px 14px;border-radius:10px;background:var(--soft)}
 .graph-mode-note.reference{color:var(--ink);background:var(--accent-soft)}
+.graph-mode-note strong{flex-shrink:0;font-weight:650}
+.graph-mode-note p{margin:0}
+.graph-settings{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.65}
+.graph-settings>summary{width:fit-content;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.graph-settings>summary:hover,.graph-settings>summary:focus-visible{color:var(--ink)}
+.graph-settings-content{margin-top:10px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.graph-explanations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.graph-explanations h3{font-size:14px;color:var(--ink);margin:0 0 8px}
+.graph-explanations p{margin:0 0 10px}
+.graph-mode-control{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.graph-mode-control label{font-weight:600;color:var(--ink)}
+.graph-mode-control select{max-width:100%}
+.graph-mode-control p{flex-basis:100%;margin:0}
 .graph-legend{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:13px;margin:0 0 14px}
 .graph-legend span{display:inline-flex;align-items:center;gap:7px}
 .graph-legend b{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:22px;padding:0 8px;border:1px solid var(--dot);border-radius:12px;background:var(--soft);color:var(--ink);font-size:11px;letter-spacing:.5px}
@@ -515,11 +526,12 @@ tr:last-child td{border-bottom:0}
   .stat-card strong{font-size:30px}
   .section-card{padding:18px 16px}
   .graph-heading h1{font-size:26px}
+  .graph-mode-note{flex-direction:column;gap:3px}
+  .graph-explanations{grid-template-columns:1fr;gap:12px}
+  .graph-settings-content{padding:14px}
   .graph-toolbar select{max-width:none;flex:1 1 160px;min-width:0}
   .graph-toolbar{position:relative}
   .legend-sep{display:none}
-  .graph-evidence-toggle{position:static}
-  .evidence-tooltip{left:0;right:0;width:auto}
   .graph-toolbar .spacer{display:none}
   .graph-toolbar .view-controls{width:100%}
   .graph-toolbar .view-controls .zoom-controls{margin-left:auto}
