@@ -17,7 +17,7 @@ const kindNames = {collectible:'Item',trinket:'Trinket',card:'Card',rune:'Rune',
   stage:'Route',boss:'Boss',challenge:'Challenge',feature:'Feature',condition:'Condition',gate:'Logic'};
 const symbols = {collectible:'✦',trinket:'♧',card:'▤',rune:'◈',pill:'◒',character:'♙',stage:'⌂',boss:'♜',challenge:'⚑',feature:'◇'};
 const state = {data:null,baseData:null,catalog:null,icons:new Map(),save:null,progress:null,evaluator:null,fileName:'',
-  manual:{},phaseManual:{},phaseRecommendations:null,phaseHideObtained:false,phaseRecommendationOpen:new Map(),page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,inferSaveEvidence:false,graphMode:'progress',showOpened:false,selected:null,zoom:1,layout:null,openCharacters:new Set(),rouletteMode:'best',rouletteResult:null};
+  manual:{},phaseManual:{},phaseRecommendations:null,phaseHideObtained:false,phaseRecommendationOpen:new Map(),page:'tiers',search:'',filter:'all',kind:'all',showDefaultOpen:true,graphMode:'availability',graphSettingsOpen:false,showOpened:false,selected:null,zoom:1,layout:null,openCharacters:new Set(),rouletteMode:'best',rouletteResult:null};
 let toastTimer, uploadGeneration = 0, graphView;
 const graphPositions = new Map();
 // The player's own tier arrangement lives only in this browser; "Dump tiers" exports it as unlocks.json.
@@ -33,14 +33,12 @@ const icon = (node, className='', lazy=true) => state.icons.has(node.id)
   : html`<span class="generic-icon ${className}" aria-hidden="true">${symbols[node.kind]||'◇'}</span>`;
 
 function refreshEvaluator() {
-  const options={inferCollectedUnlocks:state.inferSaveEvidence};
+  const options={inferCollectedUnlocks:true};
   state.evaluator=createEvaluator(state.data,state.save,state.progress,state.manual,options);
   state.slotEvaluator=createEvaluator(state.data,state.save,state.progress,{},options);
 }
 function tierAvailability(node) {
-  return state.inferSaveEvidence
-    ? state.slotEvaluator.availability(node.id,{inferSlotEvidence:true})
-    : state.evaluator.availability(node.id);
+  return state.slotEvaluator.availability(node.id,{inferSlotEvidence:true});
 }
 function setPaths(os) {
   state.os=os;
@@ -150,7 +148,7 @@ async function loadFile(file,{handle=null,reload=false}={}) {
     if(!reload){saveSource=handle?{handle}:file.restored||file.empty?null:{file};if(!file.restored)rememberHandle(handle);}
     state.save=save; state.saveBytes=bytes; state.emptySave=!!file.empty; state.progress=progress;state.data=localizeCatalog(catalogForSave(state.baseData,save),i18n.language); state.fileName=file.name;
     // Reloading the same file keeps manual confirmations, the selection and the graph view.
-    if(!reload){state.manual={}; state.selected=null;state.graphMode='progress';state.showOpened=false;state.zoom=1;state.openCharacters.clear();state.rouletteResult=null;graphPositions.clear();state.lastPage=null;}
+    if(!reload){state.manual={}; state.selected=null;state.graphMode='availability';state.graphSettingsOpen=false;state.showOpened=false;state.zoom=1;state.openCharacters.clear();state.rouletteResult=null;graphPositions.clear();state.lastPage=null;}
     if(!reload)state.phaseSnapshot=null;
     if(!reload)state.phaseManual=cleanPhaseConfirmations(file.restored?file.phaseManual:{});
     if(!file.restored)storeSave(file.name,bytes,file.empty,state.phaseManual);
@@ -321,13 +319,13 @@ function tierDropBefore(items,event) {
 }
 
 function renderTiers() {
-  $('#view').innerHTML=html`<div class="page-heading tier-heading"><div><span class="eyebrow">UNLOCK PRIORITY</span><h1>Tier list<span class="title-dot">.</span></h1><p>What to unlock first, from S down to F. Hover an item to see its requirement; select it to open its unlock path.</p></div><div class="heading-tools"><details class="view-help"><summary aria-label="How to read the tier list"><b aria-hidden="true">?</b>How to read</summary><div class="help-popover"><h3>How to read the tier list</h3><p><i class="availability-dot no"></i> Locked — still to unlock. Faded items are already unlocked. ✓ — collected in this slot.</p><p>Hover or focus an item to see its requirement. Select it to open its unlock path; the ↗ button opens the wiki.</p><p>With the checkbox enabled, collected items and marks, challenges or counters recorded in this slot can show an unlock as open even if its secret flag is off.</p><p>Without this checkbox, availability comes from secret flags. Secret flags do not prove a requirement was met in this slot: they may have been synced from Steam. They do not count toward statistics or the progress graph.</p><p>S–F groups unlock priorities based on <a href="${esc(state.data.source.url)}" target="_blank" rel="noopener noreferrer">jnub’s guide ↗</a>, rather than item strength. Dead God is an added completion goal for Repentance. Priorities target Repentance+ and may differ in Repentance. Drag items between rows; your arrangement is kept in this browser.</p></div></details></div></div>
+  $('#view').innerHTML=html`<div class="page-heading tier-heading"><div><span class="eyebrow">UNLOCK PRIORITY</span><h1>Tier list<span class="title-dot">.</span></h1><p>What to unlock first, from S down to F. Hover an item to see its requirement; select it to open its unlock path.</p></div><div class="heading-tools"><details class="view-help"><summary aria-label="How to read the tier list"><b aria-hidden="true">?</b>How to read</summary><div class="help-popover"><h3>How to read the tier list</h3><p><i class="availability-dot no"></i> Locked — still to unlock. Faded items are already unlocked. ✓ — collected in this slot.</p><p>Hover or focus an item to see its requirement. Select it to open its unlock path; the ↗ button opens the wiki.</p><p>Collected items and requirements confirmed by this slot’s marks, challenges or counters can show an unlock as open even if its secret flag is off.</p><p>Secret flags describe availability. They do not prove a requirement was met in this slot and do not count toward statistics or the progress graph.</p><p>S–F groups unlock priorities based on <a href="${esc(state.data.source.url)}" target="_blank" rel="noopener noreferrer">jnub’s guide ↗</a>, rather than item strength. Dead God is an added completion goal for Repentance. Priorities target Repentance+ and may differ in Repentance. Drag items between rows; your arrangement is kept in this browser.</p></div></details></div></div>
     <section id="next-up" class="next-up" aria-label="Next up"></section>
     <div class="toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="item-search" type="search" placeholder="Find an item…" aria-label="Search tier list" value="${esc(state.search)}"></label>
     <select id="status-filter" aria-label="Filter by status"><option value="all">All statuses</option><option value="closed">Locked</option><option value="open">Unlocked</option><option value="uncollected">Not collected</option><option value="earned">Verified in this slot</option></select>
     <select id="kind-filter" aria-label="Unlock type"><option value="all">All types</option>${['collectible','trinket','card','rune','pill','character','stage','boss','challenge','feature'].map(k=>html`<option value="${k}">${kindNames[k]}</option>`).join('')}</select>
-    <label class="checkbox-label tier-default-toggle"><input id="show-default-open" type="checkbox" ${state.showDefaultOpen?'checked':''}>Show items available by default</label>
-    <label class="checkbox-label tier-evidence-toggle" title="If an item is in the collection or its requirement is confirmed by slot marks, challenges or counters, count it as unlocked."><input id="infer-save-evidence" type="checkbox" ${state.inferSaveEvidence?'checked':''}>Use save data to infer unlocks</label><span id="result-count" class="result-count"></span></div>
+    <label class="checkbox-label tier-default-toggle"><input id="show-default-open" type="checkbox" ${state.showDefaultOpen?'checked':''}>Show other catalog items</label>
+    <span id="result-count" class="result-count"></span></div>
     <div class="tier-meta"><ul class="tier-legend" aria-label="Legend"><li><span class="legend-tile" aria-hidden="true"><i class="availability-dot no"></i></span>Locked</li><li><span class="legend-tile faded" aria-hidden="true"></span>Unlocked (faded)</li><li><span class="legend-tile" aria-hidden="true"><span class="collection-check">✓</span></span>Collected in this slot</li><li><span class="legend-tile" aria-hidden="true"><i class="availability-dot muted"></i></span>No data</li></ul>
     <div class="tier-edit"><span class="subtle"><b aria-hidden="true">⠿</b>Drag items between rows to re-rank them. Saved in this browser only.</span><button class="button small" type="button" data-tier-action="reset" disabled>Reset tiers</button><button class="button small" type="button" data-tier-action="dump" title="Download unlocks.json with the current tiers to replace site/data/unlocks.json in the repository">Export JSON</button></div></div>
     <div id="tier-rows" class="tierlist"></div>`;
@@ -336,7 +334,6 @@ function renderTiers() {
   $('#status-filter').addEventListener('change',event=>{state.filter=event.target.value;renderTierRows();});
   $('#kind-filter').addEventListener('change',event=>{state.kind=event.target.value;renderTierRows();});
   $('#show-default-open').addEventListener('change',event=>{state.showDefaultOpen=event.target.checked;renderTierRows();});
-  $('#infer-save-evidence').addEventListener('change',event=>{state.inferSaveEvidence=event.target.checked;refreshEvaluator();renderTierRows();});
   renderTierRows();
 }
 
@@ -373,6 +370,7 @@ function characterUnlocks(nodes) {
 const meter = (value,total) => html`<span class="meter" aria-hidden="true"><i style="width:${total?Math.round(100*Math.min(1,value/total)):0}%"></i></span>`;
 function renderStats() {
   const p=state.progress,edition=state.save.profile,visibleMarks=MARKS.filter(([target])=>p.characters.some(character=>character.marks[target])), secrets=state.save.chunks.achievements.flatMap((value,id)=>value&&id?[{id,name:state.catalog.secrets?.[id]?.name||`Secret #${id}`}]:[]);
+  const secretRows=state.save.chunks.achievements.flatMap((value,id)=>id?[{id,name:state.catalog.secrets?.[id]?.name||`Secret #${id}`,unlocked:!!value}]:[]);
   const unlockGroups=edition.planner?unlocksByCharacter():new Map();
   const marks=p.characters.map((character,index)=>{
     const node=state.data.nodes.find(n=>n.kind==='character'&&n.name===character.name);
@@ -396,7 +394,7 @@ function renderStats() {
     <section class="section-card"><h2>Boss bestiary</h2><p>Sorted by kills. Entity records may differ from credited wins: multi-part bosses are counted separately.</p><div class="table-scroll ${bosses.length>10?'tall':''}"><table><thead><tr><th>Boss / variant</th><th class="num">Kills</th><th class="num">Encounters</th><th>Deaths to boss</th></tr></thead><tbody>${bosses.map(e=>html`<tr><td>${esc(e.name)}</td><td class="num">${e.kills}</td><td class="num">${e.encounters}</td><td>${e.deaths}</td></tr>`).join('')||(p.capabilities.bestiary?'<tr><td colspan="4">No records.</td></tr>':'<tr><td colspan="4">Rebirth does not store a bestiary of encounters, kills and deaths.</td></tr>')}</tbody></table></div></section></div>
     <div><section class="section-card"><h2>Completed challenges</h2>${completed.length?html`<ul class="challenge-chips">${completed.map(c=>html`<li>${state.icons.has(`challenge:${c.id}`)?html`<img src="${esc(state.icons.get(`challenge:${c.id}`))}" alt="" loading="lazy">`:''}<b>#${c.id}</b> ${esc(c.name)}</li>`).join('')}</ul>`:html('<p>No completed challenges in this slot yet.</p>')}</section><section class="section-card"><h2>Credited wins</h2><p>MOM_KILLS means Mom’s Heart / It Lives!, rather than Mom.</p>${counterTable(COUNTERS)}</section><section class="section-card"><h2>Little details</h2>${counterTable(MISC)}</section>
     ${edition.id==='repentance-plus'?html`<section class="section-card"><h2>Online and daily runs</h2>${counterTable([[497,'Current online win streak'],[498,'Best online win streak'],[499,'Online losing streak'],[521,'Best daily win streak'],[522,'Daily losing streak']])}</section>`:''}
-    <details class="reference-box"><summary>Secrets · separate reference (${secrets.length})</summary><p>These are file flags, not a verified Steam account achievement list. Their origin is unknown. They are excluded from the statistics above and do not prove requirements were met in this slot.</p><div class="reference-list">${secrets.map(s=>html`<span>#${s.id} ${esc(s.name)}</span>`).join('')||'No flags are set.'}</div><div class="export-actions"><button class="button small" data-export="secrets">Download reference ↓</button></div></details></div></div>`;
+    <details class="reference-box"><summary>${t('Unlock availability')} · ${secrets.length} / ${secretRows.length}</summary><p>All unlock flags from this save, including locked content. These flags do not verify when or how the unlock conditions were completed. They are excluded from the statistics above; the Steam account has not been queried.</p><div class="reference-list">${secretRows.map(s=>html`<span class="${s.unlocked?'yes':'no'}" data-save-secret="${s.id}" data-unlocked="${s.unlocked}">${s.unlocked?'✓':'○'} #${s.id} ${esc(s.name)} · ${availabilityLabel(s.unlocked?STATUS.YES:STATUS.NO)}</span>`).join('')}</div><div class="export-actions"><button class="button small" data-export="secrets">Download reference ↓</button></div></details></div></div>`;
 }
 
 // Unlock roulette: a case-opening reel over locked tier-list entries.
@@ -505,21 +503,32 @@ function renderGraphSidebar() {
   const selectedNode=state.layout.nodes.find(node=>node.id===state.selected);
   const node=state.evaluator.nodes.get(selectedNode?.ownerId||state.selected);
   if (!node) { $('#graph-sidebar').innerHTML=html('<div class="sidebar-empty"><span class="eyebrow">UNLOCK DETAILS</span><h2>Select a node</h2><p class="small-note">Select an item, character or route in the graph to see its requirements and unlock steps.</p><ol><li>Pick an unlock in “All unlocks” to see only its path.</li><li>Arrows point from a requirement to what it unlocks.</li><li>A red stripe marks a step that is still open; green means done.</li></ol></div>'); return; }
-  const availability=state.inferSaveEvidence
-    ?state.slotEvaluator.availability(node.id,{inferSlotEvidence:true}).status
-    :state.evaluator.availability(node.id).status;
+  const availabilityResult=tierAvailability(node);
+  const availability=availabilityResult.status;
   const collected=state.evaluator.collected(node), earned=state.evaluator.earned(node.id);
-  const collectionProof=state.inferSaveEvidence&&collected===true;
+  const collectionProof=collected===true;
+  const knownAvailable=availability===STATUS.YES&&earned!==STATUS.YES;
   $('#graph-sidebar').innerHTML=html`<div class="detail-head">${icon(node,'detail-icon',false)}<div><span class="detail-kind">${esc(kindNames[node.kind]||node.kind)}</span><h2>${esc(node.name)}</h2></div></div><p class="detail-description">${esc(node.unlock.description)}</p>
     <div class="detail-badges"><span class="${availability===STATUS.YES?'yes':availability===STATUS.NO?'no':''}">${availabilityLabel(availability)} · ${t('availability')}</span>${collected==null?'':html`<span class="${collected?'yes':''}">${collected?'Collected':'Not collected'}</span>`}</div>
-    <p class="small-note"><b>${collectionProof?t('Unlock confirmed by collection'):earnedLabel(earned)}</b></p>
+    ${knownAvailable&&!collectionProof?html`<p class="availability-confirmed">✓ ${t(availabilityResult.source==='save_secret'?'Unlocked in this save.':'This content is available.')} ${t('No manual confirmation is needed for availability.')}</p><p class="small-note">The original unlock action is not independently verified in this slot. This does not change content availability.</p>`:''}
+    <p class="small-note"><b>${collectionProof?t('Unlock confirmed by collection'):t('Unlock action in this slot')+': '+earnedLabel(earned)}</b></p>
     <div class="detail-actions"><a class="button small primary" href="${esc(wikiLink(node))}" target="_blank" rel="noopener noreferrer">Open wiki ↗</a><a class="button small" href="${graphLink(node.id)}">Only this path</a></div>
     ${node.id==='feature:dead-god'?html`<p class="small-note goal-policy">${esc(state.save.profile.label)}: ${state.save.profile.id==='repentance-plus'?640:636} unlock requirements and 717 collection items. Unlocked secrets are shown separately and do not prove requirements were met in this slot. Some actions require manual verification.</p>`:''}
-    <hr><span class="eyebrow">${collectionProof?'COLLECTION CONFIRMS UNLOCK':'WHAT TO DO'}</span>${collectionProof?html`<p class="small-note">This item is listed in this slot’s collection, so the unlock counts as obtained. No manual confirmation is needed. The save does not show how or in which run the item was obtained.</p>`:html`<ul class="condition-list">${renderCondition(node.unlock.requirements)}</ul>`}
+    <hr><span class="eyebrow">${collectionProof?'COLLECTION CONFIRMS UNLOCK':knownAvailable?'ORIGINAL UNLOCK REQUIREMENTS':'WHAT TO DO'}</span>${collectionProof?html`<p class="small-note">This item is listed in this slot’s collection, so the unlock counts as obtained. No manual confirmation is needed. The save does not show how or in which run the item was obtained.</p>`:knownAvailable?html`<details class="detail-help"><summary>Review the original unlock action (optional)</summary><ul class="condition-list">${renderCondition(node.unlock.requirements)}</ul></details>`:html`<ul class="condition-list">${renderCondition(node.unlock.requirements)}</ul>`}
     ${node.unlock.evidence&&state.evaluator.evaluate(node.unlock.evidence)===STATUS.YES?'<p class="small-note">✓ The result is already verified by this slot’s marks, challenges or counters. Earlier steps do not need separate proof.</p>':''}
     <details class="detail-help"><summary>Data and sources</summary><p class="small-note">Secret-based availability does not prove a requirement was met in this slot. ? means the save does not store all the necessary evidence. Manual confirmations apply only to this tab and reset when you change saves.</p>
     ${node.sourceNote?html`<p class="small-note">${esc(node.sourceNote)}</p>`:''}
     <div class="source-links">Sources: ${node.sources.map((url,index)=>html`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${index+1} ↗</a>`).join(' · ')}</div></details>`;
+}
+
+function graphSettingsMarkup() {
+  return html`<div class="graph-mode-note ${state.graphMode==='availability'?'reference':''}" role="note"><strong>${state.graphMode==='availability'?'Content availability':'Slot progress'}</strong><p>${state.graphMode==='availability'?'Shows what is available and what remains to unlock. Availability does not verify the original unlock action.':'Checks recorded progress in this slot. A collected item confirms obtaining its unlock; the original action may remain unknown.'}</p></div>
+    <details id="graph-settings" class="graph-settings" ${state.graphSettingsOpen?'open':''}><summary>Data, limitations and settings</summary><div class="graph-settings-content">
+      <div class="graph-explanations"><section><h3>Content availability</h3><p>Uses unlock flags stored in this save, collected items and unlock conditions independently confirmed by slot progress. Content available from the start is also included. Collection or confirmed slot conditions can establish availability even when an unlock flag is off.</p><p>Already available dependencies and their earlier steps are hidden unless you show unlocked nodes. A selected target remains visible.</p><p>An unlocked flag does not show when, how or in which slot its condition was met. Flags may have been synced from Steam, imported or edited; this file cannot identify their origin. The site does not read your Steam account.</p></section>
+      <section><h3>Slot progress</h3><p>Uses this slot’s completion marks, completed challenges, counters and collection, plus your manual confirmations. Unlock flags are excluded. Collection confirms obtaining an item, without proving its original unlock action.</p><p>Single-run actions and historical details remain unknown when the save does not record them. For example, Planetarium can be available while collecting three different astrology items in one run remains unverified.</p><p>Use this optional view to review the evidence recorded in the slot. Confirmed dependencies are hidden unless you show completed nodes.</p></section></div>
+      <p class="small-note">Unknown means the available data cannot establish the state; it does not mean locked. Neither mode changes the save or credits unlock flags toward gameplay statistics.</p>
+      <div class="graph-mode-control"><label for="graph-mode">Optional: change graph basis</label><select id="graph-mode" aria-describedby="graph-mode-help"><option value="availability">Content availability</option><option value="progress">Slot progress</option></select><p id="graph-mode-help" class="small-note">Content availability is the default. Reloading the page or choosing another save restores this mode.</p></div>
+    </div></details>`;
 }
 
 function renderGraph({preserveSelection=false}={}) {
@@ -528,7 +537,7 @@ function renderGraph({preserveSelection=false}={}) {
   const target=state.evaluator.nodes.get(targetId);
   if(targetId&&!target){$('#view').innerHTML=html('<div class="empty-state">Unlock not found. <a href="#/graph">Full graph</a></div>');return;}
   if(!preserveSelection)state.selected=targetId||state.selected;
-  const graphEvaluator=state.graphMode==='availability'&&state.inferSaveEvidence
+  const graphEvaluator=state.graphMode==='availability'
     ?{...state.evaluator,availability:id=>state.slotEvaluator.availability(id,{inferSlotEvidence:true})}
     :state.evaluator;
   const graph=buildGraph(state.data,graphEvaluator,{targetId,mode:state.graphMode,showOpened:state.showOpened});
@@ -542,25 +551,23 @@ function renderGraph({preserveSelection=false}={}) {
   }).join('');
   const nodeSvg=layout.nodes.map(node=>{
     const title=node.name.length>27?node.name.slice(0,25)+'…':node.name,src=state.icons.get(node.id);
-    const collectedProof=node.kind!=='gate'&&state.graphMode==='progress'&&state.inferSaveEvidence&&state.evaluator.collected(state.evaluator.nodes.get(node.ownerId||node.id))===true;
-    const statusText=node.status===STATUS.YES?(state.graphMode==='availability'?'✓ Available':collectedProof?'✓ Unlocked by collection':'✓ Verified'):node.status===STATUS.UNKNOWN?'? Needs verification':state.graphMode==='availability'?'○ Locked':'○ Not verified';
+    const collectedProof=node.kind!=='gate'&&state.graphMode==='progress'&&state.evaluator.collected(state.evaluator.nodes.get(node.ownerId||node.id))===true;
+    const statusText=node.status===STATUS.YES?(state.graphMode==='availability'?'✓ Available':collectedProof?'✓ Unlocked by collection':'✓ Verified'):node.status===STATUS.UNKNOWN?(state.graphMode==='availability'?'? No availability data':'? Needs verification'):state.graphMode==='availability'?'○ Locked':'○ Not verified';
     if(node.kind==='gate')return html`<g class="graph-node gate ${node.operator} ${node.status}" data-id="${esc(node.id)}" data-owner="${esc(node.ownerId)}" tabindex="0" role="button" aria-label="${esc(node.name)}" aria-description="Drag this node or use the arrow keys. Enter opens details." transform="translate(${node.x},${node.y})"><title>${esc(node.name)}\n${esc(map.get(node.ownerId)?.name)}\n${t(statusText)}</title><rect width="${node.width}" height="${node.height}" rx="14"/><text class="gate-label" x="${node.width/2}" y="18" text-anchor="middle">${node.operator==='all'?'AND':'OR'}</text></g>`;
     return html`<g class="graph-node ${node.status} ${node.kind==='gate'?'gate':''} ${node.id===state.selected?'selected':''}" data-id="${esc(node.id)}" data-owner="${esc(node.ownerId||node.id)}" tabindex="0" role="button" aria-label="${esc(node.name)}" aria-description="Drag this node or use the arrow keys. Enter opens details." transform="translate(${node.x},${node.y})"><title>${esc(node.name)}</title><rect width="${node.width}" height="${node.height}" rx="12"/><rect class="status-bar" x="3" y="12" width="4" height="${node.height-24}" rx="2"/>${src?html`<image href="${esc(src)}" x="14" y="23" width="32" height="32"/>`:''}<text x="${src?58:16}" y="21" class="node-kind">${esc(kindNames[node.kind]||node.kind)}</text><text x="${src?58:16}" y="41">${esc(title)}</text><text x="${src?58:16}" y="61" class="node-state">${statusText}</text></g>`;
   }).join('');
   $('#view').innerHTML=html`<div class="page-heading graph-heading"><div><span class="eyebrow">DEPENDENCY MAP</span><h1>${target?esc(target.name):'Unlock graph'}<span class="title-dot">.</span></h1></div><a class="button small" href="${target?'#/graph':'#/tiers'}">${target?'Full graph ↗':'← Tier list'}</a></div>
-    <div class="graph-toolbar"><select id="graph-mode" aria-label="Graph basis"><option value="progress">Slot progress</option><option value="availability">Content availability</option></select>
-    <select id="graph-focus" aria-label="Choose an unlock path"><option value="">All unlocks</option>${state.data.nodes.toSorted((a,b)=>a.name.localeCompare(b.name)).map(node=>html`<option value="${esc(node.id)}">${esc(node.name)}</option>`).join('')}</select>
+    <div class="graph-toolbar"><select id="graph-focus" aria-label="Choose an unlock path"><option value="">All unlocks</option>${state.data.nodes.toSorted((a,b)=>a.name.localeCompare(b.name)).map(node=>html`<option value="${esc(node.id)}">${esc(node.name)}</option>`).join('')}</select>
     <label class="checkbox-label"><input type="checkbox" id="show-opened" ${state.showOpened?'checked':''}>${state.graphMode==='availability'?'Unlocked':'Completed'}</label>
-    <span class="graph-evidence-toggle"><label class="checkbox-label"><input type="checkbox" id="infer-save-evidence" aria-describedby="infer-save-evidence-help" ${state.inferSaveEvidence?'checked':''}>Use save data</label><span class="evidence-help" tabindex="0" aria-label="More about using save data">ⓘ</span><span class="evidence-tooltip" id="infer-save-evidence-help" role="tooltip"><strong>How this switch works</strong><span>In “Content availability” mode, collection data and confirmed slot marks, challenges or counters help identify what is already unlocked. In “Slot progress” mode, a collected item proves that the unlock itself was obtained.</span><span>Collection data proves the item was obtained, but not which action or run unlocked it. If an item is in the collection, its unlock does not need manual confirmation. Secret flags and Steam achievements are not used; statistics are unchanged.</span></span></span>
     <span class="spacer"></span><div class="view-controls"><button class="button small" id="reset-layout" title="Smoothly reset node positions">Arrange</button><div class="zoom-controls"><button data-zoom="out" aria-label="Zoom out">−</button><span id="zoom-label"></span><button data-zoom="in" aria-label="Zoom in">+</button></div><button class="button small" id="fit-graph">Fit</button></div></div>
-    <div class="graph-mode-note ${state.graphMode==='availability'?'reference':''}">${state.graphMode==='progress'?state.inferSaveEvidence?'● This slot’s progress includes collection data. A collected item proves its unlock was obtained, but not how or in which run. Secret flags and Steam achievements do not count.':'● This slot’s progress. Marks, challenges and counters confirm recorded requirements. Secrets and Steam achievements do not count.':state.inferSaveEvidence?'● Availability includes slot data. Collection and confirmed requirements can override a secret flag. Progress statistics are unchanged.':'● Availability from secret flags. Does not verify accomplishments in this slot.'}</div>
-    <div class="graph-legend"><span><i class="legend-node satisfied"></i>${state.graphMode==='availability'?'Available':'Verified'}</span><span><i class="legend-node missing"></i>${state.graphMode==='availability'?'Locked':'Not verified'}</span><span><i class="legend-node unknown"></i>Needs verification</span><i class="legend-sep"></i><span><b>AND</b> — all branches required</span><span class="or"><b>OR</b> — one branch is enough</span></div>
+    ${graphSettingsMarkup()}
+    <div class="graph-legend"><span><i class="legend-node satisfied"></i>${state.graphMode==='availability'?'Available':'Verified'}</span><span><i class="legend-node missing"></i>${state.graphMode==='availability'?'Locked':'Not verified'}</span><span><i class="legend-node unknown"></i>${state.graphMode==='availability'?'No availability data':'Needs verification'}</span><i class="legend-sep"></i><span><b>AND</b> — all branches required</span><span class="or"><b>OR</b> — one branch is enough</span></div>
     <div class="graph-layout"><div class="graph-panel"><div class="graph-canvas ${target?'':'overview'}" id="graph-canvas">${layout.nodes.length?html`<svg id="unlock-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${layout.width} ${layout.height}" width="${layout.width}" height="${layout.height}" role="group" aria-label="Vertical dependency graph"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" class="arrow-head"/></marker></defs>${edges}${nodeSvg}</svg>`:'<div class="graph-empty"><h2>All done</h2><p>Show completed steps or change the graph basis.</p></div>'}</div><div class="graph-bottom"><span>${graph.nodes.filter(n=>!['gate','condition'].includes(n.kind)).length} unlocks · ${graph.edges.length} links</span><span>Scroll to zoom · drag nodes or the background</span></div></div><aside class="graph-sidebar" id="graph-sidebar" aria-label="Selected unlock requirements"></aside></div>`;
   $('#graph-mode').value=state.graphMode;$('#graph-focus').value=targetId||'';
-  $('#graph-mode').addEventListener('change',event=>{state.graphMode=event.target.value;renderGraph();});
+  $('#graph-settings').addEventListener('toggle',event=>{state.graphSettingsOpen=event.target.open;});
+  $('#graph-mode').addEventListener('change',event=>{state.graphMode=event.target.value;renderGraph({preserveSelection:true});});
   $('#graph-focus').addEventListener('change',event=>{location.hash=graphLink(event.target.value);});
   $('#show-opened').addEventListener('change',event=>{state.showOpened=event.target.checked;renderGraph();});
-  $('#infer-save-evidence').addEventListener('change',event=>{state.inferSaveEvidence=event.target.checked;refreshEvaluator();renderGraph();});
   $('#fit-graph').addEventListener('click',()=>graphView?.fit());
   $('#reset-layout').addEventListener('click',()=>graphView?.reset());
   renderGraphSidebar();

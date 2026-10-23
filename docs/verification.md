@@ -1,5 +1,19 @@
 # Delivery verification
 
+## Availability as the default graph view, 2026-10-23
+
+The interface now opens the graph with Content availability. Its active basis and a short limitation stay visible, while the optional Slot progress selector sits after the source and limitation descriptions inside a collapsed Data, limitations and settings disclosure. Unknown availability has its own label instead of a historical-action verification prompt. The pure graph evaluator and secret-independent statistics retain their existing semantics.
+
+The 105 JS tests, catalog validation and production build passed. The synthetic Planetarium/Telescope Lens upload confirms available graph nodes by default, unknown historical actions in the optional progress view, unchanged statistics across mode changes, RU/EN descriptions, disclosure state retention and restoration of the default when another save is selected. Browser checks used an empty slot to inspect the Russian descriptions, collapsed disclosure, optional selector and mode change. Screenshots are private files under reports, outside the published site. Source saves were not modified.
+
+## Single-file content availability, 2026-10-23
+
+Pinned the XML availability mapping for 1,004 items and 34 characters. Ten missing gates were corrected, including the shared Planetarium/Telescope Lens and Red Key/Cracked Key gates. Seven entries previously marked default now use their actual unlock conditions. Steven, Glass Cannon, Pay To Play and Little Horn no longer inherit unrelated boss/challenge gates; the verified special boss-drop gates remain separate exceptions. No existing rank or order was changed.
+
+New tests cover definite item/character availability from one supported save, shared gates, wrong-flag isolation, exact counters and collection evidence, challenge access versus completion, cycles, AND/OR and unknowns. The existing empty-slot/all-secrets independence tests still pass. DOM integration tests exercise the actual upload and RU/EN sidebar showing that an unlocked Planetarium or Telescope Lens needs no manual availability confirmation, plus all 641 Repentance+ flags including locked entries.
+
+The 105 JS tests passed, as did data validation and the production build. Browser navigation loaded the current site on a separate localhost port, but native file-picker control was denied by the computer-use tool. The new imported-save status is covered by DOM integration tests; no visual check of that status is claimed. Original source saves were read only.
+
 ## Automated checks
 
 - `npm test`: 53 behavioral frontend checks. The parser matched the game-stored checksums of both researched files; confirmed are Azazel's 3 marks, 1 challenge and 144 recognized items in the first slot, and zero progress in the second.

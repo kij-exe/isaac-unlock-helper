@@ -71,7 +71,7 @@ Access to the Cathedral and Sheol is modeled with **OR**: the regular path after
 
 ## What cannot be considered confirmed automatically
 
-A secret flag (`secretId`) is only a key for a separate availability reference. Its presence is **never used to credit a condition**, to clear the progress graph, or to draw conclusions about merit. In the explicitly selected separate "Content availability" mode, a secret may hide an already available dependency, without crediting its condition to this slot. It may have been synced from Steam; the source cannot be determined from a single file. A Save Secret ID is not declared a Steam API ID.
+A secret flag (`secretId`) is only a key for a separate availability reference. Its presence is **never used to credit a condition**, to clear the progress graph, or to draw conclusions about merit. In the default "Content availability" graph view, a secret may hide an already available dependency, without crediting its condition to this slot. The optional "Slot progress" view remains separate under data and settings. It may have been synced from Steam; the source cannot be determined from a single file. A Save Secret ID is not declared a Steam API ID.
 
 Some actions cannot be reconstructed unambiguously: three Devil Deals in one run, seven red heart containers at once, 55 coins at once, no damage taken/no hearts picked up on two floors, the Guppy transformation, three astrology items together, 50 items in one run, a spent Lazarus life, using Gulp! five times in a run, completing Victory Laps. For these there are stable `manual.key` values, an action label and the reason for the limitation. Absence of evidence **does not mean** the item is definitely locked.
 

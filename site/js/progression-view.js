@@ -37,7 +37,7 @@ export function progressionMarkup(model,{t,icons,confirmations={},celebrating=[]
     if(!summary?.total)return '';
     const items=entry.recommendations.filter(item=>!hideObtained||!item.obtained);
     const isOpen=openRecommendations.has(entry.id)?openRecommendations.get(entry.id):!entry.locked;
-    const heading=summary.mode==='collection'?'NEXT COLLECTION PICKUPS':'RECOMMENDED UNLOCKS';
+    const heading=summary.mode==='collection'?'COLLECTION CHECKLIST':'RECOMMENDED UNLOCKS';
     function itemCard(item){
       const status=item.collected===true?'Collected in this slot':item.earned===STATUS.YES?(item.manual?'Confirmed manually':'Unlock condition verified'):item.earned===STATUS.UNKNOWN?'Needs verification':'Requirement not verified';
       const marker=item.collected===true?'◆':item.earned===STATUS.YES?'✓':item.earned===STATUS.UNKNOWN?'?':'○';
@@ -46,7 +46,7 @@ export function progressionMarkup(model,{t,icons,confirmations={},celebrating=[]
     return `<details class="phase-recommendations" data-phase-recommendations="${entry.id}" ${isOpen?'open':''}><summary><span>${text(heading)}</span><span class="phase-recommendation-count">${summary.mode==='collection'?`${summary.remaining} ${text('left to collect')}`:`${summary.done} / ${summary.total} ${text('obtained')}`} <i aria-hidden="true">⌄</i></span></summary><div class="phase-recommendation-content"><p>${text(summary.description)}</p>
       ${items.length?`<div class="phase-unlock-tiers">${RANKS.filter(rank=>PHASE_ITEM_RANKS.includes(rank.id)).map(rank=>{
         const row=items.filter(item=>item.rank===rank.id);if(!row.length)return '';
-        return `<div class="phase-unlock-row" style="--recommendation-color:${rank.color}" aria-label="${text('Phase priority')} ${rank.id}"><span class="phase-unlock-rank" title="${text(rank.label)}">${rank.id}</span><div class="phase-unlock-items">${row.map(itemCard).join('')}</div></div>`;
+        return `<div class="phase-unlock-row" style="--recommendation-color:${rank.color}" aria-label="${text('Phase priority')} ${rank.id}"><span class="phase-unlock-rank" title="${text(rank.label)}"><b>${rank.id}</b></span><div class="phase-unlock-items">${row.map(itemCard).join('')}</div></div>`;
       }).join('')}</div>`:`<p class="phase-recommendations-done">✓ ${text(summary.mode==='collection'?'The required collection is complete.':'All recommendations obtained.')}</p>`}
       <div class="phase-recommendation-key"><span>✓ ${text('Condition verified')}</span><span>◆ ${text('Collected')}</span></div><p class="phase-recommendation-help">${text('Select an item to see its requirements. These recommendations do not complete the phase.')}</p></div></details>`;
   }

@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {parseSave,emptySaveBytes,slotProgress} from '../site/js/save-parser.js';
 import {catalogForSave} from '../site/js/catalog-profile.js';
 import {PHASES,BRANCHES,progressionForSave} from '../site/js/progression.js';
-import {validatePhaseRecommendations} from '../site/js/phase-recommendations.js';
+import {isPhaseUnlockItem,validatePhaseRecommendations} from '../site/js/phase-recommendations.js';
 import {progressionMarkup} from '../site/js/progression-view.js';
 import {translate} from '../site/js/i18n.js';
 import {moveEntry} from '../site/js/tier-ranks.js';
@@ -20,7 +20,7 @@ function sample(){
 const phase=(model,id)=>[...model.phases,...model.branches].find(phase=>phase.id===id);
 const item=(model,phaseId,id)=>phase(model,phaseId).recommendations.find(item=>item.nodeId===id);
 
-test('curated phase references, local placements, translations and artwork are complete',()=>{
+test('complete phase references, local placements, translations and artwork are valid',()=>{
   assert.deepEqual(validatePhaseRecommendations(profile,base,phaseIds),[]);
   const icons=new Set(read('site/assets/icons/manifest.json').icons.map(icon=>icon.nodeId));
   for(const group of Object.values(profile.phases)){
@@ -34,6 +34,34 @@ test('curated phase references, local placements, translations and artwork are c
   invalid.phases.mom.entries[2].rank='OPEN';
   const errors=validatePhaseRecommendations(invalid,base,phaseIds).join('\n');
   assert.match(errors,/Duplicate phase recommendation/);assert.match(errors,/Unknown recommended item/);assert.match(errors,/Invalid phase item placement/);
+});
+test('every unlockable item has a phase, independently of global rank or default collection items',()=>{
+  const expected=base.nodes.filter(isPhaseUnlockItem).map(node=>node.id).sort();
+  const assigned=[...new Set(Object.values(profile.phases).filter(group=>group.mode==='unlocks').flatMap(group=>group.entries.map(entry=>entry.nodeId)))].sort();
+  assert.equal(expected.length,436);assert.deepEqual(assigned,expected);
+  // The Gamekid is mislabeled OPEN globally, while Dr. Fetus has no unlock action.
+  assert.ok(assigned.includes('collectible:93'));assert.ok(!assigned.includes('collectible:52'));
+  const invalid=structuredClone(profile);
+  for(const group of Object.values(invalid.phases))if(group.mode==='unlocks')group.entries=group.entries.filter(entry=>entry.nodeId!=='collectible:93');
+  assert.match(validatePhaseRecommendations(invalid,base,phaseIds).join('\n'),/Missing phase item: collectible:93/);
+  invalid.phases.mom.entries.push({nodeId:'collectible:52',rank:'F',order:999});
+  assert.match(validatePhaseRecommendations(invalid,base,phaseIds).join('\n'),/Default item in unlock recommendations/);
+});
+test('route families and full character branches include their rewards without early Tainted placement',()=>{
+  const contains=(phaseId,id)=>profile.phases[phaseId].entries.some(entry=>entry.nodeId===id);
+  assert.ok(contains('hush','collectible:386'));
+  assert.ok(contains('mother','collectible:642'));
+  assert.ok(contains('beast','collectible:721'));
+  assert.ok(contains('greedier','consumable:56'));
+  assert.ok(contains('routes','collectible:723'));
+  assert.ok(contains('marks','trinket:170'));
+  assert.ok(contains('lost','collectible:455'));
+  assert.ok(contains('keeper','consumable:68'));
+  assert.ok(!contains('lost','collectible:628'));
+  assert.ok(!contains('keeper','collectible:625'));
+  assert.ok(!contains('hush','consumable:81'));
+  assert.ok(!contains('mother','trinket:170'));
+  assert.ok(contains('conditions','collectible:440'));
 });
 test('all secret flags leave recommendation results, collection suggestions and phase completion unchanged',()=>{
   const {save,model}=sample(),before=model();
@@ -68,23 +96,32 @@ test('phase-local ranks stay independent of global tier edits and cannot change 
   assert.equal(phase(edited,'photographs').status,phase(before,'photographs').status);
   assert.equal(JSON.stringify(profile),original);
 });
-test('final collection suggestions rotate only through missing required pickups',()=>{
+test('the final checklist includes every required pickup with stable ranks and obtained filtering',()=>{
   const {save,model}=sample();
   const initial=phase(model(),'dead-god');
-  assert.equal(initial.recommendations.length,12);assert.equal(initial.recommendationSummary.remaining,717);
+  assert.equal(initial.recommendations.length,717);assert.equal(initial.recommendationSummary.remaining,717);
   assert.equal(initial.recommendations[0].nodeId,'collectible:628');
   save.chunks.collection[628]=1;
   const next=phase(model(),'dead-god');
-  assert.equal(next.recommendations.length,12);assert.equal(next.recommendationSummary.remaining,716);
-  assert.equal(next.recommendations.some(item=>item.nodeId==='collectible:628'),false);
+  assert.equal(next.recommendations.length,717);assert.equal(next.recommendationSummary.remaining,716);
+  assert.equal(next.recommendations.find(item=>item.nodeId==='collectible:628').obtained,true);
+  assert.deepEqual(next.recommendations.map(({nodeId,rank,order})=>({nodeId,rank,order})),initial.recommendations.map(({nodeId,rank,order})=>({nodeId,rank,order})));
   const required=read('site/data/dead-god-collection.json').requiredItems;
   for(const entry of required)save.chunks.collection[entry.id]=1;
   save.chunks.collection[474]=0;
   const last=phase(model(),'dead-god');
   assert.equal(last.recommendationSummary.remaining,1);
-  assert.deepEqual(last.recommendations.map(item=>item.nodeId),['collectible:474']);
+  assert.deepEqual(last.recommendations.filter(item=>!item.obtained).map(item=>item.nodeId),['collectible:474']);
+  assert.deepEqual(new Set(last.recommendations.map(item=>item.nodeId)),new Set(required.map(entry=>`collectible:${entry.id}`)));
+  const invalid=structuredClone(profile);invalid.phases['dead-god'].entries=invalid.phases['dead-god'].entries.filter(entry=>entry.nodeId!=='collectible:474');
+  invalid.phases['dead-god'].entries.push({nodeId:'collectible:656',rank:'F',order:999});
+  const errors=validatePhaseRecommendations(invalid,base,phaseIds).join('\n');
+  assert.match(errors,/Missing phase collection item: collectible:474/);assert.match(errors,/Unexpected phase collection item: collectible:656/);
   save.chunks.collection[474]=1;
-  assert.deepEqual(phase(model(),'dead-god').recommendations,[]);
+  assert.equal(phase(model(),'dead-god').recommendations.every(item=>item.obtained),true);
+  const filtered=progressionMarkup(model(),{t:text=>text,icons:new Map(),hideObtained:true});
+  assert.match(filtered,/The required collection is complete\./);
+  assert.doesNotMatch(filtered,/data-recommendation-phase="dead-god"/);
   assert.equal(phase(model(),'dead-god').status,'missing');
 });
 test('obtained filtering changes only item tiles, retaining all phases, gaps and local ranks',()=>{
@@ -95,6 +132,6 @@ test('obtained filtering changes only item tiles, retaining all phases, gaps and
   assert.doesNotMatch(filtered,/data-phase-item="collectible:119"/);
   assert.equal((filtered.match(/data-phase="/g)||[]).length,14);
   assert.match(filtered,/ЧТО ОТКРЫТЬ В ЭТОЙ ФАЗЕ/);
-  assert.match(filtered,/СЛЕДУЮЩИЕ ПРЕДМЕТЫ В КОЛЛЕКЦИЮ/);
+  assert.match(filtered,/ПОЛНАЯ КОЛЛЕКЦИЯ/);
   assert.doesNotMatch(filtered,/RECOMMENDED UNLOCKS|Condition verified|Hide obtained recommendations/);
 });

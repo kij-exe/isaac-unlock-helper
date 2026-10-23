@@ -17,7 +17,7 @@ class Element {
 }
 async function app(t,{savedLanguage=null,savedEntries=[]}={}){
   const ids=[...fs.readFileSync('site/index.html','utf8').matchAll(/id="([^"]+)"/g)].map(m=>'#'+m[1]);
-  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#show-default-open','#infer-save-evidence','#tier-rows','#result-count','#next-up', '#graph-mode','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label','#phase-hide-obtained'].map(id=>[id,new Element()]));
+  const elements=new Map([...ids,'.brand','.main-nav','meta[name="theme-color"]','#item-search','#status-filter','#kind-filter','#show-default-open','#tier-rows','#result-count','#next-up', '#graph-mode','#graph-settings','#graph-focus','#show-opened','#fit-graph','#reset-layout','#graph-sidebar','#graph-canvas','#unlock-svg','#zoom-label','#phase-hide-obtained'].map(id=>[id,new Element()]));
   const nav=['tiers','phases','stats','graph','roulette'].map(page=>{const element=new Element();element.dataset.page=page;return element;});
   const os=['windows','mac','linux'].map(value=>{const element=new Element();element.dataset.os=value;return element;});
   const languages=['ru','en'].map(value=>{const element=new Element();element.dataset.language=value;return element;});
@@ -112,29 +112,25 @@ test('actual upload flow opens Repentance+ tierlist and keeps the previous save 
   assert.match(elements.get('#file-error').textContent,/rep\+persistentgamedata2.dat/);
   assert.equal(elements.get('#save-name').textContent,'rep+persistentgamedata1.dat');
 });
-test('collected items override a false secret flag and satisfy their unlock when save evidence inference is enabled',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
+test('collected items automatically override a false secret flag and satisfy their unlock across tier and graph views',async t=>{
   const {elements,upload,navigate,switchLanguage}=await app(t);
-  const bytes=Buffer.from(fs.readFileSync('context/rep+persistentgamedata1.dat'));
-  const parsed=parseSave(bytes,{fileName:'rep+persistentgamedata1.dat'});
-  const secrets=parsed.layout.find(chunk=>chunk.name==='achievements');
-  bytes[secrets.dataOffset+386]=0; // Marbles, already present in this save's collection.
+  const bytes=Buffer.from(emptySaveBytes()),parsed=parseSave(bytes);
+  bytes[parsed.layout.find(chunk=>chunk.name==='collection').dataOffset+538]=1; // Marbles, with its secret flag off.
   bytes.writeUInt32LE(kageChecksum(bytes.subarray(16,bytes.length-4)),bytes.length-4);
-  await upload('rep+persistentgamedata1.dat',bytes);
+  await upload('collected-item.dat',bytes);
   const card=()=>elements.get('#tier-rows').innerHTML.match(/<article class="item-card[^>]*data-node="collectible:538"[^>]*>([\s\S]*?)<\/article>/)?.[1]||'';
-  assert.match(card(),/availability-dot no/);
-  elements.get('#infer-save-evidence').events.get('change')({target:{checked:true}});
+  assert.doesNotMatch(elements.get('#view').innerHTML,/infer-save-evidence|Use save data/);
   assert.match(card(),/availability-dot yes/);
   assert.match(card(),/Collected in this save, so considered unlocked/);
   elements.get('#status-filter').events.get('change')({target:{value:'open'}});
   assert.match(elements.get('#tier-rows').innerHTML,/data-node="collectible:538"/);
   navigate('#/graph?item=collectible:538');
   elements.get('#graph-mode').events.get('change')({target:{value:'availability'}});
-  assert.match(elements.get('#view').innerHTML,/id="infer-save-evidence"[^>]*checked/);
-  assert.match(elements.get('#view').innerHTML,/evidence-tooltip/);
-  assert.match(elements.get('#view').innerHTML,/● Availability includes slot data/);
+  assert.doesNotMatch(elements.get('#view').innerHTML,/infer-save-evidence|Use save data|evidence-tooltip/);
+  assert.match(elements.get('#view').innerHTML,/Shows what is available and what remains to unlock/);
   assert.match(elements.get('#view').innerHTML,/✓ Available/);
   elements.get('#graph-mode').events.get('change')({target:{value:'progress'}});
-  assert.match(elements.get('#view').innerHTML,/● This slot’s progress includes collection data/);
+  assert.match(elements.get('#view').innerHTML,/Checks recorded progress in this slot/);
   assert.match(elements.get('#view').innerHTML,/✓ Unlocked by collection/);
   const sidebar=()=>elements.get('#graph-sidebar').innerHTML;
   assert.match(sidebar(),/Unlock confirmed by collection/);
@@ -144,13 +140,60 @@ test('collected items override a false secret flag and satisfy their unlock when
   switchLanguage('ru');
   assert.match(sidebar(),/Ручное подтверждение условия не требуется/);
   assert.match(elements.get('#view').innerHTML,/✓ Открыт по коллекции/);
+  assert.doesNotMatch(elements.get('#view').innerHTML,/Учитывать данные сейва/);
   switchLanguage('en');
-  elements.get('#infer-save-evidence').events.get('change')({target:{checked:false}});
-  assert.match(elements.get('#view').innerHTML,/\? Needs verification/);
-  assert.match(sidebar(),/data-manual=/);
   elements.get('#graph-mode').events.get('change')({target:{value:'availability'}});
-  assert.match(elements.get('#view').innerHTML,/● Availability from secret flags/);
-  assert.match(elements.get('#view').innerHTML,/○ Locked/);
+  assert.match(elements.get('#view').innerHTML,/✓ Available/);
+  navigate('#/tiers');
+  assert.match(card(),/availability-dot yes/);
+});
+test('a single save shows Planetarium availability without demanding historical proof, and lists locked flags separately',async t=>{
+  const {elements,upload,navigate,switchLanguage}=await app(t),bytes=Buffer.from(emptySaveBytes()),parsed=parseSave(bytes);
+  bytes[parsed.layout.find(chunk=>chunk.name==='achievements').dataOffset+406]=1;
+  bytes.writeUInt32LE(kageChecksum(bytes.subarray(16,-4)),bytes.length-4);
+  await upload('one-slot.dat',bytes);navigate('#/graph?item=trinket:152');
+  const view=()=>elements.get('#view').innerHTML;
+  assert.equal(elements.get('#graph-mode').value,'availability');
+  assert.match(view(),/<g class="graph-node satisfied[^\"]*" data-id="trinket:152"/);
+  assert.match(view(),/<details id="graph-settings" class="graph-settings" >[\s\S]*id="graph-mode"/);
+  assert.doesNotMatch(view().match(/<div class="graph-toolbar">([\s\S]*?)<\/div>/)[1],/id="graph-mode"/);
+  assert.match(view(),/this file cannot identify their origin/);
+  assert.match(view(),/The site does not read your Steam account/);
+  assert.match(view(),/collecting three different astrology items in one run remains unverified/);
+  let sidebar=elements.get('#graph-sidebar').innerHTML;
+  assert.match(sidebar,/Unlocked in this save\./);
+  assert.match(sidebar,/No manual confirmation is needed for availability\./);
+  assert.match(sidebar,/Review the original unlock action \(optional\)/);
+  assert.match(sidebar,/Unlock action in this slot: Needs verification/);
+  elements.get('#graph-settings').events.get('toggle')({target:{open:true}});
+  elements.get('#graph-mode').events.get('change')({target:{value:'progress'}});
+  assert.match(view(),/<details id="graph-settings" class="graph-settings" open>/);
+  assert.match(view(),/<g class="graph-node unknown[^\"]*" data-id="trinket:152"/);
+  switchLanguage('ru');sidebar=elements.get('#graph-sidebar').innerHTML;
+  assert.equal(elements.get('#graph-mode').value,'progress');
+  assert.match(view(),/Данные, ограничения и настройки/);
+  assert.match(view(),/Сайт не запрашивает данные вашего аккаунта Steam/);
+  assert.match(view(),/Флаги открытия не учитываются/);
+  assert.match(view(),/<details id="graph-settings" class="graph-settings" open>/);
+  assert.match(sidebar,/Открыто в этом сохранении/);
+  assert.match(sidebar,/Для определения доступности ручное подтверждение не требуется/);
+  assert.doesNotMatch(sidebar,/No manual confirmation is needed for availability/);
+  switchLanguage('en');navigate('#/stats');
+  const stats=elements.get('#view').innerHTML;
+  assert.match(stats,/Unlock availability.*1 \/ 641/);
+  assert.match(stats,/data-save-secret="406" data-unlocked="true"/);
+  assert.match(stats,/data-save-secret="407" data-unlocked="false"/);
+  assert.equal([...stats.matchAll(/data-save-secret=/g)].length,641);
+  assert.match(stats,/They are excluded from the statistics above/);
+  navigate('#/graph?item=trinket:152');
+  assert.equal(elements.get('#graph-mode').value,'progress');
+  elements.get('#graph-mode').events.get('change')({target:{value:'availability'}});
+  navigate('#/stats');assert.equal(elements.get('#view').innerHTML,stats);
+  navigate('#/graph?item=trinket:152');
+  elements.get('#graph-mode').events.get('change')({target:{value:'progress'}});
+  await upload('another-slot.dat',bytes);navigate('#/graph?item=trinket:152');
+  assert.equal(elements.get('#graph-mode').value,'availability');
+  assert.match(view(),/<details id="graph-settings" class="graph-settings" >/);
 });
 test('actual Rebirth upload renders its own 66 marks and 20 challenges with a compatibility explanation',{skip:!fs.existsSync('context/persistentgamedata1.dat')},async t=>{
   const {elements,upload}=await app(t);await upload('persistentgamedata1.dat');
@@ -238,9 +281,10 @@ test('saved Russian preference localizes file errors, theme and Rebirth statisti
   assert.equal(location.hash,'#/stats');assert.match(elements.get('#save-meta').textContent,/ КБ /);
 });
 
-test('switching graph language preserves manual facts, selected node and zoom',{skip:!fs.existsSync('context/rep+persistentgamedata1.dat')},async t=>{
-  const {elements,upload,switchLanguage,navigate}=await app(t);await upload('rep+persistentgamedata1.dat');
+test('switching graph language preserves manual facts, selected node and zoom',async t=>{
+  const {elements,upload,switchLanguage,navigate}=await app(t);await upload('manual-action.dat',emptySaveBytes());
   navigate('#/graph?item=collectible:538'); // Marbles, including its unrecorded five-Gulp action.
+  elements.get('#graph-mode').events.get('change')({target:{value:'progress'}});
   assert.match(elements.get('#graph-sidebar').innerHTML,/Marbles/);
   const key=elements.get('#graph-sidebar').innerHTML.match(/data-manual="([^"]+)"/)[1];
   elements.get('#view').events.get('change')({target:{matches:()=>true,dataset:{manual:key},checked:true}});

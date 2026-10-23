@@ -3,10 +3,14 @@
 // reviewed patterns; every other action remains an explicit manual condition.
 import fs from 'node:fs';
 import {addChallengePaths,linkChallengeCompletions} from './challenge-catalog.mjs';
+import {applyAvailabilityMappings} from './availability-catalog.mjs';
 const file='site/data/unlocks.json';
 const reference=JSON.parse(fs.readFileSync('data/catalog.json'));
 const challengeProfile=JSON.parse(fs.readFileSync('data/challenges-repentance.json'));
-const data=addChallengePaths(JSON.parse(fs.readFileSync(file)),reference,challengeProfile);
+const availabilityProfile=JSON.parse(fs.readFileSync('data/unlock-availability-repentance.json'));
+const data=addChallengePaths(applyAvailabilityMappings(JSON.parse(fs.readFileSync(file)),availabilityProfile),reference,challengeProfile);
+const originalOrder=new Map(data.nodes.map((node,index)=>[node.id,index]));
+const previousActions=new Map((data.nodes.find(node=>node.id==='feature:dead-god-conditions')?.unlock.requirements.conditions||[]).flatMap(group=>group.conditions).map(condition=>[condition.goalSecretId,condition]));
 const collection=JSON.parse(fs.readFileSync('site/data/dead-god-collection.json'));
 const goalIds=new Set(['feature:dead-god','feature:dead-god-conditions','feature:dead-god-collection','feature:dead-god-challenges']);
 data.nodes=data.nodes.filter(node=>!goalIds.has(node.id));
@@ -41,8 +45,12 @@ function mapAction(text){
 }
 const ranges=[[1,178,'Rebirth · requirements 1–178'],[179,276,'Afterbirth · requirements 179–276'],[277,403,'Afterbirth+ · requirements 277–403'],[404,636,'Repentance · requirements 404–636']];
 const conditions=ranges.map(([start,end,label])=>all(Array.from({length:end-start+1},(_,index)=>{
-  const id=start+index,entry=reference.achievements[id],existing=bySecret.get(id);
-  const action=existing?ref(existing.id):mapAction(entry.condition)||{type:'manual',key:`dead-god:condition:${id}`,
+  const id=start+index,entry=reference.achievements[id];
+  let existing=bySecret.get(id);
+  const previous=previousActions.get(id),shared=previous?.type==='node'?data.nodes.find(node=>node.id===previous.id):null;
+  if(shared&&(shared.secretId===id||shared.challenge?.role==='completion'))existing=shared;
+  const mapped=mapAction(entry.condition);
+  const action=existing?ref(existing.id):mapped||{type:'manual',key:`dead-god:condition:${id}`,
     reason:'The save does not contain enough independent evidence of this action. An unlocked secret does not prove it was performed in this slot.'};
   return {...linkChallengeCompletions(action),goalSecretId:id,label:`#${id} · ${entry.name}: ${entry.condition}`};
 }),label));
@@ -59,6 +67,7 @@ data.nodes.push(
   goalNode('feature:dead-god-challenges','All 45 challenges','Complete all 45 Repentance challenges, including Ultra Hard and DELETE THIS. Each challenge’s completed flag is checked individually.',all(Array.from({length:45},(_,i)=>ref(`challenge-complete:${i+1}`)),'All challenges'),{goal:{type:'challenges',requiredCount:45}}),
   goalNode('feature:dead-god','Dead God','Meet all 636 other unlock requirements and collect all 717 Repentance collection items. This includes 408 Hard / Greedier marks, 45 challenges, daily runs and other actions.',all([ref('collectible:628'),ref('feature:dead-god-challenges'),ref('feature:dead-god-conditions'),ref('feature:dead-god-collection')],'Everything for Dead God'),{rank:'DEAD GOD',order:0,secretId:637,goal:{type:'dead_god',gameVersion:collection.gameVersion}})
 );
+data.nodes.sort((a,b)=>(originalOrder.get(a.id)??originalOrder.size)-(originalOrder.get(b.id)??originalOrder.size));
 fs.writeFileSync(file,JSON.stringify(data,null,2)+'\n');
 let manual=0,automatic=0,reused=0;
 for(const range of conditions)for(const condition of range.conditions)if(condition.type==='manual')manual++;else if(condition.type==='node')reused++;else automatic++;

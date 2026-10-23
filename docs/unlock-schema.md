@@ -11,6 +11,14 @@
 
 Item ID, Save Secret ID, BossType, EntityType and character index are not interchangeable. The website does not query the state of the Steam account. `secretId` is allowed only as a reference availability key and is not a condition type.
 
+`data/unlock-availability-repentance.json` pins the resource-derived availability mapping for all 1,004 catalog items and 34 characters to game XML URLs and SHA-256 digests. `tools/availability-catalog.mjs` applies reviewed corrections as part of `tools/build-dead-god.mjs`; the data validator rejects drift from that profile. Positive XML gates are checked by numeric ID, including shared gates. Special boss-drop gates for A Pony and White Pony are retained explicitly. Steven is available through the Greed Treasure pool; Glass Cannon, Pay To Play and Little Horn items do not inherit the flags of similarly named challenges or bosses.
+
+Optional node `availability` metadata uses only `constant`, `node`, `all` and `any`. Its references are evaluated through other nodes' availability, with cycle checks and three-valued logic, and never through secret-based accomplishment inference. Broken Glass Cannon uses the availability of Glass Cannon while its acquisition action remains separate. Challenge access uses its resource-defined prerequisite availability; challenge completion always requires the slot's completed flag. An available challenge is never a completed challenge.
+
+Only a single supported persistentgamedata file is required. Resource lookups ship with the site. When a secret flag establishes availability but the original action is unverified, the sidebar states that content is available and no manual confirmation is needed for availability; historical action checks remain optional and separate. Statistics list every unlock flag, locked and unlocked, in a separate reference excluded from progress.
+
+The interface always includes collection evidence when evaluating unlock results. Availability also includes independently confirmed slot requirements, even when a secret flag is off. These rules apply automatically to the tier list and both graph modes; there is no save-evidence checkbox. Collection evidence confirms obtaining the unlock, without identifying the historical action or run. The graph basis selector keeps slot progress separate from content availability, and progress statistics remain unchanged.
+
 ## Node
 
 ```json
@@ -43,7 +51,7 @@ Item ID, Save Secret ID, BossType, EntityType and character index are not interc
 
 A character's starting upgrade is a separate `feature`, not the same collectible. For example, Holy Mantle (the item) and The Lost: Holy Mantle (the starting upgrade for 879 coins) have different conditions.
 
-`rank` is the tier-list row: `S`, `A`, `B`, `C`, `D`, `F` or `OPEN` (available by default); `DEAD GOD` is reserved for the single full-completion goal above S–F. `order` is the position inside the row (0, 1, 2…) and is required on every entry with `rank`. Rows and their labels are defined in `site/js/tier-ranks.js`; the guide's categories (`tier`) are no longer in the data, and the validator rejects that field. `rank` does not change availability, conditions or the graph.
+`rank` is the tier-list row: `S`, `A`, `B`, `C`, `D`, `F` or `OPEN` (other catalog items); `DEAD GOD` is reserved for the single full-completion goal above S–F. `order` is the position inside the row (0, 1, 2…) and is required on every entry with `rank`. Rows and their labels are defined in `site/js/tier-ranks.js`; the guide's categories (`tier`) are no longer in the data, and the validator rejects that field. `rank` does not change availability, conditions or the graph.
 
 Rows are easiest to change on the site: drag items between rows and press “Dump tiers (JSON)”. The downloaded `unlocks.json` has the same format as `site/data/unlocks.json` and replaces it as a whole; only `rank` and `order` of the affected rows differ. Until exported, the arrangement lives only in this browser's `localStorage`, and “Reset tiers” restores the site version. The initial ranks were derived once from the guide's categories by `tools/migrate-tiers-to-ranks.mjs`.
 
@@ -83,7 +91,11 @@ The absence of a mark for a character does not prove that the character was neve
 
 ## Two graph modes
 
-The default is **Slot progress**: `earned` without secrets. The alternative **Content availability** mode uses `availability`, including secrets; it helps obtain content that is not yet available, but does not count it as merit in this slot. The toggle is visible above the graph.
+The interface defaults to **Content availability**, using `availability` with save unlock flags, collection evidence and independently recorded slot conditions. It hides available dependencies and their ancestry, while keeping a selected target visible. This is a plan for obtaining content, without crediting a secret flag as an accomplishment in the slot or a verified Steam account state. Unknown availability stays unknown rather than becoming locked.
+
+**Slot progress** is an optional view under the collapsed **Data, limitations and settings** disclosure. It uses `earned`, collection evidence and explicit manual facts, without secrets. Collection confirms obtaining an unlock without identifying its original action or run. Missing historical or single-run facts remain unknown. The disclosure explains sources, flag provenance limits, dependency filtering and the Planetarium example before offering the selector. The active basis and a short limitation stay visible outside it.
+
+The selected mode and disclosure state survive navigation, language changes and reloading the same save file during the current page session. Loading another save or reloading the page restores Content availability and collapses the disclosure. Neither mode modifies source saves or secret-independent gameplay statistics. The pure `buildGraph` API retains its progress default so callers must explicitly request secret-based availability.
 
 For A and C with a shared dependency B:
 
@@ -104,7 +116,7 @@ AND/OR groups are shown as separate logical nodes when several dependencies need
 
 `feature:dead-god` is the only card in the top tier. The base catalog is **Repentance**, without the four additional Repentance+ secrets. After a Repentance+ save is loaded, the pure adapter `catalog-profile.js` adds four manual conditions, 638–641, and changes the condition count to 640, without modifying the original catalog. Rebirth uses its own statistics and does not apply this graph. The requirements are combined with AND: all other unlock conditions (1–636) and pickup of all 717 visible collection items. Death Certificate / 408 Hard/Greedier marks and all 45 challenge completed flags are shown separately — they are also part of the overall conditions.
 
-`feature:dead-god-conditions` contains exactly 636 conditions tagged with `goalSecretId` in four DLC groups. This is list metadata, not an executable achievement type: 223 references reuse verified nodes, 292 conditions with an exact match to marks/counters are checked against facts, and 121 are left manual. Their original wording is preserved. An unknown or transferred secret does not turn them into completed actions. The compound historical goals Platinum God, 1001% and 1000000% are not proven by counting flags.
+`feature:dead-god-conditions` contains exactly 636 conditions tagged with `goalSecretId` in four DLC groups. This is list metadata, not an executable achievement type: 503 references reuse verified nodes, 77 conditions with an exact match to marks/counters are checked against facts, and 56 are left manual. Their original wording is preserved. An unknown or transferred secret does not turn them into completed actions. The compound historical goals Platinum God, 1001% and 1000000% are not proven by counting flags.
 
 `feature:dead-god-collection` uses `collected` for each of the 717 IDs from `site/data/dead-god-collection.json`. Visibility is confirmed by the pinned game [items.xml Repentance 1.7.9b.J835](https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml), whose SHA-256 is stored alongside. Hidden IDs 59, 656, 714, 715 and missing IDs are excluded. Broken Glass Cannon 474, quest parts and Dad’s Note 668 are included. The collection is checked directly against the save bytes, so 474 is counted even though it has no name in the old shared catalog.
 

@@ -5,6 +5,7 @@ const all=conditions=>({type:'all',conditions});
 const mark=(character,target)=>({type:'mark',character,target,minimum:1});
 const counter=(id,atLeast,label)=>({type:'counter',id,atLeast,label});
 const manual=(key,label)=>({type:'manual',key,label,reason:'The save does not store a verified history of this action.'});
+const references=condition=>condition?.type==='node'?[condition.id]:(condition?.conditions||[]).flatMap(references);
 
 export function linkChallengeCompletions(condition){
   if(!condition)return condition;
@@ -55,7 +56,7 @@ export function addChallengePaths(input,reference,profile){
   for(const entry of profile.challenges){
     const id=`challenge:${entry.id}`,old=nodes.get(id),name=`#${entry.id} ${entry.name}`;
     const dependencies=entry.requiredUnlockIds.map(unlockId=>{
-      const prerequisite=byUnlock.get(unlockId);
+      const prerequisite=references(old?.unlock.requirements).map(id=>nodes.get(id)).find(node=>node?.secretId===unlockId)||byUnlock.get(unlockId);
       if(!prerequisite)throw new Error(`Missing unlock ${unlockId} for challenge ${entry.id}`);
       return ref(prerequisite.id);
     });

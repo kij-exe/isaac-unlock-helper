@@ -1,0 +1,5260 @@
+{
+  "schemaVersion": 1,
+  "gameVersion": "Repentance 1.7.9b.J835",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/items.xml",
+      "sha256": "c568f4924b2b2cbe41d97c548445a1037366d0d24112582524bf30c975229086"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/pocketitems.xml",
+      "sha256": "54740cf19bc1186fe94b0731feca10ff38a49c07de213449c7cc07fd9196368e"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Derugon/TBoIR-resources/44ac14726d9904d2032c202283817a35a73bcd82/1.7.9b.J835/resources-dlc3/players.xml",
+      "sha256": "ccf46cd1d279d4a35f7d5a8634a78b3ec815ef184c76dfae77c68ec8d7a565c0"
+    }
+  ],
+  "entries": {
+    "character:apollyon": {
+      "secretId": 340,
+      "source": "players.xml",
+      "playerType": 15
+    },
+    "character:azazel": {
+      "secretId": 79,
+      "source": "players.xml",
+      "playerType": 7
+    },
+    "character:bethany": {
+      "secretId": 404,
+      "source": "players.xml",
+      "playerType": 18
+    },
+    "character:blue-baby": {
+      "secretId": 32,
+      "source": "players.xml",
+      "playerType": 4
+    },
+    "character:cain": {
+      "secretId": 2,
+      "source": "players.xml",
+      "playerType": 2
+    },
+    "character:eden": {
+      "secretId": 81,
+      "source": "players.xml",
+      "playerType": 9
+    },
+    "character:eve": {
+      "secretId": 42,
+      "source": "players.xml",
+      "playerType": 5
+    },
+    "character:isaac": {
+      "secretId": null,
+      "source": "players.xml",
+      "playerType": 0
+    },
+    "character:jacob-esau": {
+      "secretId": 405,
+      "source": "players.xml",
+      "playerType": 19
+    },
+    "character:judas": {
+      "secretId": 3,
+      "source": "players.xml",
+      "playerType": 3
+    },
+    "character:keeper": {
+      "secretId": 251,
+      "source": "players.xml",
+      "playerType": 14
+    },
+    "character:lazarus": {
+      "secretId": 80,
+      "source": "players.xml",
+      "playerType": 8
+    },
+    "character:lilith": {
+      "secretId": 199,
+      "source": "players.xml",
+      "playerType": 13
+    },
+    "character:magdalene": {
+      "secretId": 1,
+      "source": "players.xml",
+      "playerType": 1
+    },
+    "character:samson": {
+      "secretId": 67,
+      "source": "players.xml",
+      "playerType": 6
+    },
+    "character:tainted-apollyon": {
+      "secretId": 487,
+      "source": "players.xml",
+      "playerType": 34
+    },
+    "character:tainted-azazel": {
+      "secretId": 481,
+      "source": "players.xml",
+      "playerType": 28
+    },
+    "character:tainted-bethany": {
+      "secretId": 489,
+      "source": "players.xml",
+      "playerType": 36
+    },
+    "character:tainted-blue-baby": {
+      "secretId": 478,
+      "source": "players.xml",
+      "playerType": 25
+    },
+    "character:tainted-cain": {
+      "secretId": 476,
+      "source": "players.xml",
+      "playerType": 23
+    },
+    "character:tainted-eden": {
+      "secretId": 483,
+      "source": "players.xml",
+      "playerType": 30
+    },
+    "character:tainted-eve": {
+      "secretId": 479,
+      "source": "players.xml",
+      "playerType": 26
+    },
+    "character:tainted-forgotten": {
+      "secretId": 488,
+      "source": "players.xml",
+      "playerType": 35
+    },
+    "character:tainted-isaac": {
+      "secretId": 474,
+      "source": "players.xml",
+      "playerType": 21
+    },
+    "character:tainted-jacob": {
+      "secretId": 490,
+      "source": "players.xml",
+      "playerType": 37
+    },
+    "character:tainted-judas": {
+      "secretId": 477,
+      "source": "players.xml",
+      "playerType": 24
+    },
+    "character:tainted-keeper": {
+      "secretId": 486,
+      "source": "players.xml",
+      "playerType": 33
+    },
+    "character:tainted-lazarus": {
+      "secretId": 482,
+      "source": "players.xml",
+      "playerType": 29
+    },
+    "character:tainted-lilith": {
+      "secretId": 485,
+      "source": "players.xml",
+      "playerType": 32
+    },
+    "character:tainted-lost": {
+      "secretId": 484,
+      "source": "players.xml",
+      "playerType": 31
+    },
+    "character:tainted-magdalene": {
+      "secretId": 475,
+      "source": "players.xml",
+      "playerType": 22
+    },
+    "character:tainted-samson": {
+      "secretId": 480,
+      "source": "players.xml",
+      "playerType": 27
+    },
+    "character:the-forgotten": {
+      "secretId": 390,
+      "source": "players.xml",
+      "playerType": 16
+    },
+    "character:the-lost": {
+      "secretId": 82,
+      "source": "players.xml",
+      "playerType": 10
+    },
+    "collectible:1": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:10": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:100": {
+      "secretId": 24,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:101": {
+      "secretId": 27,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:102": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:103": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:104": {
+      "secretId": 31,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:105": {
+      "secretId": 29,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:106": {
+      "secretId": 28,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:107": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:108": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:109": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:11": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:110": {
+      "secretId": 35,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:111": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:112": {
+      "secretId": 45,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:113": {
+      "secretId": 47,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:114": {
+      "secretId": 43,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:115": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:116": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:117": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:118": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:119": {
+      "secretId": 147,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:12": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:120": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:121": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:122": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:123": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:124": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:125": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:126": {
+      "secretId": 44,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:127": {
+      "secretId": 48,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:128": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:129": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:13": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:130": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:131": {
+      "secretId": 46,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:132": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:133": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:134": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:135": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:136": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:137": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:138": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:139": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:14": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:140": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:141": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:142": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:143": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:144": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:145": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:146": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:147": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:148": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:149": {
+      "secretId": 140,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:15": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:150": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:151": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:152": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:153": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:154": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:155": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:156": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:157": {
+      "secretId": 54,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:158": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:159": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:16": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:160": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:161": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:162": {
+      "secretId": 50,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:163": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:164": {
+      "secretId": 59,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:165": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:166": {
+      "secretId": 49,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:167": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:168": {
+      "secretId": 62,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:169": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:17": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:170": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:171": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:172": {
+      "secretId": 53,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:173": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:174": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:175": {
+      "secretId": 58,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:176": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:177": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:178": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:179": {
+      "secretId": 113,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:18": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:180": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:181": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:182": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:183": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:184": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:185": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:186": {
+      "secretId": 56,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:187": {
+      "secretId": 65,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:188": {
+      "secretId": 51,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:189": {
+      "secretId": 63,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:19": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:190": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:191": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:192": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:193": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:194": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:195": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:196": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:197": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:198": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:199": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:2": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:20": {
+      "secretId": 8,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:200": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:201": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:202": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:203": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:204": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:205": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:206": {
+      "secretId": 107,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:207": {
+      "secretId": 6,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:208": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:209": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:21": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:210": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:211": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:212": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:213": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:214": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:215": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:216": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:217": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:218": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:219": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:22": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:220": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:221": {
+      "secretId": 150,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:222": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:223": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:224": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:225": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:226": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:227": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:228": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:229": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:23": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:230": {
+      "secretId": 128,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:231": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:232": {
+      "secretId": 138,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:233": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:234": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:236": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:237": {
+      "secretId": 103,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:238": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:239": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:24": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:240": {
+      "secretId": 141,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:241": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:242": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:243": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:244": {
+      "secretId": 104,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:245": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:246": {
+      "secretId": 134,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:247": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:248": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:249": {
+      "secretId": 135,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:25": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:250": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:251": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:252": {
+      "secretId": 146,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:253": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:254": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:255": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:256": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:257": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:258": {
+      "secretId": 105,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:259": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:26": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:260": {
+      "secretId": 136,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:261": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:262": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:263": {
+      "secretId": 233,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:264": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:265": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:266": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:267": {
+      "secretId": 102,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:268": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:269": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:27": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:270": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:271": {
+      "secretId": 124,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:272": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:273": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:274": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:275": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:276": {
+      "secretId": 129,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:277": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:278": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:279": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:28": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:280": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:281": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:282": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:283": {
+      "secretId": 133,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:284": {
+      "secretId": 148,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:285": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:286": {
+      "secretId": 121,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:287": {
+      "secretId": 122,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:288": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:289": {
+      "secretId": 137,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:29": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:290": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:291": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:292": {
+      "secretId": 126,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:293": {
+      "secretId": 143,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:294": {
+      "secretId": 145,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:295": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:296": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:297": {
+      "secretId": 119,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:298": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:299": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:3": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:30": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:300": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:301": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:302": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:303": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:304": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:305": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:306": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:307": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:308": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:309": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:31": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:310": {
+      "secretId": 112,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:311": {
+      "secretId": 108,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:312": {
+      "secretId": 109,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:313": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:314": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:315": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:316": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:317": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:318": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:319": {
+      "secretId": 110,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:32": {
+      "secretId": 139,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:320": {
+      "secretId": 114,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:321": {
+      "secretId": 115,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:322": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:323": {
+      "secretId": 106,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:324": {
+      "secretId": 125,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:325": {
+      "secretId": 30,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:326": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:327": {
+      "secretId": 57,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:328": {
+      "secretId": 78,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:329": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:33": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:330": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:331": {
+      "secretId": 156,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:332": {
+      "secretId": 116,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:333": {
+      "secretId": 130,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:334": {
+      "secretId": 131,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:335": {
+      "secretId": 132,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:336": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:337": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:338": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:339": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:34": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:340": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:341": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:342": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:343": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:344": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:345": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:346": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:347": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:348": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:349": {
+      "secretId": 244,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:35": {
+      "secretId": 36,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:350": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:351": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:352": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:353": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:354": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:355": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:356": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:357": {
+      "secretId": 203,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:358": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:359": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:36": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:360": {
+      "secretId": 190,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:361": {
+      "secretId": 183,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:362": {
+      "secretId": 192,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:363": {
+      "secretId": 189,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:364": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:365": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:366": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:367": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:368": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:369": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:37": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:370": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:371": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:372": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:373": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:374": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:375": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:376": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:377": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:378": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:379": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:38": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:380": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:381": {
+      "secretId": 188,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:382": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:383": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:384": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:385": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:386": {
+      "secretId": 181,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:387": {
+      "secretId": 193,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:388": {
+      "secretId": 200,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:389": {
+      "secretId": 218,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:39": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:390": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:391": {
+      "secretId": 182,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:392": {
+      "secretId": 202,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:393": {
+      "secretId": 220,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:394": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:395": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:396": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:397": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:398": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:399": {
+      "secretId": 186,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:4": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:40": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:400": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:401": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:402": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:403": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:404": {
+      "secretId": 179,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:405": {
+      "secretId": 201,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:406": {
+      "secretId": 231,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:407": {
+      "secretId": 180,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:408": {
+      "secretId": 184,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:409": {
+      "secretId": 187,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:41": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:410": {
+      "secretId": 194,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:411": {
+      "secretId": 198,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:412": {
+      "secretId": 219,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:413": {
+      "secretId": 222,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:414": {
+      "secretId": 135,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:415": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:416": {
+      "secretId": 238,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:417": {
+      "secretId": 221,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:418": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:419": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:42": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:420": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:421": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:422": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:423": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:424": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:425": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:426": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:427": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:428": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:429": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:430": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:431": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:432": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:433": {
+      "secretId": 195,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:434": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:435": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:436": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:437": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:438": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:439": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:44": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:440": {
+      "secretId": 232,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:441": {
+      "secretId": 276,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:442": {
+      "secretId": 290,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:443": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:444": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:445": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:446": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:447": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:448": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:449": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:45": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:450": {
+      "secretId": 308,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:451": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:452": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:453": {
+      "secretId": 291,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:454": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:455": {
+      "secretId": 307,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:456": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:457": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:458": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:459": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:46": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:460": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:461": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:462": {
+      "secretId": 299,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:463": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:464": {
+      "secretId": 297,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:465": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:466": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:467": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:468": {
+      "secretId": 285,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:469": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:47": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:470": {
+      "secretId": 315,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:471": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:472": {
+      "secretId": 286,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:473": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:474": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:475": {
+      "secretId": 305,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:476": {
+      "secretId": 296,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:477": {
+      "secretId": 295,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:478": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:479": {
+      "secretId": 318,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:48": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:480": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:481": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:482": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:483": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:484": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:485": {
+      "secretId": 294,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:486": {
+      "secretId": 288,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:487": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:488": {
+      "secretId": 303,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:489": {
+      "secretId": 282,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:49": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:490": {
+      "secretId": 289,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:491": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:492": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:493": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:494": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:495": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:496": {
+      "secretId": 292,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:497": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:498": {
+      "secretId": 306,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:499": {
+      "secretId": 283,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:5": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:50": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:500": {
+      "secretId": 298,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:501": {
+      "secretId": 335,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:502": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:503": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:504": {
+      "secretId": 316,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:505": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:506": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:507": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:508": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:509": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:51": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:510": {
+      "secretId": 338,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:511": {
+      "secretId": 352,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:512": {
+      "secretId": 349,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:513": {
+      "secretId": 353,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:514": {
+      "secretId": 354,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:515": {
+      "secretId": 350,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:516": {
+      "secretId": 351,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:517": {
+      "secretId": 356,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:518": {
+      "secretId": 355,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:519": {
+      "secretId": 357,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:52": {
+      "secretId": 11,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:520": {
+      "secretId": 367,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:521": {
+      "secretId": 364,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:522": {
+      "secretId": 365,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:523": {
+      "secretId": 366,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:524": {
+      "secretId": 369,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:525": {
+      "secretId": 368,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:526": {
+      "secretId": 372,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:527": {
+      "secretId": 371,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:528": {
+      "secretId": 373,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:529": {
+      "secretId": 374,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:53": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:530": {
+      "secretId": 376,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:531": {
+      "secretId": 377,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:532": {
+      "secretId": 378,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:533": {
+      "secretId": 380,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:534": {
+      "secretId": 379,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:535": {
+      "secretId": 385,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:536": {
+      "secretId": 383,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:537": {
+      "secretId": 384,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:538": {
+      "secretId": 386,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:539": {
+      "secretId": 387,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:54": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:540": {
+      "secretId": 382,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:541": {
+      "secretId": 392,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:542": {
+      "secretId": 393,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:543": {
+      "secretId": 398,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:544": {
+      "secretId": 394,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:545": {
+      "secretId": 401,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:546": {
+      "secretId": 400,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:547": {
+      "secretId": 397,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:548": {
+      "secretId": 395,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:549": {
+      "secretId": 396,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:55": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:550": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:551": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:552": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:553": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:554": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:555": {
+      "secretId": 583,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:556": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:557": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:558": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:559": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:56": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:560": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:561": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:562": {
+      "secretId": 433,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:563": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:564": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:565": {
+      "secretId": 462,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:566": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:567": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:568": {
+      "secretId": 423,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:569": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:57": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:570": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:571": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:572": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:573": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:574": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:575": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:576": {
+      "secretId": 517,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:577": {
+      "secretId": 432,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:578": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:579": {
+      "secretId": 520,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:58": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:580": {
+      "secretId": 415,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:581": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:582": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:583": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:584": {
+      "secretId": 417,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:585": {
+      "secretId": 420,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:586": {
+      "secretId": 429,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:588": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:589": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:590": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:591": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:592": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:593": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:594": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:595": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:596": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:597": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:598": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:599": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:6": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:60": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:600": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:601": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:602": {
+      "secretId": 582,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:603": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:604": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:605": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:606": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:607": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:608": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:609": {
+      "secretId": 448,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:610": {
+      "secretId": 450,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:611": {
+      "secretId": 497,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:612": {
+      "secretId": 460,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:614": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:615": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:616": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:617": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:618": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:619": {
+      "secretId": 431,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:62": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:621": {
+      "secretId": 430,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:622": {
+      "secretId": 436,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:623": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:624": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:625": {
+      "secretId": 547,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:626": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:627": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:628": {
+      "secretId": 636,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:629": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:63": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:631": {
+      "secretId": 440,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:632": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:633": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:634": {
+      "secretId": 519,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:635": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:636": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:637": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:638": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:639": {
+      "secretId": 442,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:64": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:640": {
+      "secretId": 418,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:641": {
+      "secretId": 446,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:642": {
+      "secretId": 472,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:643": {
+      "secretId": 470,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:644": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:645": {
+      "secretId": 456,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:646": {
+      "secretId": 546,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:647": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:649": {
+      "secretId": 409,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:65": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:650": {
+      "secretId": 410,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:651": {
+      "secretId": 425,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:652": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:653": {
+      "secretId": 424,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:654": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:655": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:657": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:658": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:659": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:66": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:660": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:661": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:663": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:664": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:665": {
+      "secretId": 444,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:667": {
+      "secretId": 503,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:668": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:669": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:67": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:670": {
+      "secretId": 441,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:671": {
+      "secretId": 443,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:672": {
+      "secretId": 445,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:673": {
+      "secretId": 447,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:674": {
+      "secretId": 469,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:675": {
+      "secretId": 451,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:676": {
+      "secretId": 453,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:677": {
+      "secretId": 457,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:678": {
+      "secretId": 463,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:679": {
+      "secretId": 455,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:68": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:680": {
+      "secretId": 449,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:681": {
+      "secretId": 466,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:682": {
+      "secretId": 467,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:683": {
+      "secretId": 468,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:684": {
+      "secretId": 461,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:685": {
+      "secretId": 471,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:686": {
+      "secretId": 422,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:687": {
+      "secretId": 473,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:688": {
+      "secretId": 434,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:689": {
+      "secretId": 491,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:69": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:690": {
+      "secretId": 492,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:691": {
+      "secretId": 501,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:692": {
+      "secretId": 494,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:693": {
+      "secretId": 495,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:694": {
+      "secretId": 496,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:695": {
+      "secretId": 452,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:696": {
+      "secretId": 499,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:697": {
+      "secretId": 435,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:698": {
+      "secretId": 502,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:699": {
+      "secretId": 498,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:7": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:70": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:700": {
+      "secretId": 504,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:701": {
+      "secretId": 505,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:702": {
+      "secretId": 506,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:703": {
+      "secretId": 507,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:704": {
+      "secretId": 590,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:705": {
+      "secretId": 587,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:706": {
+      "secretId": 597,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:707": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:708": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:709": {
+      "secretId": 437,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:71": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:710": {
+      "secretId": 586,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:711": {
+      "secretId": 592,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:712": {
+      "secretId": 599,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:713": {
+      "secretId": 589,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:714": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:715": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:716": {
+      "secretId": 464,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:717": {
+      "secretId": 596,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:719": {
+      "secretId": 465,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:72": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:720": {
+      "secretId": 459,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:721": {
+      "secretId": 500,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:722": {
+      "secretId": 600,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:723": {
+      "secretId": 584,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:724": {
+      "secretId": 585,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:725": {
+      "secretId": 588,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:726": {
+      "secretId": 591,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:727": {
+      "secretId": 594,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:728": {
+      "secretId": 595,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:729": {
+      "secretId": 598,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:73": {
+      "secretId": 6,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:730": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:731": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:732": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:74": {
+      "secretId": 10,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:75": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:76": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:77": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:78": {
+      "secretId": 7,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:79": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:8": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:80": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:81": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:82": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:83": {
+      "secretId": 9,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:84": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:85": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:86": {
+      "secretId": 13,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:87": {
+      "secretId": 15,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:88": {
+      "secretId": 14,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:89": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:9": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:90": {
+      "secretId": 12,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:91": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:92": {
+      "secretId": 19,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:93": {
+      "secretId": 26,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:94": {
+      "secretId": 21,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:95": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:96": {
+      "secretId": 25,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:97": {
+      "secretId": 22,
+      "source": "items.xml",
+      "kind": "active"
+    },
+    "collectible:98": {
+      "secretId": 20,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "collectible:99": {
+      "secretId": 23,
+      "source": "items.xml",
+      "kind": "passive"
+    },
+    "consumable:1": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:10": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:11": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:12": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:13": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:14": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:15": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:16": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:17": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:18": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:19": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:2": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:20": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:21": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:22": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:23": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:24": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:25": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:26": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:27": {
+      "secretId": 322,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:28": {
+      "secretId": 326,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:29": {
+      "secretId": 327,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:3": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:30": {
+      "secretId": 329,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:31": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:32": {
+      "secretId": 89,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:33": {
+      "secretId": 90,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:34": {
+      "secretId": 91,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:35": {
+      "secretId": 92,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:36": {
+      "secretId": 93,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:37": {
+      "secretId": 94,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:38": {
+      "secretId": 95,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:39": {
+      "secretId": 96,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:4": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:40": {
+      "secretId": 233,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:41": {
+      "secretId": 309,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:42": {
+      "secretId": 97,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:43": {
+      "secretId": 98,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:44": {
+      "secretId": 99,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:45": {
+      "secretId": 100,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:46": {
+      "secretId": 120,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:47": {
+      "secretId": 225,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:48": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:49": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:5": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:50": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:51": {
+      "secretId": 293,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:52": {
+      "secretId": 361,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:53": {
+      "secretId": 362,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:54": {
+      "secretId": 363,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:55": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:56": {
+      "secretId": 524,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:57": {
+      "secretId": 525,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:58": {
+      "secretId": 526,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:59": {
+      "secretId": 527,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:6": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:60": {
+      "secretId": 528,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:61": {
+      "secretId": 529,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:62": {
+      "secretId": 530,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:63": {
+      "secretId": 531,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:64": {
+      "secretId": 532,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:65": {
+      "secretId": 533,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:66": {
+      "secretId": 534,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:67": {
+      "secretId": 535,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:68": {
+      "secretId": 536,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:69": {
+      "secretId": 537,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:7": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:70": {
+      "secretId": 538,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:71": {
+      "secretId": 539,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:72": {
+      "secretId": 540,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:73": {
+      "secretId": 541,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:74": {
+      "secretId": 542,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:75": {
+      "secretId": 542,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:76": {
+      "secretId": 543,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:77": {
+      "secretId": 544,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:78": {
+      "secretId": 415,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:79": {
+      "secretId": 602,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:8": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:80": {
+      "secretId": 610,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:81": {
+      "secretId": 618,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:82": {
+      "secretId": 619,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:83": {
+      "secretId": 620,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:84": {
+      "secretId": 621,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:85": {
+      "secretId": 622,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:86": {
+      "secretId": 623,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:87": {
+      "secretId": 624,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:88": {
+      "secretId": 625,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:89": {
+      "secretId": 626,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:9": {
+      "secretId": null,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:90": {
+      "secretId": 627,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:91": {
+      "secretId": 628,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:92": {
+      "secretId": 629,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:93": {
+      "secretId": 630,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:94": {
+      "secretId": 631,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:95": {
+      "secretId": 632,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:96": {
+      "secretId": 633,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "consumable:97": {
+      "secretId": 634,
+      "source": "pocketitems.xml",
+      "kind": "consumable"
+    },
+    "trinket:1": {
+      "secretId": 101,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:10": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:100": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:101": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:102": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:103": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:104": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:105": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:106": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:107": {
+      "secretId": 302,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:108": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:109": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:11": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:110": {
+      "secretId": 284,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:111": {
+      "secretId": 287,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:112": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:113": {
+      "secretId": 310,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:114": {
+      "secretId": 311,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:115": {
+      "secretId": 312,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:116": {
+      "secretId": 313,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:117": {
+      "secretId": 314,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:118": {
+      "secretId": 304,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:119": {
+      "secretId": 301,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:12": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:120": {
+      "secretId": 358,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:121": {
+      "secretId": 359,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:122": {
+      "secretId": 360,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:123": {
+      "secretId": 370,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:124": {
+      "secretId": 375,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:125": {
+      "secretId": 381,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:126": {
+      "secretId": 388,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:127": {
+      "secretId": 389,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:128": {
+      "secretId": 399,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:129": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:13": {
+      "secretId": 118,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:130": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:131": {
+      "secretId": 419,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:132": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:133": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:134": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:135": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:136": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:137": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:138": {
+      "secretId": 458,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:139": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:14": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:140": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:141": {
+      "secretId": 408,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:142": {
+      "secretId": 421,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:143": {
+      "secretId": 545,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:144": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:145": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:146": {
+      "secretId": 454,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:147": {
+      "secretId": 523,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:148": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:149": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:15": {
+      "secretId": 85,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:150": {
+      "secretId": 493,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:151": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:152": {
+      "secretId": 406,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:153": {
+      "secretId": 548,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:154": {
+      "secretId": 549,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:155": {
+      "secretId": 550,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:156": {
+      "secretId": 551,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:157": {
+      "secretId": 565,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:158": {
+      "secretId": 564,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:159": {
+      "secretId": 552,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:16": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:160": {
+      "secretId": 553,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:161": {
+      "secretId": 562,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:162": {
+      "secretId": 563,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:163": {
+      "secretId": 556,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:164": {
+      "secretId": 557,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:165": {
+      "secretId": 566,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:166": {
+      "secretId": 567,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:167": {
+      "secretId": 576,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:168": {
+      "secretId": 577,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:169": {
+      "secretId": 568,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:17": {
+      "secretId": 111,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:170": {
+      "secretId": 569,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:171": {
+      "secretId": 572,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:172": {
+      "secretId": 573,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:173": {
+      "secretId": 554,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:174": {
+      "secretId": 555,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:175": {
+      "secretId": 558,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:176": {
+      "secretId": 559,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:177": {
+      "secretId": 560,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:178": {
+      "secretId": 561,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:179": {
+      "secretId": 580,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:18": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:180": {
+      "secretId": 581,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:181": {
+      "secretId": 578,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:182": {
+      "secretId": 579,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:183": {
+      "secretId": 570,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:184": {
+      "secretId": 571,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:185": {
+      "secretId": 574,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:186": {
+      "secretId": 575,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:187": {
+      "secretId": 521,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:188": {
+      "secretId": 522,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:189": {
+      "secretId": 518,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:19": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:2": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:20": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:21": {
+      "secretId": 123,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:22": {
+      "secretId": 127,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:23": {
+      "secretId": 149,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:24": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:25": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:26": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:27": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:28": {
+      "secretId": 117,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:29": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:3": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:30": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:31": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:32": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:33": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:34": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:35": {
+      "secretId": 52,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:36": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:37": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:38": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:39": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:4": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:40": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:41": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:42": {
+      "secretId": 61,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:43": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:44": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:45": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:46": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:48": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:49": {
+      "secretId": 55,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:5": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:50": {
+      "secretId": 60,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:51": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:52": {
+      "secretId": 64,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:53": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:54": {
+      "secretId": 70,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:55": {
+      "secretId": 71,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:56": {
+      "secretId": 72,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:57": {
+      "secretId": 73,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:58": {
+      "secretId": 74,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:59": {
+      "secretId": 75,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:6": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:60": {
+      "secretId": 76,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:61": {
+      "secretId": 77,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:62": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:63": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:64": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:65": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:66": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:67": {
+      "secretId": 196,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:68": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:69": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:7": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:70": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:71": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:72": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:73": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:74": {
+      "secretId": 230,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:75": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:76": {
+      "secretId": 229,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:77": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:78": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:79": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:8": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:80": {
+      "secretId": 197,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:81": {
+      "secretId": 185,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:82": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:83": {
+      "secretId": 249,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:84": {
+      "secretId": 204,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:85": {
+      "secretId": 239,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:86": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:87": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:88": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:89": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:9": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:90": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:91": {
+      "secretId": 300,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:92": {
+      "secretId": 336,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:93": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:94": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:95": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:96": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:97": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:98": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    },
+    "trinket:99": {
+      "secretId": null,
+      "source": "items.xml",
+      "kind": "trinket"
+    }
+  },
+  "retainedGates": {
+    "collectible:130": {
+      "secretId": 5,
+      "reason": "This special boss-drop item retains the reviewed gate for its source boss.",
+      "sources": [
+        "https://isaacguru.com/wiki/isaac/c130"
+      ]
+    },
+    "collectible:181": {
+      "secretId": 66,
+      "reason": "This special boss-drop item retains the reviewed gate for its source boss.",
+      "sources": [
+        "https://isaacguru.com/wiki/isaac/c181"
+      ]
+    }
+  },
+  "ungatedCorrections": {
+    "collectible:352": {
+      "previousSecretId": 164,
+      "source": "items.xml",
+      "reason": "The item has no unlock gate in game XML; the prior flag belongs to a boss or challenge, not a separate item unlock.",
+      "sources": [
+        "https://isaacguru.com/wiki/isaac/c352"
+      ]
+    },
+    "collectible:380": {
+      "previousSecretId": 268,
+      "source": "items.xml",
+      "reason": "The item has no unlock gate in game XML; the prior flag belongs to a boss or challenge, not a separate item unlock.",
+      "sources": [
+        "https://isaacguru.com/wiki/isaac/c380"
+      ]
+    },
+    "collectible:503": {
+      "previousSecretId": 346,
+      "source": "items.xml",
+      "reason": "The item has no unlock gate in game XML; the prior flag belongs to a boss or challenge, not a separate item unlock.",
+      "sources": [
+        "https://isaacguru.com/wiki/isaac/c503"
+      ]
+    },
+    "collectible:50": {
+      "previousSecretId": 16,
+      "source": "items.xml",
+      "reason": "Steven is available in the Greed Treasure pool independently of unlocking its namesake boss.",
+      "sources": [
+        "https://isaacguru.com/wiki/isaac/c50"
+      ]
+    }
+  }
+}

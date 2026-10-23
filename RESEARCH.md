@@ -209,3 +209,9 @@ The protocol description was checked against the actual parsing of both files do
 ## Addendum: new files
 
 Verified profiles Rebirth 179/95 and Repentance+ 642/523 have been added. Their structure, the separate Rebirth checksum and the bit-based online marks are covered in [docs/save-formats.md](docs/save-formats.md). The previously described limitations of the named Python analyzer remain its limitations; the website supports the new profiles. Gamestate is excluded from the analysis of overall progress at the user's direct request.
+
+## Coverage audit, 2026-10-23
+
+[Save data coverage and extraction research](docs/save-data-coverage.md) audits the expanded fixture set: five persistent files and two gamestate files. It distinguishes Planetarium availability from proof of its historical unlock condition, identifies decoded fields omitted from browser output, and records resource-mapping gaps. Both gamestate files match their persistent companions by checksum, but their full run-state format is not yet decoded. The original two-file findings above describe the earlier sample set.
+
+The follow-up comparison with NotTwist's tracker confirms that a single supported persistentgamedata file is sufficient for persistent progress and mapped content availability. Additional resources help build the lookup catalog; they are not required as user uploads. On all four Repentance/Repentance+ fixtures, the other tracker's direct mark reader finds the same number of positions as ours. Current-run state remains a separate question.

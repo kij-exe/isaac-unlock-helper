@@ -45,6 +45,16 @@ export function validateCatalog(data) {
   const map = new Map(data.nodes.map(n => [n.id, n]));
   for (const node of data.nodes) {
     validateCondition(node.unlock?.requirements, node.id);
+    if(node.availability){
+      validateCondition(node.availability,node.id);
+      const check=condition=>{
+        if(!condition||typeof condition!=='object')return;
+        if(!['all','any','node','constant'].includes(condition.type))errors.push(`Invalid availability condition: ${node.id}`);
+        if(Array.isArray(condition.conditions))condition.conditions.forEach(check);
+      };
+      check(node.availability);
+      if(node.secretId!=null)errors.push(`Availability rule conflicts with secretId: ${node.id}`);
+    }
     if (node.unlock?.evidence) {
       validateCondition(node.unlock.evidence, node.id);
       if (conditionReferences(node.unlock.evidence).length) errors.push(`Direct evidence must not reference nodes: ${node.id}`);
@@ -55,7 +65,7 @@ export function validateCatalog(data) {
     if (visiting.has(id)) { errors.push(`Dependency cycle: ${id}`); return; }
     if (visited.has(id) || !map.has(id)) return;
     visiting.add(id);
-    conditionReferences(map.get(id).unlock?.requirements).forEach(visit);
+    [...conditionReferences(map.get(id).unlock?.requirements),...conditionReferences(map.get(id).availability)].forEach(visit);
     visiting.delete(id); visited.add(id);
   };
   data.nodes.forEach(node => visit(node.id));
@@ -116,9 +126,22 @@ export function createEvaluator(data, save, progress, manual = {}, {inferCollect
     const value = save.chunks.collection[node.catalog.itemId];
     return value == null ? null : !!value;
   }
+  const availabilityActive=new Set();
+  function availabilityCondition(condition,options){
+    if(!condition)return STATUS.UNKNOWN;
+    if(condition.type==='constant')return yesNo(condition.value);
+    if(condition.type==='node')return availability(condition.id,options).status;
+    if(['all','any'].includes(condition.type)){
+      const states=condition.conditions.map(child=>availabilityCondition(child,options));
+      return condition.type==='all'
+        ?states.includes(STATUS.NO)?STATUS.NO:states.includes(STATUS.UNKNOWN)?STATUS.UNKNOWN:STATUS.YES
+        :states.includes(STATUS.YES)?STATUS.YES:states.includes(STATUS.UNKNOWN)?STATUS.UNKNOWN:STATUS.NO;
+    }
+    return STATUS.UNKNOWN;
+  }
   function availability(id, {inferSlotEvidence = false} = {}) {
     const node = nodes.get(id);
-    if (!node) return {status: STATUS.UNKNOWN, source: 'unknown'};
+    if (!node||availabilityActive.has(id)) return {status: STATUS.UNKNOWN, source: 'unknown'};
     if (inferSlotEvidence) {
       if (collected(node) === true) return {status: STATUS.YES, source: 'collection'};
       if (node.secretId != null && earned(id) === STATUS.YES) return {status: STATUS.YES, source: 'slot_evidence'};
@@ -126,6 +149,13 @@ export function createEvaluator(data, save, progress, manual = {}, {inferCollect
     if (node.secretId != null) return {status: yesNo(save.chunks.achievements[node.secretId] == null ? null : !!save.chunks.achievements[node.secretId]), source:'save_secret'};
     if (node.unlock.requirements.type === 'constant') return {status:yesNo(node.unlock.requirements.value), source:'default'};
     if (earned(id) === STATUS.YES) return {status:STATUS.YES, source:'slot_condition'};
+    const rule=node.availability||(node.challenge?.role==='access'?node.unlock.requirements:null);
+    if(rule){
+      availabilityActive.add(id);
+      const status=availabilityCondition(rule,{inferSlotEvidence});
+      availabilityActive.delete(id);
+      return {status,source:'prerequisites'};
+    }
     return {status:STATUS.UNKNOWN, source:'unknown'};
   }
   return {evaluate, earned, availability, nodes, collected};
